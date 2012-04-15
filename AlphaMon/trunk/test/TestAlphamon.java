@@ -192,7 +192,7 @@ public class TestAlphamon {
         assertEquals(Color.NONE, game.winner());
     }
 
-    //Game is over after 6 rolls of the dices, Red is winner
+    //Game is over after 6 rolls of the dices, Red is winner.
     @Test
     public void should_have_red_as_winner_after_6_rolls() {
         game.nextTurn();
