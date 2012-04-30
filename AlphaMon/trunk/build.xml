@@ -7,7 +7,7 @@
     <property name="doc.home" value="${basedir}/doc"/>
 
 
-    <target name="prepare">
+    <target name="prepare" depends="clean">
         <mkdir dir="${build.home}"/>
         <mkdir dir="${build.home}/classes"/>
         <mkdir dir="${build.home}/test_classes"/>
