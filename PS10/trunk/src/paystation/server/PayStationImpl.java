@@ -24,7 +24,7 @@ import java.util.List;
  * cancel events.
  */
 
-public class PayStationImpl implements PayStation {
+public class PayStationImpl implements PayStation, StatusObservable {
     private int insertedSoFar;
     private int timeBought;
 

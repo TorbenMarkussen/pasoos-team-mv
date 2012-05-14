@@ -43,7 +43,7 @@ public class StatusFrame extends JFrame {
         pane.add(eLabel);
 
         myListener = new LabelUpdater(vLabel, eLabel);
-        //myListenerProxy = (StatusListener) UnicastRemoteObject.exportObject(myListener);
+        myListenerProxy = (StatusListener) UnicastRemoteObject.exportObject((StatusListener)myListener, 0);
 
         for (String payStationName : payStationNames)  {
             String registryURL = "rmi://localhost/"+payStationName;
@@ -52,7 +52,7 @@ public class StatusFrame extends JFrame {
 
                 StatusObservable so = (StatusObservable) Naming.lookup(registryURL);
 
-                so.addStatusListener((StatusListener) UnicastRemoteObject.exportObject(myListener));
+                so.addStatusListener(myListenerProxy);
 
             } catch (NotBoundException e) {
                 e.printStackTrace();

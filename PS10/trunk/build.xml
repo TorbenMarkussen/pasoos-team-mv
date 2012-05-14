@@ -125,7 +125,7 @@ Pay station build management.
   <!-- Run Scenario 1 that supervise a number of pay stations. -->
   <target name="runGUI" depends="build-all">
     <echo> "file:///${basedir}/${build-directory}/" </echo>
-    <java spawn="false" fork="yes" classname="paystation.server.view.PayStationGUI">
+    <java spawn="true" fork="yes" classname="paystation.server.view.PayStationGUI">
         <classpath> 
             <path refid="class-path"/> 
         </classpath>
@@ -159,6 +159,9 @@ Pay station build management.
       <classpath> 
       	<path refid="class-path"/> 
       </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
         <arg value="PS1 PS2 PS3"/>
     </java>      
   </target>

@@ -10,7 +10,7 @@ import paystation.common.StatusObservable;
  * 1) Accept payment; 2) Calculate parking time based on payment; 3) Know earning, parking time bought; 4) Issue receipts; 5) Handle buy and
  * cancel events.
  */
-public interface PayStation extends StatusObservable {
+public interface PayStation  {
 
     /**
      * Insert coin into the pay station and adjust state accordingly.
