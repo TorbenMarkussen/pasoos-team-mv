@@ -1,0 +1,116 @@
+<!-- Build file for the PS10 Pay Station case study.
+     
+     Parts from the book "Flexible, Reliable Software"
+     2010 by CRC Press
+     Author: 
+     Henrik B Christensen 
+     Department of Computer Science
+     University of Aarhus
+-->
+<project name="PayStation" default="help" basedir=".">
+    
+  <property name="source-directory" value="src"/>
+  <property name="test-source-directory" value="test"/>
+  <property name="build-directory" value="build"/>
+  <property name="javadoc-directory" value="javadoc"/>
+
+  <property name="junit-jar" value="lib/junit-4.4.jar"/>
+  <property name="lcd-jar" value="lib/lcd.jar"/>
+
+  <path id="class-path">
+    <pathelement location="${build-directory}"/>
+    <pathelement location="${junit-jar}"/>
+    <pathelement location="${lcd-jar}"/> 
+  </path>
+
+  <target name="help">
+    <echo>
+Pay station build management.
+  Targets:
+    build-src:     Builds production code.
+    test:          JUnit test production code.
+    clean:         Removes all bytecode.
+    javadoc:       Generate JavaDoc.
+
+    gui:           Execute a single GUI based pay station.
+
+  Exercise Target:
+
+    sc1:           Monitor four pay stations scenario
+
+   Partly from the book "Flexible, Reliable Software"
+   Published 2010 by CRC Press
+   Author: 
+     Henrik B Christensen 
+     Department of Computer Science
+     University of Aarhus
+    </echo>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build-directory}"/>
+    <delete dir="${javadoc-directory}"/>
+  </target>
+
+  <target name="prepare">
+    <mkdir dir="${build-directory}"/>
+    <mkdir dir="${javadoc-directory}"/>
+  </target>
+
+  <target name="build-src" depends="prepare">
+    <javac srcdir="${source-directory}"
+	   destdir="${build-directory}"
+	   includeAntRuntime="no"
+	   debug="yes">
+      <classpath refid="class-path"/>
+    </javac>
+  </target>
+
+  <target name="build-test" depends="build-src">
+    <javac includeantruntime="false" srcdir="${test-source-directory}"
+	   destdir="${build-directory}"
+	   includeAntRuntime="no"
+	   debug="yes">
+      <classpath refid="class-path"/>
+    </javac>
+  </target>
+
+  <target name="build-all" depends="build-src,build-test"/>
+  
+  <target name="test"  depends="build-all">
+    <java classname="org.junit.runner.JUnitCore">
+      <arg value="paystation.domain.TestAll"/>
+      <classpath refid="class-path"/>
+    </java>
+  </target>
+
+  <target name="javadoc" depends="prepare">
+    <javadoc
+      packagenames="paystation.*"
+      destdir="${javadoc-directory}"
+      sourcepath="${source-directory}"
+      windowtitle="Pay station system">
+      
+      <classpath refid="class-path"/>
+    </javadoc>
+  </target>
+  
+
+  <!-- Execute the GUI operating the PayStation interface as facade -->
+  <target name="gui" depends="build-all">
+    <java classname="paystation.view.PayStationGUI" fork="yes">
+      <classpath refid="class-path"/>
+    </java>
+  </target>
+ 
+  <!-- Run Scenario 1 that supervise a number of pay stations. -->
+  <target name="sc1" depends="build-all">
+    <java fork="yes" classname="paystation.scenario.Scenario1">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+    </java>      
+  </target>
+  
+
+</project>
