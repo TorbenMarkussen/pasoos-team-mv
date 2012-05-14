@@ -13,6 +13,7 @@
   <property name="test-source-directory" value="test"/>
   <property name="build-directory" value="build"/>
   <property name="javadoc-directory" value="javadoc"/>
+  <property name="resources" value="res" />
 
   <property name="junit-jar" value="lib/junit-4.4.jar"/>
   <property name="lcd-jar" value="lib/lcd.jar"/>
@@ -57,6 +58,15 @@ Pay station build management.
     <mkdir dir="${javadoc-directory}"/>
   </target>
 
+  <!-- === RESOURCE COPYING === -->
+  <target name="copy_resources" depends="prepare">
+    <copy todir="${build-directory}" >
+      <fileset dir="${resources}">
+	<include name="java.policy"/>
+      </fileset>
+    </copy>
+  </target>
+
   <target name="build-src" depends="prepare">
     <javac srcdir="${source-directory}"
 	   destdir="${build-directory}"
@@ -68,9 +78,9 @@ Pay station build management.
 
   <target name="build-test" depends="build-src">
     <javac includeantruntime="false" srcdir="${test-source-directory}"
-	   destdir="${build-directory}"
-	   includeAntRuntime="no"
-	   debug="yes">
+        destdir="${build-directory}"
+        includeAntRuntime="no"
+        debug="yes">
       <classpath refid="class-path"/>
     </javac>
   </target>
@@ -79,7 +89,7 @@ Pay station build management.
   
   <target name="test"  depends="build-all">
     <java classname="org.junit.runner.JUnitCore">
-      <arg value="paystation.domain.TestAll"/>
+      <arg value="paystation.server.TestAll"/>
       <classpath refid="class-path"/>
     </java>
   </target>
@@ -98,7 +108,7 @@ Pay station build management.
 
   <!-- Execute the GUI operating the PayStation interface as facade -->
   <target name="gui" depends="build-all">
-    <java classname="paystation.view.PayStationGUI" fork="yes">
+    <java classname="paystation.server.view.PayStationGUI" fork="yes">
       <classpath refid="class-path"/>
     </java>
   </target>
@@ -109,6 +119,47 @@ Pay station build management.
       <classpath> 
       	<path refid="class-path"/> 
       </classpath>
+    </java>      
+  </target>
+
+  <!-- Run Scenario 1 that supervise a number of pay stations. -->
+  <target name="runGUI" depends="build-all">
+    <echo> "file:///${basedir}/${build-directory}/" </echo>
+    <java spawn="false" fork="yes" classname="paystation.server.view.PayStationGUI">
+        <classpath> 
+            <path refid="class-path"/> 
+        </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+        <arg value="PS1"/>
+    </java>      
+    <java spawn="true" fork="yes" classname="paystation.server.view.PayStationGUI">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+        <arg value="PS2"/>
+    </java>      
+    <java spawn="true" fork="yes" classname="paystation.server.view.PayStationGUI">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+        <arg value="PS3"/>
+    </java>      
+  </target>
+
+  <target name="runMonitor" depends="build-all">
+    <java fork="yes" classname="paystation.client.StatusFrame">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <arg value="PS1 PS2 PS3"/>
     </java>      
   </target>
   
