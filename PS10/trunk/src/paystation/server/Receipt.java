@@ -1,4 +1,4 @@
-package paystation.domain;
+package paystation.server;
 
 import java.io.PrintStream;
 
@@ -19,8 +19,8 @@ public interface Receipt {
     /**
      * Print a visual character-based representation of the receipt
      * 
-     * @param the
-     *            print stream to print the receipt on
+     * @param
+     * stream print stream to print the receipt on
      */
     public void print(PrintStream stream);
 }

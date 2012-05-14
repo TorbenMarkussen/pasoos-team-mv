@@ -1,5 +1,17 @@
-package paystation.domain;
+package paystation.server;
 
+import paystation.common.StatusEvent;
+import paystation.common.StatusListener;
+import paystation.common.StatusObservable;
+
+import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +43,7 @@ public class PayStationImpl implements PayStation {
         timeBought = insertedSoFar / 5 * 2;
     }
 
-    public int readDisplay() {
+    public int readDisplay(){
         return timeBought;
     }
 
@@ -57,7 +69,12 @@ public class PayStationImpl implements PayStation {
     /** Internal list of the associated listeners */
     private List<StatusListener> listeners;
 
-    public PayStationImpl() {
+    public PayStationImpl(String payStationName) throws RemoteException, MalformedURLException {
+        StatusObservable so = this;
+        Remote proxy = UnicastRemoteObject.exportObject(so, 0);
+
+        Registry registry = LocateRegistry.getRegistry();
+        registry.rebind(payStationName, proxy);
         reset();
         listeners = new ArrayList<StatusListener>();
     }
@@ -69,7 +86,11 @@ public class PayStationImpl implements PayStation {
     private void _notify(int time, int earned) {
         StatusEvent e = new StatusEvent(time, earned);
         for (StatusListener l : listeners) {
-            l.update(e);
+            try {
+                l.update(e);
+            } catch (RemoteException e1) {
+                e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
         }
     }
 

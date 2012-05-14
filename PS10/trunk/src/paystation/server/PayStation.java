@@ -1,4 +1,6 @@
-package paystation.domain;
+package paystation.server;
+
+import paystation.common.StatusObservable;
 
 /**
  * The business logic of a Parking Pay Station.

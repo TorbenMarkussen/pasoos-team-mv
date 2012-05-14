@@ -1,4 +1,4 @@
-package paystation.domain;
+package paystation.server;
 
 /**
  * Exception representing illegal coin entry.

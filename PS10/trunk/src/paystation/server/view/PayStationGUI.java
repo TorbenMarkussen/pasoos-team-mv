@@ -1,30 +1,22 @@
-package paystation.view;
+package paystation.server.view;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Font;
+import paystation.server.IllegalCoinException;
+import paystation.server.PayStation;
+import paystation.server.PayStationImpl;
+import paystation.server.Receipt;
+import softcollection.lcd.LCDDigitDisplay;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.UIManager;
-
-import paystation.domain.IllegalCoinException;
-import paystation.domain.PayStation;
-import paystation.domain.PayStationImpl;
-import paystation.domain.Receipt;
-import softcollection.lcd.LCDDigitDisplay;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 
 /**
- * A graphical user interface used as alternative to a real hardware to operate the PayStation domain code.
+ * A graphical user interface used as alternative to a real hardware to operate the PayStation server code.
  */
 public class PayStationGUI extends JFrame {
 
@@ -35,54 +27,72 @@ public class PayStationGUI extends JFrame {
             // ignore silently, as we then just do not get the required
             // look and feel for all windows
         }
-        new PayStationGUI();
-    }
-
-    /** The "digital display" where readings are shown */
-    LCDDigitDisplay display;
-    /** The domain pay station that the gui interacts with */
-    PayStation payStation;
-
-    /** Create the GUI */
-    public PayStationGUI() {
-        this(100, 20);
-    }
-
-    /** Create the GUI at (x,y) position */
-    public PayStationGUI(int x, int y) {
-        super("PayStation GUI");
-
-        payStation = new PayStationImpl();
-
-        // all the gui setup
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        setLocation(x, y);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        Container cpane = getContentPane();
-
-        cpane.setLayout(new BorderLayout());
-
-        cpane.add(createCoinInputPanel(), BorderLayout.EAST);
-        cpane.add(createButtonPanel(), BorderLayout.SOUTH);
-
-        cpane.add(createDisplayPanel(), BorderLayout.CENTER);
-
-        display.set("   0");
-
-        pack();
-        setVisible(true);
+        new PayStationGUI(args[0]);
     }
 
     /**
-     * Update the digital display with whatever the pay station domain shows
+     * The "digital display" where readings are shown
+     */
+    LCDDigitDisplay display;
+    /**
+     * The server pay station that the gui interacts with
+     */
+    PayStation payStation;
+
+    /**
+     * Create the GUI
+     */
+    public PayStationGUI(String psName) {
+        this(100, 20, psName);
+    }
+
+    /**
+     * Create the GUI at (x,y) position
+     */
+    public PayStationGUI(int x, int y, String psName) {
+        super("PayStation GUI");
+
+        try {
+
+            payStation = new PayStationImpl(psName);
+
+            // all the gui setup
+            JFrame.setDefaultLookAndFeelDecorated(true);
+            setLocation(x, y);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            Container cpane = getContentPane();
+
+            cpane.setLayout(new BorderLayout());
+
+            cpane.add(createCoinInputPanel(), BorderLayout.EAST);
+            cpane.add(createButtonPanel(), BorderLayout.SOUTH);
+
+            cpane.add(createDisplayPanel(), BorderLayout.CENTER);
+
+            display.set("   0");
+
+            pack();
+            setVisible(true);
+
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (MalformedURLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    /**
+     * Update the digital display with whatever the pay station server shows
      */
     private void updateDisplay() {
         String prefixedZeros = String.format("%4d", payStation.readDisplay());
         display.set(prefixedZeros);
     }
 
-    /** Create the coin input panel */
+    /**
+     * Create the coin input panel
+     */
     private JComponent createCoinInputPanel() {
         Box p = new Box(BoxLayout.Y_AXIS);
         p.add(defineButton(" 5 c", "5"));
@@ -107,7 +117,9 @@ public class PayStationGUI extends JFrame {
         }
     };
 
-    /** Define a button's text and action command */
+    /**
+     * Define a button's text and action command
+     */
     private JButton defineButton(String text, String actioncommand) {
         JButton b;
         b = new JButton(text);
@@ -117,7 +129,9 @@ public class PayStationGUI extends JFrame {
         return b;
     }
 
-    /** Create the panel of buttons */
+    /**
+     * Create the panel of buttons
+     */
     private JComponent createButtonPanel() {
         Box p = new Box(BoxLayout.X_AXIS);
         JButton b;
@@ -149,7 +163,9 @@ public class PayStationGUI extends JFrame {
         return p;
     }
 
-    /** Create the panel for the display */
+    /**
+     * Create the panel for the display
+     */
     private JComponent createDisplayPanel() {
         display = new LCDDigitDisplay();
         return display;
@@ -176,7 +192,9 @@ public class PayStationGUI extends JFrame {
         frame.setVisible(true);
     }
 
-    /** return the paystation domain object */
+    /**
+     * return the paystation server object
+     */
     public PayStation getPayStation() {
         return payStation;
     }

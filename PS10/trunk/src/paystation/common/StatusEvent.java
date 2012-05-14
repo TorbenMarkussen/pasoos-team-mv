@@ -1,10 +1,12 @@
-package paystation.domain;
+package paystation.common;
+
+import java.io.Serializable;
 
 /**
  * An event data object containing the status of a pay station sale.
  */
 
-public class StatusEvent {
+public class StatusEvent implements Serializable {
     /** construct a properly initialized status event object */
     public StatusEvent(int time, int earned) {
         this.time = time;

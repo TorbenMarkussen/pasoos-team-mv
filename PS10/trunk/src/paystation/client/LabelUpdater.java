@@ -1,9 +1,9 @@
-package paystation.monitor;
+package paystation.client;
 
-import javax.swing.JLabel;
+import paystation.common.StatusEvent;
+import paystation.common.StatusListener;
 
-import paystation.domain.StatusEvent;
-import paystation.domain.StatusListener;
+import javax.swing.*;
 
 /**
  * A StatusListener that may update the status frame's lables.

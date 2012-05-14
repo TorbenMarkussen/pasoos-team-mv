@@ -1,4 +1,4 @@
-package paystation.domain;
+package paystation.server;
 
 import java.io.PrintStream;
 import java.util.Calendar;
