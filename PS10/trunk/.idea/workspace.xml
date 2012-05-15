@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="602d40ca-add4-4aa2-b8d1-d2ed3ffd454b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/paystation/common" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/java.policy" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\ps10\src\paystation\server\StatusEvent.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\ps10\src\paystation\server\StatusListener.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\ps10\src\paystation\server\StatusObservable.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\IllegalCoinException.java" afterPath="$PROJECT_DIR$/src/paystation/server/IllegalCoinException.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\PayStation.java" afterPath="$PROJECT_DIR$/src/paystation/server/PayStation.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\PayStationImpl.java" afterPath="$PROJECT_DIR$/src/paystation/server/PayStationImpl.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\Receipt.java" afterPath="$PROJECT_DIR$/src/paystation/server/Receipt.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\StandardReceipt.java" afterPath="$PROJECT_DIR$/src/paystation/server/StandardReceipt.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\StatusEvent.java" afterPath="$PROJECT_DIR$/src/paystation/common/StatusEvent.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\StatusListener.java" afterPath="$PROJECT_DIR$/src/paystation/common/StatusListener.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain\StatusObservable.java" afterPath="$PROJECT_DIR$/src/paystation/common/StatusObservable.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\monitor\LabelUpdater.java" afterPath="$PROJECT_DIR$/src/paystation/client/LabelUpdater.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\monitor\StatusFrame.java" afterPath="$PROJECT_DIR$/src/paystation/client/StatusFrame.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\view\PayStationGUI.java" afterPath="$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/paystation/monitor/StatusFrame$1.class" afterPath="$PROJECT_DIR$/build/paystation/monitor/StatusFrame$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/paystation/monitor/StatusFrame.class" afterPath="$PROJECT_DIR$/build/paystation/monitor/StatusFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/paystation/scenario/Scenario1.class" afterPath="$PROJECT_DIR$/build/paystation/scenario/Scenario1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/paystation/scenario/Scenario1.java" afterPath="$PROJECT_DIR$/test/paystation/scenario/Scenario1.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\domain" afterPath="$PROJECT_DIR$/src/paystation/server" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\monitor" afterPath="$PROJECT_DIR$/src/paystation/client" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\ps10\src\paystation\view" afterPath="$PROJECT_DIR$/src/paystation/server/view" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/paystation/client/StatusFrame.java" afterPath="$PROJECT_DIR$/src/paystation/client/StatusFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java" afterPath="$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java" />
     </list>
     <ignored path="ps10.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,6 +22,34 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/paystation/client/StatusFrame.java" line="30" class="paystation.client.StatusFrame" package="paystation.client">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/paystation/client/StatusFrame.java" line="52" class="paystation.client.StatusFrame" package="paystation.client">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -84,19 +90,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LabelUpdater.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/paystation/client/LabelUpdater.java">
+      <file leaf-file-name="StatusFrame.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/paystation/client/StatusFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="44" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
+            <state line="52" column="0" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.33223686">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatusFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/paystation/client/StatusFrame.java">
+      <file leaf-file-name="PayStationGUI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="25" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
+            <state line="32" column="0" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -105,10 +111,8 @@
       <file leaf-file-name="PayStationImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paystation/server/PayStationImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="73" column="67" selection-start="2001" selection-end="2056" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,7 +120,7 @@
       <file leaf-file-name="PayStation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paystation/server/PayStation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.0">
+            <state line="12" column="28" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -149,10 +153,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="8" selection-start="5285" selection-end="5285" vertical-scroll-proportion="0.62637365">
+            <state line="165" column="8" selection-start="5545" selection-end="5545" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -162,9 +166,7 @@
         <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="64" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -172,10 +174,8 @@
       <file leaf-file-name="StatusObservable.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusObservable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="56" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="9" column="48" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -193,20 +193,22 @@
         <option value="$PROJECT_DIR$/src/paystation/monitor/StatusFrame.java" />
         <option value="$PROJECT_DIR$/src/paystation/common/StatusListener.java" />
         <option value="$PROJECT_DIR$/src/paystation/common/StatusObservable.java" />
-        <option value="$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java" />
-        <option value="$PROJECT_DIR$/src/paystation/client/StatusFrame.java" />
         <option value="$PROJECT_DIR$/src/paystation/common/StatusEvent.java" />
-        <option value="$PROJECT_DIR$/src/paystation/server/PayStationImpl.java" />
         <option value="$PROJECT_DIR$/test/paystation/scenario/Scenario1.java" />
         <option value="$PROJECT_DIR$/src/paystation/server/Receipt.java" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src/paystation/server/PayStation.java" />
+        <option value="$PROJECT_DIR$/src/paystation/server/PayStationImpl.java" />
+        <option value="$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java" />
+        <option value="$PROJECT_DIR$/src/paystation/client/StatusFrame.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1612" />
-    <option name="height" value="912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1216" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -234,20 +236,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps10" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ps10" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -388,6 +376,20 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ps10" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ps10" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -403,20 +405,42 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
-  <component name="RunManager" selected="Application.PayStationGUI">
+  <component name="RunManager" selected="Application.StatusFrame">
     <configuration default="false" name="PayStationGUI" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="paystation.server.view.PayStationGUI" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="ps10" />
       <envs />
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="StatusFrame" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="paystation.client.StatusFrame" />
+      <option name="VM_PARAMETERS" value="-Djava.security.policy=./res/java.policy -Djava.rmi.server.hostname=localhost -Djava.rmi.server.codebase=file:///ws/PASOOS/ps10/build/" />
+      <option name="PROGRAM_PARAMETERS" value="P1 P2 P3" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ps10" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -537,8 +561,60 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="1">
+    <configuration default="false" name="PayStationGUI (1)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="paystation.server.view.PayStationGUI" />
+      <option name="VM_PARAMETERS" value="-Djava.security.policy=./res/java.policy -Djava.rmi.server.hostname=localhost -Djava.rmi.server.codebase=file:///ws/PASOOS/ps10/build/" />
+      <option name="PROGRAM_PARAMETERS" value="P1" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ps10" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PayStationGUI (2)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="paystation.server.view.PayStationGUI" />
+      <option name="VM_PARAMETERS" value="-Djava.security.policy=./res/java.policy -Djava.rmi.server.hostname=localhost -Djava.rmi.server.codebase=file:///ws/PASOOS/ps10/build/" />
+      <option name="PROGRAM_PARAMETERS" value="P2" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ps10" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PayStationGUI (3)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="paystation.server.view.PayStationGUI" />
+      <option name="VM_PARAMETERS" value="-Djava.security.policy=./res/java.policy -Djava.rmi.server.hostname=localhost -Djava.rmi.server.codebase=file:///ws/PASOOS/ps10/build/" />
+      <option name="PROGRAM_PARAMETERS" value="P3" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ps10" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.PayStationGUI" />
+      <item index="1" class="java.lang.String" itemvalue="Application.StatusFrame" />
+      <item index="2" class="java.lang.String" itemvalue="Application.PayStationGUI (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Application.PayStationGUI (2)" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PayStationGUI (3)" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -577,6 +653,10 @@
           <option name="myVcsRoot" value="C:\ws\PASOOS\ps10" />
           <option name="myCopyRoot" value="C:\ws\PASOOS\ps10" />
         </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\ws\PASOOS\ps10\.idea" />
+          <option name="myCopyRoot" value="C:\ws\PASOOS\ps10\.idea" />
+        </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
@@ -594,30 +674,55 @@
       <created>1337010936112</created>
       <updated>1337010936112</updated>
     </task>
+    <task id="LOCAL-00001">
+      <created>1337033240130</created>
+      <updated>1337033240130</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1612" height="912" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39867425" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24951519" sideWeight="0.67021275" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20630679" sideWeight="0.60132575" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29166666" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -698,90 +803,64 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_03/src.zip!/java/rmi/Remote.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="82" selection-start="756" selection-end="756" vertical-scroll-proportion="0.2813793">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="12" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="35" column="82" selection-start="756" selection-end="756" vertical-scroll-proportion="0.2813793" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paystation/client/LabelUpdater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="44" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
+        <state line="10" column="44" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/server/PayStationImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="67" selection-start="2001" selection-end="2056" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/server/PayStation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="28" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="48" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/paystation/scenario/Scenario1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="2" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/server/Receipt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="8" selection-start="5545" selection-end="5545" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="64" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusObservable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="48" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paystation/server/view/PayStationGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paystation/client/StatusFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="25" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/server/PayStation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="64" selection-start="520" selection-end="520" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="48" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/common/StatusObservable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="56" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/server/PayStationImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/paystation/scenario/Scenario1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="2" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paystation/server/Receipt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="8" selection-start="5285" selection-end="5285" vertical-scroll-proportion="0.62637365">
+        <state line="52" column="0" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.33223686">
           <folding />
         </state>
       </provider>

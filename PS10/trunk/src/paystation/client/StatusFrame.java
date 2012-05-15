@@ -49,8 +49,8 @@ public class StatusFrame extends JFrame {
             String registryURL = "rmi://localhost/"+payStationName;
 
             try {
-
-                StatusObservable so = (StatusObservable) Naming.lookup(registryURL);
+                Object o = Naming.lookup(registryURL);
+                StatusObservable so = (StatusObservable) o;
 
                 so.addStatusListener(myListenerProxy);
 

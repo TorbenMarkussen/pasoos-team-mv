@@ -14,6 +14,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /**
  * A graphical user interface used as alternative to a real hardware to operate the PayStation server code.
@@ -27,8 +29,29 @@ public class PayStationGUI extends JFrame {
             // ignore silently, as we then just do not get the required
             // look and feel for all windows
         }
-        new PayStationGUI(args[0]);
+
+        try {
+
+            startRegistry(1099);
+            new PayStationGUI(args[0]);
+
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
+
+    private static void startRegistry(int RMIPortNum)
+            throws RemoteException {
+        try {
+            Registry registry = LocateRegistry.getRegistry(RMIPortNum);
+            registry.list();
+            // This call will throw an exception
+            // if the registry does not already exist
+        } catch (RemoteException e) {
+            // No valid registry at that port.
+            Registry registry = LocateRegistry.createRegistry(RMIPortNum);
+        }
+    } // end startRegistry
 
     /**
      * The "digital display" where readings are shown
