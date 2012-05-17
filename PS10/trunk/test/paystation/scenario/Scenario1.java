@@ -3,10 +3,30 @@ package paystation.scenario;
 import javax.swing.UIManager;
 
 import paystation.client.StatusFrame;
+import paystation.common.StatusObservable;
+import paystation.server.builder.Tester;
 import paystation.server.view.PayStationGUI;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Vector;
+
 public class Scenario1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException, NotBoundException, RemoteException {
+
+        String[] l = Naming.list("");
+        for(String url : l){
+            Remote o = Naming.lookup(url);
+
+            if(o instanceof Tester){
+            }
+        }
+
+
+
         System.out.println("Scenario 1: Supervising 4 pay stations.");
 
         try {
@@ -15,6 +35,8 @@ public class Scenario1 {
             // ignore silently, as we then just do not get the required
             // look and feel for all windows
         }
+
+
 
 //        PayStationGUI g1, g2, g3, g4;
 //

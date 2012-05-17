@@ -62,12 +62,12 @@ Pay station build management.
   <target name="copy_resources" depends="prepare">
     <copy todir="${build-directory}" >
       <fileset dir="${resources}">
-	<include name="java.policy"/>
+        <include name="java.policy"/>
       </fileset>
     </copy>
   </target>
 
-  <target name="build-src" depends="prepare">
+  <target name="build-src" depends="prepare,copy_resources">
     <javac srcdir="${source-directory}"
 	   destdir="${build-directory}"
 	   includeAntRuntime="no"
@@ -125,7 +125,7 @@ Pay station build management.
   <!-- Run Scenario 1 that supervise a number of pay stations. -->
   <target name="runGUI" depends="build-all">
     <echo> "file:///${basedir}/${build-directory}/" </echo>
-    <java spawn="true" fork="yes" classname="paystation.server.view.PayStationGUI">
+    <java spawn="true" fork="yes" classname="paystation.server.builder.PayStationBuilder">
         <classpath> 
             <path refid="class-path"/> 
         </classpath>
@@ -134,7 +134,7 @@ Pay station build management.
         <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
         <arg value="PS1"/>
     </java>      
-    <java spawn="true" fork="yes" classname="paystation.server.view.PayStationGUI">
+    <java spawn="true" fork="yes" classname="paystation.server.builder.PayStationBuilder">
       <classpath> 
       	<path refid="class-path"/> 
       </classpath>
@@ -143,7 +143,7 @@ Pay station build management.
         <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
         <arg value="PS2"/>
     </java>      
-    <java spawn="true" fork="yes" classname="paystation.server.view.PayStationGUI">
+    <java spawn="true" fork="yes" classname="paystation.server.builder.PayStationBuilder">
       <classpath> 
       	<path refid="class-path"/> 
       </classpath>
@@ -152,17 +152,55 @@ Pay station build management.
         <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
         <arg value="PS3"/>
     </java>      
-  </target>
-
-  <target name="runMonitor" depends="build-all">
-    <java fork="yes" classname="paystation.client.StatusFrame">
+    <java spawn="true" fork="yes" classname="paystation.server.builder.PayStationBuilder">
       <classpath> 
       	<path refid="class-path"/> 
       </classpath>
         <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
         <sysproperty key="java.rmi.server.hostname" value="localhost"/>
         <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
-        <arg value="PS1 PS2 PS3"/>
+        <arg value="PS4"/>
+    </java>      
+  </target>
+
+  <target name="runMonitor" depends="build-all">
+    <java spawn="true" fork="yes" classname="paystation.client.builder.MonitorBuilder">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+    </java>      
+  </target>
+
+  <target name="run3Monitor" depends="build-all">
+    <java spawn="true" fork="yes" classname="paystation.client.builder.MonitorBuilder">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+        <arg value="1"/>
+    </java>      
+    <java spawn="true" fork="yes" classname="paystation.client.builder.MonitorBuilder">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+        <arg value="2"/>
+    </java>      
+    <java spawn="true" fork="yes" classname="paystation.client.builder.MonitorBuilder">
+      <classpath> 
+      	<path refid="class-path"/> 
+      </classpath>
+        <sysproperty key="java.security.policy" path="${build-directory}/java.policy"/>
+        <sysproperty key="java.rmi.server.hostname" value="localhost"/>
+        <sysproperty key="java.rmi.server.codebase" value="file:///${basedir}/${build-directory}/"/>
+        <arg value="3"/>
     </java>      
   </target>
   

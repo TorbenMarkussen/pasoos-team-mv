@@ -7,9 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -21,17 +19,7 @@ public class StatusFrame extends JFrame {
     private StatusListener myListener;
     private StatusListener myListenerProxy;
 
-    public static void main(String[] args) throws RemoteException {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            // ignore silently, as we then just do not get the required
-            // look and feel for all windows
-        }
-        new StatusFrame(580, 10, args);
-    }
-
-    public StatusFrame(int x, int y, String[] payStationNames) throws RemoteException {
+    public StatusFrame(int x, int y) throws RemoteException {
         super("Supervisor");
 
         setLocation(x, y);
@@ -43,26 +31,6 @@ public class StatusFrame extends JFrame {
         pane.add(eLabel);
 
         myListener = new LabelUpdater(vLabel, eLabel);
-        myListenerProxy = (StatusListener) UnicastRemoteObject.exportObject((StatusListener)myListener, 0);
-
-        for (String payStationName : payStationNames)  {
-            String registryURL = "rmi://localhost/"+payStationName;
-
-            try {
-                Object o = Naming.lookup(registryURL);
-                StatusObservable so = (StatusObservable) o;
-
-                so.addStatusListener(myListenerProxy);
-
-            } catch (NotBoundException e) {
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -74,7 +42,15 @@ public class StatusFrame extends JFrame {
         setVisible(true);
     }
 
-    public StatusListener getStatusListener() {
-        return myListener;
+    public StatusListener getProxyStatusListener() throws RemoteException {
+        if (myListenerProxy == null) {
+            Remote remote = UnicastRemoteObject.exportObject((StatusListener) myListener, 0);
+            myListenerProxy = (StatusListener) remote;
+        }
+        return myListenerProxy;
+    }
+
+    public void addPayStation(String payStationName, StatusObservable so) throws RemoteException {
+        so.addStatusListener(getProxyStatusListener());
     }
 }

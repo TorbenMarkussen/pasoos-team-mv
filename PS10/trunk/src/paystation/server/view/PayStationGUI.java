@@ -22,37 +22,6 @@ import java.rmi.registry.Registry;
  */
 public class PayStationGUI extends JFrame {
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            // ignore silently, as we then just do not get the required
-            // look and feel for all windows
-        }
-
-        try {
-
-            startRegistry(1099);
-            new PayStationGUI(args[0]);
-
-        } catch (RemoteException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
-
-    private static void startRegistry(int RMIPortNum)
-            throws RemoteException {
-        try {
-            Registry registry = LocateRegistry.getRegistry(RMIPortNum);
-            registry.list();
-            // This call will throw an exception
-            // if the registry does not already exist
-        } catch (RemoteException e) {
-            // No valid registry at that port.
-            Registry registry = LocateRegistry.createRegistry(RMIPortNum);
-        }
-    } // end startRegistry
-
     /**
      * The "digital display" where readings are shown
      */
@@ -63,46 +32,32 @@ public class PayStationGUI extends JFrame {
     PayStation payStation;
 
     /**
-     * Create the GUI
-     */
-    public PayStationGUI(String psName) {
-        this(100, 20, psName);
-    }
-
-    /**
      * Create the GUI at (x,y) position
      */
-    public PayStationGUI(int x, int y, String psName) {
-        super("PayStation GUI");
+    public PayStationGUI(int x, int y, String psName, PayStation payStation) {
+        super("PayStation GUI: "+psName);
 
-        try {
+        this.payStation = payStation;
 
-            payStation = new PayStationImpl(psName);
+        // all the gui setup
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        setLocation(x, y);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            // all the gui setup
-            JFrame.setDefaultLookAndFeelDecorated(true);
-            setLocation(x, y);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container cpane = getContentPane();
 
-            Container cpane = getContentPane();
+        cpane.setLayout(new BorderLayout());
 
-            cpane.setLayout(new BorderLayout());
+        cpane.add(createCoinInputPanel(), BorderLayout.EAST);
+        cpane.add(createButtonPanel(), BorderLayout.SOUTH);
 
-            cpane.add(createCoinInputPanel(), BorderLayout.EAST);
-            cpane.add(createButtonPanel(), BorderLayout.SOUTH);
+        cpane.add(createDisplayPanel(), BorderLayout.CENTER);
 
-            cpane.add(createDisplayPanel(), BorderLayout.CENTER);
+        display.set("   0");
 
-            display.set("   0");
+        pack();
+        setVisible(true);
 
-            pack();
-            setVisible(true);
-
-        } catch (RemoteException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (MalformedURLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
     }
 
     /**

@@ -16,9 +16,9 @@ public class StatusEvent implements Serializable {
     /**
      * the time in minutes left that the car will be parked on the parking lot.
      */
-    public int time;
+    public final int time;
     /**
      * the amount of cents that this pay station has earned by this sales of parking time.
      */
-    public int earned;
+    public final int earned;
 }

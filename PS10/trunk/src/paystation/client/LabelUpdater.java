@@ -4,6 +4,9 @@ import paystation.common.StatusEvent;
 import paystation.common.StatusListener;
 
 import javax.swing.*;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * A StatusListener that may update the status frame's lables.
@@ -20,7 +23,8 @@ public class LabelUpdater implements StatusListener {
         vacant = 200;
     }
 
-    public void update(StatusEvent e) {
+    public synchronized void update(StatusEvent e) {
+
         sum += e.earned;
         vacant--;
         // we have to do something clever to calculate the number
@@ -31,5 +35,6 @@ public class LabelUpdater implements StatusListener {
         // present exercise and I just 'fake it' here...
         eLabel.setText("  Total Earning " + sum);
         vLabel.setText("  Number of vacant: " + vacant);
+
     }
 }
