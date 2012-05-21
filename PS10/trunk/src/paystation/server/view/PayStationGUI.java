@@ -152,6 +152,7 @@ public class PayStationGUI extends JFrame {
     private void showReceiptInWindow(Receipt receipt) {
         // make the window in which to display receipt
         JFrame frame = new JFrame("Receipt");
+        frame.setLocation(0, 800);
         // print the receipt's contents in a string array
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
