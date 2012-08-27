@@ -8,25 +8,26 @@ import java.util.Date;
  * Time: 14:55
  * To change this template use File | Settings | File Templates.
  */
-public class AlarmClockImpl implements AlarmClock, AlarmTime {
+public class AlarmClockImpl implements AlarmClock {
 
     ClockMode currentState;
     private int currentMode = 0;
-    private Date alarmTime = new Date(1, 1, 2000, 6, 15, 0);
+    private ClockTime alarmTime = new ClockTime(6, 15);
+    private ClockTime currentTime = new ClockTime(11, 32);
     private ClockMode[] stateMachine;
 
     AlarmClockImpl() {
         stateMachine = new ClockMode[]{
-                new ClockModeSystemTime(),
-                new ClockModeAlarmTime(this, 60),
-                new ClockModeAlarmTime(this, 1)
+                new ClockModeSystemTime(currentTime),
+                new ClockModeAlarmTimeHour(alarmTime),
+                new ClockModeAlarmTimeMinute(alarmTime)
         };
         currentState = stateMachine[currentMode];
     }
 
     @Override
     public String readDisplay() {
-        Date currentTime = currentState.getDate();
+        Date currentTime = currentState.getTime();
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         return timeFormat.format(currentTime).toString();
     }
@@ -50,13 +51,4 @@ public class AlarmClockImpl implements AlarmClock, AlarmTime {
         currentState.decrease();
     }
 
-    @Override
-    public Date getAlarm() {
-        return alarmTime;
-    }
-
-    @Override
-    public void setAlarm(Date d) {
-        alarmTime = d;
-    }
 }

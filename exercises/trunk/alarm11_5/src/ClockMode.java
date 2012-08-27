@@ -1,17 +1,16 @@
-import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
- * User: PASMA00T
- * Date: 24-08-12
- * Time: 14:56
+ * User: sp
+ * Date: 27-08-12
+ * Time: 22:07
  * To change this template use File | Settings | File Templates.
  */
 public interface ClockMode {
+    public Date getTime() ;
 
-    Date getDate();
     void increase();
-    void decrease();
 
+    void decrease();
 }

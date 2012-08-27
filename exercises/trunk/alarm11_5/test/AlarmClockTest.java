@@ -42,5 +42,25 @@ public class AlarmClockTest {
         clock.increase();
         assertEquals("09:17", clock.readDisplay());
 
+        clock.mode();
+        assertEquals("11:32", clock.readDisplay());
+
+        clock.mode();
+        assertEquals("09:17", clock.readDisplay());
+        for (int i = 1;i<=10;i++)
+            clock.decrease();
+        assertEquals("23:17", clock.readDisplay());
+        clock.increase();
+        assertEquals("00:17", clock.readDisplay());
+
+        clock.mode();
+        assertEquals("00:17", clock.readDisplay());
+
+        for (int i = 1;i<=18;i++)
+            clock.decrease();
+        assertEquals("00:59", clock.readDisplay());
+        clock.increase();
+        assertEquals("00:00", clock.readDisplay());
+
     }
 }
