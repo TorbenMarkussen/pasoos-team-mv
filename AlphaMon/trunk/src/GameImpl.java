@@ -16,35 +16,24 @@ public class GameImpl implements Game {
 
     private Color playerInTurn;
     private int[] dice;
-    private int[] board;
+    private Board board;
     private int[] diceValuesLeft;
     private int turnCount;
+    private MoveValidatorStrategy moveValidator;
+    private MoveValidatorFactory moveValidatorFactory;
+
+    GameImpl(MoveValidatorFactory mvf) {
+        board = new Board();
+        moveValidator = mvf.Get(board);
+    }
 
     public void newGame() {
         playerInTurn = Color.NONE;
         dice = new int[]{-1, 0};
-        board = initBoard();
         turnCount = 0;
+        board.initialize();
     }
 
-    private int[] initBoard() {
-        int[] result = new int[28];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = 0;
-        }
-
-        result[Location.R1.ordinal()] = Color.BLACK.getSign() * 2;
-        result[Location.R6.ordinal()] = Color.RED.getSign() * 5;
-        result[Location.R8.ordinal()] = Color.RED.getSign() * 3;
-        result[Location.R12.ordinal()] = Color.BLACK.getSign() * 5;
-
-        result[Location.B1.ordinal()] = Color.RED.getSign() * 2;
-        result[Location.B6.ordinal()] = Color.BLACK.getSign() * 5;
-        result[Location.B8.ordinal()] = Color.BLACK.getSign() * 3;
-        result[Location.B12.ordinal()] = Color.RED.getSign() * 5;
-
-        return result;
-    }
 
     public void nextTurn() {
         if (playerInTurn != Color.BLACK)
@@ -53,6 +42,7 @@ public class GameImpl implements Game {
             playerInTurn = Color.RED;
 
         rollDice();
+
         diceValuesLeft = Arrays.copyOf(dice, dice.length);
         Arrays.sort(diceValuesLeft);
     }
@@ -69,28 +59,38 @@ public class GameImpl implements Game {
     }
 
     public boolean move(Location from, Location to) {
-        Color fromColor = Color.getColorFromNumerical(board[from.ordinal()]);
+        Color fromColor = board.getColor(from);
+
         if (playerInTurn != fromColor)
             return false;
 
         if (getNumberOfMovesLeft() == 0)
             return false;
 
-        if (!isValidMove(from, to))
+        int diceUsed = moveValidator.isValidMove(from, to, diceValuesLeft());
+
+        if (diceUsed == 0)
             return false;
 
-        board[from.ordinal()] -= playerInTurn.getSign();
-        board[to.ordinal()] += playerInTurn.getSign();
-        diceValuesLeft = Arrays.copyOf(diceValuesLeft, diceValuesLeft.length - 1);
+        board.decrementLocation(from, playerInTurn);
+        board.incrementLocation(to, playerInTurn);
+        RemoveDice(diceUsed);
+
         return true;
     }
 
-    private boolean isValidMove(Location from, Location to) {
-        Color fromColor = Color.getColorFromNumerical(board[from.ordinal()]);
-        Color toColor = Color.getColorFromNumerical(board[to.ordinal()]);
+    private void RemoveDice(int diceValue) {
 
-        return toColor == Color.NONE || fromColor == toColor;
-
+        int[] dice = new int[diceValuesLeft.length - 1];
+        int n = 0;
+        boolean skippedDice = false;
+        for (int d : diceValuesLeft) {
+            if (d == diceValue && !skippedDice)
+                skippedDice = true;
+            else
+                dice[n++] = d;
+        }
+        diceValuesLeft = dice;
     }
 
     public Color getPlayerInTurn() {
@@ -118,10 +118,10 @@ public class GameImpl implements Game {
     }
 
     public Color getColor(Location location) {
-        return Color.getColorFromNumerical(board[location.ordinal()]);
+        return board.getColor(location);
     }
 
     public int getCount(Location location) {
-        return Math.abs(board[location.ordinal()]);
+        return board.getCount(location);
     }
 }

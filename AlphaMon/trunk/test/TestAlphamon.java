@@ -26,7 +26,7 @@ public class TestAlphamon {
 
     @Before
     public void setup() {
-        game = new GameImpl();
+        game = new GameImpl(new MoveValidatorFactoryImpl(HotGammonTypes.AlphaMon));
         game.newGame();
     }
 
@@ -50,13 +50,6 @@ public class TestAlphamon {
         assertTrue(Arrays.equals(new int[]{3, 4}, game.diceThrown()));
     }
 
-    @Ignore
-    @Test
-    public void should_have_die_values_1_and_2_after_first_turn() {
-        game.nextTurn(); // will throw [1,2] and thus black starts
-        assertTrue(Arrays.equals(new int[]{1, 2}, game.diceThrown()));
-    }
-
     @Test
     public void should_have_die_values_1_and_2_after_having_thrown_5_and_6() {
         game.nextTurn();
@@ -65,16 +58,6 @@ public class TestAlphamon {
         assertTrue(Arrays.equals(new int[]{5, 6}, game.diceThrown()));
         game.nextTurn();
         assertTrue(Arrays.equals(new int[]{1, 2}, game.diceThrown()));
-    }
-
-    @Ignore
-    @Test
-    public void should_have_two_black_checkers_on_r1_after_new_game() {
-        /*
-        assertEquals(game.getColor(Location.R1),Color.BLACK);
-        assertEquals(game.getCount(Location.R1),2);
-        */
-        assertColorAndCount(Location.R1, Color.BLACK, 2);
     }
 
     @Test
@@ -182,14 +165,6 @@ public class TestAlphamon {
     public void should_not_be_possible_to_move_from_an_empty_location() {
         game.nextTurn();
         assertFalse(game.move(Location.R2, Location.B3));
-    }
-
-    // There is NO winner before the game has ended
-    @Ignore
-    @Test
-    public void should_not_have_a_winner_after_first_turn() {
-        game.nextTurn();
-        assertEquals(Color.NONE, game.winner());
     }
 
     //Game is over after 6 rolls of the dices, Red is winner.
