@@ -1,3 +1,10 @@
+package pasoos.hotgammon.gameengine;
+
+import pasoos.hotgammon.Color;
+import pasoos.hotgammon.Game;
+import pasoos.hotgammon.gameengine.validator.MoveValidatorFactory;
+import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
+
 import java.util.Arrays;
 
 /**
@@ -22,7 +29,7 @@ public class GameImpl implements Game {
     private MoveValidatorStrategy moveValidator;
     private MoveValidatorFactory moveValidatorFactory;
 
-    GameImpl(MoveValidatorFactory mvf) {
+    public GameImpl(MoveValidatorFactory mvf) {
         board = new Board();
         moveValidator = mvf.Get(board);
     }

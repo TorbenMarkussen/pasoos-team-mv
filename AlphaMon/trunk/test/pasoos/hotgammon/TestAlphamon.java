@@ -1,6 +1,14 @@
+package pasoos.hotgammon;
+
 import java.util.Arrays;
 
 import org.junit.*;
+import pasoos.hotgammon.Color;
+import pasoos.hotgammon.Game;
+import pasoos.hotgammon.HotGammonTypes;
+import pasoos.hotgammon.gameengine.GameImpl;
+import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.gameengine.validator.MoveValidatorFactoryImpl;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -20,25 +28,25 @@ public class TestAlphamon {
     private Game game;
 
     private void assertColorAndCount(Location location, Color color, int count) {
-        assertEquals(color, game.getColor(location));
-        assertEquals(count, game.getCount(location));
+        Assert.assertEquals(color, game.getColor(location));
+        Assert.assertEquals(count, game.getCount(location));
     }
 
     @Before
     public void setup() {
-        game = new GameImpl(new MoveValidatorFactoryImpl(HotGammonTypes.AlphaMon));
+        game = GameFactory.Get(HotGammonTypes.AlphaMon);
         game.newGame();
     }
 
     @Test
     public void should_have_no_player_in_turn_after_new_game() {
-        assertEquals(Color.NONE, game.getPlayerInTurn());
+        Assert.assertEquals(Color.NONE, game.getPlayerInTurn());
     }
 
     @Test
     public void should_have_black_player_in_turn_after_first_turn_and_die_values_are_1_and_2() {
         game.nextTurn(); // will throw [1,2] and thus black starts
-        assertEquals(Color.BLACK, game.getPlayerInTurn());
+        Assert.assertEquals(Color.BLACK, game.getPlayerInTurn());
         assertTrue(Arrays.equals(new int[]{1, 2}, game.diceThrown()));
     }
 
@@ -46,7 +54,7 @@ public class TestAlphamon {
     public void should_have_red_player_in_turn_after_second_turn_and_die_values_are_3_and_4() {
         game.nextTurn(); // will throw [1,2] and thus black starts
         game.nextTurn(); // will throw [3,4] and red is in turn
-        assertEquals(Color.RED, game.getPlayerInTurn());
+        Assert.assertEquals(Color.RED, game.getPlayerInTurn());
         assertTrue(Arrays.equals(new int[]{3, 4}, game.diceThrown()));
     }
 
@@ -88,10 +96,10 @@ public class TestAlphamon {
         assertColorAndCount(Location.B11, Color.NONE, 0);
         assertColorAndCount(Location.B12, Color.RED, 5);
 
-        assertEquals(0, game.getCount(Location.B_BAR));
-        assertEquals(0, game.getCount(Location.R_BAR));
-        assertEquals(0, game.getCount(Location.B_BEAR_OFF));
-        assertEquals(0, game.getCount(Location.R_BEAR_OFF));
+        Assert.assertEquals(0, game.getCount(Location.B_BAR));
+        Assert.assertEquals(0, game.getCount(Location.R_BAR));
+        Assert.assertEquals(0, game.getCount(Location.B_BEAR_OFF));
+        Assert.assertEquals(0, game.getCount(Location.R_BEAR_OFF));
     }
 
 
@@ -104,7 +112,7 @@ public class TestAlphamon {
         assertTrue(game.move(Location.R1, Location.R2));
         assertColorAndCount(Location.R1, Color.BLACK, 1);
         assertColorAndCount(Location.R2, Color.BLACK, 1);
-        assertEquals(1, game.getNumberOfMovesLeft());
+        Assert.assertEquals(1, game.getNumberOfMovesLeft());
     }
 
     //After moving the two black checkers, the number of moves left is 0
@@ -113,7 +121,7 @@ public class TestAlphamon {
         game.nextTurn();
         assertTrue(game.move(Location.R1, Location.R2));
         assertTrue(game.move(Location.R1, Location.R3));
-        assertEquals(0, game.getNumberOfMovesLeft());
+        Assert.assertEquals(0, game.getNumberOfMovesLeft());
     }
 
     // Moving a checker from R1 to B1 at the start of the game is invalid as there is an opponent (red) checker there.
@@ -171,14 +179,14 @@ public class TestAlphamon {
     @Test
     public void should_have_red_as_winner_after_6_rolls() {
         game.nextTurn();
-        assertEquals(Color.NONE, game.winner());
+        Assert.assertEquals(Color.NONE, game.winner());
         game.nextTurn();
         game.nextTurn();
         game.nextTurn();
         game.nextTurn();
-        assertEquals(Color.NONE, game.winner());
+        Assert.assertEquals(Color.NONE, game.winner());
         game.nextTurn();
-        assertEquals(Color.RED, game.winner());
+        Assert.assertEquals(Color.RED, game.winner());
     }
 
 }

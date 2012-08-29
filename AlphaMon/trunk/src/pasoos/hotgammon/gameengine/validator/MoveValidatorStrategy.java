@@ -1,3 +1,7 @@
+package pasoos.hotgammon.gameengine.validator;
+
+import pasoos.hotgammon.gameengine.Location;
+
 /**
  * Created with IntelliJ IDEA.
  * User: PASMA00T

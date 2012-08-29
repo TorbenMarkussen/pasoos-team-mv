@@ -1,20 +1,14 @@
-/**
- * Created with IntelliJ IDEA.
- * User: PASMA00T
- * Date: 28-08-12
- * Time: 20:33
- * To change this template use File | Settings | File Templates.
- */
+package pasoos.hotgammon.gameengine.validator;
 
-enum HotGammonTypes {
-    AlphaMon,
-    BetaMon
-}
+import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.HotGammonTypes;
+import pasoos.hotgammon.gameengine.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.gameengine.validator.betamon.BetamonMoveValidatorStrategyImpl;
 
 public class MoveValidatorFactoryImpl implements MoveValidatorFactory {
     private HotGammonTypes hotGammonType;
 
-    MoveValidatorFactoryImpl(HotGammonTypes type) {
+    public MoveValidatorFactoryImpl(HotGammonTypes type) {
         hotGammonType = type;
     }
 

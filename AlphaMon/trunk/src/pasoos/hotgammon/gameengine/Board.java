@@ -1,3 +1,8 @@
+package pasoos.hotgammon.gameengine;
+
+import pasoos.hotgammon.Color;
+import pasoos.hotgammon.gameengine.Location;
+
 /**
  * Created with IntelliJ IDEA.
  * User: PASMA00T
@@ -9,7 +14,7 @@ public class Board {
 
     private int[] board;
 
-    Board() {
+    public Board() {
         initialize();
     }
 

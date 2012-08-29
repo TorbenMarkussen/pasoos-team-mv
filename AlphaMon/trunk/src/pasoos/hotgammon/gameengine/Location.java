@@ -1,3 +1,7 @@
+package pasoos.hotgammon.gameengine;
+
+import pasoos.hotgammon.Color;
+
 /**
  * This enum represents an enumeration of board locations (the
  * "points") in the Backgammon board.

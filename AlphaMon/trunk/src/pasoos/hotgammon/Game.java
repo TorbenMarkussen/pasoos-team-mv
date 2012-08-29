@@ -1,3 +1,7 @@
+package pasoos.hotgammon;
+
+import pasoos.hotgammon.gameengine.Location;
+
 /**
  * This interface encapsulate all responsibilites of
  * a Backgammon game. Please consult the book's

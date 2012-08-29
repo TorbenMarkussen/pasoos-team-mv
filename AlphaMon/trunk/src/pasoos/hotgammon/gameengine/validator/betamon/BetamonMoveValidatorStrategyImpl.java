@@ -1,5 +1,11 @@
+package pasoos.hotgammon.gameengine.validator.betamon;
+
+import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.Color;
+import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

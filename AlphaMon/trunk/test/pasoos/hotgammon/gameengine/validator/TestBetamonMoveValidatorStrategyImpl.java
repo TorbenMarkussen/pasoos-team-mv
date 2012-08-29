@@ -1,5 +1,10 @@
+package pasoos.hotgammon.gameengine.validator;
+
 import org.junit.Before;
 import org.junit.Test;
+import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.gameengine.validator.betamon.BetamonMoveValidatorStrategyImpl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

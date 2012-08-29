@@ -1,4 +1,11 @@
+package pasoos.hotgammon;
+
 import org.junit.*;
+import pasoos.hotgammon.Game;
+import pasoos.hotgammon.HotGammonTypes;
+import pasoos.hotgammon.gameengine.GameImpl;
+import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.gameengine.validator.MoveValidatorFactoryImpl;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -17,7 +24,7 @@ public class TestBetamon {
 
     @Before
     public void setup() {
-        game = new GameImpl(new MoveValidatorFactoryImpl(HotGammonTypes.BetaMon));
+        game = GameFactory.Get(HotGammonTypes.BetaMon);
         game.newGame();
     }
 
