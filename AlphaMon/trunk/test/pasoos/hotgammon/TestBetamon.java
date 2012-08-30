@@ -1,11 +1,6 @@
 package pasoos.hotgammon;
 
 import org.junit.*;
-import pasoos.hotgammon.Game;
-import pasoos.hotgammon.HotGammonTypes;
-import pasoos.hotgammon.gameengine.GameImpl;
-import pasoos.hotgammon.gameengine.Location;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorFactoryImpl;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -58,10 +53,18 @@ public class TestBetamon {
     }
 
     @Test
-    public void should_move_opponent_checker_to_bar_yada_yada() {
-
+    public void should_move_opponent_checker_to_bar() {
+        game.nextTurn(); // will throw [1,2] and thus black starts
+        assertTrue(game.move(Location.B8, Location.B7));
+        assertTrue(game.move(Location.B7, Location.B5));
+        game.nextTurn(); // will throw [3,4] and white has the turn
+        assertTrue(game.move(Location.B1, Location.B5));// Red strikes Black to the bar
+        assertEquals("There should be 1 checker on B5 after strike", 1, game.getCount( Location.B5));
+        assertEquals("There should be a RED checker on B5 after strike", Color.RED, game.getColor(Location.B5));
+        assertEquals("There should be 1 checker on B_BAR after strike",1, game.getCount(Location.B_BAR));
     }
-    //should_move_from_bar_to_opponent_inner_table
+
+
 
 
 }

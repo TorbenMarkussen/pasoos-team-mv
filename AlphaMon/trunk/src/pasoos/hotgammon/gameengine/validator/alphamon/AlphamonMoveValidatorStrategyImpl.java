@@ -2,7 +2,7 @@ package pasoos.hotgammon.gameengine.validator.alphamon;
 
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
 
 /**

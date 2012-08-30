@@ -1,6 +1,4 @@
-package pasoos.hotgammon.gameengine;
-
-import pasoos.hotgammon.Color;
+package pasoos.hotgammon;
 
 /**
  * This enum represents an enumeration of board locations (the

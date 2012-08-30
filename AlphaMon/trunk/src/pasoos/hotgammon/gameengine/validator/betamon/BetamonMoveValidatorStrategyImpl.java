@@ -2,7 +2,7 @@ package pasoos.hotgammon.gameengine.validator.betamon;
 
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
 
 import java.util.ArrayList;
@@ -36,8 +36,21 @@ public class BetamonMoveValidatorStrategyImpl implements MoveValidatorStrategy {
             diceList.add(d);
 
         int distance = Math.abs(Location.distance(from, to));
-        if (!diceList.contains(distance))
+        int foundDice = 0;
+        if (to == fromColor.getBearOff()) {
+            if (diceList.contains(distance)) {
+                foundDice = distance;
+            } else {
+                for (int i = distance; i <= 6; i++)
+                    if (diceList.contains(i))
+                        foundDice = i;
+            }
+            if (foundDice == 0)
+                return 0;
+        } else if (!diceList.contains(distance))
             return 0;
+        else
+            foundDice = distance;
 
         if (toColor != fromColor && toColor != Color.NONE) {
             //opponent found at 'to' destination
@@ -45,6 +58,13 @@ public class BetamonMoveValidatorStrategyImpl implements MoveValidatorStrategy {
                 return 0;
         }
 
-        return distance;
+        if ((board.getCount(fromColor.getBar()) > 0) && (from != fromColor.getBar()))
+            return 0;
+
+        if ((to == fromColor.getBearOff()) && (!board.allInInnerTable(fromColor)))
+            return 0;
+
+
+        return foundDice;
     }
 }

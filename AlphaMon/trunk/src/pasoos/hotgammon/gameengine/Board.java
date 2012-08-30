@@ -1,7 +1,7 @@
 package pasoos.hotgammon.gameengine;
 
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.Location;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,23 +18,26 @@ public class Board {
         initialize();
     }
 
-    private int[] initBoard() {
-        int[] result = new int[28];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = 0;
+    private void initBoard() {
+        clear();
+
+        board[Location.R1.ordinal()] = Color.BLACK.getSign() * 2;
+        board[Location.R6.ordinal()] = Color.RED.getSign() * 5;
+        board[Location.R8.ordinal()] = Color.RED.getSign() * 3;
+        board[Location.R12.ordinal()] = Color.BLACK.getSign() * 5;
+
+        board[Location.B1.ordinal()] = Color.RED.getSign() * 2;
+        board[Location.B6.ordinal()] = Color.BLACK.getSign() * 5;
+        board[Location.B8.ordinal()] = Color.BLACK.getSign() * 3;
+        board[Location.B12.ordinal()] = Color.RED.getSign() * 5;
+
+    }
+
+    public void clear() {
+        board = new int[28];
+        for (int i = 0; i < board.length; i++) {
+            board[i] = 0;
         }
-
-        result[Location.R1.ordinal()] = Color.BLACK.getSign() * 2;
-        result[Location.R6.ordinal()] = Color.RED.getSign() * 5;
-        result[Location.R8.ordinal()] = Color.RED.getSign() * 3;
-        result[Location.R12.ordinal()] = Color.BLACK.getSign() * 5;
-
-        result[Location.B1.ordinal()] = Color.RED.getSign() * 2;
-        result[Location.B6.ordinal()] = Color.BLACK.getSign() * 5;
-        result[Location.B8.ordinal()] = Color.BLACK.getSign() * 3;
-        result[Location.B12.ordinal()] = Color.RED.getSign() * 5;
-
-        return result;
     }
 
     public Color getColor(Location location) {
@@ -54,10 +57,39 @@ public class Board {
     }
 
     public void initialize() {
-        board = initBoard();
+        initBoard();
     }
 
     public void decrementLocation(Location location) {
         decrementLocation(location, getColor(location));
+    }
+
+    public boolean RemoveCheckersWithColor(Location location, Color color) {
+        boolean result = false;
+        if (getColor(location) == color) {
+            board[location.ordinal()] = 0;
+            result = true;
+        }
+        return result;
+    }
+
+    public void IncrementBar(Color barColor) {
+        if (barColor == Color.BLACK)
+            incrementLocation(Location.B_BAR, Color.BLACK);
+        else if (barColor == Color.RED)
+            incrementLocation(Location.R_BAR, Color.RED);
+    }
+
+    public boolean allInInnerTable(Color color) {
+/*        if (color == Color.RED) {
+            for (int i = Location.R7.ordinal(); i <= Location.R_BAR.ordinal(); i++)   // 7 -> 25
+                if (Color.getColorFromNumerical(board[i]) == color)
+                    return false;
+        } else if (color == Color.BLACK) {
+            for (int i = Location.B_BAR.ordinal(); i <= Location.B7.ordinal(); i++)      // 0 -> 18
+                if (Color.getColorFromNumerical(board[i]) == color)
+                    return false;
+        }*/
+        return true;
     }
 }

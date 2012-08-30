@@ -1,8 +1,8 @@
-package pasoos.hotgammon.gameengine;
+package pasoos.hotgammon;
 
 import org.junit.Test;
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.gameengine.Location;
+import pasoos.hotgammon.Location;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

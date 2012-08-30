@@ -2,6 +2,7 @@ package pasoos.hotgammon.gameengine;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
+import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.validator.MoveValidatorFactory;
 import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
 
@@ -80,6 +81,8 @@ public class GameImpl implements Game {
             return false;
 
         board.decrementLocation(from, playerInTurn);
+        if (board.RemoveCheckersWithColor(to, playerInTurn.getOppositeColor()))
+            board.IncrementBar(playerInTurn.getOppositeColor());                   // Oponent is striked to bar
         board.incrementLocation(to, playerInTurn);
         RemoveDice(diceUsed);
 
