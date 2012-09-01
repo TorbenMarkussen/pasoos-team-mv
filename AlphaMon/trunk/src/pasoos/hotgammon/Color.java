@@ -63,17 +63,17 @@ public enum Color {
         return NONE;
     }
 
-    public Color getOppositeColor() {
-        return getColorFromNumerical(-1*getSign());
+    public Color getOpponentColor() {
+        return getColorFromNumerical(-1 * getSign());
     }
 
     // Precondition: Only Black and red color can return a bar
     public Location getBar() throws IllegalArgumentException {
         Color color = getColorFromNumerical(getSign());
-        if ( color == Color.BLACK)
-            return Location.B_BAR ;
+        if (color == Color.BLACK)
+            return Location.B_BAR;
         else if (color == Color.RED)
-            return Location.R_BAR ;
+            return Location.R_BAR;
         else
             throw new IllegalArgumentException("Only Black or red color can return a Bar");
     }
@@ -94,13 +94,4 @@ public enum Color {
         }
     }
 
-    public Location getBearOff() throws IllegalArgumentException {
-            Color color = getColorFromNumerical(getSign());
-            if ( color == Color.BLACK)
-                return Location.B_BEAR_OFF ;
-            else if (color == Color.RED)
-                return Location.R_BEAR_OFF ;
-            else
-                throw new IllegalArgumentException("Only Black or red color can return a BearOff");
-    }
 }

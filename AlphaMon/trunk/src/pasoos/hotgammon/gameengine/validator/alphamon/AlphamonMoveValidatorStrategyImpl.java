@@ -21,12 +21,10 @@ public class AlphamonMoveValidatorStrategyImpl implements MoveValidatorStrategy 
     }
 
     @Override
-    public int isValidMove(Location from, Location to, int[] dices) {
+    public boolean isValidMove(Location from, Location to, int dice) {
         Color fromColor = board.getColor(from);
         Color toColor = board.getColor(to);
         boolean isValid = toColor == Color.NONE || fromColor == toColor;
-        if (!isValid)
-            return 0;
-        return dices[0];
+        return isValid;
     }
 }

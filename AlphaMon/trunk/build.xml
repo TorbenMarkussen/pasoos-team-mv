@@ -6,7 +6,6 @@
     <property name="junit-jar" value="${basedir}/lib/junit-4.10.jar"/>
     <property name="doc.home" value="${basedir}/doc"/>
 
-
     <target name="prepare" depends="clean">
         <mkdir dir="${build.home}"/>
         <mkdir dir="${build.home}/classes"/>
@@ -20,11 +19,11 @@
     </target>
 
     <target name="compile" depends="prepare">
-        <javac srcdir="${src.home}" destdir="${build.home}/classes"/>
+        <javac srcdir="${src.home}" destdir="${build.home}/classes" includeantruntime="false"/>
     </target>
 
     <target name="compile_test" depends="compile">
-        <javac srcdir="${test.home}" destdir="${build.home}/test_classes">
+        <javac srcdir="${test.home}" destdir="${build.home}/test_classes" includeantruntime="false">
             <classpath>
                 <pathelement location="${build.home}/classes"/>
                 <pathelement location="${junit-jar}"/>
@@ -32,7 +31,7 @@
         </javac>
     </target>
 
-    <target name="run_test" depends="compile_test">
+    <target name="test" depends="compile_test">
         <junit printsummary="yes" haltonfailure="yes">
             <classpath>
                 <pathelement location="${build.home}/classes"/>
@@ -41,7 +40,8 @@
             </classpath>
             <batchtest>
                 <fileset dir="${test.home}">
-                    <include name="*.java"/>
+                    <include name="**/*Test.java"/>
+                    <include name="**/Test*.java"/>
                 </fileset>
             </batchtest>
         </junit>

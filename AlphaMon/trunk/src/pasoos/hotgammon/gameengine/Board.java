@@ -3,6 +3,8 @@ package pasoos.hotgammon.gameengine;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 
+import java.util.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: PASMA00T
@@ -12,7 +14,35 @@ import pasoos.hotgammon.Location;
  */
 public class Board {
 
-    private int[] board;
+    //private int[] board;
+    private EnumMap<Location, Integer> board = new EnumMap<Location, Integer>(Location.class);
+    private static final HashMap<Color, List<Location>> outerLocations = new HashMap<Color, List<Location>>();
+
+    static {
+        List<Location> all = new ArrayList<Location>(Arrays.asList(Location.values()));
+
+        List<Location> outerRed = new ArrayList<Location>(all);
+        outerRed.remove(Location.R1);
+        outerRed.remove(Location.R2);
+        outerRed.remove(Location.R3);
+        outerRed.remove(Location.R4);
+        outerRed.remove(Location.R5);
+        outerRed.remove(Location.R6);
+        outerRed.remove(Location.R_BEAR_OFF);
+
+        outerLocations.put(Color.RED, outerRed);
+
+        List<Location> outerBlack = new ArrayList<Location>(all);
+        outerBlack.remove(Location.B1);
+        outerBlack.remove(Location.B2);
+        outerBlack.remove(Location.B3);
+        outerBlack.remove(Location.B4);
+        outerBlack.remove(Location.B5);
+        outerBlack.remove(Location.B6);
+        outerBlack.remove(Location.B_BEAR_OFF);
+        outerLocations.put(Color.BLACK, outerBlack);
+
+    }
 
     public Board() {
         initialize();
@@ -21,39 +51,39 @@ public class Board {
     private void initBoard() {
         clear();
 
-        board[Location.R1.ordinal()] = Color.BLACK.getSign() * 2;
-        board[Location.R6.ordinal()] = Color.RED.getSign() * 5;
-        board[Location.R8.ordinal()] = Color.RED.getSign() * 3;
-        board[Location.R12.ordinal()] = Color.BLACK.getSign() * 5;
+        board.put(Location.R1, Color.BLACK.getSign() * 2);
+        board.put(Location.R6, Color.RED.getSign() * 5);
+        board.put(Location.R8, Color.RED.getSign() * 3);
+        board.put(Location.R12, Color.BLACK.getSign() * 5);
 
-        board[Location.B1.ordinal()] = Color.RED.getSign() * 2;
-        board[Location.B6.ordinal()] = Color.BLACK.getSign() * 5;
-        board[Location.B8.ordinal()] = Color.BLACK.getSign() * 3;
-        board[Location.B12.ordinal()] = Color.RED.getSign() * 5;
+        board.put(Location.B1, Color.RED.getSign() * 2);
+        board.put(Location.B6, Color.BLACK.getSign() * 5);
+        board.put(Location.B8, Color.BLACK.getSign() * 3);
+        board.put(Location.B12, Color.RED.getSign() * 5);
 
     }
 
     public void clear() {
-        board = new int[28];
-        for (int i = 0; i < board.length; i++) {
-            board[i] = 0;
-        }
+        board.clear();
+        for (Location l : Location.values())
+            board.put(l, 0);
     }
 
     public Color getColor(Location location) {
-        return Color.getColorFromNumerical(board[location.ordinal()]);
+        return Color.getColorFromNumerical(board.get(location));
     }
 
-    public void decrementLocation(Location from, Color value) {
-        board[from.ordinal()] -= value.getSign();
+    public void decrementLocation(Location location, Color color) {
+        board.put(location, board.get(location) - color.getSign());
     }
 
-    public void incrementLocation(Location to, Color value) {
-        board[to.ordinal()] += value.getSign();
+    public void incrementLocation(Location location, Color color) {
+        board.put(location, board.get(location) + color.getSign());
+
     }
 
     public int getCount(Location location) {
-        return Math.abs(board[location.ordinal()]);
+        return Math.abs(board.get(location));
     }
 
     public void initialize() {
@@ -67,7 +97,7 @@ public class Board {
     public boolean RemoveCheckersWithColor(Location location, Color color) {
         boolean result = false;
         if (getColor(location) == color) {
-            board[location.ordinal()] = 0;
+            board.put(location, 0);
             result = true;
         }
         return result;
@@ -81,15 +111,16 @@ public class Board {
     }
 
     public boolean allInInnerTable(Color color) {
-/*        if (color == Color.RED) {
-            for (int i = Location.R7.ordinal(); i <= Location.R_BAR.ordinal(); i++)   // 7 -> 25
-                if (Color.getColorFromNumerical(board[i]) == color)
-                    return false;
-        } else if (color == Color.BLACK) {
-            for (int i = Location.B_BAR.ordinal(); i <= Location.B7.ordinal(); i++)      // 0 -> 18
-                if (Color.getColorFromNumerical(board[i]) == color)
-                    return false;
-        }*/
+        List<Location> ol = outerLocations.get(color);
+
+        for (Location l : ol) {
+            if (Color.getColorFromNumerical(board.get(l)) == color)
+                return false;
+        }
         return true;
+    }
+
+    public void set(Location location, Color color, int count) {
+        board.put(location, color.getSign() * count);
     }
 }

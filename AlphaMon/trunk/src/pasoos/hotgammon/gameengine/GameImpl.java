@@ -75,18 +75,29 @@ public class GameImpl implements Game {
         if (getNumberOfMovesLeft() == 0)
             return false;
 
-        int diceUsed = moveValidator.isValidMove(from, to, diceValuesLeft());
+        int diceUsed = findValidDice(from, to);
 
         if (diceUsed == 0)
             return false;
 
         board.decrementLocation(from, playerInTurn);
-        if (board.RemoveCheckersWithColor(to, playerInTurn.getOppositeColor()))
-            board.IncrementBar(playerInTurn.getOppositeColor());                   // Oponent is striked to bar
+        if (board.RemoveCheckersWithColor(to, playerInTurn.getOpponentColor()))
+            board.IncrementBar(playerInTurn.getOpponentColor());                   // Oponent is striked to bar
         board.incrementLocation(to, playerInTurn);
         RemoveDice(diceUsed);
 
         return true;
+    }
+
+    private int findValidDice(Location from, Location to) {
+        int diceUsed = 0;
+
+        for (int i = 0; i < diceValuesLeft.length && diceUsed == 0; i++) {
+            int d = diceValuesLeft[i];
+            if (moveValidator.isValidMove(from, to, d))
+                diceUsed = d;
+        }
+        return diceUsed;
     }
 
     private void RemoveDice(int diceValue) {

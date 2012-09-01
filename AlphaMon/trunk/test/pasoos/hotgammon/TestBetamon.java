@@ -59,12 +59,10 @@ public class TestBetamon {
         assertTrue(game.move(Location.B7, Location.B5));
         game.nextTurn(); // will throw [3,4] and white has the turn
         assertTrue(game.move(Location.B1, Location.B5));// Red strikes Black to the bar
-        assertEquals("There should be 1 checker on B5 after strike", 1, game.getCount( Location.B5));
+        assertEquals("There should be 1 checker on B5 after strike", 1, game.getCount(Location.B5));
         assertEquals("There should be a RED checker on B5 after strike", Color.RED, game.getColor(Location.B5));
-        assertEquals("There should be 1 checker on B_BAR after strike",1, game.getCount(Location.B_BAR));
+        assertEquals("There should be 1 checker on B_BAR after strike", 1, game.getCount(Location.B_BAR));
     }
-
-
 
 
 }

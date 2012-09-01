@@ -1,12 +1,9 @@
 package pasoos.hotgammon.gameengine.validator.betamon;
 
-import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,48 +20,77 @@ public class BetamonMoveValidatorStrategyImpl implements MoveValidatorStrategy {
     }
 
     @Override
-    public int isValidMove(Location from, Location to, int[] dices) {
-        Color fromColor = board.getColor(from);
-        Color toColor = board.getColor(to);
+    public boolean isValidMove(Location fromLocation, Location toLocation, int dice) {
+        Color fromColor = board.getColor(fromLocation);
+        Color toColor = board.getColor(toLocation);
+        Color opponentColor = fromColor.getOpponentColor();
+        int moveDistance = Math.abs(Location.distance(fromLocation, toLocation));
 
-        Color colorGivenByDirection = Color.getColorFromNumerical(Location.distance(from, to));
-        if (colorGivenByDirection != fromColor)
-            return 0;
+        if (!isValidDirection(fromLocation, toLocation))
+            return false;
 
-        List<Integer> diceList = new ArrayList<Integer>();
-        for (int d : dices)
-            diceList.add(d);
+        if (toLocation != Location.getBearOff(fromColor)) {
+            if (dice != moveDistance)
+                return false;
+        }
+        int foundDice = moveDistance;
 
-        int distance = Math.abs(Location.distance(from, to));
-        int foundDice = 0;
-        if (to == fromColor.getBearOff()) {
-            if (diceList.contains(distance)) {
-                foundDice = distance;
-            } else {
-                for (int i = distance; i <= 6; i++)
-                    if (diceList.contains(i))
-                        foundDice = i;
-            }
-            if (foundDice == 0)
-                return 0;
-        } else if (!diceList.contains(distance))
-            return 0;
-        else
-            foundDice = distance;
-
-        if (toColor != fromColor && toColor != Color.NONE) {
-            //opponent found at 'to' destination
-            if (board.getCount(to) > 1)
-                return 0;
+        if (toColor == opponentColor) {
+            if (board.getCount(toLocation) > 1)
+                return false;
         }
 
-        if ((board.getCount(fromColor.getBar()) > 0) && (from != fromColor.getBar()))
-            return 0;
+        if (hasBarCheckers(fromColor) && (fromLocation != fromColor.getBar()))
+            return false;
 
-        if ((to == fromColor.getBearOff()) && (!board.allInInnerTable(fromColor)))
-            return 0;
+        if ((toLocation == Location.getBearOff(fromColor))) {
+            //bearoff move
+            if (!board.allInInnerTable(fromColor))
+                return false;
+
+            if (dice == moveDistance) {
+                foundDice = moveDistance;
+            } else {
+                if (dice > moveDistance) {
+                    Location l = getLocationFromBearoffDistance(fromColor, dice);
+                    if (board.getColor(l) == fromColor)
+                        return false;
+                }
+                foundDice = dice;
+            }
+        }
 
 
-        return foundDice;
+        return foundDice != 0;
+    }
+
+    private boolean hasBarCheckers(Color fromColor) {
+        return (board.getCount(fromColor.getBar()) > 0);
+    }
+
+    private boolean isValidDirection(Location fromLocation, Location toLocation) {
+        Color colorGivenByDirection = Color.getColorFromNumerical(Location.distance(fromLocation, toLocation));
+        return colorGivenByDirection == board.getColor(fromLocation);
+    }
+
+    private Location getLocationFromBearoffDistance(Color color, int distance) throws IllegalArgumentException {
+        Location location = Location.getBearOff(color);
+        if (location == Location.R_BEAR_OFF) {
+            if (distance == 1) return Location.R1;
+            if (distance == 2) return Location.R2;
+            if (distance == 3) return Location.R3;
+            if (distance == 4) return Location.R4;
+            if (distance == 5) return Location.R5;
+            if (distance == 6) return Location.R6;
+        }
+        if (location == Location.B_BEAR_OFF) {
+            if (distance == 1) return Location.B1;
+            if (distance == 2) return Location.B2;
+            if (distance == 3) return Location.B3;
+            if (distance == 4) return Location.B4;
+            if (distance == 5) return Location.B5;
+            if (distance == 6) return Location.B6;
+        }
+        throw new IllegalArgumentException("Location should be a bearoff location");
     }
 }

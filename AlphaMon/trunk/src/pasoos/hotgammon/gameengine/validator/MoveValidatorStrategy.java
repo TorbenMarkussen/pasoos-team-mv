@@ -10,5 +10,5 @@ import pasoos.hotgammon.Location;
  * To change this template use File | Settings | File Templates.
  */
 public interface MoveValidatorStrategy {
-    int isValidMove(Location from, Location to, int[] dices);
+    boolean isValidMove(Location from, Location to, int dice);
 }

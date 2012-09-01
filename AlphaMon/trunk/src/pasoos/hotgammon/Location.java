@@ -172,4 +172,13 @@ public enum Location {
         }
         return indexToEnum[_to];
     }
+
+    public static Location getBearOff(Color color) {
+        if (color == Color.RED)
+            return Location.R_BEAR_OFF;
+        if (color == Color.BLACK)
+            return Location.B_BEAR_OFF;
+
+        throw new IllegalArgumentException("Only Black or red color can return a BearOff");
+    }
 }
