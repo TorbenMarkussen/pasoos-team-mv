@@ -1,7 +1,7 @@
 package pasoos.hotgammon;
 
 import pasoos.hotgammon.gameengine.GameImpl;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorFactoryImpl;
+import pasoos.hotgammon.rules.RulesFactoryImpl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,6 +12,6 @@ import pasoos.hotgammon.gameengine.validator.MoveValidatorFactoryImpl;
  */
 public class GameFactory {
     public static Game Get(HotGammonTypes type) {
-        return new GameImpl(new MoveValidatorFactoryImpl(type));
+        return new GameImpl(new RulesFactoryImpl(type));
     }
 }

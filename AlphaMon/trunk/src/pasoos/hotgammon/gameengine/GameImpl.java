@@ -3,8 +3,9 @@ package pasoos.hotgammon.gameengine;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorFactory;
+import pasoos.hotgammon.rules.RulesFactory;
 import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
+import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
 
 import java.util.Arrays;
 
@@ -28,11 +29,14 @@ public class GameImpl implements Game {
     private int[] diceValuesLeft;
     private int turnCount;
     private MoveValidatorStrategy moveValidator;
-    private MoveValidatorFactory moveValidatorFactory;
+    private WinnerStrategy winnerStrategy;
+    private RulesFactory moveValidatorFactory;
 
-    public GameImpl(MoveValidatorFactory mvf) {
+
+    public GameImpl(RulesFactory mvf) {
         board = new Board();
-        moveValidator = mvf.Get(board);
+        moveValidator = mvf.GetMoveValidatorStrategy(board);
+        winnerStrategy = mvf.GetWinnerStrategy(board);
     }
 
     public void newGame() {
@@ -131,11 +135,14 @@ public class GameImpl implements Game {
     }
 
     public Color winner() {
+        return winnerStrategy.determineWinner(turnCount);
+        /*
         if (turnCount < 6) {
             return Color.NONE;
         } else {
             return Color.RED;
         }
+        */
     }
 
     public Color getColor(Location location) {

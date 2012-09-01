@@ -1,4 +1,6 @@
-package pasoos.hotgammon.gameengine.validator;
+package pasoos.hotgammon.gameengine.winner;
+
+import pasoos.hotgammon.Color;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,4 +10,5 @@ package pasoos.hotgammon.gameengine.validator;
  * To change this template use File | Settings | File Templates.
  */
 public interface WinnerStrategy {
+    Color determineWinner(int turnCount);
 }
