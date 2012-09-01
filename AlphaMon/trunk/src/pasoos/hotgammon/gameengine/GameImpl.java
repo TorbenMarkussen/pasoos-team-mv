@@ -136,13 +136,6 @@ public class GameImpl implements Game {
 
     public Color winner() {
         return winnerStrategy.determineWinner(turnCount);
-        /*
-        if (turnCount < 6) {
-            return Color.NONE;
-        } else {
-            return Color.RED;
-        }
-        */
     }
 
     public Color getColor(Location location) {
