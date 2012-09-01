@@ -6,5 +6,5 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
         {TestBetamonMoveValidatorStrategyImpl.class})
-public class AllValidatorTests {
+public class AllTests {
 }

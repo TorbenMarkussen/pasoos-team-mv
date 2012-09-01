@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="4" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="extended betamon validator">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllValidatorTests.java" />
+    <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="">
+      <change type="MOVED" beforePath="C:\ws\PASOOS\ws\AlphaMon-svn\test\pasoos\hotgammon\gameengine\validator\AllValidatorTests.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllTests.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/Color.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/Color.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/Location.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/Board.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/validator/MoveValidatorStrategy.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/validator/MoveValidatorStrategy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/validator/alphamon/AlphamonMoveValidatorStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/validator/alphamon/AlphamonMoveValidatorStrategyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/validator/betamon/BetamonMoveValidatorStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/validator/betamon/BetamonMoveValidatorStrategyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/TestBetamonMoveValidatorStrategyImpl.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/TestBetamonMoveValidatorStrategyImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java" />
     </list>
     <ignored path="AlphaMon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,10 +123,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AllTests.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AllTests.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.15332581">
+            <state line="12" column="37" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,10 +134,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AllValidatorTests.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllValidatorTests.java">
+      <file leaf-file-name="AllTests.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="42" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
+            <state line="8" column="25" selection-start="234" selection-end="234" vertical-scroll-proportion="0.2176">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,7 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/validator/alphamon/AlphamonMoveValidatorStrategyImpl.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/GameFactory.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestAlphamon.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/Location.java" />
@@ -194,6 +186,7 @@
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestSuite.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllValidatorTests.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java" />
+        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllTests.java" />
       </list>
     </option>
   </component>
@@ -429,40 +422,6 @@
               <option name="myItemId" value="pasoos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotgammon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon-svn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pasoos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hotgammon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gameengine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="validator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -528,29 +487,7 @@
       <recent name="C:\Users\pasma00t\Dropbox\PaSOOS (1)\AlphaMon" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All Tests">
-    <configuration default="false" name="TestBetamonMoveValidatorStrategyImpl.should_allow_to_bear_off_from_b4_with_dice_value_5_if_no_checker_on_r5_or_r6" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="AlphaMon" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pasoos.hotgammon.gameengine.validator" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.gameengine.validator.TestBetamonMoveValidatorStrategyImpl" />
-      <option name="METHOD_NAME" value="should_allow_to_bear_off_from_b4_with_dice_value_5_if_no_checker_on_r5_or_r6" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.AllTests">
     <configuration default="false" name="TestBetamonMoveValidatorStrategyImpl.should_fail_to_bearoff_if_checker_on_bar" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="AlphaMon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -625,6 +562,28 @@
       <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.gameengine.validator.TestBetamonMoveValidatorStrategyImpl" />
       <option name="METHOD_NAME" value="should_allow_to_move_in_correct_direction" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AllTests" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="AlphaMon" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="pasoos.hotgammon.gameengine.validator" />
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.gameengine.validator.AllTests" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -786,11 +745,11 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.All Tests" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_allow_to_bear_off_from_b4_with_dice_value_5_if_no_checker_on_r5_or_r6" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_fail_to_bearoff_if_checker_on_bar" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_fail_to_bearoff_if_red_checker_on_bar" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_allow_to_bear_off_from_r6" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_allow_to_move_in_correct_direction" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_fail_to_bearoff_if_checker_on_bar" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_fail_to_bearoff_if_red_checker_on_bar" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_allow_to_bear_off_from_r6" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestBetamonMoveValidatorStrategyImpl.should_allow_to_move_in_correct_direction" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.AllTests" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -858,7 +817,11 @@
       <created>1346251991108</created>
       <updated>1346251991108</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactored move validator interface&#10;changed ant build script (ant test supported)">
+      <created>1346507437119</created>
+      <updated>1346507437119</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -899,9 +862,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21485837" sideWeight="0.6004273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21485837" sideWeight="0.72008544" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39957264" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27991453" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27991453" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959914" sideWeight="0.72008544" order="2" side_tool="false" content_ui="combo" />
@@ -944,7 +908,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="extended betamon validator" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored move validator interface&#10;changed ant build script (ant test supported)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -960,6 +924,7 @@
     <MESSAGE value="betamon impl. iteration 1" />
     <MESSAGE value="refactored package layout" />
     <MESSAGE value="extended betamon validator" />
+    <MESSAGE value="refactored move validator interface&#10;changed ant build script (ant test supported)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1054,18 +1019,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllValidatorTests.java">
+    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="42" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
+        <state line="12" column="37" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/AllTests.java">
+    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/gameengine/validator/AllTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.15332581">
+        <state line="8" column="25" selection-start="234" selection-end="234" vertical-scroll-proportion="0.2176">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
