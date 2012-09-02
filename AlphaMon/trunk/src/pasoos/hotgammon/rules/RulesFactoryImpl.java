@@ -25,7 +25,7 @@ public class RulesFactoryImpl implements RulesFactory {
 
     @Override
     public WinnerStrategy getWinnerStrategy(Board board) {
-        if (hotGammonType == HotGammonTypes.Gammamon)
+        if (hotGammonType == HotGammonTypes.GammaMon)
             return new GammamonWinnerStrategyImpl(board);
         else
             return new SimpleWinnerStrategyImpl();

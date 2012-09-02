@@ -19,7 +19,7 @@ public class TestGammamon {
 
     @Before
     public void setup() {
-        game = GameFactory.Get(HotGammonTypes.Gammamon);
+        game = GameFactory.Get(HotGammonTypes.GammaMon);
         game.newGame();
     }
 
