@@ -1,11 +1,13 @@
 package pasoos.hotgammon;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.Arrays;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Testing skeleton for AlphaMon.
@@ -41,7 +43,7 @@ public class TestAlphamon {
     public void should_have_black_player_in_turn_after_first_turn_and_die_values_are_1_and_2() {
         game.nextTurn(); // will throw [1,2] and thus black starts
         Assert.assertEquals(Color.BLACK, game.getPlayerInTurn());
-        assertTrue(Arrays.equals(new int[]{1, 2}, game.diceThrown()));
+        assertTrue(Arrays.equals(new int[]{2, 1}, game.diceThrown()));
     }
 
     @Test
@@ -49,7 +51,7 @@ public class TestAlphamon {
         game.nextTurn(); // will throw [1,2] and thus black starts
         game.nextTurn(); // will throw [3,4] and red is in turn
         Assert.assertEquals(Color.RED, game.getPlayerInTurn());
-        assertTrue(Arrays.equals(new int[]{3, 4}, game.diceThrown()));
+        assertTrue(Arrays.equals(new int[]{4, 3}, game.diceThrown()));
     }
 
     @Test
@@ -57,9 +59,9 @@ public class TestAlphamon {
         game.nextTurn();
         game.nextTurn();
         game.nextTurn();
-        assertTrue(Arrays.equals(new int[]{5, 6}, game.diceThrown()));
+        assertTrue(Arrays.equals(new int[]{6, 5}, game.diceThrown()));
         game.nextTurn();
-        assertTrue(Arrays.equals(new int[]{1, 2}, game.diceThrown()));
+        assertTrue(Arrays.equals(new int[]{2, 1}, game.diceThrown()));
     }
 
     @Test

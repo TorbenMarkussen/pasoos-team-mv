@@ -6,14 +6,8 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
+import static pasoos.hotgammon.Location.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: tor
- * Date: 02-09-12
- * Time: 17:18
- * To change this template use File | Settings | File Templates.
- */
 public class TestGammamon {
     private Game game;
 
@@ -37,28 +31,28 @@ public class TestGammamon {
 
     @Test
     public void play_gammamon_until_game_has_finished_and_winner_is_found() {
-        blackMoving(Location.R1, Location.R1, Location.B_BEAR_OFF);
-        redMoving(Location.B1, Location.B1, Location.R_BEAR_OFF);
-        blackMoving(Location.R12, Location.R12, Location.B_BEAR_OFF);
-        redMoving(Location.B12, Location.B12, Location.R_BEAR_OFF);
-        blackMoving(Location.R12, Location.R12, Location.B_BEAR_OFF);
-        redMoving(Location.B12, Location.B12, Location.R_BEAR_OFF);
-        blackMoving(Location.R12, Location.B8, Location.B_BEAR_OFF);
-        redMoving(Location.B12, Location.R8, Location.R_BEAR_OFF);
-        blackMoving(Location.B8, Location.B8, Location.B_BEAR_OFF);
-        redMoving(Location.R8, Location.R8, Location.R_BEAR_OFF);
-        blackMoving(Location.B6, Location.B6, Location.B_BEAR_OFF);
-        redMoving(Location.R6, Location.R6, Location.R_BEAR_OFF);
-        blackMoving(Location.B6, Location.B6, Location.B_BEAR_OFF);
-        redMoving(Location.R6, Location.R6, Location.R_BEAR_OFF);
+        blackMoving(R1, R1, B_BEAR_OFF);
+        redMoving(Location.B1, B1, R_BEAR_OFF);
+        blackMoving(R12, R12, B_BEAR_OFF);
+        redMoving(B12, B12, R_BEAR_OFF);
+        blackMoving(R12, R12, B_BEAR_OFF);
+        redMoving(B12, B12, R_BEAR_OFF);
+        blackMoving(R12, B8, B_BEAR_OFF);
+        redMoving(B12, R8, R_BEAR_OFF);
+        blackMoving(B8, B8, B_BEAR_OFF);
+        redMoving(R8, R8, R_BEAR_OFF);
+        blackMoving(B6, B6, B_BEAR_OFF);
+        redMoving(R6, R6, R_BEAR_OFF);
+        blackMoving(B6, B6, B_BEAR_OFF);
+        redMoving(R6, R6, R_BEAR_OFF);
         assertEquals(Color.NONE, game.winner());
         game.nextTurn();
-        assertTrue(game.move(Location.B6, Location.B_BEAR_OFF));
+        assertTrue(game.move(B6, B_BEAR_OFF));
         assertEquals(Color.BLACK, game.winner());
-        assertFalse(game.move(Location.B_BEAR_OFF, Location.B6));
+        assertFalse(game.move(B_BEAR_OFF, B6));
 
         game.nextTurn();
-        assertFalse(game.move(Location.R6, Location.R_BEAR_OFF));
+        assertFalse(game.move(R6, R_BEAR_OFF));
         assertEquals(Color.BLACK, game.winner());
     }
 }

@@ -5,13 +5,6 @@ import pasoos.hotgammon.Location;
 
 import java.util.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: PASMA00T
- * Date: 28-08-12
- * Time: 21:27
- * To change this template use File | Settings | File Templates.
- */
 public class Board {
 
     //private int[] board;
@@ -94,7 +87,7 @@ public class Board {
         decrementLocation(location, getColor(location));
     }
 
-    public boolean RemoveCheckersWithColor(Location location, Color color) {
+    public boolean removeCheckersWithColor(Location location, Color color) {
         boolean result = false;
         if (getColor(location) == color) {
             board.put(location, 0);
@@ -103,7 +96,7 @@ public class Board {
         return result;
     }
 
-    public void IncrementBar(Color barColor) {
+    public void incrementBar(Color barColor) {
         if (barColor == Color.BLACK)
             incrementLocation(Location.B_BAR, Color.BLACK);
         else if (barColor == Color.RED)

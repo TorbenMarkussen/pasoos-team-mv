@@ -3,11 +3,14 @@ package pasoos.hotgammon.gameengine;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.rules.RulesFactory;
+import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
+import pasoos.hotgammon.rules.RulesFactory;
 import pasoos.hotgammon.rules.WinnerStrategy;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Skeleton implementation of HotGammon.
@@ -24,24 +27,27 @@ import java.util.Arrays;
 public class GameImpl implements Game {
 
     private Color playerInTurn;
-    private int[] dice;
+    private List<Integer> dice;
     private Board board;
-    private int[] diceValuesLeft;
+    private ArrayList<Integer> diceValuesLeft;
     private int turnCount;
     private MoveValidatorStrategy moveValidator;
     private WinnerStrategy winnerStrategy;
     private Color theWinner;
+    private DiceRoller diceRoller;
 
 
     public GameImpl(RulesFactory mvf) {
         board = new Board();
         moveValidator = mvf.getMoveValidatorStrategy(board);
         winnerStrategy = mvf.getWinnerStrategy(board);
+        diceRoller = mvf.getDiceRoller();
     }
 
     public void newGame() {
         playerInTurn = Color.NONE;
-        dice = new int[]{-1, 0};
+        dice = new ArrayList<Integer>();
+        diceValuesLeft = new ArrayList<Integer>();
         turnCount = 0;
         theWinner = Color.NONE;
         board.initialize();
@@ -58,19 +64,14 @@ public class GameImpl implements Game {
             playerInTurn = Color.RED;
 
         rollDice();
-
-        diceValuesLeft = Arrays.copyOf(dice, dice.length);
-        Arrays.sort(diceValuesLeft);
+        diceValuesLeft = new ArrayList<Integer>(dice);
     }
 
     private void rollDice() {
-        if (dice[1] < 6) {
-            dice[0] += 2;
-            dice[1] += 2;
-        } else {
-            dice[0] = 1;
-            dice[1] = 2;
-        }
+        dice = new ArrayList<Integer>();
+        for (int d : diceRoller.roll())
+            dice.add(d);
+        Collections.sort(dice, Collections.reverseOrder());
     }
 
     public boolean move(Location from, Location to) {
@@ -91,10 +92,10 @@ public class GameImpl implements Game {
             return false;
 
         board.decrementLocation(from, playerInTurn);
-        if (board.RemoveCheckersWithColor(to, playerInTurn.getOpponentColor()))
-            board.IncrementBar(playerInTurn.getOpponentColor());                   // Oponent is striked to bar
+        if (board.removeCheckersWithColor(to, playerInTurn.getOpponentColor()))
+            board.incrementBar(playerInTurn.getOpponentColor());                   // Oponent is striked to bar
         board.incrementLocation(to, playerInTurn);
-        RemoveDice(diceUsed);
+        removeDice(diceUsed);
 
         theWinner = winnerStrategy.determineWinner(turnCount);
 
@@ -104,26 +105,16 @@ public class GameImpl implements Game {
     private int findValidDice(Location from, Location to) {
         int diceUsed = 0;
 
-        for (int i = 0; i < diceValuesLeft.length && diceUsed == 0; i++) {
-            int d = diceValuesLeft[i];
+        for (int i = 0; i < diceValuesLeft.size() && diceUsed == 0; i++) {
+            int d = diceValuesLeft.get(i);
             if (moveValidator.isValidMove(from, to, d))
                 diceUsed = d;
         }
         return diceUsed;
     }
 
-    private void RemoveDice(int diceValue) {
-
-        int[] dice = new int[diceValuesLeft.length - 1];
-        int n = 0;
-        boolean skippedDice = false;
-        for (int d : diceValuesLeft) {
-            if (d == diceValue && !skippedDice)
-                skippedDice = true;
-            else
-                dice[n++] = d;
-        }
-        diceValuesLeft = dice;
+    private void removeDice(int diceValue) {
+        diceValuesLeft.remove((Integer) diceValue);
     }
 
     public Color getPlayerInTurn() {
@@ -135,11 +126,17 @@ public class GameImpl implements Game {
     }
 
     public int[] diceThrown() {
-        return dice;
+        int[] da = new int[dice.size()];
+        for (int i = 0; i < da.length; i++)
+            da[i] = dice.get(i);
+        return da;
     }
 
     public int[] diceValuesLeft() {
-        return diceValuesLeft;
+        int[] da = new int[diceValuesLeft.size()];
+        for (int i = 0; i < da.length; i++)
+            da[i] = diceValuesLeft.get(i);
+        return da;
     }
 
     public Color winner() {

@@ -9,13 +9,6 @@ import pasoos.hotgammon.gameengine.Board;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: PASMA00T
- * Date: 28-08-12
- * Time: 21:21
- * To change this template use File | Settings | File Templates.
- */
 public class TestBetamonMoveValidatorStrategyImpl {
     private BetamonMoveValidatorStrategyImpl betamonMoveValidator;
     private Board board;
@@ -62,14 +55,14 @@ public class TestBetamonMoveValidatorStrategyImpl {
 
     @Test
     public void should_only_be_allowed_to_move_from_bar_if_a_checker_is_there() {
-        board.IncrementBar(Color.BLACK);
+        board.incrementBar(Color.BLACK);
         assertFalse(betamonMoveValidator.isValidMove(Location.R12, Location.B11, dice(1)));
         assertFalse(betamonMoveValidator.isValidMove(Location.R12, Location.B11, dice(2)));
     }
 
     @Test
     public void should_move_from_bar_to_opponent_inner_table() {
-        board.IncrementBar(Color.RED);
+        board.incrementBar(Color.RED);
         board.incrementLocation(Location.B3, Color.BLACK);
         board.incrementLocation(Location.B3, Color.BLACK);
         assertFalse(betamonMoveValidator.isValidMove(Location.R_BAR, Location.B3, dice(3)));
