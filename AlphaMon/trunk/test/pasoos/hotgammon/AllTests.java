@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
         TestAlphamon.class,
         TestBetamon.class,
         TestLocation.class,
-        pasoos.hotgammon.gameengine.validator.AllTests.class})
+        pasoos.hotgammon.rules.validator.AllTests.class})
 public class AllTests {
 
 }

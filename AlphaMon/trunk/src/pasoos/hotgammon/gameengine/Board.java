@@ -123,4 +123,15 @@ public class Board {
     public void set(Location location, Color color, int count) {
         board.put(location, color.getSign() * count);
     }
+
+    public boolean allCheckersOnBearOff(Color color) {
+
+        for (Location l : board.keySet()) {
+            Color locationColor = Color.getColorFromNumerical(board.get(l));
+            if (l != Location.getBearOff(color))
+                if (locationColor == color)
+                    return false;
+        }
+        return true;
+    }
 }

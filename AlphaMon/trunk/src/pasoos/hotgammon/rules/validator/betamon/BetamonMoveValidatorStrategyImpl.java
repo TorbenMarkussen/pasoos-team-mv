@@ -1,9 +1,9 @@
-package pasoos.hotgammon.gameengine.validator.betamon;
+package pasoos.hotgammon.rules.validator.betamon;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.Board;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
+import pasoos.hotgammon.rules.MoveValidatorStrategy;
 
 /**
  * Created with IntelliJ IDEA.

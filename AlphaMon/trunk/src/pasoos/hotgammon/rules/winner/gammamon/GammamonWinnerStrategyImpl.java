@@ -1,8 +1,8 @@
-package pasoos.hotgammon.gameengine.winner.gammamon;
+package pasoos.hotgammon.rules.winner.gammamon;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.gameengine.Board;
-import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
+import pasoos.hotgammon.rules.WinnerStrategy;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +21,11 @@ public class GammamonWinnerStrategyImpl implements WinnerStrategy {
 
     @Override
     public Color determineWinner(int turnCount) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        if (board.allCheckersOnBearOff(Color.BLACK))
+            return Color.BLACK;
+        else if (board.allCheckersOnBearOff(Color.RED))
+            return Color.RED;
+        else
+            return Color.NONE;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

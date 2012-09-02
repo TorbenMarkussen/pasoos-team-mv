@@ -1,11 +1,10 @@
-package pasoos.hotgammon.gameengine.validator;
+package pasoos.hotgammon.rules.validator.betamon;
 
 import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.Board;
-import pasoos.hotgammon.gameengine.validator.betamon.BetamonMoveValidatorStrategyImpl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -20,13 +19,6 @@ import static org.junit.Assert.assertTrue;
 public class TestBetamonMoveValidatorStrategyImpl {
     private BetamonMoveValidatorStrategyImpl betamonMoveValidator;
     private Board board;
-    private static final int NoDice = 0;
-    private static final int Dice1 = 1;
-    private static final int Dice2 = 2;
-    private static final int Dice3 = 3;
-    private static final int Dice4 = 4;
-    private static final int Dice5 = 5;
-    private static final int Dice6 = 6;
 
     @Before
     public void setUp() throws Exception {
@@ -42,10 +34,6 @@ public class TestBetamonMoveValidatorStrategyImpl {
     @Test
     public void should_allow_to_move_in_correct_direction() {
         assertTrue(betamonMoveValidator.isValidMove(Location.R12, Location.B11, dice(2)));
-    }
-
-    private int[] getDice(int d1, int d2) {
-        return new int[]{d1, d2};
     }
 
     private int dice(int d1) {

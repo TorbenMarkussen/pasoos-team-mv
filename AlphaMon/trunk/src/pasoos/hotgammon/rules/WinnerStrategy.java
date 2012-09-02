@@ -1,4 +1,4 @@
-package pasoos.hotgammon.gameengine.winner;
+package pasoos.hotgammon.rules;
 
 import pasoos.hotgammon.Color;
 

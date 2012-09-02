@@ -1,8 +1,7 @@
-package pasoos.hotgammon.gameengine.winner.simple;
+package pasoos.hotgammon.rules.winner.simple;
 
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.gameengine.Board;
-import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
+import pasoos.hotgammon.rules.WinnerStrategy;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,10 +11,8 @@ import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
  * To change this template use File | Settings | File Templates.
  */
 public class SimpleWinnerStrategyImpl implements WinnerStrategy {
-    private Board board;
 
-    public SimpleWinnerStrategyImpl(Board board) {
-        this.board = board;
+    public SimpleWinnerStrategyImpl() {
     }
 
     @Override

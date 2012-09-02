@@ -4,8 +4,8 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.RulesFactory;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
-import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
+import pasoos.hotgammon.rules.MoveValidatorStrategy;
+import pasoos.hotgammon.rules.WinnerStrategy;
 
 import java.util.Arrays;
 
@@ -30,24 +30,28 @@ public class GameImpl implements Game {
     private int turnCount;
     private MoveValidatorStrategy moveValidator;
     private WinnerStrategy winnerStrategy;
-    private RulesFactory moveValidatorFactory;
+    private Color theWinner;
 
 
     public GameImpl(RulesFactory mvf) {
         board = new Board();
-        moveValidator = mvf.GetMoveValidatorStrategy(board);
-        winnerStrategy = mvf.GetWinnerStrategy(board);
+        moveValidator = mvf.getMoveValidatorStrategy(board);
+        winnerStrategy = mvf.getWinnerStrategy(board);
     }
 
     public void newGame() {
         playerInTurn = Color.NONE;
         dice = new int[]{-1, 0};
         turnCount = 0;
+        theWinner = Color.NONE;
         board.initialize();
     }
 
 
     public void nextTurn() {
+        turnCount++;
+        theWinner = winnerStrategy.determineWinner(turnCount);
+
         if (playerInTurn != Color.BLACK)
             playerInTurn = Color.BLACK;
         else
@@ -60,7 +64,6 @@ public class GameImpl implements Game {
     }
 
     private void rollDice() {
-        turnCount++;
         if (dice[1] < 6) {
             dice[0] += 2;
             dice[1] += 2;
@@ -72,6 +75,9 @@ public class GameImpl implements Game {
 
     public boolean move(Location from, Location to) {
         Color fromColor = board.getColor(from);
+
+        if (theWinner != Color.NONE)
+            return false;
 
         if (playerInTurn != fromColor)
             return false;
@@ -89,6 +95,8 @@ public class GameImpl implements Game {
             board.IncrementBar(playerInTurn.getOpponentColor());                   // Oponent is striked to bar
         board.incrementLocation(to, playerInTurn);
         RemoveDice(diceUsed);
+
+        theWinner = winnerStrategy.determineWinner(turnCount);
 
         return true;
     }
@@ -135,7 +143,7 @@ public class GameImpl implements Game {
     }
 
     public Color winner() {
-        return winnerStrategy.determineWinner(turnCount);
+        return theWinner;
     }
 
     public Color getColor(Location location) {

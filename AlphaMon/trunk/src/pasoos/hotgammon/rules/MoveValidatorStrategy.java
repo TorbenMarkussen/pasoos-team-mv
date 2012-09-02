@@ -1,4 +1,4 @@
-package pasoos.hotgammon.gameengine.validator;
+package pasoos.hotgammon.rules;
 
 import pasoos.hotgammon.Location;
 

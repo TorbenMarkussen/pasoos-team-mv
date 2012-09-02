@@ -1,8 +1,6 @@
 package pasoos.hotgammon.rules;
 
 import pasoos.hotgammon.gameengine.Board;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
-import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +11,7 @@ import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
  */
 
 public interface RulesFactory {
-    MoveValidatorStrategy GetMoveValidatorStrategy(Board board);
+    MoveValidatorStrategy getMoveValidatorStrategy(Board board);
 
-    WinnerStrategy GetWinnerStrategy(Board board);
+    WinnerStrategy getWinnerStrategy(Board board);
 }

@@ -2,13 +2,10 @@ package pasoos.hotgammon.rules;
 
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.HotGammonTypes;
-import pasoos.hotgammon.gameengine.validator.MoveValidatorStrategy;
-import pasoos.hotgammon.gameengine.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
-import pasoos.hotgammon.gameengine.validator.betamon.BetamonMoveValidatorStrategyImpl;
-import pasoos.hotgammon.gameengine.winner.WinnerStrategy;
-import pasoos.hotgammon.gameengine.winner.gammamon.GammamonWinnerStrategyImpl;
-import pasoos.hotgammon.gameengine.winner.simple.SimpleWinnerStrategyImpl;
-import pasoos.hotgammon.rules.RulesFactory;
+import pasoos.hotgammon.rules.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.validator.betamon.BetamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.winner.gammamon.GammamonWinnerStrategyImpl;
+import pasoos.hotgammon.rules.winner.simple.SimpleWinnerStrategyImpl;
 
 public class RulesFactoryImpl implements RulesFactory {
     private HotGammonTypes hotGammonType;
@@ -18,7 +15,7 @@ public class RulesFactoryImpl implements RulesFactory {
     }
 
     @Override
-    public MoveValidatorStrategy GetMoveValidatorStrategy(Board board) {
+    public MoveValidatorStrategy getMoveValidatorStrategy(Board board) {
         if (hotGammonType == HotGammonTypes.BetaMon)
             return new BetamonMoveValidatorStrategyImpl(board);
         else
@@ -27,11 +24,11 @@ public class RulesFactoryImpl implements RulesFactory {
     }
 
     @Override
-    public WinnerStrategy GetWinnerStrategy(Board board) {
+    public WinnerStrategy getWinnerStrategy(Board board) {
         if (hotGammonType == HotGammonTypes.Gammamon)
             return new GammamonWinnerStrategyImpl(board);
         else
-            return new SimpleWinnerStrategyImpl(board);
+            return new SimpleWinnerStrategyImpl();
 
     }
 }
