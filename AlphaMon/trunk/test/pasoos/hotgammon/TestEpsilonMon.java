@@ -16,11 +16,11 @@ import static org.mockito.Mockito.when;
 
 public class TestEpsilonMon {
     private Game game;
-    private DiceRoller stuppedDiceRoller;
+    private DiceRoller stubbedDiceRoller;
 
     @Before
     public void setup() {
-        stuppedDiceRoller = mock(DiceRoller.class);
+        stubbedDiceRoller = mock(DiceRoller.class);
 
         RulesFactory ruleFactory = new RulesFactory() {
             @Override
@@ -35,7 +35,7 @@ public class TestEpsilonMon {
 
             @Override
             public DiceRoller getDiceRoller() {
-                return stuppedDiceRoller;
+                return stubbedDiceRoller;
             }
         };
 
@@ -44,12 +44,12 @@ public class TestEpsilonMon {
 
     @Test
     public void game_should_use_dice_roller_stub() {
-        when(stuppedDiceRoller.roll()).thenReturn(new int[]{4, 2});
+        when(stubbedDiceRoller.roll()).thenReturn(new int[]{4, 2});
         game.nextTurn();
         assertEquals(4, game.diceValuesLeft()[0]);
         assertEquals(2, game.diceValuesLeft()[1]);
 
-        when(stuppedDiceRoller.roll()).thenReturn(new int[]{3, 6});
+        when(stubbedDiceRoller.roll()).thenReturn(new int[]{3, 6});
         game.nextTurn();
         assertEquals(6, game.diceValuesLeft()[0]);
         assertEquals(3, game.diceValuesLeft()[1]);
