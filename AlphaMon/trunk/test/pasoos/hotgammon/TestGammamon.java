@@ -32,7 +32,7 @@ public class TestGammamon {
     @Test
     public void play_gammamon_until_game_has_finished_and_winner_is_found() {
         blackMoving(R1, R1, B_BEAR_OFF);
-        redMoving(Location.B1, B1, R_BEAR_OFF);
+        redMoving(B1, B1, R_BEAR_OFF);
         blackMoving(R12, R12, B_BEAR_OFF);
         redMoving(B12, B12, R_BEAR_OFF);
         blackMoving(R12, R12, B_BEAR_OFF);

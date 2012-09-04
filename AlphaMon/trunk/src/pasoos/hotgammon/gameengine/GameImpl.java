@@ -37,11 +37,11 @@ public class GameImpl implements Game {
     private DiceRoller diceRoller;
 
 
-    public GameImpl(RulesFactory mvf) {
-        board = new Board();
-        moveValidator = mvf.getMoveValidatorStrategy(board);
-        winnerStrategy = mvf.getWinnerStrategy(board);
-        diceRoller = mvf.getDiceRoller();
+    public GameImpl(RulesFactory rulesFactory) {
+        board = rulesFactory.getBoard();
+        moveValidator = rulesFactory.getMoveValidatorStrategy(board);
+        winnerStrategy = rulesFactory.getWinnerStrategy(board);
+        diceRoller = rulesFactory.getDiceRoller();
     }
 
     public void newGame() {
@@ -126,17 +126,18 @@ public class GameImpl implements Game {
     }
 
     public int[] diceThrown() {
-        int[] da = new int[dice.size()];
+        return listToIntArray(dice);
+    }
+
+    private int[] listToIntArray(List<Integer> list) {
+        int[] da = new int[list.size()];
         for (int i = 0; i < da.length; i++)
-            da[i] = dice.get(i);
+            da[i] = list.get(i);
         return da;
     }
 
     public int[] diceValuesLeft() {
-        int[] da = new int[diceValuesLeft.size()];
-        for (int i = 0; i < da.length; i++)
-            da[i] = diceValuesLeft.get(i);
-        return da;
+        return listToIntArray(diceValuesLeft);
     }
 
     public Color winner() {

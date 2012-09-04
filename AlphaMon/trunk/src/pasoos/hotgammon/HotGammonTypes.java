@@ -4,5 +4,5 @@ public enum HotGammonTypes {
     AlphaMon,
     BetaMon,
     GammaMon,
-    EpsilonMon
+    ZetaMon, EpsilonMon
 }

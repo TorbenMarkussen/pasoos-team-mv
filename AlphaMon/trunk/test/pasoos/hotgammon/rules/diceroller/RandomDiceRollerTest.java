@@ -4,11 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RandomDiceRollerTest {
-    private RandomDiceRoller diceroller;
+    //private RandomDiceRoller diceroller;
 
     @Before
     public void setUp() throws Exception {
-        diceroller = new RandomDiceRoller();
+        //diceroller = new RandomDiceRoller();
     }
 
     @Test
@@ -22,12 +22,7 @@ public class RandomDiceRollerTest {
     }
 
     @Test
-    public void should_be_randomized_values() {
-
-    }
-
-    @Test
-    public void first_and_second_die_should_be_equal_roughly_1_out_of_6_times() {
+    public void should_be_able_to_create_all_36_dice_combinations() {
 
     }
 }

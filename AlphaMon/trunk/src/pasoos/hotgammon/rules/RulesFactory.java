@@ -8,4 +8,6 @@ public interface RulesFactory {
     WinnerStrategy getWinnerStrategy(Board board);
 
     DiceRoller getDiceRoller();
+
+    Board getBoard();
 }

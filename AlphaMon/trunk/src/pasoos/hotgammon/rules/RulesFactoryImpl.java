@@ -1,8 +1,11 @@
 package pasoos.hotgammon.rules;
 
+import pasoos.hotgammon.rules.boards.BackGammonBoardStrategyImpl;
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.HotGammonTypes;
+import pasoos.hotgammon.rules.boards.HybergammonBoardStrategyImpl;
 import pasoos.hotgammon.rules.diceroller.FixedDiceRoller;
+import pasoos.hotgammon.rules.diceroller.RandomDiceRoller;
 import pasoos.hotgammon.rules.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
 import pasoos.hotgammon.rules.validator.betamon.BetamonMoveValidatorStrategyImpl;
 import pasoos.hotgammon.rules.winner.gammamon.GammamonWinnerStrategyImpl;
@@ -34,6 +37,16 @@ public class RulesFactoryImpl implements RulesFactory {
 
     @Override
     public DiceRoller getDiceRoller() {
+        if (hotGammonType == HotGammonTypes.EpsilonMon)
+            return new RandomDiceRoller();
         return new FixedDiceRoller();
+    }
+
+    @Override
+    public Board getBoard() {
+        if (hotGammonType == HotGammonTypes.ZetaMon)
+            return new Board(new HybergammonBoardStrategyImpl());
+
+        return new Board(new BackGammonBoardStrategyImpl());
     }
 }

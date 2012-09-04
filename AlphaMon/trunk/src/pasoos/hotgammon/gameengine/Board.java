@@ -2,14 +2,17 @@ package pasoos.hotgammon.gameengine;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.rules.BoardStrategy;
+import pasoos.hotgammon.rules.boards.BackGammonBoardStrategyImpl;
 
 import java.util.*;
 
 public class Board {
 
     //private int[] board;
-    private EnumMap<Location, Integer> board = new EnumMap<Location, Integer>(Location.class);
+    private EnumMap<Location, Integer> board;
     private static final HashMap<Color, List<Location>> outerLocations = new HashMap<Color, List<Location>>();
+    private BoardStrategy boardStrategy;
 
     static {
         List<Location> all = new ArrayList<Location>(Arrays.asList(Location.values()));
@@ -37,23 +40,17 @@ public class Board {
 
     }
 
-    public Board() {
+    public Board(BoardStrategy boardStrategy) {
+        this.boardStrategy = boardStrategy;
         initialize();
     }
 
-    private void initBoard() {
-        clear();
+    public Board() {
+        this(new BackGammonBoardStrategyImpl());
+    }
 
-        board.put(Location.R1, Color.BLACK.getSign() * 2);
-        board.put(Location.R6, Color.RED.getSign() * 5);
-        board.put(Location.R8, Color.RED.getSign() * 3);
-        board.put(Location.R12, Color.BLACK.getSign() * 5);
-
-        board.put(Location.B1, Color.RED.getSign() * 2);
-        board.put(Location.B6, Color.BLACK.getSign() * 5);
-        board.put(Location.B8, Color.BLACK.getSign() * 3);
-        board.put(Location.B12, Color.RED.getSign() * 5);
-
+    public void initialize() {
+        board = boardStrategy.create();
     }
 
     public void clear() {
@@ -77,10 +74,6 @@ public class Board {
 
     public int getCount(Location location) {
         return Math.abs(board.get(location));
-    }
-
-    public void initialize() {
-        initBoard();
     }
 
     public void decrementLocation(Location location) {

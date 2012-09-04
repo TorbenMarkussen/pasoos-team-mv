@@ -11,8 +11,7 @@ import pasoos.hotgammon.rules.validator.alphamon.AlphamonMoveValidatorStrategyIm
 import pasoos.hotgammon.rules.winner.simple.SimpleWinnerStrategyImpl;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class TestEpsilonMon {
     private Game game;
@@ -37,6 +36,11 @@ public class TestEpsilonMon {
             public DiceRoller getDiceRoller() {
                 return stubbedDiceRoller;
             }
+
+            @Override
+            public Board getBoard() {
+                return new Board();
+            }
         };
 
         game = GameFactory.Get(ruleFactory);
@@ -53,5 +57,6 @@ public class TestEpsilonMon {
         game.nextTurn();
         assertEquals(6, game.diceValuesLeft()[0]);
         assertEquals(3, game.diceValuesLeft()[1]);
+
     }
 }
