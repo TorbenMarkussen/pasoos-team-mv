@@ -24,7 +24,7 @@ import java.util.List;
  * purposes. For any commercial use, see http://www.baerbak.com/
  */
 
-public class GameImpl implements Game {
+public class GameImpl implements Game, GameState {
 
     private Color playerInTurn;
     private List<Integer> dice;
@@ -40,7 +40,7 @@ public class GameImpl implements Game {
     public GameImpl(RulesFactory rulesFactory) {
         board = rulesFactory.getBoard();
         moveValidator = rulesFactory.getMoveValidatorStrategy(board);
-        winnerStrategy = rulesFactory.getWinnerStrategy(board);
+        winnerStrategy = rulesFactory.getWinnerStrategy();
         diceRoller = rulesFactory.getDiceRoller();
     }
 
@@ -56,7 +56,7 @@ public class GameImpl implements Game {
 
     public void nextTurn() {
         turnCount++;
-        theWinner = winnerStrategy.determineWinner(turnCount);
+        theWinner = winnerStrategy.determineWinner(this);
 
         if (playerInTurn != Color.BLACK)
             playerInTurn = Color.BLACK;
@@ -97,7 +97,7 @@ public class GameImpl implements Game {
         board.incrementLocation(to, playerInTurn);
         removeDice(diceUsed);
 
-        theWinner = winnerStrategy.determineWinner(turnCount);
+        theWinner = winnerStrategy.determineWinner(this);
 
         return true;
     }
@@ -150,5 +150,15 @@ public class GameImpl implements Game {
 
     public int getCount(Location location) {
         return board.getCount(location);
+    }
+
+    @Override
+    public int getTurnCount() {
+        return turnCount;
+    }
+
+    @Override
+    public boolean allCheckersOnBearOff(Color color) {
+        return board.allCheckersOnBearOff(color);
     }
 }

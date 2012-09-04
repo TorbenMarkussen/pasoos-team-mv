@@ -28,7 +28,7 @@ public class TestEpsilonMon {
             }
 
             @Override
-            public WinnerStrategy getWinnerStrategy(Board board) {
+            public WinnerStrategy getWinnerStrategy() {
                 return new SimpleWinnerStrategyImpl();
             }
 
