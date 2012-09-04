@@ -9,7 +9,6 @@ import java.util.*;
 
 public class Board {
 
-    //private int[] board;
     private EnumMap<Location, Integer> board;
     private static final HashMap<Color, List<Location>> outerLocations = new HashMap<Color, List<Location>>();
     private BoardStrategy boardStrategy;
