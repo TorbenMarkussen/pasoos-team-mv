@@ -3,6 +3,7 @@ package pasoos.hotgammon;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pasoos.hotgammon.rules.factory.AlphaMonRules;
 
 import java.util.Arrays;
 
@@ -29,8 +30,8 @@ public class TestAlphamon {
     }
 
     @Before
-    public void setup() {
-        game = GameFactory.Get(HotGammonTypes.AlphaMon);
+    public void setup() throws IllegalAccessException, InstantiationException {
+        game = GameFactory.createGame(AlphaMonRules.class);
         game.newGame();
     }
 

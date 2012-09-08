@@ -2,15 +2,14 @@ package pasoos.hotgammon;
 
 import pasoos.hotgammon.gameengine.GameImpl;
 import pasoos.hotgammon.rules.RulesFactory;
-import pasoos.hotgammon.rules.RulesFactoryImpl;
 
 class GameFactory {
 
-    public static Game Get(HotGammonTypes type) {
-        return new GameImpl(new RulesFactoryImpl(type));
+    public static Game createGame(Class<? extends RulesFactory> rulesClazz) throws IllegalAccessException, InstantiationException {
+        return createGame(rulesClazz.newInstance());
     }
 
-    public static Game Get(RulesFactory rf) {
+    public static Game createGame(RulesFactory rf) {
         return new GameImpl(rf);
     }
 

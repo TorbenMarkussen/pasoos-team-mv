@@ -3,6 +3,7 @@ package pasoos.hotgammon;
 import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.gameengine.BoardImpl;
 import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.RulesFactory;
@@ -23,27 +24,27 @@ public class TestEpsilonMon {
 
         RulesFactory ruleFactory = new RulesFactory() {
             @Override
-            public MoveValidatorStrategy getMoveValidatorStrategy(Board board) {
+            public MoveValidatorStrategy createMoveValidatorStrategy(Board board) {
                 return new AlphamonMoveValidatorStrategyImpl(board);
             }
 
             @Override
-            public WinnerStrategy getWinnerStrategy() {
+            public WinnerStrategy createWinnerStrategy() {
                 return new SimpleWinnerStrategyImpl();
             }
 
             @Override
-            public DiceRoller getDiceRoller() {
+            public DiceRoller createDiceRoller() {
                 return stubbedDiceRoller;
             }
 
             @Override
-            public Board getBoard() {
-                return new Board();
+            public Board createBoard() {
+                return new BoardImpl();
             }
         };
 
-        game = GameFactory.Get(ruleFactory);
+        game = GameFactory.createGame(ruleFactory);
     }
 
     @Test
@@ -53,10 +54,12 @@ public class TestEpsilonMon {
         assertEquals(4, game.diceValuesLeft()[0]);
         assertEquals(2, game.diceValuesLeft()[1]);
 
+
         when(stubbedDiceRoller.roll()).thenReturn(new int[]{3, 6});
         game.nextTurn();
         assertEquals(6, game.diceValuesLeft()[0]);
         assertEquals(3, game.diceValuesLeft()[1]);
 
+        verify(stubbedDiceRoller, times(2)).roll();
     }
 }

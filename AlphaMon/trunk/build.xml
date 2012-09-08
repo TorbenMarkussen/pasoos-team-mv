@@ -4,7 +4,13 @@
     <property name="src.home" value="${basedir}/src"/>
     <property name="test.home" value="${basedir}/test"/>
     <property name="junit-jar" value="${basedir}/lib/junit-4.10.jar"/>
+    <property name="mockito-jar" value="${basedir}/lib/mockito-1.9.0/mockito-all-1.9.0.jar"/>
     <property name="doc.home" value="${basedir}/doc"/>
+
+    <path id="classpath">
+        <pathelement location="${junit-jar}"/>
+        <pathelement location="${mockito-jar}"/>
+    </path>
 
     <target name="prepare" depends="clean">
         <mkdir dir="${build.home}"/>
@@ -25,18 +31,18 @@
     <target name="compile_test" depends="compile">
         <javac srcdir="${test.home}" destdir="${build.home}/test_classes" includeantruntime="false">
             <classpath>
+                <path refid="classpath"/>
                 <pathelement location="${build.home}/classes"/>
-                <pathelement location="${junit-jar}"/>
             </classpath>
         </javac>
     </target>
 
     <target name="test" depends="compile_test">
-        <junit printsummary="yes" haltonfailure="yes">
+        <junit printsummary="on" haltonfailure="yes">
             <classpath>
+                <path refid="classpath"/>
                 <pathelement location="${build.home}/classes"/>
                 <pathelement location="${build.home}/test_classes"/>
-                <pathelement location="${junit-jar}"/>
             </classpath>
             <batchtest>
                 <fileset dir="${test.home}">

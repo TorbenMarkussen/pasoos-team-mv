@@ -8,7 +8,7 @@ import java.util.*;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
-public class RandomDiceRollerTest {
+public class TestRandomDiceRoller {
     private RandomDiceRoller diceroller;
     private int[] dices;
     private static final Set<Integer> validDices = new HashSet<Integer>(Arrays.asList(new Integer[]{1, 2, 3, 4, 5, 6}));

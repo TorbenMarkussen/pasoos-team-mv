@@ -1,25 +1,19 @@
 package pasoos.hotgammon;
 
 import org.junit.*;
+import pasoos.hotgammon.rules.factory.BetaMonRules;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 
-/**
- * Created with IntelliJ IDEA.
- * User: PASMA00T
- * Date: 28-08-12
- * Time: 20:08
- * To change this template use File | Settings | File Templates.
- */
 public class TestBetamon {
 
     private Game game;
 
     @Before
-    public void setup() {
-        game = GameFactory.Get(HotGammonTypes.BetaMon);
+    public void setup() throws IllegalAccessException, InstantiationException {
+        game = GameFactory.createGame(BetaMonRules.class);
         game.newGame();
     }
 

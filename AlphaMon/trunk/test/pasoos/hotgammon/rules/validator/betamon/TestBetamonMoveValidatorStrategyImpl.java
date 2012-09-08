@@ -4,18 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.gameengine.BoardImpl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestBetamonMoveValidatorStrategyImpl {
     private BetamonMoveValidatorStrategyImpl betamonMoveValidator;
-    private Board board;
+    private BoardImpl board;
 
     @Before
     public void setUp() throws Exception {
-        board = new Board();
+        board = new BoardImpl();
         betamonMoveValidator = new BetamonMoveValidatorStrategyImpl(board);
     }
 

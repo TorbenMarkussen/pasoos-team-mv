@@ -2,13 +2,13 @@ package pasoos.hotgammon.rules.validator.betamon;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.gameengine.BoardState;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 
 public class BetamonMoveValidatorStrategyImpl implements MoveValidatorStrategy {
-    private Board board;
+    private BoardState board;
 
-    public BetamonMoveValidatorStrategyImpl(Board board) {
+    public BetamonMoveValidatorStrategyImpl(BoardState board) {
         this.board = board;
     }
 
@@ -38,7 +38,7 @@ public class BetamonMoveValidatorStrategyImpl implements MoveValidatorStrategy {
 
         if ((toLocation == Location.getBearOff(fromColor))) {
             //bearoff move
-            if (!board.allInInnerTable(fromColor))
+            if (!board.hasAllInInnerTable(fromColor))
                 return false;
 
             if (dice == moveDistance) {

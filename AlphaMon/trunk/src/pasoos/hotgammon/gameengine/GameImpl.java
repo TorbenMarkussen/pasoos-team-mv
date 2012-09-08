@@ -38,10 +38,10 @@ public class GameImpl implements Game, GameState {
 
 
     public GameImpl(RulesFactory rulesFactory) {
-        board = rulesFactory.getBoard();
-        moveValidator = rulesFactory.getMoveValidatorStrategy(board);
-        winnerStrategy = rulesFactory.getWinnerStrategy();
-        diceRoller = rulesFactory.getDiceRoller();
+        board = rulesFactory.createBoard();
+        moveValidator = rulesFactory.createMoveValidatorStrategy(board);
+        winnerStrategy = rulesFactory.createWinnerStrategy();
+        diceRoller = rulesFactory.createDiceRoller();
     }
 
     public void newGame() {
@@ -159,6 +159,6 @@ public class GameImpl implements Game, GameState {
 
     @Override
     public boolean allCheckersOnBearOff(Color color) {
-        return board.allCheckersOnBearOff(color);
+        return board.hasAllCheckersOnBearOff(color);
     }
 }

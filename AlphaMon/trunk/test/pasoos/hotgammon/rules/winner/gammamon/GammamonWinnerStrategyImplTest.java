@@ -4,19 +4,19 @@ import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gameengine.Board;
+import pasoos.hotgammon.gameengine.BoardImpl;
 import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.WinnerStrategy;
 
 import static junit.framework.Assert.assertEquals;
 
 public class GammamonWinnerStrategyImplTest {
-    private Board board;
+    private BoardImpl board;
     private WinnerStrategy winner;
 
     @Before
     public void setUp() throws Exception {
-        board = new Board();
+        board = new BoardImpl();
         winner = new GammamonWinnerStrategyImpl();
     }
 
@@ -43,7 +43,7 @@ public class GammamonWinnerStrategyImplTest {
 
             @Override
             public boolean allCheckersOnBearOff(Color color) {
-                return board.allCheckersOnBearOff(color);
+                return board.hasAllCheckersOnBearOff(color);
             }
         };
     }

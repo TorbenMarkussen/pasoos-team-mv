@@ -3,11 +3,11 @@ package pasoos.hotgammon.rules;
 import pasoos.hotgammon.gameengine.Board;
 
 public interface RulesFactory {
-    MoveValidatorStrategy getMoveValidatorStrategy(Board board);
+    MoveValidatorStrategy createMoveValidatorStrategy(Board board);
 
-    WinnerStrategy getWinnerStrategy();
+    WinnerStrategy createWinnerStrategy();
 
-    DiceRoller getDiceRoller();
+    DiceRoller createDiceRoller();
 
-    Board getBoard();
+    Board createBoard();
 }
