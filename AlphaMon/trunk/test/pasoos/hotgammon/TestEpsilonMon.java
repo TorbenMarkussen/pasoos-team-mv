@@ -51,6 +51,7 @@ public class TestEpsilonMon {
     public void game_should_use_dice_roller_stub() {
         when(stubbedDiceRoller.roll()).thenReturn(new int[]{4, 2});
         game.nextTurn();
+        assertEquals(2, game.diceValuesLeft().length);
         assertEquals(4, game.diceValuesLeft()[0]);
         assertEquals(2, game.diceValuesLeft()[1]);
 

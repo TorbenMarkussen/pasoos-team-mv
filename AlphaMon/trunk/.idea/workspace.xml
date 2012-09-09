@@ -2,37 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/BoardImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/BoardState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/InitializableBoard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/AlphaMonRules.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/BetaMonRules.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/EpsilonMonRules.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/GammaMonRules.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/ZetaMonRules.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamonCustomBoard.java" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\HotGammon\src\pasoos\hotgammon\HotGammonTypes.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\HotGammon\src\pasoos\hotgammon\rules\RulesFactoryImpl.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\HotGammon\src\pasoos\hotgammon\rules\BoardStrategy.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/BoardInitializerStrategy.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\HotGammon\src\pasoos\hotgammon\rules\boards\BackGammonBoardStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/boards/BackGammonBoardInitializerImpl.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\HotGammon\src\pasoos\hotgammon\rules\boards\HybergammonBoardStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/boards/HybergammonBoardInitializerImpl.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\HotGammon\test\pasoos\hotgammon\rules\diceroller\RandomDiceRollerTest.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/rules/diceroller/TestRandomDiceRoller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ea-doc/HotGammon.eap" afterPath="$PROJECT_DIR$/ea-doc/HotGammon.eap" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/GameFactory.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/GameFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/Board.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/RulesFactory.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/RulesFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/validator/alphamon/AlphamonMoveValidatorStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/validator/alphamon/AlphamonMoveValidatorStrategyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/validator/betamon/BetamonMoveValidatorStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/rules/validator/betamon/BetamonMoveValidatorStrategyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestAlphamon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestAlphamon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamon.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestGammamon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestGammamon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestZetaMon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestZetaMon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/rules/validator/betamon/TestBetamonMoveValidatorStrategyImpl.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/rules/validator/betamon/TestBetamonMoveValidatorStrategyImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/rules/winner/gammamon/GammamonWinnerStrategyImplTest.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/rules/winner/gammamon/GammamonWinnerStrategyImplTest.java" />
     </list>
     <ignored path="AlphaMon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,15 +71,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="404" selection-end="404" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="BoardImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/BoardImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -166,10 +129,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EpsilonMonRules.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EpsilonMonRules.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/EpsilonMonRules.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="28" selection-start="209" selection-end="209" vertical-scroll-proportion="0.1457976">
+            <state line="6" column="28" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestEpsilonMon.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.310219">
               <folding />
             </state>
           </provider>
@@ -201,7 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestGammamon.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestZetaMon.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/GameFactory.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/HotGammonTypes.java" />
@@ -217,6 +188,7 @@
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/rules/boards/BackGammonBoardInitializerImpl.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/BoardImpl.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamonCustomBoard.java" />
+        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java" />
       </list>
     </option>
   </component>
@@ -451,6 +423,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AlphaMon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HotGammon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pasoos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotgammon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AlphaMon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HotGammon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pasoos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hotgammon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -510,29 +526,7 @@
       <recent name="pasoos.hotgammon.gameengine.validator" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All Tests">
-    <configuration default="false" name="TestAlphamon.should_have_die_values_1_and_2_after_having_thrown_5_and_6" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="AlphaMon" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pasoos.hotgammon" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.TestAlphamon" />
-      <option name="METHOD_NAME" value="should_have_die_values_1_and_2_after_having_thrown_5_and_6" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestEpsilonMon.game_should_use_dice_roller_stub">
     <configuration default="false" name="TestGammamon.play_gammamon_until_game_has_finished_and_winner_is_found" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="AlphaMon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -636,6 +630,28 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestEpsilonMon.game_should_use_dice_roller_stub" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="AlphaMon" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="pasoos.hotgammon" />
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.TestEpsilonMon" />
+      <option name="METHOD_NAME" value="game_should_use_dice_roller_stub" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -785,12 +801,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TestAlphamon.should_have_die_values_1_and_2_after_having_thrown_5_and_6" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestGammamon.play_gammamon_until_game_has_finished_and_winner_is_found" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestRandomDiceRoller" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.All Tests" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestBetamonCustomBoard.should_fail_to_move_to_bear_off" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TestBetamonCustomBoard.should_allow_bear_off_since_all_checkers_are_in_inner_table" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestGammamon.play_gammamon_until_game_has_finished_and_winner_is_found" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestRandomDiceRoller" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All Tests" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestBetamonCustomBoard.should_fail_to_move_to_bear_off" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestBetamonCustomBoard.should_allow_bear_off_since_all_checkers_are_in_inner_table" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TestEpsilonMon.game_should_use_dice_roller_stub" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -874,7 +890,11 @@
       <created>1346687948093</created>
       <updated>1346687948093</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="refactored factory and added TestBetamonCustomBoard example">
+      <created>1347111203112</created>
+      <updated>1347111203112</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -899,7 +919,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1092" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32799146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299411" sideWeight="0.7188841" order="3" side_tool="false" content_ui="tabs" />
@@ -910,13 +930,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32188842" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32188842" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.67168266" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22656669" sideWeight="0.6781116" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35944206" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22656669" sideWeight="0.64055794" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35944206" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -999,13 +1019,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestAlphamon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="2541" selection-end="2541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="225" selection-end="406" vertical-scroll-proportion="0.0">
@@ -1112,7 +1125,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/rules/factory/EpsilonMonRules.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="28" selection-start="209" selection-end="209" vertical-scroll-proportion="0.1457976">
+        <state line="6" column="28" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="720" selection-end="720" vertical-scroll-proportion="0.310219">
           <folding />
         </state>
       </provider>
