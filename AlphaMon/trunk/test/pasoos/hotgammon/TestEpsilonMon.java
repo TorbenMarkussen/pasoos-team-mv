@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.gameengine.BoardImpl;
+import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.RulesFactory;
@@ -24,7 +25,7 @@ public class TestEpsilonMon {
 
         RulesFactory ruleFactory = new RulesFactory() {
             @Override
-            public MoveValidatorStrategy createMoveValidatorStrategy(Board board) {
+            public MoveValidatorStrategy createMoveValidatorStrategy(GameState gameState, Board board) {
                 return new AlphamonMoveValidatorStrategyImpl(board);
             }
 

@@ -39,7 +39,7 @@ public class GameImpl implements Game, GameState {
 
     public GameImpl(RulesFactory rulesFactory) {
         board = rulesFactory.createBoard();
-        moveValidator = rulesFactory.createMoveValidatorStrategy(board);
+        moveValidator = rulesFactory.createMoveValidatorStrategy(this, board);
         winnerStrategy = rulesFactory.createWinnerStrategy();
         diceRoller = rulesFactory.createDiceRoller();
     }

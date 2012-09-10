@@ -6,4 +6,6 @@ public interface GameState {
     public int getTurnCount();
 
     boolean allCheckersOnBearOff(Color color);
+
+    Color getPlayerInTurn();
 }

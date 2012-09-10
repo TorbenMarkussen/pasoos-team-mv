@@ -45,6 +45,11 @@ public class GammamonWinnerStrategyImplTest {
             public boolean allCheckersOnBearOff(Color color) {
                 return board.hasAllCheckersOnBearOff(color);
             }
+
+            @Override
+            public Color getPlayerInTurn() {
+                return Color.NONE;  //To change body of implemented methods use File | Settings | File Templates.
+            }
         };
     }
 
