@@ -10,8 +10,4 @@ public interface ToolKitFactory {
     YButtonBridge getYButtonBridge();
 
     YListBoxBridge getYListBoxBridge();
-
-    YButton getButton();
-
-    YListBox getListbox();
 }
