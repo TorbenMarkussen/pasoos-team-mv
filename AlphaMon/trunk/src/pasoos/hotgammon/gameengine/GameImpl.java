@@ -4,8 +4,8 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.DiceRoller;
+import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
-import pasoos.hotgammon.rules.RulesFactory;
 import pasoos.hotgammon.rules.WinnerStrategy;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class GameImpl implements Game, GameState {
     private DiceRoller diceRoller;
 
 
-    public GameImpl(RulesFactory rulesFactory) {
+    public GameImpl(HotGammonFactory rulesFactory) {
         board = rulesFactory.createBoard();
         moveValidator = rulesFactory.createMoveValidatorStrategy(this, board);
         winnerStrategy = rulesFactory.createWinnerStrategy();

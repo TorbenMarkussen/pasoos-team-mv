@@ -3,7 +3,7 @@ package pasoos.hotgammon;
 import org.junit.Test;
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.gameengine.BoardImpl;
-import pasoos.hotgammon.rules.factory.BetaMonRules;
+import pasoos.hotgammon.rules.factory.BetaMonFactoryImpl;
 import pasoos.hotgammon.rules.BoardInitializerStrategy;
 import pasoos.hotgammon.gameengine.InitializableBoard;
 
@@ -15,7 +15,7 @@ import static pasoos.hotgammon.Location.*;
 public class TestBetamonCustomBoard {
 
     private Game createGame(final BoardInitializerStrategy boardInitializerStrategy) {
-        Game game = GameFactory.createGame(new BetaMonRules() {
+        Game game = GameFactory.createGame(new BetaMonFactoryImpl() {
             @Override
             public Board createBoard() {
                 return new BoardImpl(boardInitializerStrategy);

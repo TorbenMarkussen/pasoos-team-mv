@@ -2,7 +2,7 @@ package pasoos.hotgammon;
 
 import org.junit.Before;
 import org.junit.Test;
-import pasoos.hotgammon.rules.factory.HandiMonRules;
+import pasoos.hotgammon.rules.factory.HandiMonFactoryImpl;
 
 import static junit.framework.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -13,7 +13,7 @@ public class TestHandiMon {
 
     @Before
     public void setup() throws IllegalAccessException, InstantiationException {
-        game = GameFactory.createGame(HandiMonRules.class);
+        game = GameFactory.createGame(HandiMonFactoryImpl.class);
         game.newGame();
     }
 
