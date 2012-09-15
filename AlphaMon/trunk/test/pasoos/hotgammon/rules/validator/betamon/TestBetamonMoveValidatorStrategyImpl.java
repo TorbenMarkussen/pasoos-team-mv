@@ -5,6 +5,7 @@ import org.junit.Test;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.BoardImpl;
+import pasoos.hotgammon.rules.validator.BetamonMoveValidatorStrategyImpl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

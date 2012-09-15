@@ -9,7 +9,7 @@ import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.WinnerStrategy;
-import pasoos.hotgammon.rules.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.validator.AlphamonMoveValidatorStrategyImpl;
 import pasoos.hotgammon.rules.winner.simple.SimpleWinnerStrategyImpl;
 
 import static org.junit.Assert.assertEquals;

@@ -9,7 +9,7 @@ import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.WinnerStrategy;
 import pasoos.hotgammon.rules.boards.BackGammonBoardInitializerImpl;
 import pasoos.hotgammon.rules.diceroller.FixedDiceRoller;
-import pasoos.hotgammon.rules.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.validator.AlphamonMoveValidatorStrategyImpl;
 import pasoos.hotgammon.rules.winner.simple.SimpleWinnerStrategyImpl;
 
 public class AlphaMonFactoryImpl implements HotGammonFactory {

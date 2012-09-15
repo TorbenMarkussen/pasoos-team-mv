@@ -1,4 +1,4 @@
-package pasoos.hotgammon.rules.validator.alphamon;
+package pasoos.hotgammon.rules.validator;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;

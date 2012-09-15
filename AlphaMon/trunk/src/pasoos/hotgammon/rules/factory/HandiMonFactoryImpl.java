@@ -4,8 +4,8 @@ import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.validator.HandiMoveStrategyImpl;
-import pasoos.hotgammon.rules.validator.alphamon.AlphamonMoveValidatorStrategyImpl;
-import pasoos.hotgammon.rules.validator.betamon.BetamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.validator.AlphamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.validator.BetamonMoveValidatorStrategyImpl;
 
 
 public class HandiMonFactoryImpl extends AlphaMonFactoryImpl {
