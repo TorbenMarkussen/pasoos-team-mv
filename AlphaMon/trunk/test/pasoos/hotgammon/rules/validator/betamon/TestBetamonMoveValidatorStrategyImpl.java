@@ -5,19 +5,19 @@ import org.junit.Test;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.BoardImpl;
-import pasoos.hotgammon.rules.validator.BetamonMoveValidatorStrategyImpl;
+import pasoos.hotgammon.rules.validator.BackgammonMoveValidatorStrategy;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestBetamonMoveValidatorStrategyImpl {
-    private BetamonMoveValidatorStrategyImpl betamonMoveValidator;
+    private BackgammonMoveValidatorStrategy betamonMoveValidator;
     private BoardImpl board;
 
     @Before
     public void setUp() throws Exception {
         board = new BoardImpl();
-        betamonMoveValidator = new BetamonMoveValidatorStrategyImpl(board);
+        betamonMoveValidator = new BackgammonMoveValidatorStrategy(board);
     }
 
     @Test

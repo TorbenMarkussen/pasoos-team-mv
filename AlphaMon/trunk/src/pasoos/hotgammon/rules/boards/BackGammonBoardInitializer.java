@@ -7,17 +7,18 @@ import static pasoos.hotgammon.Color.BLACK;
 import static pasoos.hotgammon.Color.RED;
 import static pasoos.hotgammon.Location.*;
 
-public class HybergammonBoardInitializerImpl implements BoardInitializerStrategy {
+public class BackGammonBoardInitializer implements BoardInitializerStrategy {
     @Override
     public void initialize(InitializableBoard board) {
         board.clear();
+        board.set(R1, BLACK, 2);
+        board.set(R6, RED, 5);
+        board.set(R8, RED, 3);
+        board.set(R12, BLACK, 5);
 
-        board.set(R1, BLACK, 1);
-        board.set(R2, BLACK, 1);
-        board.set(R3, BLACK, 1);
-
-        board.set(B1, RED, 1);
-        board.set(B2, RED, 1);
-        board.set(B3, RED, 1);
+        board.set(B1, RED, 2);
+        board.set(B6, BLACK, 5);
+        board.set(B8, BLACK, 3);
+        board.set(B12, RED, 5);
     }
 }

@@ -3,7 +3,7 @@ package pasoos.hotgammon.gameengine;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.BoardInitializerStrategy;
-import pasoos.hotgammon.rules.boards.BackGammonBoardInitializerImpl;
+import pasoos.hotgammon.rules.boards.BackGammonBoardInitializer;
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ public class BoardImpl implements Board, InitializableBoard {
     }
 
     public BoardImpl() {
-        this(new BackGammonBoardInitializerImpl());
+        this(new BackGammonBoardInitializer());
     }
 
     @Override

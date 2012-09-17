@@ -7,6 +7,7 @@ import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.BoardImpl;
 import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.WinnerStrategy;
+import pasoos.hotgammon.rules.winner.BackgammonWinnerStrategy;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -17,7 +18,7 @@ public class GammamonWinnerStrategyImplTest {
     @Before
     public void setUp() throws Exception {
         board = new BoardImpl();
-        winner = new GammamonWinnerStrategyImpl();
+        winner = new BackgammonWinnerStrategy();
     }
 
     @Test

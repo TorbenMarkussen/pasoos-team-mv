@@ -7,29 +7,35 @@ import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.WinnerStrategy;
-import pasoos.hotgammon.rules.boards.BackGammonBoardInitializerImpl;
-import pasoos.hotgammon.rules.diceroller.FixedDiceRoller;
-import pasoos.hotgammon.rules.validator.AlphamonMoveValidatorStrategyImpl;
-import pasoos.hotgammon.rules.winner.simple.SimpleWinnerStrategyImpl;
+import pasoos.hotgammon.rules.boards.BackGammonBoardInitializer;
+import pasoos.hotgammon.rules.diceroller.RandomDiceRoller;
+import pasoos.hotgammon.rules.validator.BackgammonMoveValidatorStrategy;
+import pasoos.hotgammon.rules.winner.BackgammonWinnerStrategy;
 
-public class AlphaMonFactoryImpl implements HotGammonFactory {
+/**
+ * Created with IntelliJ IDEA.
+ * User: sp
+ * Date: 17-09-12
+ * Time: 20:15
+ */
+public class SemiMonFactory implements HotGammonFactory {
     @Override
     public MoveValidatorStrategy createMoveValidatorStrategy(GameState gameState, Board board) {
-        return new AlphamonMoveValidatorStrategyImpl(board);
+        return new BackgammonMoveValidatorStrategy(board);
     }
 
     @Override
     public WinnerStrategy createWinnerStrategy() {
-        return new SimpleWinnerStrategyImpl();
+        return new BackgammonWinnerStrategy();
     }
 
     @Override
     public DiceRoller createDiceRoller() {
-        return new FixedDiceRoller();
+        return new RandomDiceRoller();
     }
 
     @Override
     public Board createBoard() {
-        return new BoardImpl(new BackGammonBoardInitializerImpl());
+        return new BoardImpl(new BackGammonBoardInitializer());
     }
 }

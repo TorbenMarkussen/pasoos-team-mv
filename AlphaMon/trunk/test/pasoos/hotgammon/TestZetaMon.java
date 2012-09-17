@@ -4,7 +4,7 @@ package pasoos.hotgammon;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pasoos.hotgammon.rules.factory.ZetaMonFactoryImpl;
+import pasoos.hotgammon.rules.factory.ZetaMonFactory;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -16,7 +16,7 @@ public class TestZetaMon {
 
     @Before
     public void setup() throws IllegalAccessException, InstantiationException {
-        game = GameFactory.createGame(ZetaMonFactoryImpl.class);
+        game = GameFactory.createGame(ZetaMonFactory.class);
         game.newGame();
     }
 

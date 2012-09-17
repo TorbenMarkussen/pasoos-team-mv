@@ -5,10 +5,10 @@ import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.BoardState;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 
-public class BetamonMoveValidatorStrategyImpl implements MoveValidatorStrategy {
+public class BackgammonMoveValidatorStrategy implements MoveValidatorStrategy {
     private BoardState board;
 
-    public BetamonMoveValidatorStrategyImpl(BoardState board) {
+    public BackgammonMoveValidatorStrategy(BoardState board) {
         this.board = board;
     }
 

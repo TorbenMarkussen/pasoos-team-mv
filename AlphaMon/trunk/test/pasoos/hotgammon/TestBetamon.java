@@ -1,7 +1,7 @@
 package pasoos.hotgammon;
 
 import org.junit.*;
-import pasoos.hotgammon.rules.factory.BetaMonFactoryImpl;
+import pasoos.hotgammon.rules.factory.BetaMonFactory;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -13,7 +13,7 @@ public class TestBetamon {
 
     @Before
     public void setup() throws IllegalAccessException, InstantiationException {
-        game = GameFactory.createGame(BetaMonFactoryImpl.class);
+        game = GameFactory.createGame(BetaMonFactory.class);
         game.newGame();
     }
 

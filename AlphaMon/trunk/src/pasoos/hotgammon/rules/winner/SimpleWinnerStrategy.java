@@ -1,12 +1,12 @@
-package pasoos.hotgammon.rules.winner.simple;
+package pasoos.hotgammon.rules.winner;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.WinnerStrategy;
 
-public class SimpleWinnerStrategyImpl implements WinnerStrategy {
+public class SimpleWinnerStrategy implements WinnerStrategy {
 
-    public SimpleWinnerStrategyImpl() {
+    public SimpleWinnerStrategy() {
     }
 
     @Override

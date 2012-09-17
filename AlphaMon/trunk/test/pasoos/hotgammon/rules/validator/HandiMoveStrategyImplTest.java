@@ -15,7 +15,7 @@ import static pasoos.hotgammon.Location.R12;
 
 public class HandiMoveStrategyImplTest {
     private GameState stubbedGameState;
-    private HandiMoveStrategyImpl moveStrategy;
+    private HandiMoveStrategy moveStrategy;
     private MoveValidatorStrategy stubbedBlackMoveStrategy;
     private MoveValidatorStrategy stubbedRedMoveStrategy;
 
@@ -24,7 +24,7 @@ public class HandiMoveStrategyImplTest {
         stubbedGameState = mock(GameState.class);
         stubbedBlackMoveStrategy = mock(MoveValidatorStrategy.class);
         stubbedRedMoveStrategy = mock(MoveValidatorStrategy.class);
-        moveStrategy = new HandiMoveStrategyImpl(stubbedGameState, stubbedBlackMoveStrategy, stubbedRedMoveStrategy);
+        moveStrategy = new HandiMoveStrategy(stubbedGameState, stubbedBlackMoveStrategy, stubbedRedMoveStrategy);
     }
 
     @Test

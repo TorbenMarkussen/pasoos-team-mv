@@ -9,8 +9,8 @@ import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 import pasoos.hotgammon.rules.WinnerStrategy;
-import pasoos.hotgammon.rules.validator.AlphamonMoveValidatorStrategyImpl;
-import pasoos.hotgammon.rules.winner.simple.SimpleWinnerStrategyImpl;
+import pasoos.hotgammon.rules.validator.AlphamonMoveValidatorStrategy;
+import pasoos.hotgammon.rules.winner.SimpleWinnerStrategy;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -26,12 +26,12 @@ public class TestEpsilonMon {
         HotGammonFactory ruleFactory = new HotGammonFactory() {
             @Override
             public MoveValidatorStrategy createMoveValidatorStrategy(GameState gameState, Board board) {
-                return new AlphamonMoveValidatorStrategyImpl(board);
+                return new AlphamonMoveValidatorStrategy(board);
             }
 
             @Override
             public WinnerStrategy createWinnerStrategy() {
-                return new SimpleWinnerStrategyImpl();
+                return new SimpleWinnerStrategy();
             }
 
             @Override

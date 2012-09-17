@@ -5,12 +5,12 @@ import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.MoveValidatorStrategy;
 
-public class HandiMoveStrategyImpl implements MoveValidatorStrategy {
+public class HandiMoveStrategy implements MoveValidatorStrategy {
     private GameState gameState;
     private final MoveValidatorStrategy blackStrategy;
     private final MoveValidatorStrategy redStrategy;
 
-    public HandiMoveStrategyImpl(GameState gameState, MoveValidatorStrategy blackStrategy, MoveValidatorStrategy redStrategy) {
+    public HandiMoveStrategy(GameState gameState, MoveValidatorStrategy blackStrategy, MoveValidatorStrategy redStrategy) {
 
         this.gameState = gameState;
         this.blackStrategy = blackStrategy;
