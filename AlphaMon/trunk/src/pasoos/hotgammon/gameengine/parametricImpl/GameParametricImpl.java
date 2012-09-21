@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import static pasoos.hotgammon.Color.BLACK;
+import static pasoos.hotgammon.Color.*;
 
 public class GameParametricImpl implements Game {
 
@@ -55,11 +55,11 @@ public class GameParametricImpl implements Game {
     }
 
     public void newGame() {
-        playerInTurn = Color.NONE;
+        playerInTurn = NONE;
         dice = new ArrayList<Integer>();
         diceValuesLeft = new ArrayList<Integer>();
         turnCount = 0;
-        theWinner = Color.NONE;
+        theWinner = NONE;
         if (boardType == BoardType.Backgammon)
             initializeBackgammonBoard();
         else if (boardType == BoardType.HyperGammon)
@@ -79,10 +79,10 @@ public class GameParametricImpl implements Game {
         turnCount++;
         theWinner = determineWinner();
 
-        if (playerInTurn != BLACK)
-            playerInTurn = BLACK;
+        if (playerInTurn != Color.BLACK)
+            playerInTurn = Color.BLACK;
         else
-            playerInTurn = Color.RED;
+            playerInTurn = RED;
 
         rollDice();
         diceValuesLeft = new ArrayList<Integer>(dice);
@@ -90,11 +90,16 @@ public class GameParametricImpl implements Game {
 
     private Color determineWinner() {
         if (winningRules == WinningRules.SimpleWinningRules) {
-            //todo
+            return turnCount < 6 ? NONE : RED;
         } else if (winningRules == WinningRules.BackgammonRules) {
-            //todo
+            return allCheckersOnBearOff(BLACK) ? BLACK : allCheckersOnBearOff(RED) ? RED : NONE;
         }
-        return Color.NONE;
+        return NONE;
+    }
+
+    private boolean allCheckersOnBearOff(Color color) {
+        //todo
+        return false;
     }
 
     private void rollDice() {
@@ -126,7 +131,7 @@ public class GameParametricImpl implements Game {
     public boolean move(Location from, Location to) {
         Color fromColor = board.getColor(from);
 
-        if (theWinner != Color.NONE)
+        if (theWinner != NONE)
             return false;
 
         if (playerInTurn != fromColor)
@@ -230,4 +235,12 @@ public class GameParametricImpl implements Game {
         return board.getCount(location);
     }
 
+    static public int main(String[] args) {
+        Game alphamonGame = new GameParametricImpl(
+                BoardType.Backgammon,
+                MoveRules.AlphamonMoveRules,
+                WinningRules.SimpleWinningRules,
+                DiceRollingType.FixedDices);
+        return 0;
+    }
 }
