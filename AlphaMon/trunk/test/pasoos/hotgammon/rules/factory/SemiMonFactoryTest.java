@@ -8,16 +8,20 @@ import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameFactory;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gameengine.BoardImpl;
+import pasoos.hotgammon.gameengine.GameState;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.diceroller.RandomDiceRoller;
+import pasoos.hotgammon.rules.validator.BackgammonMoveValidatorStrategy;
 import pasoos.hotgammon.rules.winner.BackgammonWinnerStrategy;
 
 import static junit.framework.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
 
 public class SemiMonFactoryTest {
     private Game game;
     private HotGammonFactory factory;
+    private GameState gameState;
 
     private void assertColorAndCount(Location location, Color color, int count) {
         Assert.assertEquals(color, game.getColor(location));
@@ -29,6 +33,7 @@ public class SemiMonFactoryTest {
         factory = new SemiMonFactory();
         game = GameFactory.createGame(factory);
         game.newGame();
+        gameState = mock(GameState.class);
     }
 
     @Test
@@ -36,6 +41,7 @@ public class SemiMonFactoryTest {
         assertTrue(factory.createBoard() instanceof BoardImpl);
         assertTrue(factory.createDiceRoller() instanceof RandomDiceRoller);
         assertTrue(factory.createWinnerStrategy() instanceof BackgammonWinnerStrategy);
+        assertTrue(factory.createMoveValidatorStrategy(gameState, factory.createBoard()) instanceof BackgammonMoveValidatorStrategy);
     }
 
     @Test
