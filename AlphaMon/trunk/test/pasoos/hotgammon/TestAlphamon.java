@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
  * purposes. For any commercial use, see http://www.baerbak.com/
  */
 public class TestAlphamon {
-    private Game game;
+    protected Game game;
 
     private void assertColorAndCount(Location location, Color color, int count) {
         Assert.assertEquals(color, game.getColor(location));
