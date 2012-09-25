@@ -2,6 +2,7 @@ package pasoos.hotgammon.gameengine;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
+import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.DiceRoller;
 import pasoos.hotgammon.rules.HotGammonFactory;
@@ -35,9 +36,11 @@ public class GameImpl implements Game, GameState {
     private WinnerStrategy winnerStrategy;
     private Color theWinner;
     private DiceRoller diceRoller;
+    private List<GameObserver> observers;
 
 
     public GameImpl(HotGammonFactory rulesFactory) {
+        observers = new ArrayList<GameObserver>();
         board = rulesFactory.createBoard();
         moveValidator = rulesFactory.createMoveValidatorStrategy(this, board);
         winnerStrategy = rulesFactory.createWinnerStrategy();
@@ -65,6 +68,16 @@ public class GameImpl implements Game, GameState {
 
         rollDice();
         diceValuesLeft = new ArrayList<Integer>(dice);
+        notifyDiceRolled();
+    }
+
+    private void notifyDiceRolled() {
+        if (observers.size() > 0) {
+            for (GameObserver go : observers) {
+                go.diceRolled(diceThrown());
+            }
+        }
+
     }
 
     private void rollDice() {
@@ -99,7 +112,16 @@ public class GameImpl implements Game, GameState {
 
         theWinner = winnerStrategy.determineWinner(this);
 
+        notifyMove(from, to);
         return true;
+    }
+
+    private void notifyMove(Location from, Location to) {
+        if (observers.size() > 0) {
+            for (GameObserver go : observers) {
+                go.checkerMove(from, to);
+            }
+        }
     }
 
     private int findValidDice(Location from, Location to) {
@@ -150,6 +172,11 @@ public class GameImpl implements Game, GameState {
 
     public int getCount(Location location) {
         return board.getCount(location);
+    }
+
+    @Override
+    public void addObserver(GameObserver observer) {
+        observers.add(observer);
     }
 
     @Override

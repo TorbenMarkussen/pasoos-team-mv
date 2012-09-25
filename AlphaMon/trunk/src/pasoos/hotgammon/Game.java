@@ -135,4 +135,10 @@ public interface Game {
      */
     public int getCount(Location location);
 
+    /**
+     * add an observer to this game
+     *
+     * @param observer the observer to notify in case of state changes.
+     */
+    public void addObserver(GameObserver observer);
 }

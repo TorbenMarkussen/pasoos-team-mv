@@ -1,9 +1,6 @@
 package pasoos.hotgammon.gamelogger;
 
-import pasoos.hotgammon.Color;
-import pasoos.hotgammon.Game;
-import pasoos.hotgammon.GameFactory;
-import pasoos.hotgammon.Location;
+import pasoos.hotgammon.*;
 import pasoos.hotgammon.rules.HotGammonFactory;
 
 import java.util.ArrayList;
@@ -83,5 +80,10 @@ public class GameLogDecoratorImpl implements GameLogDecorator {
     @Override
     public int getCount(Location location) {
         return game.getCount(location);
+    }
+
+    @Override
+    public void addObserver(GameObserver observer) {
+        game.addObserver(observer);
     }
 }
