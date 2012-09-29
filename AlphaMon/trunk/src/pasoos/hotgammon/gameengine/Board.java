@@ -10,8 +10,6 @@ public interface Board extends BoardState {
 
     void incrementLocation(Location location, Color color);
 
-    boolean removeCheckersWithColor(Location location, Color color);
-
     void incrementBar(Color barColor);
 
 }

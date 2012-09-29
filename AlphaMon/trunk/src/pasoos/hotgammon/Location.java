@@ -181,4 +181,13 @@ public enum Location {
 
         throw new IllegalArgumentException("Only Black or red color can return a BearOff");
     }
+
+    public static Location getBar(Color color) {
+        if (color == Color.RED)
+            return Location.R_BAR;
+        if (color == Color.BLACK)
+            return Location.B_BAR;
+
+        throw new IllegalArgumentException("Only Black or red color have a bar");
+    }
 }

@@ -104,16 +104,32 @@ public class GameImpl implements Game, GameState {
         if (diceUsed == 0)
             return false;
 
-        board.decrementLocation(from, playerInTurn);
-        if (board.removeCheckersWithColor(to, playerInTurn.getOpponentColor()))
-            board.incrementBar(playerInTurn.getOpponentColor());                   // Oponent is striked to bar
-        board.incrementLocation(to, playerInTurn);
+        moveChecker(from, to);
+
         removeDice(diceUsed);
 
         theWinner = winnerStrategy.determineWinner(this);
 
-        notifyMove(from, to);
         return true;
+    }
+
+    private void moveChecker(Location from, Location to) {
+        Color opponentColor = playerInTurn.getOpponentColor();
+
+        if (board.getColor(to) == opponentColor)
+            moveOpponentCheckersToBar(to, opponentColor);
+        board.decrementLocation(from, playerInTurn);
+        board.incrementLocation(to, playerInTurn);
+        notifyMove(from, to);
+    }
+
+    private void moveOpponentCheckersToBar(Location location, Color playerColor) {
+        board.getCount(location);
+        for (int i = 0; i < board.getCount(location); i++) {
+            board.decrementLocation(location, playerColor);
+            board.incrementBar(playerColor);
+            notifyMove(location, Location.getBar(playerColor));
+        }
     }
 
     private void notifyMove(Location from, Location to) {

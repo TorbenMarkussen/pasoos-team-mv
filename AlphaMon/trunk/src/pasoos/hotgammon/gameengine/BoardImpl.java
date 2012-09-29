@@ -90,16 +90,6 @@ public class BoardImpl implements Board, InitializableBoard {
     }
 
     @Override
-    public boolean removeCheckersWithColor(Location location, Color color) {
-        boolean result = false;
-        if (getColor(location) == color) {
-            board.put(location, 0);
-            result = true;
-        }
-        return result;
-    }
-
-    @Override
     public void incrementBar(Color barColor) {
         if (barColor == Color.BLACK)
             incrementLocation(Location.B_BAR, Color.BLACK);
