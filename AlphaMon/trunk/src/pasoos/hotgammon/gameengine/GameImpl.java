@@ -118,6 +118,7 @@ public class GameImpl implements Game, GameState {
 
         if (board.getColor(to) == opponentColor)
             moveOpponentCheckersToBar(to, opponentColor);
+
         board.decrementLocation(from, playerInTurn);
         board.incrementLocation(to, playerInTurn);
         notifyMove(from, to);
