@@ -67,7 +67,11 @@ public class GameImpl implements Game, GameState {
             playerInTurn = Color.RED;
 
         rollDice();
+
         diceValuesLeft = new ArrayList<Integer>(dice);
+        if (dice.get(0).equals(dice.get(1)))
+            diceValuesLeft.addAll(dice);
+
         notifyDiceRolled();
     }
 
