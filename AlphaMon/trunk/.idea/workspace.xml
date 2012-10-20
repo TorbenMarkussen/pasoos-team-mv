@@ -64,16 +64,7 @@
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/AIPlayerTurnState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="140" column="51" selection-start="4184" selection-end="4184" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#707#723#0" expanded="true" />
-                <element signature="e#1287#1468#0" expanded="true" />
-                <element signature="e#1457#1458#0" expanded="true" />
-                <element signature="e#2721#2930#0" expanded="true" />
-                <element signature="e#2915#2916#0" expanded="true" />
-                <element signature="e#2967#3151#0" expanded="true" />
-                <element signature="e#3140#3141#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,7 +72,7 @@
       <file leaf-file-name="HotGammonGame.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="13" selection-start="648" selection-end="648" vertical-scroll-proportion="0.2505669">
+            <state line="20" column="13" selection-start="648" selection-end="648" vertical-scroll-proportion="0.22814983">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,12 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/HotGammonViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="113" column="19" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#607#615#0" expanded="true" />
-                <element signature="e#665#673#0" expanded="true" />
-                <element signature="e#721#729#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,9 +196,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="1" />
+    <option name="y" value="2" />
     <option name="width" value="1932" />
-    <option name="height" value="1091" />
+    <option name="height" value="1090" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -392,12 +378,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AlphaMon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AlphaMon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -442,14 +432,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HotGammon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -458,14 +462,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="alphamon" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -481,8 +485,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -652,24 +656,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -695,6 +681,24 @@
       <envs />
       <properties />
       <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -779,8 +783,8 @@
       <item index="1" class="java.lang.String" itemvalue="JUnit.TestGameObserver" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_notify_twice_if_checker_also_is_moved_to_bar" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_notify_twice_if_a_red_move_causes_a_bar_move" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All Tests" />
-      <item index="5" class="java.lang.String" itemvalue="Application.HotGammonGame" />
+      <item index="4" class="java.lang.String" itemvalue="Application.HotGammonGame" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.All Tests" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -896,7 +900,15 @@
       <created>1350672868113</created>
       <updated>1350672868113</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="hg gui&#10;">
+      <created>1350672904112</created>
+      <updated>1350672904112</updated>
+    </task>
+    <task id="LOCAL-00017" summary="hg gui&#10;">
+      <created>1350720601311</created>
+      <updated>1350720601311</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -920,7 +932,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="1" width="1932" height="1091" extended-state="0" />
+    <frame x="-8" y="2" width="1932" height="1090" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32725322" sideWeight="0.49812534" order="7" side_tool="false" content_ui="tabs" />
@@ -931,7 +943,6 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32725322" sideWeight="0.49812534" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3190118" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.67168266" order="5" side_tool="false" content_ui="tabs" />
@@ -941,6 +952,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32725322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3190118" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3985043" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1030,126 +1042,82 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestZetaMon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="77" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="21" column="77" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestLogAlphaMon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="13" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="26" column="13" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestGammamon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="11" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestGameObserver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="13" selection-start="3347" selection-end="3347" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="105" column="13" selection-start="3347" selection-end="3347" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamonCustomBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="106" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="65" selection-start="1847" selection-end="1847" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestHandiMon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="57" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/HotGammonViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="19" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#607#615#0" expanded="true" />
-            <element signature="e#665#673#0" expanded="true" />
-            <element signature="e#721#729#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="61" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/ManualPlayerTurnState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="34" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Checker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="43" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Convert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="40" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="12" column="106" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/AIPlayerTurnState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="51" selection-start="4184" selection-end="4184" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#707#723#0" expanded="true" />
-            <element signature="e#1287#1468#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#2721#2930#0" expanded="true" />
-            <element signature="e#2915#2916#0" expanded="true" />
-            <element signature="e#2967#3151#0" expanded="true" />
-            <element signature="e#3140#3141#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="140" column="51" selection-start="4184" selection-end="4184" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="61" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/ManualPlayerTurnState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="34" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Checker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="8" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="43" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Convert.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="40" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/HotGammonViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="19" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="65" selection-start="1847" selection-end="1847" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestHandiMon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="57" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="648" selection-end="648" vertical-scroll-proportion="0.2505669">
+        <state line="20" column="13" selection-start="648" selection-end="648" vertical-scroll-proportion="0.22814983">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
