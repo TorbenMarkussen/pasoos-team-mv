@@ -4,6 +4,7 @@
     <property name="src.home" value="${basedir}/src"/>
     <property name="test.home" value="${basedir}/test"/>
     <property name="junit-jar" value="${basedir}/lib/junit-4.10.jar"/>
+    <property name="minidraw" value="${basedir}/lib/minidraw.jar"/>
     <property name="mockito-jar" value="${basedir}/lib/mockito-1.9.0/mockito-all-1.9.0.jar"/>
     <property name="doc.home" value="${basedir}/doc"/>
 

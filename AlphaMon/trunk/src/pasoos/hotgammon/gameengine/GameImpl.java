@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 /**
  * Skeleton implementation of HotGammon.
  * <p/>
@@ -72,7 +73,29 @@ public class GameImpl implements Game, GameState {
         if (dice.get(0).equals(dice.get(1)))
             diceValuesLeft.addAll(dice);
 
+        handlePossibleMoves();
+
         notifyDiceRolled();
+    }
+
+    private void handlePossibleMoves() {
+        for (Location from : Location.values()) {
+            Color fromColor = board.getColor(from);
+            if (fromColor == playerInTurn) {
+                for (Location to : Location.values()) {
+                    if (findValidDice(from, to) != 0) {
+                        return;
+                    }
+                }
+            }
+        }
+
+        // Remove all remaining dice values as no possible moves were found
+        int noOfDiesLeft = diceValuesLeft.size();
+        for (int i = 0; i < noOfDiesLeft; i++) {
+            int d = diceValuesLeft.get(0);
+            removeDice(d);
+        }
     }
 
     private void notifyDiceRolled() {
@@ -113,6 +136,8 @@ public class GameImpl implements Game, GameState {
         removeDice(diceUsed);
 
         theWinner = winnerStrategy.determineWinner(this);
+
+        handlePossibleMoves();
 
         return true;
     }

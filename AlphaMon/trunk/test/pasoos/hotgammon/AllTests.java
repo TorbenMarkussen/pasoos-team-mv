@@ -8,6 +8,7 @@ import pasoos.hotgammon.rules.AllRulesTests;
 @Suite.SuiteClasses({
         TestAlphamon.class,
         TestBetamon.class,
+        TestBetamonCustomBoard.class,
         TestEpsilonMon.class,
         TestGammamon.class,
         TestLocation.class,

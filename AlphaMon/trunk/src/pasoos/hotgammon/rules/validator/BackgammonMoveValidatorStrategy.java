@@ -19,6 +19,9 @@ public class BackgammonMoveValidatorStrategy implements MoveValidatorStrategy {
         Color opponentColor = fromColor.getOpponentColor();
         int moveDistance = Math.abs(Location.distance(fromLocation, toLocation));
 
+        if (fromColor == Color.NONE)
+            return false;
+
         if (isInValidDirection(fromLocation, toLocation))
             return false;
 
