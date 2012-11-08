@@ -104,7 +104,6 @@ public class GameImpl implements Game, GameState {
                 go.diceRolled(diceThrown());
             }
         }
-
     }
 
     private void rollDice() {
