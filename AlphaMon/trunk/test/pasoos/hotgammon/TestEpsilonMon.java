@@ -63,5 +63,6 @@ public class TestEpsilonMon {
         assertEquals(3, game.diceValuesLeft()[1]);
 
         verify(stubbedDiceRoller, times(2)).roll();
+
     }
 }
