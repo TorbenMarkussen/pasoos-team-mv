@@ -12,7 +12,7 @@ public class BinSearch {
 
     public static int search(int[] a, int target) {
         if (a.length == 0)
-            return -1;
+            return -1;   sds
 
         int min = 0;
         int max = a.length - 1;
