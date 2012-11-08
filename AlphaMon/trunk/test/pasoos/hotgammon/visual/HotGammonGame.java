@@ -32,6 +32,7 @@ public class HotGammonGame {
         context.setState(new NextTurnGameState(context));
 
         editor.setTool(new GameController(context));
+
     }
 }
 
