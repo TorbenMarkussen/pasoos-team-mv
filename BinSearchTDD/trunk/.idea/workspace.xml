@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4cac9aa-2f21-4d24-ac8f-d7cae5beb04e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/junit-4.10.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\production\BinSearchTDD\pasoos\BinSearch$Helper.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\production\BinSearchTDD\pasoos\BinSearch.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\production\BinSearchTDD\pasoos\BinarySearchHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\production\BinSearchTDD\pasoos" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\production\BinSearchTDD" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\production" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\test\BinSearchTDD\pasoos\BinSearchTest.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\test\BinSearchTDD\pasoos\BinSearchTestChild.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\test\BinSearchTDD\pasoos" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\test\BinSearchTDD" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out\test" afterPath="" />
-      <change type="DELETED" beforePath="C:\ws\PASOOS\BinSearch\out" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BinSearchTDD.iml" afterPath="$PROJECT_DIR$/BinSearchTDD.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/BinSearch.java" afterPath="$PROJECT_DIR$/src/pasoos/BinSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/BinarySearchHelper.java" afterPath="$PROJECT_DIR$/src/pasoos/BinarySearchHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/BinSearchTest.java" afterPath="$PROJECT_DIR$/test/pasoos/BinSearchTest.java" />
-    </list>
+    <list default="true" id="c4cac9aa-2f21-4d24-ac8f-d7cae5beb04e" name="Default" comment="" />
     <ignored path="BinSearchTDD.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -84,7 +61,7 @@
       <file leaf-file-name="BinSearchTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/pasoos/BinSearchTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="24" selection-start="1888" selection-end="1888" vertical-scroll-proportion="0.3327787">
+            <state line="66" column="24" selection-start="2077" selection-end="2077" vertical-scroll-proportion="0.47420964">
               <folding />
             </state>
           </provider>
@@ -509,6 +486,11 @@
       <created>1352234971635</created>
       <updated>1352234971635</updated>
     </task>
+    <task id="LOCAL-00001" summary="removed out folder&#10;added ant build + junit lib">
+      <created>1352537777114</created>
+      <updated>1352537777114</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -523,7 +505,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -620,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/BinSearchTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="24" selection-start="1888" selection-end="1888" vertical-scroll-proportion="0.3327787">
+        <state line="66" column="24" selection-start="2077" selection-end="2077" vertical-scroll-proportion="0.47420964">
           <folding />
         </state>
       </provider>
