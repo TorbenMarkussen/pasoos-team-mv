@@ -5,14 +5,22 @@ import java.util.List;
 
 public class BinSearchTestChild extends BinSearch implements BinarySearchHelper {
 
-    private BinarySearchHelper original;
+    private static BinarySearchHelper original;
+
+    private List<int[]> list = new ArrayList<int[]>();
 
     public BinSearchTestChild() {
-        original = new Helper();
+        original = searchHelper;
+    }
+
+
+    public void decorateBinSearch() {
         searchHelper = this;
     }
 
-    private List<int[]> list = new ArrayList<int[]>();
+    public void undoDecorateBinSearch() {
+        searchHelper = original;
+    }
 
     @Override
     public int getMidPoint(int min, int max) {
