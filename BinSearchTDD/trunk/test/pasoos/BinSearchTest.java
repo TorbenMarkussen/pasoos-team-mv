@@ -7,13 +7,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created with IntelliJ IDEA.
- * User: sp
- * Date: 06-11-12
- * Time: 21:55
- * To change this template use File | Settings | File Templates.
- */
 public class BinSearchTest {
 
     int[] oddNumberedArray = new int[]{1, 3, 5, 7, 9};

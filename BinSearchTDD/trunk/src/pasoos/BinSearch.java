@@ -1,11 +1,5 @@
 package pasoos;
 
-/**
- * Created with IntelliJ IDEA.
- * User: sp
- * Date: 06-11-12
- * Time: 22:19
- */
 public class BinSearch {
 
     protected static BinarySearchHelper searchHelper = new Helper();
