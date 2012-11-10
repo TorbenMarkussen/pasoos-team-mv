@@ -1,0 +1,137 @@
+<!-- Build file for Snakes and Ladders
+<#if type == "code">
+
+<#include "/data/author.txt">
+</#if>
+-->
+<project name="SnakesAndLadders" default="help" basedir=".">
+    
+  <property name="sourceDirectory" value="src"/>
+  <property name="testSourceDirectory" value="test"/>
+
+  <property name="buildDirectory" value="build"/>
+  <property name="javadocDirectory" value="javadoc"/>
+  <property name="resource" value="resource"/>
+  <property name="minidraw-jar" value="lib/minidraw.jar"/>
+
+
+  <path id="classPath">
+    <pathelement location="${buildDirectory}"/>
+    <pathelement location="${minidraw-jar}"/>
+  </path>
+
+  <target name="help">
+    <echo>
+Snakes and Ladders build management. 
+  Targets:
+    buildSrc:      Builds production code.
+    clean:         Removes all bytecode.
+    javadoc:       Generate JavaDoc.
+
+    show:          Show basic graphics.
+    figures:       Populate with proper figures
+    move:          Move tokens
+    update:        Show domain updates
+
+    snake:         Snake game (not all domain code in place yet)
+<!--
+<#if type == "code">
+
+<#include "/data/author.txt">
+</#if> 
+-->
+    </echo>
+  </target>
+
+  <target name="clean">
+    <delete dir="${buildDirectory}"/>
+    <delete dir="${javadocDirectory}"/>
+  </target>
+
+  <target name="prepare">
+    <mkdir dir="${buildDirectory}"/>
+    <mkdir dir="${javadocDirectory}"/>
+  </target>
+
+  <target name="buildSrc" depends="prepare">
+    <javac srcdir="${sourceDirectory}"
+      destdir="${buildDirectory}">
+      <classpath refid="classPath"/>
+    </javac>
+  </target>
+
+  <target name="buildTest" depends="buildSrc">
+    <javac srcdir="${testSourceDirectory}"
+      destdir="${buildDirectory}">
+      <classpath refid="classPath"/>
+    </javac>
+  </target>
+
+
+  <target name="copyResource" depends="prepare">
+    <copy todir="${buildDirectory}/resource" >
+      <fileset dir="${resource}">
+	<include name="*.gif"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="buildAll" depends="buildSrc,buildTest,copyResource"/>
+
+  <!-- run simple 'show graphics' minidraw application -->
+  <target name="show" depends="buildAll">
+    <java fork="yes" classname="snakesladders.visual.ShowLayout">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="figures" depends="buildAll">
+    <java fork="yes" classname="snakesladders.visual.ShowFigures">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="move" depends="buildAll">
+    <java fork="yes" classname="snakesladders.visual.MoveToken">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="update" depends="buildAll">
+    <java fork="yes" classname="snakesladders.visual.ShowDomainUpdate">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="snake" depends="buildAll">
+    <java fork="yes" classname="snakesladders.view.Snake">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <!-- generate javadoc -->
+  <target name="javadoc" depends="prepare">
+    <javadoc
+      packagenames="hotgammon.*"
+      destdir="${javadocDirectory}"
+      sourcepath="${sourceDirectory}"
+      windowtitle="Snakes and Ladders system">
+      
+      <classpath refid="classPath"/>
+    </javadoc>
+    <echo>
+JavaDoc available in directory ${javadocDirectory}/index.html.
+    </echo>
+  </target>
+  
+</project>
