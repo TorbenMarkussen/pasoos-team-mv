@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="">
+    <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="hg gui&#10;">
+      <change type="MOVED" beforePath="C:\ws\PASOOS\HotGammon\AlphaMon.iml" afterPath="$PROJECT_DIR$/HotGammon.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ea-doc/HotGammon.eap" afterPath="$PROJECT_DIR$/ea-doc/HotGammon.eap" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java" />
     </list>
     <ignored path="AlphaMon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,93 +63,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HotGammonGame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java">
+      <file leaf-file-name="Snake.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/Snake.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="35" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="61" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManualPlayerTurnState.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/ManualPlayerTurnState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="34" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Checker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Checker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="8" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="0" selection-start="2610" selection-end="2610" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Convert.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Convert.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="40" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HotGammonViewModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/HotGammonViewModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="19" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestEpsilonMon.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="0" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.8043478">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestHandiMon.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestHandiMon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="57" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0">
+            <state line="16" column="26" selection-start="261" selection-end="261" vertical-scroll-proportion="0.30955994">
               <folding />
             </state>
           </provider>
@@ -172,22 +89,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/WinnerFoundState.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/PlayerTurnState.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameContext.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/gerry/GameAdapterImpl.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/NextTurnGameState.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/gerry/Gerry.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/view/HotGammonViewModel.java" />
-        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/visual/ShowCheckersAndDice.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/ManualPlayerTurnState.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/view/Checker.java" />
+        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/view/Convert.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/controller/AIPlayerTurnState.java" />
-        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" />
-        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java" />
+        <option value="$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/AbstractTool.java" />
+        <option value="$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/SelectionTool.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/domain/GameImpl.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/domain/Game.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/SnakesAndLaddersFactory.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/domain/Square.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/SnakesAndLaddersPositioningStrategy.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/MoveCommand.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/SnakesAndLaddersPieceFactory.java" />
+        <option value="$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/SnakesAndLaddersPropAppearanceStrategy.java" />
       </list>
     </option>
   </component>
@@ -198,10 +115,10 @@
     <option name="jreName" value="1.6" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1698" />
-    <option name="height" value="1020" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -377,7 +294,7 @@
       <hideEmptyPackages ProjectPane="false" />
       <abbreviatePackageNames />
       <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
     </navigator>
     <panes>
@@ -387,10 +304,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="AlphaMon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -421,12 +334,12 @@
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="alphamon" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -442,8 +355,8 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -474,28 +387,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.HotGammonGame">
-    <configuration default="false" name="TestGameObserver.should_not_notify_if_move_was_invalid" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="AlphaMon" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pasoos.hotgammon" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.TestGameObserver" />
-      <option name="METHOD_NAME" value="should_not_notify_if_move_was_invalid" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="TestGameObserver" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="AlphaMon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -570,15 +461,37 @@
     </configuration>
     <configuration default="false" name="HotGammonGame" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.visual.HotGammonGame" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="AlphaMon" />
+      <module name="HotGammon" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Snake" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="snakesladders.view.Snake" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="snakes-ladders" />
       <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
@@ -613,6 +526,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -638,24 +569,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -736,12 +649,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_not_notify_if_move_was_invalid" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestGameObserver" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_notify_twice_if_checker_also_is_moved_to_bar" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_notify_twice_if_a_red_move_causes_a_bar_move" />
-      <item index="4" class="java.lang.String" itemvalue="Application.HotGammonGame" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.All Tests" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestGameObserver" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_notify_twice_if_checker_also_is_moved_to_bar" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestGameObserver.should_notify_twice_if_a_red_move_causes_a_bar_move" />
+      <item index="3" class="java.lang.String" itemvalue="Application.HotGammonGame" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.All Tests" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Snake" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -764,6 +677,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
     <configuration useDefault="false">C:\Users\pasma00t\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
@@ -772,20 +686,20 @@
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\ws\Pasoos\AlphaMon" />
-          <option name="myCopyRoot" value="C:\ws\Pasoos\AlphaMon" />
+          <option name="myVcsRoot" value="C:\ws\PASOOS\HotGammon" />
+          <option name="myCopyRoot" value="C:\ws\PASOOS\HotGammon" />
         </SvnCopyRootSimple>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\ws\Pasoos\AlphaMon\.idea" />
-          <option name="myCopyRoot" value="C:\ws\Pasoos\AlphaMon\.idea" />
+          <option name="myVcsRoot" value="C:\ws\PASOOS\HotGammon\.idea" />
+          <option name="myCopyRoot" value="C:\ws\PASOOS\HotGammon\.idea" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\ws\Pasoos\AlphaMon" />
-          <option name="myCopyRoot" value="C:\ws\Pasoos\AlphaMon" />
+          <option name="myVcsRoot" value="C:\ws\PASOOS\HotGammon" />
+          <option name="myCopyRoot" value="C:\ws\PASOOS\HotGammon" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -892,27 +806,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1698" height="1020" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32725322" sideWeight="0.49812534" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299411" sideWeight="0.7188841" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24928162" sideWeight="0.63885087" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39849624" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3974359" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32725322" sideWeight="0.49812534" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31837606" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25921968" sideWeight="0.23717949" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.67168266" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25830257" sideWeight="0.7336395" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2663605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25921968" sideWeight="0.732906" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26709402" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32725322" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3190118" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32692307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3985043" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -954,7 +869,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="hg gui&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding snaked-ladders src" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -982,6 +897,8 @@
     <MESSAGE value="fixed bug in observer impl&#10;" />
     <MESSAGE value="w40 additions&#10;" />
     <MESSAGE value="hg gui&#10;" />
+    <MESSAGE value="adding minidraw src" />
+    <MESSAGE value="adding snaked-ladders src" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -989,98 +906,117 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-    <buildFile url="file://$PROJECT_DIR$/build.xml">
-      <antCommandLine value="" />
-      <runInBackground value="true" />
-      <targetFilters />
-      <treeView value="true" />
-      <verbose value="true" />
-      <viewClosedWhenNoErrors value="false" />
-      <expanded value="true" />
-    </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestLogAlphaMon.java">
+    <entry file="file://$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/SnakesAndLaddersPropAppearanceStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" />
+        <state line="5" column="80" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestLocation.java">
+    <entry file="file://$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/SnakesAndLaddersPositioningStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="13" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0" />
+        <state line="9" column="40" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestGammamon.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_03/src.zip!/javax/swing/JPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0" />
+        <state line="66" column="13" selection-start="1547" selection-end="1547" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestGameObserver.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardDrawing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="13" selection-start="3347" selection-end="3347" vertical-scroll-proportion="0.0" />
+        <state line="111" column="43" selection-start="4254" selection-end="4254" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamonCustomBoard.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardFigure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="106" selection-start="481" selection-end="481" vertical-scroll-proportion="0.0" />
+        <state line="39" column="38" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/AIPlayerTurnState.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/ImageFigure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="51" selection-start="4184" selection-end="4184" vertical-scroll-proportion="0.0" />
+        <state line="24" column="36" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/visual/HotGammonGame.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/framework/Figure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="35" selection-start="962" selection-end="962" vertical-scroll-proportion="0.0" />
+        <state line="70" column="17" selection-start="1831" selection-end="1831" vertical-scroll-proportion="0.63349915">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameContext.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_03/src.zip!/java/awt/Graphics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="158" column="22" selection-start="6173" selection-end="6173" vertical-scroll-proportion="0.7976783">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/GameController.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/AbstractFigure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="61" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" />
+        <state line="31" column="0" selection-start="845" selection-end="845" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/controller/ManualPlayerTurnState.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardActionTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="34" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0" />
+        <state line="96" column="13" selection-start="3036" selection-end="3036" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Checker.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardGameObserver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0" />
+        <state line="22" column="41" selection-start="879" selection-end="879" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/NullTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="2610" selection-end="2610" vertical-scroll-proportion="0.0" />
+        <state line="37" column="19" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/Convert.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/StandardDrawing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="40" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.0" />
+        <state line="75" column="13" selection-start="1943" selection-end="1943" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/view/HotGammonViewModel.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/StandardDrawingView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="19" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestHandiMon.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/standard/AbstractTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="57" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" />
+        <state line="2" column="0" selection-start="28" selection-end="28" vertical-scroll-proportion="0.02090209">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestEpsilonMon.java">
+    <entry file="file://$PROJECT_DIR$/../snakes-ladders/src/snakesladders/view/Snake.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="0" selection-start="2098" selection-end="2098" vertical-scroll-proportion="0.8043478">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="16" column="26" selection-start="261" selection-end="261" vertical-scroll-proportion="0.30955994">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,7 +1072,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>AlphaMon</last-edited>
+          <last-edited>snakes-ladders</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
