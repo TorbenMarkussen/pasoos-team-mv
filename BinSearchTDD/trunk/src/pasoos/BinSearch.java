@@ -24,7 +24,7 @@ public class BinSearch {
         return -1;
     }
 
-    protected static class Helper implements BinarySearchHelper {
+    private static class Helper implements BinarySearchHelper {
         @Override
         public int getMidPoint(int min, int max) {
             return (max - min) / 2 + min;

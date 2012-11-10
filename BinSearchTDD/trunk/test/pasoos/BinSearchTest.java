@@ -1,5 +1,6 @@
 package pasoos;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,6 +24,12 @@ public class BinSearchTest {
     @Before
     public void setup() {
         binSearchTest = new BinSearchTestChild();
+        binSearchTest.decorateBinSearch();
+    }
+
+    @After
+    public void cleanup() {
+        binSearchTest.undoDecorateBinSearch();
     }
 
     @Test
@@ -59,12 +66,12 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_0_when_the_array_only_has_one_element_and_searching_for_element_0() {
-        assertEquals(0, binSearchTest.search(new int[]{5}, 5));
+        assertEquals(0, BinSearch.search(new int[]{5}, 5));
     }
 
     @Test
     public void should_return_neg_1_when_the_array_only_has_one_element_and_not_searching_for_element_0() {
-        assertEquals(-1, binSearchTest.search(new int[]{5}, 7));
+        assertEquals(-1, BinSearch.search(new int[]{5}, 7));
     }
 
     @Test
