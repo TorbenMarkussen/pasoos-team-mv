@@ -36,6 +36,7 @@ public class HotGammonGame {
     }
 }
 
+
 class HotGammonViewFactory implements Factory {
     public DrawingView createDrawingView(DrawingEditor editor) {
         return new StdViewWithBackground(editor, "board");

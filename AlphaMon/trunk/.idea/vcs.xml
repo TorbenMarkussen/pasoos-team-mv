@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../minidraw" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../snakes-ladders" vcs="svn" />
   </component>
 </project>
 
