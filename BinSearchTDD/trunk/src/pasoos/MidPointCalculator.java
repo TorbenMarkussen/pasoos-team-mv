@@ -1,5 +1,5 @@
 package pasoos;
 
-public interface BinarySearchHelper {
+public interface MidPointCalculator {
     int getMidPoint(int min, int max);
 }
