@@ -3,34 +3,28 @@ package pasoos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinSearchTestChild extends BinSearch implements BinarySearchHelper {
+public class BinSearchDecorator extends BinSearch implements MidPointCalculator {
 
-    private static BinarySearchHelper original;
+    private MidPointCalculator original;
 
     private List<int[]> list = new ArrayList<int[]>();
 
-    public BinSearchTestChild() {
-        original = searchHelper;
+    public BinSearchDecorator() {
+        original = midPointCalculator;
     }
 
-
     public void decorateBinSearch() {
-        searchHelper = this;
+        midPointCalculator = this;
     }
 
     public void undoDecorateBinSearch() {
-        searchHelper = original;
+        midPointCalculator = original;
     }
 
-    @Override
     public int getMidPoint(int min, int max) {
         int result = original.getMidPoint(min, max);
         list.add(new int[]{min, max, result});
         return result;
-    }
-
-    public void clear() {
-        list = new ArrayList<int[]>();
     }
 
     public List<int[]> getList() {

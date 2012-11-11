@@ -11,8 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class BinSearchTest {
 
     int[] oddNumberedArray = new int[]{1, 3, 5, 7, 9};
-    int[] oddNumberedArray10Numbers = new int[]{1, 3, 5, 7, 9, 16, 39, 456, 999, 1250};
-    BinSearchTestChild binSearchTest;
+    int[] evenNumberedArray10Numbers = new int[]{1, 3, 5, 7, 9, 16, 39, 456, 999, 1250};
+    BinSearchDecorator binSearchDecorator;
 
     private void assertMidpointValues(int min, int max, int midPoint, int[] actual) {
         assertEquals(min, actual[0]);// min
@@ -20,21 +20,21 @@ public class BinSearchTest {
         assertEquals(midPoint, actual[2]);// Midpoint
     }
 
-
     @Before
     public void setup() {
-        binSearchTest = new BinSearchTestChild();
-        binSearchTest.decorateBinSearch();
+        binSearchDecorator = new BinSearchDecorator();
+        binSearchDecorator.decorateBinSearch();
     }
 
     @After
     public void cleanup() {
-        binSearchTest.undoDecorateBinSearch();
+        binSearchDecorator.undoDecorateBinSearch();
     }
 
     @Test
     public void should_return_neg_1_when_searching_an_empty_array() {
         assertEquals(-1, BinSearch.search(new int[]{}, 5));
+        assertEquals(-1, BinSearchDecorator.search(new int[]{}, 5));
     }
 
 
@@ -45,23 +45,23 @@ public class BinSearchTest {
 
     @Test
     public void should_find_the_midpoint_of_an_array_with_odd_number_of_numbers() {
-        assertEquals(2, binSearchTest.getMidPoint(0, 4));
+        assertEquals(2, binSearchDecorator.getMidPoint(0, 4));
     }
 
     @Test
     public void should_find_the_midpoint_of_an_array_with_equal_number_of_numbers() {
-        assertEquals(10, binSearchTest.getMidPoint(7, 14));
+        assertEquals(10, binSearchDecorator.getMidPoint(7, 14));
     }
 
     @Test
     public void should_find_the_midpoint_of_an_array_with_only_one_number() {
-        assertEquals(4, binSearchTest.getMidPoint(4, 4));
+        assertEquals(4, binSearchDecorator.getMidPoint(4, 4));
     }
 
     @Test
     public void should_find_the_midpoint_of_an_array_with_max_int() {
-        assertEquals(Integer.MAX_VALUE/2, binSearchTest.getMidPoint(0, Integer.MAX_VALUE));
-        assertEquals(1610612735, binSearchTest.getMidPoint((Integer.MAX_VALUE/2)+1, Integer.MAX_VALUE));
+        assertEquals(Integer.MAX_VALUE / 2, binSearchDecorator.getMidPoint(0, Integer.MAX_VALUE));
+        assertEquals(1610612735, binSearchDecorator.getMidPoint((Integer.MAX_VALUE/2)+1, Integer.MAX_VALUE));
     }
 
     @Test
@@ -76,8 +76,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_0_when_searching_for_the_1st_element() {
-        assertEquals(0, BinSearchTestChild.search(oddNumberedArray10Numbers, 1));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(0, BinSearchDecorator.search(evenNumberedArray10Numbers, 1));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(3, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(0, 3, 1, resultList.get(1));
@@ -87,8 +87,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_1_when_searching_for_the_2nd_element() {
-        assertEquals(1, BinSearchTestChild.search(oddNumberedArray10Numbers, 3));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(1, BinSearchDecorator.search(evenNumberedArray10Numbers, 3));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(2, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(0, 3, 1, resultList.get(1));
@@ -97,19 +97,20 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_2_when_searching_for_the_3rd_element() {
-        assertEquals(2, BinSearchTestChild.search(oddNumberedArray10Numbers, 5));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(2, BinSearchDecorator.search(evenNumberedArray10Numbers, 5));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(3, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(0, 3, 1, resultList.get(1));
         assertMidpointValues(2, 3, 2, resultList.get(2));
         //{1, 3, 5, 7, 9, 16, 39, 456, 999, 1250};
+
     }
 
     @Test
     public void should_return_index_3_when_searching_for_the_4rd_element() {
-        assertEquals(3, BinSearchTestChild.search(oddNumberedArray10Numbers, 7));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(3, BinSearchDecorator.search(evenNumberedArray10Numbers, 7));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(4, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(0, 3, 1, resultList.get(1));
@@ -120,8 +121,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_4_when_searching_for_the_5rd_element() {
-        assertEquals(4, BinSearchTestChild.search(oddNumberedArray10Numbers, 9));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(4, BinSearchDecorator.search(evenNumberedArray10Numbers, 9));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(1, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         //{1, 3, 5, 7, 9, 16, 39, 456, 999, 1250};
@@ -129,8 +130,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_5_when_searching_for_the_6rd_element() {
-        assertEquals(5, BinSearchTestChild.search(oddNumberedArray10Numbers, 16));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(5, BinSearchDecorator.search(evenNumberedArray10Numbers, 16));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(3, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(5, 9, 7, resultList.get(1));
@@ -140,8 +141,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_6_when_searching_for_the_7rd_element() {
-        assertEquals(6, BinSearchTestChild.search(oddNumberedArray10Numbers, 39));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(6, BinSearchDecorator.search(evenNumberedArray10Numbers, 39));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(4, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(5, 9, 7, resultList.get(1));
@@ -152,8 +153,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_7_when_searching_for_the_8rd_element() {
-        assertEquals(7, BinSearchTestChild.search(oddNumberedArray10Numbers, 456));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(7, BinSearchDecorator.search(evenNumberedArray10Numbers, 456));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(2, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(5, 9, 7, resultList.get(1));
@@ -162,8 +163,8 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_8_when_searching_for_the_9th_element() {
-        assertEquals(8, BinSearchTestChild.search(oddNumberedArray10Numbers, 999));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(8, BinSearchDecorator.search(evenNumberedArray10Numbers, 999));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(3, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(5, 9, 7, resultList.get(1));
@@ -173,8 +174,20 @@ public class BinSearchTest {
 
     @Test
     public void should_return_index_9_when_searching_for_the_10th_element() {
-        assertEquals(9, BinSearchTestChild.search(oddNumberedArray10Numbers, 1250));
-        List<int[]> resultList = binSearchTest.getList();
+        assertEquals(9, BinSearchDecorator.search(evenNumberedArray10Numbers, 1250));
+        List<int[]> resultList = binSearchDecorator.getList();
+        assertEquals(4, resultList.size());
+        assertMidpointValues(0, 9, 4, resultList.get(0));
+        assertMidpointValues(5, 9, 7, resultList.get(1));
+        assertMidpointValues(8, 9, 8, resultList.get(2));
+        assertMidpointValues(9, 9, 9, resultList.get(3));
+        //{1, 3, 5, 7, 9, 16, 39, 456, 999, 1250};
+    }
+
+    @Test
+    public void should_return_neg_1_when_searching_for_a_not_existing_element() {
+        assertEquals(-1, BinSearchDecorator.search(evenNumberedArray10Numbers, 1249));
+        List<int[]> resultList = binSearchDecorator.getList();
         assertEquals(4, resultList.size());
         assertMidpointValues(0, 9, 4, resultList.get(0));
         assertMidpointValues(5, 9, 7, resultList.get(1));
