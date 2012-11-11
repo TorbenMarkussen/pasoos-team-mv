@@ -2,7 +2,7 @@ package pasoos;
 
 public class BinSearch {
 
-    protected static BinarySearchHelper searchHelper = new Helper();
+    protected static MidPointCalculator midPointCalculator = new MidPointCalculatorImpl();
 
     public static int search(int[] a, int target) {
         if (a.length == 0)
@@ -12,7 +12,7 @@ public class BinSearch {
         int max = a.length - 1;
 
         while (max >= min) {
-            int midPoint = searchHelper.getMidPoint(min, max);
+            int midPoint = midPointCalculator.getMidPoint(min, max);
             if (a[midPoint] == target)
                 return midPoint;
             if (a[midPoint] > target)
@@ -24,8 +24,8 @@ public class BinSearch {
         return -1;
     }
 
-    private static class Helper implements BinarySearchHelper {
-        @Override
+    private static class MidPointCalculatorImpl implements MidPointCalculator {
+
         public int getMidPoint(int min, int max) {
             return (max - min) / 2 + min;
         }
