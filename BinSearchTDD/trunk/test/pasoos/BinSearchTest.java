@@ -74,6 +74,7 @@ public class BinSearchTest {
         assertEquals(-1, BinSearch.search(new int[]{5}, 7));
     }
 
+
     @Test
     public void should_return_index_0_when_searching_for_the_1st_element() {
         assertEquals(0, BinSearchDecorator.search(evenNumberedArray10Numbers, 1));
