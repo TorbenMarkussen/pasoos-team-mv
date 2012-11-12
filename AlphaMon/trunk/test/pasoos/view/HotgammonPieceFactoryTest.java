@@ -1,0 +1,46 @@
+package pasoos.view;
+
+import minidraw.boardgame.BoardFigure;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import pasoos.hotgammon.Game;
+import pasoos.hotgammon.Location;
+
+import java.util.List;
+import java.util.Map;
+
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static pasoos.hotgammon.Color.NONE;
+
+public class HotgammonPieceFactoryTest {
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void should_return_empty_map_for_empty_game_board() {
+        Game g = mock(Game.class);
+        HotgammonPieceFactory pf = new HotgammonPieceFactory(g);
+        when(g.getCount(any(Location.class))).thenReturn(0);
+        when(g.getColor(any(Location.class))).thenReturn(NONE);
+
+        Map<Location, List<BoardFigure>> m = pf.generatePieceMultiMap();
+
+        for (Location loc : Location.values()) {
+            assertTrue(m.containsKey(loc));
+            assertNotNull(m.get(loc));
+
+        }
+    }
+
+}

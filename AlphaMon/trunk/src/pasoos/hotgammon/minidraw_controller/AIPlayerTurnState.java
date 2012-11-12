@@ -1,61 +1,109 @@
-package pasoos.hotgammon.controller;
+package pasoos.hotgammon.minidraw_controller;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gerry.GameAdapter;
 import pasoos.hotgammon.gerry.Gerry;
+import pasoos.hotgammon.minidraw_view.Checker;
+import pasoos.hotgammon.minidraw_view.Convert;
 
-import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class AIPlayerTurnState extends GameControllerStateImpl implements GameAdapter, ActionListener {
+public class AIPlayerTurnState extends GameControllerStateImpl implements GameAdapter {
     private Gerry aiplayer;
     private Game game;
     private static HashMap<Location, Integer> loc2gerry;
     private static HashMap<Integer, Location> gerry2loc;
     private String status;
-    private Timer timer;
-    List<ActionListener> actionQueue = new ArrayList<ActionListener>();
+    private List<GammonMove> gerryMoves;
 
     public AIPlayerTurnState(GameContext context, Game g) {
         super(context);
         this.game = g;
         aiplayer = new Gerry();
-        timer = new Timer(200, this);
-        timer.setInitialDelay(100);
+        gerryMoves = new ArrayList<GammonMove>();
     }
 
     @Override
     public void entry() {
-        actionQueue = new ArrayList<ActionListener>();
         status = "Gerry moved : ";
 
+        gerryMoves = new ArrayList<GammonMove>();
         aiplayer.play(this);
-        addTurnCompletedAction();
+
+        animateMove(gerryMoves.remove(0));
 
         gameContext.updateStatusText(status);
-        timer.start();
     }
 
-    private void addTurnCompletedAction() {
-        actionQueue.add(new ActionListener() {
+    private void animateMove(final GammonMove gm) {
+        Point start = Convert.locationAndCount2xy(gm.getFrom(), hgvm.getCount(gm.getFrom()) - 1);
+        Point dest = Convert.locationAndCount2xy(gm.getTo(), hgvm.getCount(gm.getTo()));
+        Point bezPointA = new Point(start.x, 220);
+        Point bezPointB = new Point(dest.x, 220);
+        final Point[] cp = new Point[]{start, bezPointA, bezPointB, dest};
+        final Checker checker = hgvm.getTopChecker(gm.getFrom());
+
+        Thread thread = new Thread(new Runnable() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                AIPlayerTurnState.this.turnCompleted();
+            public void run() {
+                double t = 0.05;
+                Point current = cp[0];
+                while (t < 1) {
+                    Point p = bezierAnimate(t, cp);
+                    checker.moveBy(p.x - current.x, p.y - current.y);
+
+                    current = p;
+                    t += 0.05;
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                AIPlayerTurnState.this.movedChecker(gm);
             }
         });
+        thread.start();
+    }
+
+    private void movedChecker(GammonMove gm) {
+        hgvm.move(gm.getFrom(), gm.getTo());
+
+        if (gerryMoves.size() > 0) {
+            animateMove(gerryMoves.remove(0));
+        } else {
+            turnCompleted();
+        }
     }
 
     private void turnCompleted() {
-        timer.stop();
         if (hgvm.winner() == Color.NONE) {
             gameContext.setState(new NextTurnGameState(gameContext));
         } else {
             gameContext.setState(new WinnerFoundState(gameContext));
         }
+    }
+
+    private Point bezierAnimate(double t, Point[] cp) {
+        //Calculate and draw bezier curve
+        Point[] points = cp;
+        double x, y;
+        //use Berstein polynomials
+        x = (points[0].x + t * (-points[0].x * 3 + t * (3 * points[0].x -
+                points[0].x * t))) + t * (3 * points[1].x + t * (-6 * points[1].x +
+                points[1].x * 3 * t)) + t * t * (points[2].x * 3 - points[2].x * 3 * t) +
+                points[3].x * t * t * t;
+        y = (points[0].y + t * (-points[0].y * 3 + t * (3 * points[0].y -
+                points[0].y * t))) + t * (3 * points[1].y + t * (-6 * points[1].y +
+                points[1].y * 3 * t)) + t * t * (points[2].y * 3 - points[2].y * 3 * t) +
+                points[3].y * t * t * t;
+        return new Point((int) x, (int) y);
     }
 
     @Override
@@ -77,43 +125,7 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
     public void move(int from, int to) {
         Location fl = gerry2loc.get(from);
         Location tl = gerry2loc.get(to);
-
-        addMoveAction(fl, tl);
-
-        status += fl + " -> " + tl + "; ";
-        gameContext.updateStatusText(status);
-    }
-
-    private void animateMove(int percentage, Location from, Location to) {
-        hgvm.animateMove(from, to, percentage);
-    }
-
-    private void commitMove(Location from, Location to) {
-        hgvm.move(from, to);
-    }
-
-    private void addMoveAction(final Location fl, final Location tl) {
-        for (int i = 0; i < 10; i++) {
-            actionQueue.add(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    AIPlayerTurnState.this.animateMove(10, fl, tl);
-                }
-            });
-        }
-        actionQueue.add(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AIPlayerTurnState.this.commitMove(fl, tl);
-            }
-        });
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (actionQueue.size() > 0)
-            actionQueue.remove(0).actionPerformed(e);
+        gerryMoves.add(new GammonMove(fl, tl));
     }
 
     static {

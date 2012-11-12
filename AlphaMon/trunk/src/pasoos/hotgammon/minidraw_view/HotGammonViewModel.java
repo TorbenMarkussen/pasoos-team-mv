@@ -1,4 +1,4 @@
-package pasoos.hotgammon.view;
+package pasoos.hotgammon.minidraw_view;
 
 import minidraw.framework.Drawing;
 import minidraw.framework.Figure;
@@ -169,17 +169,12 @@ public class HotGammonViewModel implements GameObserver {
         dicesChanged(values);
     }
 
-    public void animateMove(Location fl, Location tl, int percentage) {
-        List<Checker> f = board.get(fl);
-        List<Checker> t = board.get(tl);
+    public Checker getTopChecker(Location location) {
+        List<Checker> f = board.get(location);
+        return f.get(f.size() - 1);
+    }
 
-        Checker c = f.get(f.size() - 1);
-
-        Point origin = Convert.locationAndCount2xy(fl, f.size() - 1);
-        Point destination = Convert.locationAndCount2xy(tl, t.size());
-        int dx = destination.x - origin.x;
-        int dy = destination.y - origin.y;
-
-        c.moveBy(dx / percentage, dy / percentage);
+    public int getCount(Location location) {
+        return board.get(location).size();
     }
 }

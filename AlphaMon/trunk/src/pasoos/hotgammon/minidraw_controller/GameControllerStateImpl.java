@@ -1,7 +1,7 @@
-package pasoos.hotgammon.controller;
+package pasoos.hotgammon.minidraw_controller;
 
 import minidraw.framework.DrawingEditor;
-import pasoos.hotgammon.view.HotGammonViewModel;
+import pasoos.hotgammon.minidraw_view.HotGammonViewModel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
