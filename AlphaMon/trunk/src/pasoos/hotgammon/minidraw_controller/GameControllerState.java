@@ -1,4 +1,4 @@
-package pasoos.hotgammon.controller;
+package pasoos.hotgammon.minidraw_controller;
 
 import minidraw.framework.Tool;
 

@@ -1,4 +1,4 @@
-package pasoos.hotgammon.view;
+package pasoos.hotgammon.minidraw_view;
 
 import minidraw.standard.ImageFigure;
 import pasoos.hotgammon.Color;

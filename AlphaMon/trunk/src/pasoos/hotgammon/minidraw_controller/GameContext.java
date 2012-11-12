@@ -1,8 +1,8 @@
-package pasoos.hotgammon.controller;
+package pasoos.hotgammon.minidraw_controller;
 
 import minidraw.framework.DrawingEditor;
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.view.HotGammonViewModel;
+import pasoos.hotgammon.minidraw_view.HotGammonViewModel;
 
 public class GameContext {
     private DrawingEditor editor;

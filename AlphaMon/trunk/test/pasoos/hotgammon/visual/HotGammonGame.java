@@ -8,10 +8,10 @@ import minidraw.standard.MiniDrawApplication;
 import minidraw.standard.StandardDrawing;
 import minidraw.standard.StdViewWithBackground;
 import pasoos.hotgammon.Game;
-import pasoos.hotgammon.controller.*;
+import pasoos.hotgammon.minidraw_controller.*;
 import pasoos.hotgammon.gameengine.GameImpl;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
-import pasoos.hotgammon.view.HotGammonViewModel;
+import pasoos.hotgammon.minidraw_view.HotGammonViewModel;
 
 import javax.swing.*;
 

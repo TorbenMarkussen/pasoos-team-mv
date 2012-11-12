@@ -1,10 +1,10 @@
-package pasoos.hotgammon.controller;
+package pasoos.hotgammon.minidraw_controller;
 
 import minidraw.standard.SelectionTool;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.view.Checker;
-import pasoos.hotgammon.view.Convert;
+import pasoos.hotgammon.minidraw_view.Checker;
+import pasoos.hotgammon.minidraw_view.Convert;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;

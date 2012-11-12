@@ -21,6 +21,7 @@ public class GameImpl implements Game {
         System.out.println("Moving to " + toSquare.index());
         tokenSquare = toSquare;
         observer.pieceMovedEvent(fromSquare, toSquare);
+        //observer.pieceMovedEvent(new Square(20), new Square(19));
         return true;
     }
 
