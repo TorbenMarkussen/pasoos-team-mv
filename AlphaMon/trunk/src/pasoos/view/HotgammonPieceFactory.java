@@ -2,7 +2,6 @@ package pasoos.view;
 
 import minidraw.boardgame.BoardFigure;
 import minidraw.boardgame.FigureFactory;
-import minidraw.boardgame.NullCommand;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
@@ -46,14 +45,14 @@ public class HotgammonPieceFactory implements FigureFactory<Location> {
     }
 
     protected BoardFigure createBoardFigure(String imgname) {
-        return new BoardFigure(imgname, true, new NullCommand());
+        return new BoardFigure(imgname, true, new MoveCommand(game));
     }
 
     @Override
     public Map<String, BoardFigure> generatePropMap() {
         Map<String, BoardFigure> m = new HashMap<String, BoardFigure>();
-        m.put("die1", new BoardFigure("die0", false, new NullCommand()));
-        m.put("die2", new BoardFigure("die0", false, new NullCommand()));
+        m.put("die1", new BoardFigure("die0", false, new DieRollCommand(game)));
+        m.put("die2", new BoardFigure("die0", false, new DieRollCommand(game)));
         return m;
     }
 }
