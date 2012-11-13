@@ -7,9 +7,18 @@ import pasoos.hotgammon.minidraw_view.Convert;
 import java.awt.*;
 
 public class HotgammonPositioningStrategy implements PositioningStrategy<Location> {
+    private static final int FIRST_LAYER_LIMIT = 5;
+
     @Override
     public Point calculateFigureCoordinatesIndexedForLocation(Location location, int index) {
-        return Convert.locationAndCount2xy(location, index);
+        Point p = Convert.locationAndCount2xy(location, index);
+        if (index > FIRST_LAYER_LIMIT) {
+            Point hp = Convert.locationAndCount2xy(location, index - 1);
+            int pointDistance = p.y - hp.y;
+            p = Convert.locationAndCount2xy(location, index - FIRST_LAYER_LIMIT);
+            p = new Point(p.x, p.y - pointDistance / 2);
+        }
+        return p;
     }
 
     @Override

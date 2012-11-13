@@ -15,7 +15,7 @@ public class HotgammonPropAppearanceStrategy implements PropAppearanceStrategy {
         if (keyOfProp.equals("die1")) {
             return "die" + game.diceThrown()[0];
         } else if (keyOfProp.equals("die2")) {
-            return "die" + game.diceThrown()[0];
+            return "die" + game.diceThrown()[1];
         }
         return null;
 
