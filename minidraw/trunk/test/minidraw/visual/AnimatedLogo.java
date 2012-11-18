@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-public class AnimatedLogo implements Tool, AnimationCallback {
+public class AnimatedLogo implements Tool, AnimationChangeListener {
     private DrawingEditor editor;
     private Figure[][] figures;
     private Image background;
@@ -25,7 +25,7 @@ public class AnimatedLogo implements Tool, AnimationCallback {
         background = ImageManager.getSingleton().getImage("au-logo");
         backGroundDimension = new Dimension(background.getWidth(null), background.getHeight(null));
         center = new Point(backGroundDimension.width / 2, backGroundDimension.height / 2);
-        ae = new AnimationEngine(new AnimationTimerImpl());
+        ae = new AnimationEngineImpl(new AnimationTimerImpl());
         for (Figure[] figureRow : figures)
             for (Figure f : figureRow)
                 editor.drawing().add(f);
@@ -68,28 +68,29 @@ public class AnimatedLogo implements Tool, AnimationCallback {
     }
 
     private void startAnimation(Figure f) {
-        BezierAnimation ba = new BezierAnimation();
-        Point begin = f.displayBox().getLocation();
-        ba.setBeginPoint(begin);
-        ba.setWaypoints(center, center);
-        ba.setEndPoint(calculateEndpointFromBegin(f.displayBox()));
-        ba.setFigure(f);
-        ba.setAnimationCallback(this);
-        ae.addAnimation(ba);
+        Animation ba = createBezierAnimation(f, calculateEndpointFromBegin(f.displayBox()));
+        ba.addAnimationCallback(this);
+        ae.startAnimation(ba);
+    }
+
+    private MoveAnimation createBezierAnimation(Figure f, Point end) {
+        TimeInterval ti = TimeInterval.fromNow().duration(2000);
+        return new MoveAnimation(f, end, ti, new BezierMovement(center, center));
     }
 
     private void startLogoAnimation(int i, int j) {
         Figure f = figures[i][j];
-        BezierAnimation ba = new BezierAnimation();
-        Point begin = f.displayBox().getLocation();
 
-        ba.setBeginPoint(begin);
-        ba.setWaypoints(center, center);
         Point endpoint = new Point(j * backGroundDimension.width / 3, i * backGroundDimension.height / 3);
-        ba.setEndPoint(endpoint);
-        ba.setFigure(f);
-        ba.setAnimationCallback(this);
-        ae.addAnimation(ba);
+        Animation ba = createLinearAnimation(f, endpoint);
+        ba.addAnimationCallback(this);
+
+        ae.startAnimation(ba);
+    }
+
+    private Animation createLinearAnimation(Figure f, Point end) {
+        TimeInterval ti = TimeInterval.fromNow().duration(2000);
+        return new MoveAnimation(f, end, ti, new LinearMove());
     }
 
     private Point calculateEndpointFromBegin(Rectangle r) {
@@ -130,8 +131,8 @@ public class AnimatedLogo implements Tool, AnimationCallback {
     }
 
     @Override
-    public void onAnimationCompleted(Animation animation) {
-        Figure f = animation.getFigure();
+    public void onAnimationCompleted(AnimationChangeEvent ace) {
+        Figure f = ace.getSource().getFigure();
         if (allowAnimationRestart)
             startAnimation(f);
     }
