@@ -1,12 +1,17 @@
 package pasoos.hotgammon.minidraw_controller;
 
+import minidraw.framework.Animation;
+import minidraw.framework.AnimationCallback;
+import minidraw.framework.AnimationEngine;
+import minidraw.framework.BezierAnimation;
+import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gerry.GameAdapter;
 import pasoos.hotgammon.gerry.Gerry;
 import pasoos.hotgammon.minidraw_view.Checker;
-import pasoos.hotgammon.minidraw_view.Convert;
+import pasoos.physics.Convert;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,13 +19,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AIPlayerTurnState extends GameControllerStateImpl implements GameAdapter {
+public class AIPlayerTurnState extends GameControllerStateImpl implements GameAdapter, AnimationCallback {
     private Gerry aiplayer;
     private Game game;
     private static HashMap<Location, Integer> loc2gerry;
     private static HashMap<Integer, Location> gerry2loc;
     private String status;
     private List<GammonMove> gerryMoves;
+    AnimationEngine aengine = new AnimationEngine(new AnimationTimerImpl());
+    private GammonMove animatingMove;
 
     public AIPlayerTurnState(GameContext context, Game g) {
         super(context);
@@ -36,47 +43,34 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
         gerryMoves = new ArrayList<GammonMove>();
         aiplayer.play(this);
 
-        animateMove(gerryMoves.remove(0));
+        startAnimation(gerryMoves.remove(0));
 
         gameContext.updateStatusText(status);
     }
 
-    private void animateMove(final GammonMove gm) {
+    private void startAnimation(GammonMove gm) {
         Point start = Convert.locationAndCount2xy(gm.getFrom(), hgvm.getCount(gm.getFrom()) - 1);
         Point dest = Convert.locationAndCount2xy(gm.getTo(), hgvm.getCount(gm.getTo()));
         Point bezPointA = new Point(start.x, 220);
         Point bezPointB = new Point(dest.x, 220);
-        final Point[] cp = new Point[]{start, bezPointA, bezPointB, dest};
-        final Checker checker = hgvm.getTopChecker(gm.getFrom());
+        Checker checker = hgvm.getTopChecker(gm.getFrom());
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                double t = 0.05;
-                Point current = cp[0];
-                while (t < 1) {
-                    Point p = bezierAnimate(t, cp);
-                    checker.moveBy(p.x - current.x, p.y - current.y);
+        animatingMove = gm;
+        BezierAnimation ba = new BezierAnimation();
+        ba.setBeginPoint(start);
+        ba.setEndPoint(dest);
+        ba.setWaypoints(bezPointA, bezPointB);
+        ba.setFigure(checker);
+        ba.setAnimationCallback(this);
 
-                    current = p;
-                    t += 0.05;
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                AIPlayerTurnState.this.movedChecker(gm);
-            }
-        });
-        thread.start();
+        aengine.addAnimation(ba);
     }
 
     private void movedChecker(GammonMove gm) {
         hgvm.move(gm.getFrom(), gm.getTo());
 
         if (gerryMoves.size() > 0) {
-            animateMove(gerryMoves.remove(0));
+            startAnimation(gerryMoves.remove(0));
         } else {
             turnCompleted();
         }
@@ -88,22 +82,6 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
         } else {
             gameContext.setState(new WinnerFoundState(gameContext));
         }
-    }
-
-    private Point bezierAnimate(double t, Point[] cp) {
-        //Calculate and draw bezier curve
-        Point[] points = cp;
-        double x, y;
-        //use Berstein polynomials
-        x = (points[0].x + t * (-points[0].x * 3 + t * (3 * points[0].x -
-                points[0].x * t))) + t * (3 * points[1].x + t * (-6 * points[1].x +
-                points[1].x * 3 * t)) + t * t * (points[2].x * 3 - points[2].x * 3 * t) +
-                points[3].x * t * t * t;
-        y = (points[0].y + t * (-points[0].y * 3 + t * (3 * points[0].y -
-                points[0].y * t))) + t * (3 * points[1].y + t * (-6 * points[1].y +
-                points[1].y * 3 * t)) + t * t * (points[2].y * 3 - points[2].y * 3 * t) +
-                points[3].y * t * t * t;
-        return new Point((int) x, (int) y);
     }
 
     @Override
@@ -170,4 +148,8 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
         }
     }
 
+    @Override
+    public void onAnimationCompleted(Animation animation) {
+        movedChecker(animatingMove);
+    }
 }
