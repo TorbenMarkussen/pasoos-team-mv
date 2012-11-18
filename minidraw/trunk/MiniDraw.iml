@@ -7,9 +7,12 @@
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/ext" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resource" isTestSource="false" packagePrefix="resource" />
+      <sourceFolder url="file://$MODULE_DIR$/testext" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="junit-4.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="mockito-all-1.9.0" level="project" />
   </component>
 </module>
 

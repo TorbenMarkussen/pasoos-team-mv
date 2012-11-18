@@ -1,9 +1,6 @@
 package pasoos.hotgammon.minidraw_controller;
 
-import minidraw.framework.Animation;
-import minidraw.framework.AnimationCallback;
-import minidraw.framework.AnimationEngine;
-import minidraw.framework.BezierAnimation;
+import minidraw.framework.*;
 import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
@@ -19,14 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AIPlayerTurnState extends GameControllerStateImpl implements GameAdapter, AnimationCallback {
+public class AIPlayerTurnState extends GameControllerStateImpl implements GameAdapter, AnimationChangeListener {
     private Gerry aiplayer;
     private Game game;
     private static HashMap<Location, Integer> loc2gerry;
     private static HashMap<Integer, Location> gerry2loc;
     private String status;
     private List<GammonMove> gerryMoves;
-    AnimationEngine aengine = new AnimationEngine(new AnimationTimerImpl());
+    AnimationEngine aengine = new AnimationEngineImpl(new AnimationTimerImpl());
     private GammonMove animatingMove;
 
     public AIPlayerTurnState(GameContext context, Game g) {
@@ -56,14 +53,10 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
         Checker checker = hgvm.getTopChecker(gm.getFrom());
 
         animatingMove = gm;
-        BezierAnimation ba = new BezierAnimation();
-        ba.setBeginPoint(start);
-        ba.setEndPoint(dest);
-        ba.setWaypoints(bezPointA, bezPointB);
-        ba.setFigure(checker);
-        ba.setAnimationCallback(this);
+        Animation ba = new MoveAnimation(checker, dest, TimeInterval.fromNow().duration(1000), new BezierMovement(bezPointA, bezPointB));
+        ba.addAnimationCallback(this);
 
-        aengine.addAnimation(ba);
+        aengine.startAnimation(ba);
     }
 
     private void movedChecker(GammonMove gm) {
@@ -149,7 +142,7 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
     }
 
     @Override
-    public void onAnimationCompleted(Animation animation) {
+    public void onAnimationCompleted(AnimationChangeEvent ace) {
         movedChecker(animatingMove);
     }
 }
