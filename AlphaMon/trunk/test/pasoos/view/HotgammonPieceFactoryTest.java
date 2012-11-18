@@ -1,6 +1,6 @@
 package pasoos.view;
 
-import minidraw.boardgame.BoardFigure;
+import minidraw.boardgame.BoardPiece;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class HotgammonPieceFactoryTest {
         when(g.getCount(any(Location.class))).thenReturn(0);
         when(g.getColor(any(Location.class))).thenReturn(NONE);
 
-        Map<Location, List<BoardFigure>> m = pf.generatePieceMultiMap();
+        Map<Location, List<BoardPiece>> m = pf.generatePieceMultiMap();
 
         for (Location loc : Location.values()) {
             assertTrue(m.containsKey(loc));

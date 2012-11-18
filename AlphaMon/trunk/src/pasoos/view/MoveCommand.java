@@ -3,7 +3,7 @@ package pasoos.view;
 import minidraw.boardgame.Command;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.minidraw_view.Convert;
+import pasoos.physics.Convert;
 
 public class MoveCommand implements Command {
     private int fromX;

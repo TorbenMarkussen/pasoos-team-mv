@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 public class HotgammonPositioningStrategyTest {
     private static final int CHECKER_WIDTH = 27;
     private static final double CHECKER_HEIGHT = 27;
+    private static final Dimension checkerDimension = new Dimension(27, 27);
     private HotgammonPositioningStrategy ps;
 
     @Before
@@ -40,4 +41,16 @@ public class HotgammonPositioningStrategyTest {
         assertTrue(p7.getY() > p1.getY());
         assertTrue(p7.getY() < p.getY());
     }
+
+    @Test
+    public void should_position_checkers_centered() {
+        Rectangle r = new Rectangle(500, 217, 40, 200);
+        for (int i = 0; i < 12; i++) {
+            Point p0 = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, i);
+            Rectangle checker = new Rectangle(p0, checkerDimension);
+            assertTrue(r.contains(checker));
+            assertEquals(r.getCenterX(), checker.getCenterX(), 1);
+        }
+    }
+
 }

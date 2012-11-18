@@ -57,24 +57,37 @@ import java.util.Map;
  * commercial use, see http://www.baerbak.com/
  */
 
-public class ImageManager {
+public class ImageManager implements ImageRepository {
 
     private static final String RESOURCE_PATH = "/resource/";
-    private static Component aComponent;
 
     private Map<String, Image> name2Image;
 
-    public static ImageManager singleton;
+    private static ImageRepository singleton;
+
+    public static final String PROP_NAME_FOR_SINGLETON_CLAZZ = "minidraw.ImageRepository";
 
     static {
-        singleton = new ImageManager();
+        String clazzname = System.getProperty(PROP_NAME_FOR_SINGLETON_CLAZZ);
+
+        if (clazzname != null) {
+            try {
+                Class c = Class.forName(clazzname);
+                singleton = (ImageRepository) c.newInstance();
+            } catch (ClassNotFoundException e) {
+            } catch (InstantiationException e) {
+            } catch (IllegalAccessException e) {
+            }
+        }
+        if (singleton == null)
+            singleton = new ImageManager();
     }
 
     private ImageManager() {
         registerAllImages();
     }
 
-    public static ImageManager getSingleton() {
+    public static ImageRepository getSingleton() {
         return singleton;
     }
 
@@ -131,8 +144,7 @@ public class ImageManager {
     }
 
     public Image getImage(String shortName) {
-        Image img = null;
-        img = name2Image.get(shortName);
+        Image img = name2Image.get(shortName);
 
         if (img == null) {
             throw new RuntimeException("ImageManager: No image named " +

@@ -47,7 +47,7 @@ public class MiniDrawApplication
     /**
      * the image manager of an application
      */
-    protected ImageManager fImageManager;
+    protected ImageRepository fImageManager;
 
     /**
      * the tool being used by this editor

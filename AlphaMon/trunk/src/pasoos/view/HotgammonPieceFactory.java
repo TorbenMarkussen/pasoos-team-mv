@@ -1,6 +1,7 @@
 package pasoos.view;
 
 import minidraw.boardgame.BoardFigure;
+import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.FigureFactory;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
@@ -22,17 +23,17 @@ public class HotgammonPieceFactory implements FigureFactory<Location> {
     }
 
     @Override
-    public Map<Location, List<BoardFigure>> generatePieceMultiMap() {
-        Map<Location, List<BoardFigure>> map = new HashMap<Location, List<BoardFigure>>();
+    public Map<Location, List<BoardPiece>> generatePieceMultiMap() {
+        Map<Location, List<BoardPiece>> map = new HashMap<Location, List<BoardPiece>>();
         for (Location loc : Location.values()) {
-            List<BoardFigure> l = createList(game.getColor(loc), game.getCount(loc));
+            List<BoardPiece> l = createList(game.getColor(loc), game.getCount(loc));
             map.put(loc, l);
         }
         return map;
     }
 
-    private List<BoardFigure> createList(Color color, int count) {
-        List<BoardFigure> l = new ArrayList<BoardFigure>();
+    private List<BoardPiece> createList(Color color, int count) {
+        List<BoardPiece> l = new ArrayList<BoardPiece>();
         for (int i = 0; i < count; i++) {
             if (color == BLACK) {
                 l.add(createBoardFigure("blackchecker"));
@@ -49,8 +50,8 @@ public class HotgammonPieceFactory implements FigureFactory<Location> {
     }
 
     @Override
-    public Map<String, BoardFigure> generatePropMap() {
-        Map<String, BoardFigure> m = new HashMap<String, BoardFigure>();
+    public Map<String, BoardPiece> generatePropMap() {
+        Map<String, BoardPiece> m = new HashMap<String, BoardPiece>();
         m.put("die1", new BoardFigure("die0", false, new DieRollCommand(game)));
         m.put("die2", new BoardFigure("die0", false, new DieRollCommand(game)));
         return m;
