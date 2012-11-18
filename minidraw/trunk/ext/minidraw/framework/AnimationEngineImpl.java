@@ -69,7 +69,7 @@ public class AnimationEngineImpl implements Runnable, AnimationEngine {
         try {
             a.step();
         } catch (Exception e) {
-            //silent catch exception
+
         }
     }
 
