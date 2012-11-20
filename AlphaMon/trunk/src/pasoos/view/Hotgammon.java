@@ -5,13 +5,16 @@ import minidraw.boardgame.BoardDrawing;
 import minidraw.framework.DrawingEditor;
 import minidraw.standard.MiniDrawApplication;
 import pasoos.hotgammon.Game;
+import pasoos.hotgammon.GameFactory;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gameengine.GameImpl;
-import pasoos.hotgammon.rules.factory.SemiMonFactory;
 
 public class Hotgammon {
-    public static void main(String[] args) {
-        Game game = new GameImpl(new SemiMonFactory());
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
+
+        GameSettings gs = new GameSettingsImpl(args);
+
+        Game game = GameFactory.createGame(gs.getGameFactoryType());
+
         game.newGame();
 
         DrawingEditor editor = new MiniDrawApplication("Hotgammon game...", new HotgammonViewFactory(game));

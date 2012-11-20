@@ -40,7 +40,6 @@ public class HotgammonPieceFactory implements FigureFactory<Location> {
             } else if (color == RED) {
                 l.add(createBoardFigure("redchecker"));
             }
-
         }
         return l;
     }

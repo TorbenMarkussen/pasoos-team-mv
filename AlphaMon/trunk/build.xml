@@ -1,4 +1,5 @@
-<project name="Alphamon" basedir=".">
+<project name="HotGammon" default="default" basedir="." >
+    <import file="dependencies.xml"/>
 
     <property name="build.home" value="${basedir}/build"/>
     <property name="src.home" value="${basedir}/src"/>
@@ -60,6 +61,16 @@
                 <include name="*.java"/>
             </fileset>
         </javadoc>
+    </target>
+    
+    <target name="dist.dependencies">
+        <antcall target="depend.${ant.project.name}"/>
+    </target>
+    
+    <target name="default" depends="dist"/>
+    
+    <target name="dist" depends="compile">
+        <echo message="${ant.project.name} - build-common.dist"/>
     </target>
 
 </project>
