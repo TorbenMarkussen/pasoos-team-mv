@@ -54,7 +54,7 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
 
         animatingMove = gm;
         Animation ba = new MoveAnimation(checker, dest, TimeInterval.fromNow().duration(1000), new BezierMovement(bezPointA, bezPointB));
-        ba.addAnimationCallback(this);
+        ba.addAnimationChangeListener(this);
 
         aengine.startAnimation(ba);
     }
