@@ -13,9 +13,13 @@ import javax.swing.*;
 
 public class HotgammonViewFactory implements Factory {
     private Game game;
+    private final GammonPlayer redPlayer;
+    private final GammonPlayer blackPlayer;
 
-    public HotgammonViewFactory(Game game) {
+    public HotgammonViewFactory(Game game, GammonPlayer redPlayer, GammonPlayer blackPlayer) {
         this.game = game;
+        this.redPlayer = redPlayer;
+        this.blackPlayer = blackPlayer;
     }
 
     @Override
@@ -26,7 +30,7 @@ public class HotgammonViewFactory implements Factory {
 
     @Override
     public Drawing createDrawing(DrawingEditor editor) {
-        return new BoardDrawing<Location>(new HotgammonPieceFactory(game),
+        return new BoardDrawing<Location>(new HotgammonPieceFactory(game, redPlayer, blackPlayer),
                 new HotgammonPositioningStrategy(),
                 new HotgammonPropAppearanceStrategy(game));
 

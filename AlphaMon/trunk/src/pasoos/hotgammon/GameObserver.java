@@ -26,13 +26,14 @@ public interface GameObserver {
      * @param from the position the checker had before
      * @param to   the new position of the checker
      */
-    public void checkerMove(Location from, Location to);
+    void checkerMove(Location from, Location to);
 
     /**
      * this method is invoked whenever the dice are rolled.
      *
      * @param values the values of the two dice
      */
-    public void diceRolled(int[] values);
+    void diceRolled(int[] values);
 
+    void turnEnded();
 }

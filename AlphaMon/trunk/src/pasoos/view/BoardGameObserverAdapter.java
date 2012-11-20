@@ -21,4 +21,9 @@ public class BoardGameObserverAdapter implements GameObserver {
         drawing.propChangeEvent("die1");
         drawing.propChangeEvent("die2");
     }
+
+    @Override
+    public void turnEnded() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

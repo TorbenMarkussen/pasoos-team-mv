@@ -1,6 +1,7 @@
 package pasoos.hotgammon;
 
 import org.junit.Test;
+import org.mockito.InOrder;
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.gameengine.BoardImpl;
 import pasoos.hotgammon.gameengine.InitializableBoard;
@@ -9,6 +10,9 @@ import pasoos.hotgammon.rules.factory.BetaMonFactory;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
 import static pasoos.hotgammon.Color.BLACK;
 import static pasoos.hotgammon.Color.RED;
 import static pasoos.hotgammon.Location.*;
@@ -89,6 +93,24 @@ public class TestBetamonCustomBoard {
 
         game.nextTurn();
         assertEquals(0, game.diceValuesLeft().length);
+
+        game.nextTurn();
+        assertTrue(game.move(R_BAR, B3));
+    }
+
+    @Test
+    public void should_notify_observer_if_no_moves_are_possible_for_player_in_turn() {
+
+        Game game = createGameCustomBoardB();
+        GameObserver observer = mock(GameObserver.class);
+        game.addObserver(observer);
+
+        game.nextTurn();
+        assertEquals(0, game.diceValuesLeft().length);
+
+        InOrder inOrder = inOrder(observer);
+        inOrder.verify(observer).diceRolled(any(int[].class));
+        inOrder.verify(observer).turnEnded();
 
         game.nextTurn();
         assertTrue(game.move(R_BAR, B3));
