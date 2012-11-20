@@ -19,42 +19,50 @@
 
 <project name="minidraw" default="help" basedir=".">
 
-  <property name="source" value="src"/>
-  <property name="test" value="test"/>
-  <property name="build" value="build"/>
-  <property name="deploy" value="deploy"/>
-  <property name="doc" value="doc"/>
-  <property name="resource" value="resource"/>
+    <property name="source-ext" value="ext"/>
+    <property name="test-ext" value="testext"/>
+    <property name="source" value="src"/>
+    <property name="test" value="test"/>
+    <property name="build" value="build"/>
+    <property name="deploy" value="deploy"/>
+    <property name="doc" value="doc"/>
+    <property name="resource" value="resource"/>
+    <property name="mockito-jar" value="lib/mockito-all-1.9.0.jar"/>
+    <property name="junit-jar" value="lib/junit-4.10.jar"/>
 
-  <property name="jarname" value="minidraw.jar"/>
+    <property name="jarname" value="minidraw.jar"/>
 
-  <!-- Force compilation to output Java 5 version class files -->
-  <property name="ant.build.javac.target" value="1.5"/>
+    <!-- Force compilation to output Java 5 version class files -->
+    <property name="ant.build.javac.target" value="1.5"/>
 
-  <!-- Properties from shell -->
-  <property environment="env"/>
+    <!-- Properties from shell -->
+    <property environment="env"/>
 
-  <!-- Classpath -->
-  <path id="_classpath">
-    <pathelement path="${build}"/>
-  </path>
+    <!-- Classpath -->
+    <path id="_classpath">
+        <pathelement path="${build}"/>
+        <pathelement location="${junit-jar}"/>
+        <pathelement location="${mockito-jar}"/>
+    </path>
 
-  <path id="_srcpath">
-    <pathelement path="${source}"/>
-  </path>
+    <path id="_srcpath">
+        <pathelement path="${source}"/>
+        <pathelement path="${source-ext}"/>
+    </path>
 
-  <path id="_testsrcpath">
-    <pathelement path="${test}"/>
-  </path>
+    <path id="_testsrcpath">
+        <pathelement path="${test}"/>
+        <pathelement path="${test-ext}"/>
+    </path>
 
-  <target name="prepare">
-    <mkdir dir="${build}">
-    </mkdir>
-  </target>
+    <target name="prepare">
+        <mkdir dir="${build}">
+        </mkdir>
+    </target>
 
-  <!-- Help -->
-  <target name="help">
-    <echo>
+    <!-- Help -->
+    <target name="help">
+        <echo>
 Ant build system for MiniDraw.
    Testing:
      background:   Just show a background image.
@@ -64,7 +72,7 @@ Ant build system for MiniDraw.
      add:          Add and remove figures, show custom tool.
      message:      Show Messages in status field.
      key:          Show key events in status field.
-  
+
   Demonstration:
      rect:         Rectangle demo.
      puzzle:       Simple jigsaw puzzle.
@@ -75,171 +83,171 @@ Ant build system for MiniDraw.
 
   Experimental:
      breakthrough: Demo 'boardgame' package in MiniDraw.
-    </echo>
-  </target>
+        </echo>
+    </target>
 
-  <!-- Core classes -->
-  <target name="build_src" depends="prepare">
-    <javac 
+    <!-- Core classes -->
+    <target name="build_src" depends="prepare">
+        <javac 
        destdir="${build}"
        debug="on">
-      <src>
-	<path refid="_srcpath"/>
-      </src>
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </javac>
-  </target>
+            <src>
+                <path refid="_srcpath"/>
+            </src>
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </javac>
+    </target>
 
-  <target name="build_demo" depends="prepare">
-    <javac 
+    <target name="build_demo" depends="prepare">
+        <javac 
        destdir="${build}"
        debug="on">
-      <src>
-	<path refid="_demopath"/>
-      </src>
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </javac>
-  </target>
+            <src>
+                <path refid="_demopath"/>
+            </src>
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </javac>
+    </target>
 
 
-  <target name="build_test" depends="build_src">
-    <javac 
+    <target name="build_test" depends="build_src">
+        <javac 
        destdir="${build}"
        debug="on">
-      <src>
-	<path refid="_testsrcpath"/>
-      </src>
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </javac>
-  </target>
+            <src>
+                <path refid="_testsrcpath"/>
+            </src>
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </javac>
+    </target>
 
-  <target name="copy_resource" depends="prepare">
-    <copy todir="${build}\${resource}" >
-      <fileset dir="${resource}">
-	<include name="*.gif"/>
-	<include name="*.lst"/>
-      </fileset>
-    </copy>
-  </target>
+    <target name="copy_resource" depends="prepare">
+        <copy todir="${build}\${resource}" >
+            <fileset dir="${resource}">
+                <include name="*.gif"/>
+                <include name="*.lst"/>
+            </fileset>
+        </copy>
+    </target>
 
-  <!-- BUILD ALL -->
-  <target name="build_all" depends="build_src,build_test,copy_resource">
-  </target>
-  <target name="build_all_src" depends="build_src,copy_resource">
-  </target>
+    <!-- BUILD ALL -->
+    <target name="build_all" depends="build_src,build_test,copy_resource">
+    </target>
+    <target name="build_all_src" depends="build_src,copy_resource">
+    </target>
 
-  <!-- CLEAN -->
-  <target name="clean">
-    <delete dir="${build}">
-    </delete>
-    <delete dir="${doc}">
-    </delete>
-    <delete dir="${deploy}">
-    </delete>
-  </target>
+    <!-- CLEAN -->
+    <target name="clean">
+        <delete dir="${build}">
+        </delete>
+        <delete dir="${doc}">
+        </delete>
+        <delete dir="${deploy}">
+        </delete>
+    </target>
 
-  <!-- JHotDraw testing of graphical functionality -->
-  <target name="background" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.ShowBackground">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
-  <target name="figures" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.ShowFigures">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <!-- JHotDraw testing of graphical functionality -->
+    <target name="background" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.ShowBackground">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
+    <target name="figures" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.ShowFigures">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="composite" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.ShowCompositeFigure">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="composite" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.ShowCompositeFigure">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="multiview" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.MultiView">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="multiview" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.MultiView">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="add" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.AddRemoveFigures">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="add" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.AddRemoveFigures">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="message" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.ShowMessage">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="message" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.ShowMessage">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="key" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.KeyShow">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="key" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.KeyShow">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="puzzle" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.LogoPuzzle">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="puzzle" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.LogoPuzzle">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="rect" depends="build_all">
-    <java fork="yes" classname="minidraw.visual.ShowRectangle">
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </java>
-  </target>
+    <target name="rect" depends="build_all">
+        <java fork="yes" classname="minidraw.visual.ShowRectangle">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </java>
+    </target>
 
-  <target name="breakthrough" depends="build_all">
-    <java fork="yes" classname="minidraw.breakthrough.BreakThrough">
-      <classpath>
-	<path refid="_classpath" />
-      </classpath>
-    </java>
-  </target>
+    <target name="breakthrough" depends="build_all">
+        <java fork="yes" classname="minidraw.breakthrough.BreakThrough">
+            <classpath>
+                <path refid="_classpath" />
+            </classpath>
+        </java>
+    </target>
 
-  <!-- Make JavaDoc : run your web browser on doc/index.html !-->
-  <target name="mkdirdoc">
-    <mkdir dir="${doc}">
-    </mkdir>
-  </target>
+    <!-- Make JavaDoc : run your web browser on doc/index.html !-->
+    <target name="mkdirdoc">
+        <mkdir dir="${doc}">
+        </mkdir>
+    </target>
 
-  <target name="copy_doc_resource">
-    <copy todir="${doc}" >
-      <fileset dir="${source}">
-	<include name="**/*.gif"/>
-      </fileset>
-    </copy>
-  </target>
+    <target name="copy_doc_resource">
+        <copy todir="${doc}" >
+            <fileset dir="${source}">
+                <include name="**/*.gif"/>
+            </fileset>
+        </copy>
+    </target>
 
-  <target name="doc" depends="clean,build_src,mkdirdoc,copy_doc_resource">
-    <javadoc
+    <target name="doc" depends="clean,build_src,mkdirdoc,copy_doc_resource">
+        <javadoc
        source = "1.5"
        packagenames=
        "minidraw.*"
@@ -251,26 +259,40 @@ Ant build system for MiniDraw.
 
        windowtitle="MiniDraw by Henrik B. Christensen"
        >
-      <sourcepath>
-	<path refid="_srcpath"/>
-      </sourcepath>
-      <classpath>
-	<path refid="_classpath"/>
-      </classpath>
-    </javadoc>
-  </target>
+            <sourcepath>
+                <path refid="_srcpath"/>
+            </sourcepath>
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+        </javadoc>
+    </target>
+
+    <target name="test_ext" depends="build_test">
+        <junit printsummary="on" haltonfailure="yes">
+            <classpath>
+                <path refid="_classpath"/>
+            </classpath>
+            <batchtest>
+                <fileset dir="${test-ext}">
+                    <include name="**/*Test.java"/>
+                    <include name="**/Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
 
 
-  <!-- JAR Everything -->
-  <target name="mkdir_deploy">
-    <mkdir dir="${deploy}">
-    </mkdir>
-  </target>
+    <!-- JAR Everything -->
+    <target name="mkdir_deploy">
+        <mkdir dir="${deploy}">
+        </mkdir>
+    </target>
 
-  <target name="jar" 
+    <target name="jar" 
 	  depends="clean,mkdir_deploy,build_src">
-    <jar jarfile="${deploy}/${jarname}" basedir="${build}"/>
-  </target>
+        <jar jarfile="${deploy}/${jarname}" basedir="${build}"/>
+    </target>
 </project>
 
 

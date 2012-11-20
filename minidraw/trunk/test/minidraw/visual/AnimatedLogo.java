@@ -69,7 +69,7 @@ public class AnimatedLogo implements Tool, AnimationChangeListener {
 
     private void startAnimation(Figure f) {
         Animation ba = createBezierAnimation(f, calculateEndpointFromBegin(f.displayBox()));
-        ba.addAnimationCallback(this);
+        ba.addAnimationChangeListener(this);
         ae.startAnimation(ba);
     }
 
@@ -83,7 +83,7 @@ public class AnimatedLogo implements Tool, AnimationChangeListener {
 
         Point endpoint = new Point(j * backGroundDimension.width / 3, i * backGroundDimension.height / 3);
         Animation ba = createLinearAnimation(f, endpoint);
-        ba.addAnimationCallback(this);
+        ba.addAnimationChangeListener(this);
 
         ae.startAnimation(ba);
     }
