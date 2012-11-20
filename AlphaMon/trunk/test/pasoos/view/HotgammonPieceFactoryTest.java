@@ -30,7 +30,9 @@ public class HotgammonPieceFactoryTest {
     @Test
     public void should_return_empty_map_for_empty_game_board() {
         Game g = mock(Game.class);
-        HotgammonPieceFactory pf = new HotgammonPieceFactory(g);
+        GammonPlayer redPlayer = mock(GammonPlayer.class);
+        GammonPlayer blackPlayer = mock(GammonPlayer.class);
+        HotgammonPieceFactory pf = new HotgammonPieceFactory(g, redPlayer, blackPlayer);
         when(g.getCount(any(Location.class))).thenReturn(0);
         when(g.getColor(any(Location.class))).thenReturn(NONE);
 

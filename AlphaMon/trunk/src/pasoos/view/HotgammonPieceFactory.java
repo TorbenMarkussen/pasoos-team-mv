@@ -17,9 +17,13 @@ import static pasoos.hotgammon.Color.RED;
 
 public class HotgammonPieceFactory implements FigureFactory<Location> {
     private Game game;
+    private final GammonPlayer redPlayer;
+    private final GammonPlayer blackPlayer;
 
-    public HotgammonPieceFactory(Game g) {
+    public HotgammonPieceFactory(Game g, GammonPlayer redPlayer, GammonPlayer blackPlayer) {
         game = g;
+        this.redPlayer = redPlayer;
+        this.blackPlayer = blackPlayer;
     }
 
     @Override
@@ -36,16 +40,20 @@ public class HotgammonPieceFactory implements FigureFactory<Location> {
         List<BoardPiece> l = new ArrayList<BoardPiece>();
         for (int i = 0; i < count; i++) {
             if (color == BLACK) {
-                l.add(createBoardFigure("blackchecker"));
+                l.add(createBlackBoardPiece());
             } else if (color == RED) {
-                l.add(createBoardFigure("redchecker"));
+                l.add(createRedBoardPiece());
             }
         }
         return l;
     }
 
-    protected BoardFigure createBoardFigure(String imgname) {
-        return new BoardFigure(imgname, true, new MoveCommand(game));
+    protected BoardFigure createRedBoardPiece() {
+        return new BoardFigure("redchecker", true, redPlayer);
+    }
+
+    protected BoardFigure createBlackBoardPiece() {
+        return new BoardFigure("blackchecker", true, blackPlayer);
     }
 
     @Override

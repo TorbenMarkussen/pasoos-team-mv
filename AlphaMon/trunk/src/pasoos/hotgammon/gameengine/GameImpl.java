@@ -11,7 +11,6 @@ import pasoos.hotgammon.rules.WinnerStrategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -77,6 +76,8 @@ public class GameImpl implements Game, GameState {
         handlePossibleMoves();
 
         notifyDiceRolled();
+
+        notifyIfTurnEnded();
     }
 
     private void handlePossibleMoves() {
@@ -139,7 +140,19 @@ public class GameImpl implements Game, GameState {
 
         handlePossibleMoves();
 
+        notifyIfTurnEnded();
+
         return true;
+    }
+
+    private void notifyIfTurnEnded() {
+        if (diceValuesLeft.size() == 0) {
+            if (observers.size() > 0) {
+                for (GameObserver go : observers) {
+                    go.turnEnded();
+                }
+            }
+        }
     }
 
     private void moveChecker(Location from, Location to) {
