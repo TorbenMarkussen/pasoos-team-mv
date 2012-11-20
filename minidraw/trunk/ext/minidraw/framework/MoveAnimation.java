@@ -35,6 +35,15 @@ public class MoveAnimation implements Animation {
     }
 
     @Override
+    public void end() {
+        if (listeners.size() > 0) {
+            for (AnimationChangeListener l : listeners) {
+                l.onAnimationCompleted(new AnimationChangeEvent(this));
+            }
+        }
+    }
+
+    @Override
     public Figure getFigure() {
         return figure;
     }
@@ -49,20 +58,12 @@ public class MoveAnimation implements Animation {
         return timeInterval.isAfterEnd(timeInterval.now());
     }
 
-    @Override
-    public void end() {
-        if (listeners.size() > 0) {
-            for (AnimationChangeListener l : listeners) {
-                l.onAnimationCompleted(new AnimationChangeEvent(this));
-            }
-        }
-    }
 
-    public void addAnimationCallback(AnimationChangeListener changeListener) {
+    public void addAnimationChangeListener(AnimationChangeListener changeListener) {
         listeners.add(changeListener);
     }
 
-    public void removeAnimationCallback(AnimationChangeListener changeListener) {
+    public void removeAnimationChangeListener(AnimationChangeListener changeListener) {
         listeners.remove(changeListener);
     }
 

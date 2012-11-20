@@ -1,7 +1,5 @@
 package minidraw.framework;
 
-import java.awt.*;
-
 public interface Animation {
 
     Figure getFigure();
@@ -18,8 +16,8 @@ public interface Animation {
 
     void abort();
 
-    void addAnimationCallback(AnimationChangeListener changeListener);
+    void addAnimationChangeListener(AnimationChangeListener changeListener);
 
-    void removeAnimationCallback(AnimationChangeListener changeListener);
+    void removeAnimationChangeListener(AnimationChangeListener changeListener);
 
 }
