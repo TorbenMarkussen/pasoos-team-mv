@@ -2,6 +2,7 @@ package pasoos;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -197,17 +198,39 @@ public class BinSearchTest {
         //{1, 3, 5, 7, 9, 16, 39, 456, 999, 1250};
     }
 
-    /*Testlist
-     + should_return_neg_1_when_searching_an_empty_array
-     + should_return_neg_1_when_searching_for_a_not_existing_value
-     + should_find_the_midpoint_of_an_array_with_equal_number_of_numbers
-     + should_find_the_midpoint_of_an_array_with_odd_number_of_numbers
-     + should_find_the_midpoint_of_an_array_with_only_one_number
-     - should_return_the_upper_part_of_the_array_when_the_number_is_in_the_upper_part
-     - should_return_the_lower_part_of_the_array_when_the_number_is_in_the_lower_part
-     - should_return_the_index_of_the_number_when_the_number_is_the_midpoint
-     + should_return_index_0_when_the_array_only_has_one_element_and_searching_for_element_0
-     + should_return_neg_1_when_the_array_only_has_one_element_and_not_searching_for_element_0
-     - should_return_index_1_when_searching_for_the_2nd_element
-    */
+    @Ignore
+    @Test
+    public void performance_checking() {
+        binSearchDecorator.undoDecorateBinSearch();
+
+        int[] a = new int[100000000];
+        for(int i= 0; i < a.length; i++)
+            a[i] = i+1;
+
+        long start = System.nanoTime();
+
+        for(int i= 0; i < a.length; i++)
+            BinSearch.search(a, a[i]);
+
+        long stop = System.nanoTime();
+        double dt = stop - start;
+        double timeMilliSec = dt/1e6;
+        double iterationTimeNanoSec = dt / a.length;
+        System.out.println("Iteration time " + iterationTimeNanoSec + " ns");
+        System.out.println("Total time     " + timeMilliSec + " ms");
+    }
+
+        /*Testlist
+         + should_return_neg_1_when_searching_an_empty_array
+         + should_return_neg_1_when_searching_for_a_not_existing_value
+         + should_find_the_midpoint_of_an_array_with_equal_number_of_numbers
+         + should_find_the_midpoint_of_an_array_with_odd_number_of_numbers
+         + should_find_the_midpoint_of_an_array_with_only_one_number
+         - should_return_the_upper_part_of_the_array_when_the_number_is_in_the_upper_part
+         - should_return_the_lower_part_of_the_array_when_the_number_is_in_the_lower_part
+         - should_return_the_index_of_the_number_when_the_number_is_the_midpoint
+         + should_return_index_0_when_the_array_only_has_one_element_and_searching_for_element_0
+         + should_return_neg_1_when_the_array_only_has_one_element_and_not_searching_for_element_0
+         - should_return_index_1_when_searching_for_the_2nd_element
+        */
 }

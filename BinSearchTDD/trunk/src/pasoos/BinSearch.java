@@ -2,18 +2,16 @@ package pasoos;
 
 public class BinSearch {
 
-    protected static MidPointCalculator midPointCalculator = new MidPointCalculatorImpl();
+    protected static MidPointCalculator midPointCalculator = new ShiftingCalculator();
 
     public static int search(int[] a, int target) {
-        if (a.length == 0)
-            return -1;
-
         int min = 0;
         int max = a.length - 1;
 
         while (max >= min) {
             int midPoint = midPointCalculator.getMidPoint(min, max);
-            if (a[midPoint] == target)
+
+            if(a[midPoint] == target)
                 return midPoint;
             if (a[midPoint] > target)
                 max = midPoint - 1;
@@ -24,10 +22,33 @@ public class BinSearch {
         return -1;
     }
 
+    private static int calcMidpoint(int min, int max) {
+        return (max + min) >>> 1;
+    }
+
+    protected interface MidPointCalculator {
+        int getMidPoint(int min, int max);
+    }
+
     private static class MidPointCalculatorImpl implements MidPointCalculator {
 
         public int getMidPoint(int min, int max) {
-            return (max - min) / 2 + min;
+            return calcMidpoint(min, max);
         }
     }
+
+    private static class ShiftingCalculator implements MidPointCalculator {
+
+        public int getMidPoint(int min, int max) {
+            return (max + min) >>> 1;
+        }
+    }
+
+    private static class FailingCalculator implements MidPointCalculator {
+
+        public int getMidPoint(int min, int max) {
+            return (max + min) / 2;
+        }
+    }
+
 }
