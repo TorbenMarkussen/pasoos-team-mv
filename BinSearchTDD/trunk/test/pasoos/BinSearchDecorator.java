@@ -3,7 +3,7 @@ package pasoos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinSearchDecorator extends BinSearch implements MidPointCalculator {
+public class BinSearchDecorator extends BinSearch implements BinSearch.MidPointCalculator {
 
     private MidPointCalculator original;
 
