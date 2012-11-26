@@ -239,6 +239,12 @@ public class GameImpl implements Game, GameState {
     }
 
     @Override
+    public void removeObserver(GameObserver observer) {
+        if (observers.contains(observer))
+            observers.remove(observer);
+    }
+
+    @Override
     public int getTurnCount() {
         return turnCount;
     }

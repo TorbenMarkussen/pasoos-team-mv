@@ -21,42 +21,31 @@ public class GameStateControllerTest {
         redplayer = mock(GammonPlayer.class);
         blackplayer = mock(GammonPlayer.class);
 
-        gameStateController = new GameStateController(game, redplayer, blackplayer);
-    }
-
-    @Test
-    public void should_initially_set_black_player_active() {
-        InOrder inOrder = inOrder(redplayer, blackplayer);
-        inOrder.verify(redplayer).setInactive();
-        inOrder.verify(blackplayer).setActive();
+        gameStateController = new GameStateController();
+        gameStateController.
+                setGame(game).
+                setBlackPlayer(blackplayer).
+                setRedPlayer(redplayer);
     }
 
     @Test
     public void should_set_black_player_active_if_black_is_playerInTurn() {
-        InOrder inOrder = inOrder(redplayer, blackplayer);
-        inOrder.verify(redplayer).setInactive();
-        inOrder.verify(blackplayer).setActive();
-
         when(game.getPlayerInTurn()).thenReturn(BLACK);
         gameStateController.turnEnded();
 
-        inOrder = inOrder(redplayer, blackplayer);
-        inOrder.verify(redplayer).setInactive();
-        inOrder.verify(blackplayer).setActive();
+        InOrder inOrder = inOrder(redplayer, blackplayer);
+        inOrder.verify(blackplayer).setInactive();
+        inOrder.verify(redplayer).setActive();
     }
 
     @Test
     public void should_set_red_player_active_when_redplayer_is_playerInTurn() {
+        when(game.getPlayerInTurn()).thenReturn(RED);
+        gameStateController.turnEnded();
+
         InOrder inOrder = inOrder(redplayer, blackplayer);
         inOrder.verify(redplayer).setInactive();
         inOrder.verify(blackplayer).setActive();
-
-        when(game.getPlayerInTurn()).thenReturn(RED);
-
-        gameStateController.turnEnded();
-        inOrder = inOrder(redplayer, blackplayer);
-        inOrder.verify(blackplayer).setActive();
-        inOrder.verify(redplayer).setInactive();
     }
 
     @Test

@@ -141,4 +141,6 @@ public interface Game {
      * @param observer the observer to notify in case of state changes.
      */
     public void addObserver(GameObserver observer);
+
+    void removeObserver(GameObserver observer);
 }
