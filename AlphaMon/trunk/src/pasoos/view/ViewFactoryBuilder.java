@@ -1,0 +1,17 @@
+package pasoos.view;
+
+import minidraw.boardgame.FigureFactory;
+import minidraw.boardgame.PositioningStrategy;
+import minidraw.boardgame.PropAppearanceStrategy;
+import minidraw.framework.Factory;
+import pasoos.hotgammon.Location;
+
+public interface ViewFactoryBuilder {
+    ViewFactoryBuilder setPieceFactory(FigureFactory<Location> pieceFactory);
+
+    ViewFactoryBuilder setPositioningStrategy(PositioningStrategy<Location> positioningStrategy);
+
+    ViewFactoryBuilder setPropAppearanceStrategy(PropAppearanceStrategy appearanceStrategy);
+
+    Factory build();
+}

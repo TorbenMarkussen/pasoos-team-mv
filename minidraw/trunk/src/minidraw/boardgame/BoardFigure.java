@@ -121,4 +121,9 @@ public class BoardFigure extends ImageFigure implements BoardPiece {
         command.setToCoordinates(toX, toY);
         return command.execute();
     }
+
+    @Override
+    public void setMobile(boolean mobile) {
+        isMobile = mobile;
+    }
 }

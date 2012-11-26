@@ -1,17 +1,17 @@
-<project name="HotGammon" default="default" basedir="." >
-    <import file="dependencies.xml"/>
+<project name="HotGammon" default="test" basedir=".">
 
     <property name="build.home" value="${basedir}/build"/>
     <property name="src.home" value="${basedir}/src"/>
     <property name="test.home" value="${basedir}/test"/>
     <property name="junit-jar" value="${basedir}/lib/junit-4.10.jar"/>
-    <property name="minidraw" value="${basedir}/lib/minidraw.jar"/>
+    <property name="minidraw-jar" value="${basedir}/lib/minidraw.jar"/>
     <property name="mockito-jar" value="${basedir}/lib/mockito-1.9.0/mockito-all-1.9.0.jar"/>
     <property name="doc.home" value="${basedir}/doc"/>
 
     <path id="classpath">
         <pathelement location="${junit-jar}"/>
         <pathelement location="${mockito-jar}"/>
+        <pathelement location="${minidraw-jar}"/>
     </path>
 
     <target name="prepare" depends="clean">
@@ -27,7 +27,12 @@
     </target>
 
     <target name="compile" depends="prepare">
-        <javac srcdir="${src.home}" destdir="${build.home}/classes" includeantruntime="false"/>
+        <javac srcdir="${src.home}" destdir="${build.home}/classes" includeantruntime="false">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+
+        </javac>
     </target>
 
     <target name="compile_test" depends="compile">
@@ -56,21 +61,18 @@
     </target>
 
     <target name="javadoc" depends="prepare">
-        <javadoc sourcepath="${src.home}" destdir="${doc.home}" windowtitle="Aphamon full documentation">
+        <javadoc sourcepath="${src.home}" destdir="${doc.home}" windowtitle="Hotgammon full documentation">
             <fileset dir="${src.home}">
                 <include name="*.java"/>
             </fileset>
         </javadoc>
     </target>
-    
-    <target name="dist.dependencies">
-        <antcall target="depend.${ant.project.name}"/>
-    </target>
-    
-    <target name="default" depends="dist"/>
-    
-    <target name="dist" depends="compile">
-        <echo message="${ant.project.name} - build-common.dist"/>
+
+    <target name="depends">
+        <ant dir="${basedir}/../MiniDraw" target="jar" inheritAll="false"/>
+        <copy todir="${basedir}/lib">
+            <fileset dir="${basedir}/../MiniDraw/deploy"/>
+        </copy>
     </target>
 
 </project>

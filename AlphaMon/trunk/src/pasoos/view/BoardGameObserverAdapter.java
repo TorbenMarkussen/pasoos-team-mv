@@ -1,29 +1,28 @@
 package pasoos.view;
 
-import minidraw.boardgame.BoardDrawing;
+import minidraw.boardgame.BoardGameObserver;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
 
 public class BoardGameObserverAdapter implements GameObserver {
-    private BoardDrawing<Location> drawing;
+    private BoardGameObserver<Location> boardGameObserver;
 
-    public BoardGameObserverAdapter(BoardDrawing<Location> drawing) {
-        this.drawing = drawing;
+    public BoardGameObserverAdapter(BoardGameObserver<Location> boardGameObserver) {
+        this.boardGameObserver = boardGameObserver;
     }
 
     @Override
     public void checkerMove(Location from, Location to) {
-        drawing.pieceMovedEvent(from, to);
+        boardGameObserver.pieceMovedEvent(from, to);
     }
 
     @Override
     public void diceRolled(int[] values) {
-        drawing.propChangeEvent("die1");
-        drawing.propChangeEvent("die2");
+        boardGameObserver.propChangeEvent("die1");
+        boardGameObserver.propChangeEvent("die2");
     }
 
     @Override
     public void turnEnded() {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

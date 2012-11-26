@@ -86,4 +86,9 @@ public class GameLogDecoratorImpl implements GameLogDecorator {
     public void addObserver(GameObserver observer) {
         game.addObserver(observer);
     }
+
+    @Override
+    public void removeObserver(GameObserver observer) {
+        game.removeObserver(observer);
+    }
 }

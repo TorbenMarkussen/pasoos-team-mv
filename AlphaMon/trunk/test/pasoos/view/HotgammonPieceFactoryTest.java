@@ -32,7 +32,8 @@ public class HotgammonPieceFactoryTest {
         Game g = mock(Game.class);
         GammonPlayer redPlayer = mock(GammonPlayer.class);
         GammonPlayer blackPlayer = mock(GammonPlayer.class);
-        HotgammonPieceFactory pf = new HotgammonPieceFactory(g, redPlayer, blackPlayer);
+        GammonDice dice = mock(GammonDice.class);
+        HotgammonPieceFactory pf = new HotgammonPieceFactory();
         when(g.getCount(any(Location.class))).thenReturn(0);
         when(g.getColor(any(Location.class))).thenReturn(NONE);
 

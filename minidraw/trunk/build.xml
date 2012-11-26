@@ -63,34 +63,34 @@
     <!-- Help -->
     <target name="help">
         <echo>
-Ant build system for MiniDraw.
-   Testing:
-     background:   Just show a background image.
-     figures:      ImageFigures and SelectionTool.
-     composite:    Composite figure testing.
-     multiview:    Multi view testing.
-     add:          Add and remove figures, show custom tool.
-     message:      Show Messages in status field.
-     key:          Show key events in status field.
+            Ant build system for MiniDraw.
+            Testing:
+            background: Just show a background image.
+            figures: ImageFigures and SelectionTool.
+            composite: Composite figure testing.
+            multiview: Multi view testing.
+            add: Add and remove figures, show custom tool.
+            message: Show Messages in status field.
+            key: Show key events in status field.
 
-  Demonstration:
-     rect:         Rectangle demo.
-     puzzle:       Simple jigsaw puzzle.
+            Demonstration:
+            rect: Rectangle demo.
+            puzzle: Simple jigsaw puzzle.
 
-  Deployment:
-     jar:          Make minidraw.jar in deploy directory.
-     doc:          Generate JavaDoc in folder "doc".
+            Deployment:
+            jar: Make minidraw.jar in deploy directory.
+            doc: Generate JavaDoc in folder "doc".
 
-  Experimental:
-     breakthrough: Demo 'boardgame' package in MiniDraw.
+            Experimental:
+            breakthrough: Demo 'boardgame' package in MiniDraw.
         </echo>
     </target>
 
     <!-- Core classes -->
     <target name="build_src" depends="prepare">
-        <javac 
-       destdir="${build}"
-       debug="on">
+        <javac
+                destdir="${build}"
+                debug="on">
             <src>
                 <path refid="_srcpath"/>
             </src>
@@ -101,9 +101,9 @@ Ant build system for MiniDraw.
     </target>
 
     <target name="build_demo" depends="prepare">
-        <javac 
-       destdir="${build}"
-       debug="on">
+        <javac
+                destdir="${build}"
+                debug="on">
             <src>
                 <path refid="_demopath"/>
             </src>
@@ -115,9 +115,9 @@ Ant build system for MiniDraw.
 
 
     <target name="build_test" depends="build_src">
-        <javac 
-       destdir="${build}"
-       debug="on">
+        <javac
+                destdir="${build}"
+                debug="on">
             <src>
                 <path refid="_testsrcpath"/>
             </src>
@@ -128,7 +128,7 @@ Ant build system for MiniDraw.
     </target>
 
     <target name="copy_resource" depends="prepare">
-        <copy todir="${build}\${resource}" >
+        <copy todir="${build}\${resource}">
             <fileset dir="${resource}">
                 <include name="*.gif"/>
                 <include name="*.lst"/>
@@ -227,7 +227,7 @@ Ant build system for MiniDraw.
     <target name="breakthrough" depends="build_all">
         <java fork="yes" classname="minidraw.breakthrough.BreakThrough">
             <classpath>
-                <path refid="_classpath" />
+                <path refid="_classpath"/>
             </classpath>
         </java>
     </target>
@@ -239,7 +239,7 @@ Ant build system for MiniDraw.
     </target>
 
     <target name="copy_doc_resource">
-        <copy todir="${doc}" >
+        <copy todir="${doc}">
             <fileset dir="${source}">
                 <include name="**/*.gif"/>
             </fileset>
@@ -248,17 +248,17 @@ Ant build system for MiniDraw.
 
     <target name="doc" depends="clean,build_src,mkdirdoc,copy_doc_resource">
         <javadoc
-       source = "1.5"
-       packagenames=
-       "minidraw.*"
-       sourcepath="${source}"
-       destdir="${doc}"
-       package="true"
-       doctitle="&lt;b&gt;MiniDraw&lt;/b&gt;"
-       bottom="From the book: &lt;b&gt;Flexible, Reliable Software&lt;/b&gt;, &#169; CRC Press 2010. Author: Henrik B. Christensen, Univ. of Aarhus, Denmark"
+                source="1.5"
+                packagenames=
+                        "minidraw.*"
+                sourcepath="${source}"
+                destdir="${doc}"
+                package="true"
+                doctitle="&lt;b&gt;MiniDraw&lt;/b&gt;"
+                bottom="From the book: &lt;b&gt;Flexible, Reliable Software&lt;/b&gt;, &#169; CRC Press 2010. Author: Henrik B. Christensen, Univ. of Aarhus, Denmark"
 
-       windowtitle="MiniDraw by Henrik B. Christensen"
-       >
+                windowtitle="MiniDraw by Henrik B. Christensen"
+                >
             <sourcepath>
                 <path refid="_srcpath"/>
             </sourcepath>
@@ -289,10 +289,15 @@ Ant build system for MiniDraw.
         </mkdir>
     </target>
 
-    <target name="jar" 
-	  depends="clean,mkdir_deploy,build_src">
+    <target name="jar"
+            depends="clean,mkdir_deploy,build_src">
         <jar jarfile="${deploy}/${jarname}" basedir="${build}"/>
     </target>
+
+    <target name="dist" depends="jar">
+        <echo message="${ant.project.name} - build-common.dist"/>
+    </target>
+
 </project>
 
 

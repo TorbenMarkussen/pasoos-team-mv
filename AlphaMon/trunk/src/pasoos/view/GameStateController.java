@@ -9,18 +9,12 @@ import static pasoos.hotgammon.Color.BLACK;
 import static pasoos.hotgammon.Color.RED;
 
 public class GameStateController implements GameObserver {
-    private final Game game;
-    private final GammonPlayer redPlayer;
-    private final GammonPlayer blackPlayer;
+    private Game game;
+    private GammonPlayer redPlayer;
+    private GammonPlayer blackPlayer;
 
-    public GameStateController(Game game, GammonPlayer redPlayer, GammonPlayer blackPlayer) {
-        this.game = game;
-        this.redPlayer = redPlayer;
-        this.blackPlayer = blackPlayer;
-        game.addObserver(this);
-
-        redPlayer.setInactive();
-        blackPlayer.setActive();
+    public GameStateController() {
+        game = null;
     }
 
     @Override
@@ -29,7 +23,6 @@ public class GameStateController implements GameObserver {
 
     @Override
     public void diceRolled(int[] values) {
-
     }
 
     @Override
@@ -42,5 +35,24 @@ public class GameStateController implements GameObserver {
             blackPlayer.setInactive();
             redPlayer.setActive();
         }
+    }
+
+    public GameStateController setGame(Game game) {
+        if (game != null) {
+            game.removeObserver(this);
+        }
+        this.game = game;
+        game.addObserver(this);
+        return this;
+    }
+
+    public GameStateController setRedPlayer(GammonPlayer player) {
+        redPlayer = player;
+        return this;
+    }
+
+    public GameStateController setBlackPlayer(GammonPlayer player) {
+        blackPlayer = player;
+        return this;
     }
 }

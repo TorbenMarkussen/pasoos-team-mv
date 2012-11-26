@@ -1,14 +1,26 @@
 package pasoos.view;
 
+import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.Command;
 import pasoos.hotgammon.Game;
 
-public class DieRollCommand implements Command {
+public class GammonDice implements Command {
 
     private Game game;
+    private BoardPiece die1;
+    private BoardPiece die2;
 
-    DieRollCommand(Game game) {
+    public GammonDice(Game game) {
         this.game = game;
+    }
+
+    public void addDie1(BoardPiece piece) {
+        die1 = piece;
+    }
+
+    public void addDie2(BoardPiece piece) {
+
+        die2 = piece;
     }
 
     @Override
@@ -30,4 +42,5 @@ public class DieRollCommand implements Command {
     private boolean isTurnCompleted() {
         return game.diceValuesLeft().length == 0;
     }
+
 }

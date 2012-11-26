@@ -1,5 +1,6 @@
 package pasoos.view;
 
+import minidraw.boardgame.BoardPiece;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.physics.Convert;
@@ -15,6 +16,7 @@ public class ManualPlayer implements GammonPlayer {
     private Game game;
     private String id;
     List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
+    private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
 
     public ManualPlayer(Game game, String id) {
         this.game = game;
@@ -43,6 +45,9 @@ public class ManualPlayer implements GammonPlayer {
 
     @Override
     public void setActive() {
+        for (BoardPiece p : pieces) {
+            p.setMobile(true);
+        }
         notifyStatus(id + " in turn");
     }
 
@@ -54,11 +59,18 @@ public class ManualPlayer implements GammonPlayer {
 
     @Override
     public void setInactive() {
-
+        for (BoardPiece p : pieces) {
+            p.setMobile(false);
+        }
     }
 
     @Override
     public void addStatusObserver(StatusObserver statusObserver) {
         statusObservers.add(statusObserver);
+    }
+
+    @Override
+    public void addPiece(BoardPiece piece) {
+        pieces.add(piece);
     }
 }

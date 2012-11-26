@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="dependencies" default="depend.all">
+    <!-- adapted from http://www.exubero.com/ant/dependencies.html -->
+
+    <dirname property="dependencies.basedir" file="${ant.file.dependencies}"/>
+    <!-- ================================================================== -->
+    <target name="depend.all"
+            depends="depend.HotGammon">
+    </target>
+    <!-- ================================================================== -->
+    <target name="depend.HotGammon"
+            depends="depend.minidraw">
+        <ant dir="${dependencies.basedir}/" inheritAll="false"/>
+    </target>
+    <!-- ================================================================== -->
+    <target name="depend.minidraw">
+        <ant dir="${dependencies.basedir}/../MiniDraw" target="jar" inheritAll="false"/>
+    </target>
+    <!-- ================================================================== -->
+</project>
