@@ -1,6 +1,7 @@
 package pasoos.view;
 
 import minidraw.boardgame.BoardActionTool;
+import minidraw.boardgame.BoardDrawing;
 import minidraw.boardgame.BoardGameObserver;
 import minidraw.framework.DrawingEditor;
 import minidraw.standard.MiniDrawApplication;
@@ -25,7 +26,7 @@ public class Hotgammon {
 
         Game game = gammonBuilder.getGame();
         BoardGameObserver<Location> gameObserver = (BoardGameObserver<Location>) editor.drawing();
-        game.addObserver(new BoardGameObserverAdapter(gameObserver));
+        game.addObserver(new BoardGameObserverAdapter(gameObserver, (BoardDrawing<Location>) editor.drawing()));
     }
 
 }

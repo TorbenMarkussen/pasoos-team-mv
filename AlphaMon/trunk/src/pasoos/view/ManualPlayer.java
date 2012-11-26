@@ -17,10 +17,12 @@ public class ManualPlayer implements GammonPlayer {
     private String id;
     List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
+    private boolean active;
 
     public ManualPlayer(Game game, String id) {
         this.game = game;
         this.id = id;
+        this.active = false;
     }
 
     @Override
@@ -37,18 +39,30 @@ public class ManualPlayer implements GammonPlayer {
 
     @Override
     public boolean execute() {
+        boolean moveOk;
         Location from = Convert.xy2Location(fromX, fromY);
         Location to = Convert.xy2Location(toX, toY);
-        System.out.println(id + " is moving " + from + " to " + to);
-        return game.move(from, to);
+        if (!active)
+            notifyStatus("Illegal " + id + " is not in turn");
+        //System.out.println(id + " is moving " + from + " to " + to);
+        moveOk = game.move(from, to);
+        if (!moveOk)
+            notifyStatus("Illegal move by " + id);
+        else if (game.getNumberOfMovesLeft() == 1)
+            notifyStatus(id + " has " + game.getNumberOfMovesLeft() + " move left");
+        else if (game.getNumberOfMovesLeft() > 1)
+            notifyStatus(id + " has " + game.getNumberOfMovesLeft() + " moves left");
+
+        return moveOk;
     }
 
     @Override
     public void setActive() {
+        active = true;
         for (BoardPiece p : pieces) {
             p.setMobile(true);
         }
-        notifyStatus(id + " in turn");
+        notifyStatus(id + " player in turn");
     }
 
     private void notifyStatus(String s) {
@@ -59,6 +73,7 @@ public class ManualPlayer implements GammonPlayer {
 
     @Override
     public void setInactive() {
+        active = false;
         for (BoardPiece p : pieces) {
             p.setMobile(false);
         }

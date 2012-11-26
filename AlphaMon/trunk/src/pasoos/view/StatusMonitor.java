@@ -12,15 +12,14 @@ public class StatusMonitor implements StatusObserver {
     @Override
     public void updateStatus(String s) {
         status = s;
-        System.out.println(s);
+        //System.out.println(s);
         if (editor != null)
             editor.showStatus(s);
-
     }
 
     public void setEditor(DrawingEditor editor) {
         this.editor = editor;
         editor.showStatus(status);
-        System.out.println(":" + status);
+        //System.out.println(":" + status);
     }
 }

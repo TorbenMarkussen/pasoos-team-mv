@@ -62,10 +62,8 @@ public class GameImpl implements Game, GameState {
         turnCount++;
         theWinner = winnerStrategy.determineWinner(this);
 
-        if (playerInTurn != Color.BLACK)
+        if (playerInTurn == Color.NONE)
             playerInTurn = Color.BLACK;
-        else
-            playerInTurn = Color.RED;
 
         rollDice();
 
@@ -147,6 +145,12 @@ public class GameImpl implements Game, GameState {
 
     private void notifyIfTurnEnded() {
         if (diceValuesLeft.size() == 0) {
+
+            if (playerInTurn != Color.BLACK)
+                playerInTurn = Color.BLACK;
+            else
+                playerInTurn = Color.RED;
+
             if (observers.size() > 0) {
                 for (GameObserver go : observers) {
                     go.turnEnded();
