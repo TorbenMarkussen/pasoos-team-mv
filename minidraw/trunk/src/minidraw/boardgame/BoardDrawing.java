@@ -193,10 +193,7 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         // this location. handles that the user has
         // taken a piece 'in the middle' of e.g. backgammon
         // stack of pieces
-        int posIndex = 0;
-        for (BoardPiece ff : list) {
-            adjustFigurePosition(ff, from, posIndex++);
-        }
+        adjustPieces(from);
 
         // next do the exact same with the to position
         List<BoardPiece> listTo = figureMap.get(to);
@@ -209,13 +206,31 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         }
         // and add the moved figure to it.
         listTo.add(f);
+        adjustPieces(to);
+    }
 
-        // and adjust all pieces...
+    @Override
+    public void adjustPieces(LOCATION location) {
+        List<BoardPiece> listLocation = figureMap.get(location);
+        int posIndex;// and adjust all pieces...
         posIndex = 0;
-        for (BoardPiece ft : listTo) {
-            adjustFigurePosition(ft, to, posIndex++);
+        for (BoardPiece ft : listLocation) {
+            adjustFigurePosition(ft, location, posIndex++);
         }
     }
+
+    @Override
+    public void pieceLogicalMoveEvent(LOCATION from, LOCATION to) {
+        List<BoardPiece> list = figureMap.get(from);
+        int index = list.size() - 1;
+        BoardPiece f = list.get(index);
+        list.remove(f);
+
+        // next do the exact same with the to position
+        List<BoardPiece> listTo = figureMap.get(to);
+        listTo.add(f);
+    }
+
 
     public void propChangeEvent(String key) {
         Figure prop = propMap.get(key);
@@ -247,5 +262,13 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
 
 
     }
+
+    public BoardPiece getPiece(LOCATION location) {
+        List<BoardPiece> list = figureMap.get(location);
+        if (list.size() == 0)
+            return null;
+        return list.get(list.size() - 1);
+    }
+
 
 }

@@ -27,11 +27,11 @@ public class GameStateController implements GameObserver {
 
     @Override
     public void turnEnded() {
-        Color playerTurnEnded = game.getPlayerInTurn();
-        if (playerTurnEnded == RED) {
+        Color playerInTurn = game.getPlayerInTurn();
+        if (playerInTurn == BLACK) {
             redPlayer.setInactive();
             blackPlayer.setActive();
-        } else if (playerTurnEnded == BLACK) {
+        } else if (playerInTurn == RED) {
             blackPlayer.setInactive();
             redPlayer.setActive();
         }
@@ -48,11 +48,13 @@ public class GameStateController implements GameObserver {
 
     public GameStateController setRedPlayer(GammonPlayer player) {
         redPlayer = player;
+        redPlayer.setInactive();
         return this;
     }
 
     public GameStateController setBlackPlayer(GammonPlayer player) {
         blackPlayer = player;
+        blackPlayer.setActive();
         return this;
     }
 }

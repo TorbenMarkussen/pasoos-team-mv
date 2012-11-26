@@ -104,11 +104,11 @@ public class GammonBuilderImpl implements GammonBuilder {
     public BoardPiece addDie(String name) {
         BoardPiece p = null;
         if (name.equals("die1")) {
-            p = new BoardFigure("die0", false, dice);
+            p = new BoardFigure("bdie0", false, dice);
             dice.addDie1(p);
             pieceFactory.addDie(name, p);
         } else if (name.equals("die2")) {
-            p = new BoardFigure("die0", false, dice);
+            p = new BoardFigure("bdie0", false, dice);
             dice.addDie2(p);
             pieceFactory.addDie(name, p);
         }
