@@ -11,11 +11,13 @@ import java.io.File;
 public class GammonDice implements Command {
 
     private Game game;
+    private State state;
     private BoardPiece die1;
     private BoardPiece die2;
 
-    public GammonDice(Game game) {
+    public GammonDice(Game game, State state) {
         this.game = game;
+        this.state = state;
     }
 
     public void addDie1(BoardPiece piece) {
@@ -37,10 +39,8 @@ public class GammonDice implements Command {
 
     @Override
     public boolean execute() {
-        play("C:\\ws\\Pasoos\\AlphaMon\\resource\\Shake And Roll Dice-Sound.wav");
-        if (isTurnCompleted()) {
-            game.nextTurn();
-        }
+        //play("C:\\ws\\Pasoos\\AlphaMon\\resource\\Shake And Roll Dice-Sound.wav");
+        state.rollDiceRequest();
         return true;
     }
 

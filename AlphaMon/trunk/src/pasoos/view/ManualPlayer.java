@@ -18,6 +18,7 @@ public class ManualPlayer implements GammonPlayer {
     List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
     private boolean active;
+    private State state;
 
     public ManualPlayer(Game game, String id) {
         this.game = game;
@@ -44,8 +45,7 @@ public class ManualPlayer implements GammonPlayer {
         Location to = Convert.xy2Location(toX, toY);
         if (!active)
             notifyStatus("Illegal " + id + " is not in turn");
-        //System.out.println(id + " is moving " + from + " to " + to);
-        moveOk = game.move(from, to);
+        moveOk = state.moveRequest(from, to);
         if (!moveOk)
             notifyStatus("Illegal move by " + id);
         else if (game.getNumberOfMovesLeft() == 1)
@@ -87,5 +87,10 @@ public class ManualPlayer implements GammonPlayer {
     @Override
     public void addPiece(BoardPiece piece) {
         pieces.add(piece);
+    }
+
+    @Override
+    public void setState(State state) {
+        this.state = state;
     }
 }
