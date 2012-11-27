@@ -11,4 +11,6 @@ public interface GammonPlayer extends Command {
     void addStatusObserver(StatusObserver statusObserver);
 
     void addPiece(BoardPiece piece);
+
+    void setState(State state);
 }

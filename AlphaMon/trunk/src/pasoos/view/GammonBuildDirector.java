@@ -9,9 +9,9 @@ import static pasoos.hotgammon.Color.RED;
 
 public class GammonBuildDirector {
     private GameSettings settings;
-    private GammonBuilderImpl gammonBuilder;
+    private GammonBuilder gammonBuilder;
 
-    public GammonBuildDirector(GameSettings gs, GammonBuilderImpl gammonBuilder) {
+    public GammonBuildDirector(GameSettings gs, GammonBuilder gammonBuilder) {
         settings = gs;
         this.gammonBuilder = gammonBuilder;
     }
@@ -33,7 +33,6 @@ public class GammonBuildDirector {
         }
         gammonBuilder.addDie("die1");
         gammonBuilder.addDie("die2");
-
     }
 
 }

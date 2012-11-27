@@ -12,8 +12,8 @@ import pasoos.hotgammon.rules.factory.SemiMonFactory;
 
 public class GammonBuilderImpl implements GammonBuilder {
     private Game game;
-    private GammonPlayer redPlayer;
-    private GammonPlayer blackPlayer;
+    private GammonPlayer redPlayer = null;
+    private GammonPlayer blackPlayer = null;
     private GammonDice dice;
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
@@ -27,16 +27,16 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void setGameType(Class<? extends HotGammonFactory> gameFactoryType) {
+        Game g;
         try {
-            game = GameFactory.createGame(gameFactoryType);
+            g = GameFactory.createGame(gameFactoryType);
         } catch (IllegalAccessException e) {
-            game = GameFactory.createGame(new SemiMonFactory());
+            g = GameFactory.createGame(new SemiMonFactory());
         } catch (InstantiationException e) {
-            game = GameFactory.createGame(new SemiMonFactory());
+            g = GameFactory.createGame(new SemiMonFactory());
         }
-        game.newGame();
-
-        dice = new GammonDice(game);
+        game = new GameEventDecorator(g, gameStateController);
+        dice = new GammonDice(game, gameStateController);
 
         gameStateController.setGame(game);
     }
@@ -53,6 +53,8 @@ public class GammonBuilderImpl implements GammonBuilder {
             gameStateController.setBlackPlayer(blackPlayer);
         }
 
+        if (redPlayer != null && blackPlayer != null)
+            game.newGame();
     }
 
     @Override
@@ -101,7 +103,8 @@ public class GammonBuilderImpl implements GammonBuilder {
         return statusMonitor;
     }
 
-    public BoardPiece addDie(String name) {
+    @Override
+    public void addDie(String name) {
         BoardPiece p = null;
         if (name.equals("die1")) {
             p = new BoardFigure("bdie0", false, dice);
@@ -112,8 +115,6 @@ public class GammonBuilderImpl implements GammonBuilder {
             dice.addDie2(p);
             pieceFactory.addDie(name, p);
         }
-
-        return p;
     }
 
     public Factory createViewFactory() {
