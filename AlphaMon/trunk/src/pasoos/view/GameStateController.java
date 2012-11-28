@@ -1,16 +1,10 @@
 package pasoos.view;
 
-import javafx.fxml.Initializable;
-import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
-import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static pasoos.hotgammon.Color.BLACK;
-import static pasoos.hotgammon.Color.RED;
 
 public class GameStateController extends State implements StateContext {
     private Game game;
