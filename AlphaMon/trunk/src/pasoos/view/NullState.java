@@ -2,7 +2,7 @@ package pasoos.view;
 
 import pasoos.hotgammon.Location;
 
-public class NullState extends State {
+public abstract class NullState implements State {
     @Override
     public void blackPlayerActive() {
     }
@@ -16,9 +16,7 @@ public class NullState extends State {
     }
 
     @Override
-    public boolean moveRequest(Location from, Location to) {
-        return false;
-    }
+    public abstract boolean moveRequest(Location from, Location to);
 
     @Override
     public void checkerMoved(Location from, Location to) {
@@ -44,4 +42,7 @@ public class NullState extends State {
     public void onExit() {
 
     }
+
+    @Override
+    public abstract StateId getStateId();
 }

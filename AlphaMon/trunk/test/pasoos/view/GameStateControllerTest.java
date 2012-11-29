@@ -4,6 +4,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 
@@ -29,28 +32,37 @@ public class GameStateControllerTest {
                 setGame(game).
                 setBlackPlayer(blackplayer).
                 setRedPlayer(redplayer);
+
+        configurePlayerMock(redplayer);
+        configurePlayerMock(blackplayer);
     }
 
-    @Ignore
-    @Test
-    public void should_set_black_player_active_if_black_is_playerInTurn() {
-        when(game.getPlayerInTurn()).thenReturn(BLACK);
-        gameStateController.turnEnded();
+    private void configurePlayerMock(GammonPlayer player) {
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                gameStateController.setState(StateId.BlackPlayer);
+                return null;
+            }
+        }).when(player).blackPlayerActive();
 
-        InOrder inOrder = inOrder(redplayer, blackplayer);
-        inOrder.verify(blackplayer).setActive();
-        inOrder.verify(redplayer).setInactive();
-    }
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                gameStateController.setState(StateId.RedPlayer);
+                return null;
+            }
+        }).when(player).redPlayerActive();
 
-    @Ignore
-    @Test
-    public void should_set_red_player_active_when_redplayer_is_playerInTurn() {
-        when(game.getPlayerInTurn()).thenReturn(RED);
-        gameStateController.turnEnded();
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                gameStateController.setState(StateId.Winner);
+                return null;
+            }
+        }).when(player).winnerFound();
 
-        InOrder inOrder = inOrder(redplayer, blackplayer);
-        inOrder.verify(redplayer).setInactive();
-        inOrder.verify(blackplayer).setActive();
+
     }
 
     @Test
@@ -77,33 +89,50 @@ public class GameStateControllerTest {
 
     @Test
     public void default_play_scenario() {
-        gameStateController.rollDiceRequest();
-        gameStateController.diceRolled(new int[]{4, 2});
-        verify(game, times(1)).nextTurn();
-
         gameStateController.blackPlayerActive();
-        verify(game, times(1)).nextTurn();
+        gameStateController.diceRolled(new int[]{4, 2});
 
         gameStateController.moveRequest(B1, B2);
-        verify(game).move(B1, B2);
         gameStateController.checkerMoved(B1, B2);
 
         gameStateController.moveRequest(B4, B5);
-        verify(game).move(B4, B5);
         gameStateController.checkerMoved(B4, B5);
 
         gameStateController.turnEnded();
 
-
         gameStateController.redPlayerActive();
+
         gameStateController.rollDiceRequest();
-        gameStateController.moveRequest(B1, B2);
-        gameStateController.moveRequest(B4, B5);
-        gameStateController.turnEnded();
+        gameStateController.diceRolled(new int[]{4, 2});
 
-        gameStateController.winnerFound();
+        gameStateController.moveRequest(R6, R7);
+        gameStateController.checkerMoved(R6, R7);
 
-        verify(game, times(2)).nextTurn();
+        gameStateController.moveRequest(R8, R9);
+        gameStateController.checkerMoved(R8, R9);
+
+        InOrder inOrder = inOrder(blackplayer, redplayer);
+        inOrder.verify(blackplayer, times(1)).onEntry();
+        inOrder.verify(blackplayer, times(1)).diceRolled(new int[]{4, 2});
+        inOrder.verify(blackplayer, times(1)).moveRequest(B1, B2);
+        inOrder.verify(blackplayer, times(1)).checkerMoved(B1, B2);
+        inOrder.verify(blackplayer, times(1)).moveRequest(B4, B5);
+        inOrder.verify(blackplayer, times(1)).checkerMoved(B4, B5);
+
+        inOrder.verify(blackplayer, times(1)).turnEnded();
+
+        inOrder.verify(blackplayer, times(1)).onExit();
+        inOrder.verify(redplayer, times(1)).onEntry();
+
+        inOrder.verify(redplayer, times(1)).rollDiceRequest();
+        inOrder.verify(redplayer, times(1)).diceRolled(new int[]{4, 2});
+
+        inOrder.verify(redplayer, times(1)).moveRequest(R6, R7);
+        inOrder.verify(redplayer, times(1)).checkerMoved(R6, R7);
+
+        inOrder.verify(redplayer, times(1)).moveRequest(R8, R9);
+        inOrder.verify(redplayer, times(1)).checkerMoved(R8, R9);
+
     }
 
 }

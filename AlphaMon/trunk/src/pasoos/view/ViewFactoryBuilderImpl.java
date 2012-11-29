@@ -14,9 +14,7 @@ import pasoos.hotgammon.Location;
 import javax.swing.*;
 
 public class ViewFactoryBuilderImpl implements ViewFactoryBuilder, Factory {
-    private FigureFactory<Location> pieceFactory;
-    private PositioningStrategy<Location> positioningStrategy;
-    private PropAppearanceStrategy appearanceStrategy;
+    private BoardDrawing<Location> boardDrawing;
 
     @Override
     public DrawingView createDrawingView(DrawingEditor editor) {
@@ -25,10 +23,7 @@ public class ViewFactoryBuilderImpl implements ViewFactoryBuilder, Factory {
 
     @Override
     public Drawing createDrawing(DrawingEditor editor) {
-        return new BoardDrawing<Location>(
-                pieceFactory,
-                positioningStrategy,
-                appearanceStrategy);
+        return boardDrawing;
     }
 
     @Override
@@ -39,21 +34,8 @@ public class ViewFactoryBuilderImpl implements ViewFactoryBuilder, Factory {
     }
 
     @Override
-    public ViewFactoryBuilder setPieceFactory(FigureFactory<Location> pieceFactory) {
-        this.pieceFactory = pieceFactory;
-        return this;
-    }
-
-    @Override
-    public ViewFactoryBuilder setPositioningStrategy(PositioningStrategy<Location> positioningStrategy) {
-        this.positioningStrategy = positioningStrategy;
-        return this;
-    }
-
-    @Override
-    public ViewFactoryBuilder setPropAppearanceStrategy(PropAppearanceStrategy appearanceStrategy) {
-        this.appearanceStrategy = appearanceStrategy;
-        return this;
+    public void setBoardDrawing(BoardDrawing<Location> boardDrawing) {
+        this.boardDrawing = boardDrawing;
     }
 
     @Override

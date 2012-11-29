@@ -17,6 +17,7 @@ public class Hotgammon {
 
         GammonBuildDirector director = new GammonBuildDirector(gs, gammonBuilder);
         director.construct();
+        gammonBuilder.build();
 
         DrawingEditor editor = new MiniDrawApplication("Hotgammon game...", gammonBuilder.createViewFactory());
 
