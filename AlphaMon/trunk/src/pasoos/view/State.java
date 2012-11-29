@@ -2,24 +2,26 @@ package pasoos.view;
 
 import pasoos.hotgammon.Location;
 
-public abstract class State {
-    abstract public void blackPlayerActive();
+public interface State {
+    void blackPlayerActive();
 
-    abstract public void redPlayerActive();
+    void redPlayerActive();
 
-    abstract public void winnerFound();
+    void winnerFound();
 
-    abstract public boolean moveRequest(Location from, Location to);
+    boolean moveRequest(Location from, Location to);
 
-    abstract public void checkerMoved(Location from, Location to);
+    void checkerMoved(Location from, Location to);
 
-    abstract public void rollDiceRequest();
+    void rollDiceRequest();
 
-    abstract public void diceRolled(int[] values);
+    void diceRolled(int[] values);
 
-    abstract public void turnEnded();
+    void turnEnded();
 
-    public abstract void onEntry();
+    void onEntry();
 
-    public abstract void onExit();
+    void onExit();
+
+    StateId getStateId();
 }

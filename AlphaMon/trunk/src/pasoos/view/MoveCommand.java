@@ -10,10 +10,10 @@ public class MoveCommand implements Command {
     private int fromY;
     private int toX;
     private int toY;
-    private Game game;
+    private State state;
 
-    public MoveCommand(Game game) {
-        this.game = game;
+    public MoveCommand(State state) {
+        this.state = state;
     }
 
     @Override
@@ -32,6 +32,6 @@ public class MoveCommand implements Command {
     public boolean execute() {
         Location from = Convert.xy2Location(fromX, fromY);
         Location to = Convert.xy2Location(toX, toY);
-        return game.move(from, to);
+        return state.moveRequest(from, to);
     }
 }

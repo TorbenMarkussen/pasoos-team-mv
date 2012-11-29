@@ -1,5 +1,6 @@
 package pasoos.view;
 
+import minidraw.boardgame.BoardDrawing;
 import minidraw.boardgame.BoardFigure;
 import minidraw.boardgame.BoardPiece;
 import minidraw.framework.Factory;
@@ -18,6 +19,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
     private HotgammonPieceFactory pieceFactory;
+    private BoardDrawing<Location> boardDrawing;
 
     public GammonBuilderImpl() {
         gameStateController = new GameStateController();
@@ -39,17 +41,16 @@ public class GammonBuilderImpl implements GammonBuilder {
         dice = new GammonDice(game, gameStateController);
 
         gameStateController.setGame(game);
+        gameStateController.addStatusObserver(statusMonitor);
     }
 
     @Override
     public void setPlayer(Color color, PlayerType playerType, String name) {
         if (color == Color.RED) {
-            redPlayer = createPlayer(playerType, name);
-            redPlayer.addStatusObserver(statusMonitor);
+            redPlayer = createPlayer(StateId.RedPlayer, playerType, name);
             gameStateController.setRedPlayer(redPlayer);
         } else {
-            blackPlayer = createPlayer(playerType, name);
-            blackPlayer.addStatusObserver(statusMonitor);
+            blackPlayer = createPlayer(StateId.BlackPlayer, playerType, name);
             gameStateController.setBlackPlayer(blackPlayer);
         }
 
@@ -62,19 +63,19 @@ public class GammonBuilderImpl implements GammonBuilder {
         BoardPiece piece = null;
 
         if (color == Color.RED) {
-            piece = new BoardFigure("redchecker", true, redPlayer);
+            piece = new BoardFigure("redchecker", true, new MoveCommand(gameStateController));
             redPlayer.addPiece(piece);
         } else {
-            piece = new BoardFigure("blackchecker", true, blackPlayer);
+            piece = new BoardFigure("blackchecker", true, new MoveCommand(gameStateController));
             blackPlayer.addPiece(piece);
         }
 
         pieceFactory.addPiece(loc, color, piece);
     }
 
-    private GammonPlayer createPlayer(PlayerType playerType, String name) {
+    private GammonPlayer createPlayer(StateId stateId, PlayerType playerType, String name) {
         if (playerType == PlayerType.ManualPlayer)
-            return new ManualPlayer(game, name);
+            return new ManualPlayerState(stateId, gameStateController, name);
 
         return null;
     }
@@ -105,25 +106,33 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void addDie(String name) {
-        BoardPiece p = null;
+        HotgammonPropAppearanceStrategy propAppearanceStrategy = new HotgammonPropAppearanceStrategy(getGame());
+        String imgName = propAppearanceStrategy.calculateImageNameForPropWithKey(name);
+
+        BoardPiece p = new BoardFigure(imgName, false, dice);
         if (name.equals("die1")) {
-            p = new BoardFigure("bdie0", false, dice);
             dice.addDie1(p);
-            pieceFactory.addDie(name, p);
         } else if (name.equals("die2")) {
-            p = new BoardFigure("bdie0", false, dice);
             dice.addDie2(p);
-            pieceFactory.addDie(name, p);
         }
+        pieceFactory.addDie(name, p);
+    }
+
+    public void build() {
+        boardDrawing = new BoardDrawing<Location>(
+                pieceFactory.build(),
+                new HotgammonPositioningStrategy(),
+                new HotgammonPropAppearanceStrategy(getGame()));
+
+        gameStateController.setBoardDrawing(boardDrawing);
     }
 
     public Factory createViewFactory() {
         ViewFactoryBuilderImpl builder = new ViewFactoryBuilderImpl();
 
-        builder.setPieceFactory(pieceFactory.build()).
-                setPositioningStrategy(new HotgammonPositioningStrategy()).
-                setPropAppearanceStrategy(new HotgammonPropAppearanceStrategy(getGame()));
+        builder.setBoardDrawing(boardDrawing);
 
         return builder.build();
     }
+
 }
