@@ -109,4 +109,9 @@ public class GameEventDecorator implements GameObserver, Game {
     @Override
     public void turnEnded() {
     }
+
+    @Override
+    public void winnerFound() {
+        state.winnerFound();
+    }
 }

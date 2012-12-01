@@ -13,7 +13,6 @@ public class WinnerState extends NullState {
 
     @Override
     public void onEntry() {
-        context.updateStatus(this, "Winner found");
     }
 
     @Override

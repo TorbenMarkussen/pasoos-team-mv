@@ -2,14 +2,11 @@ package pasoos.view;
 
 import minidraw.boardgame.BoardDrawing;
 import minidraw.boardgame.BoardGameObserver;
-import minidraw.boardgame.BoardPiece;
-import minidraw.framework.*;
+import minidraw.framework.AnimationEngine;
+import minidraw.framework.AnimationEngineImpl;
 import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
-import pasoos.physics.Convert;
-
-import java.awt.*;
 
 public class BoardGameObserverAdapter implements GameObserver {
     private BoardGameObserver<Location> boardGameObserver;
@@ -40,6 +37,8 @@ public class BoardGameObserverAdapter implements GameObserver {
 //            aEngine.startAnimation(a);
 //        } else
 //            boardGameObserver.pieceMovedEvent(from, to);
+        boardGameObserver.propChangeEvent("die1");
+        boardGameObserver.propChangeEvent("die2");
     }
 
     @Override
@@ -52,5 +51,9 @@ public class BoardGameObserverAdapter implements GameObserver {
     public void turnEnded() {
         boardGameObserver.propChangeEvent("die1");
         boardGameObserver.propChangeEvent("die2");
+    }
+
+    @Override
+    public void winnerFound() {
     }
 }

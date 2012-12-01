@@ -36,4 +36,6 @@ public interface GameObserver {
     void diceRolled(int[] values);
 
     void turnEnded();
+
+    void winnerFound();
 }
