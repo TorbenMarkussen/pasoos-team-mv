@@ -15,7 +15,8 @@ public class HotgammonPropAppearanceStrategy implements PropAppearanceStrategy {
     public String calculateImageNameForPropWithKey(String keyOfProp) {
         String diePrefix;
 
-        if (game.getPlayerInTurn() == Color.RED)
+        if ((game.getPlayerInTurn() == Color.RED && game.getNumberOfMovesLeft() != 0) ||
+                (game.getPlayerInTurn() == Color.BLACK && game.getNumberOfMovesLeft() == 0))
             diePrefix = "rdie";
         else
             diePrefix = "bdie";

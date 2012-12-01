@@ -83,6 +83,8 @@ public class GameStateController implements State, StateContext {
     @Override
     public void winnerFound() {
         currentState.winnerFound();
+        setState(StateId.Winner);
+        currentState.winnerFound();
     }
 
     @Override

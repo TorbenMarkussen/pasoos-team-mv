@@ -1,6 +1,5 @@
 package pasoos.view;
 
-import minidraw.boardgame.BoardDrawing;
 import minidraw.boardgame.BoardPiece;
 import minidraw.framework.*;
 import minidraw.standard.AnimationTimerImpl;
@@ -39,7 +38,7 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         int movesLeft = context.getGame().getNumberOfMovesLeft();
 
         if (movesLeft == 0)
-            writeStatus(name + " has no more moves");
+            writeStatus("Illegal " + name + " is in turn");
         if (movesLeft == 1)
             writeStatus(name + " has 1 move left");
         else if (movesLeft > 1)
@@ -60,7 +59,12 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     public void onEntry() {
         allowRoll = true;
         System.out.println("entry:" + name);
-        writeStatus(name + " in turn");
+        writeStatus(name + " in turn - roll dice");
+    }
+
+    @Override
+    public void winnerFound() {
+        writeStatus(name + " wins game");
     }
 
     @Override
@@ -90,7 +94,6 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
             });
             return;
         }
-
         context.setState(StateId.BlackPlayer);
     }
 
@@ -144,4 +147,6 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         if (cmdQueue.size() > 0)
             cmdQueue.remove(0).execute();
     }
+
+
 }

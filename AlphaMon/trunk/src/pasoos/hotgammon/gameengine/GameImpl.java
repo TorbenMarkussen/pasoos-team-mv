@@ -62,6 +62,8 @@ public class GameImpl implements Game, GameState {
         turnCount++;
         theWinner = winnerStrategy.determineWinner(this);
 
+        notifyIfWinnerIsFound();
+
         if (playerInTurn != Color.BLACK)
             playerInTurn = Color.BLACK;
         else
@@ -138,11 +140,24 @@ public class GameImpl implements Game, GameState {
 
         theWinner = winnerStrategy.determineWinner(this);
 
+        notifyIfWinnerIsFound();
+
         handlePossibleMoves();
 
         notifyIfTurnEnded();
 
         return true;
+    }
+
+    private void notifyIfWinnerIsFound() {
+        if (theWinner != Color.NONE) {
+            if (observers.size() > 0) {
+                for (GameObserver go : observers) {
+                    go.winnerFound();
+                }
+            }
+        }
+
     }
 
     private void notifyIfTurnEnded() {

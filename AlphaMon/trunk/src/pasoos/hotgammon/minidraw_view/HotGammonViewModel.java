@@ -175,6 +175,11 @@ public class HotGammonViewModel implements GameObserver {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @Override
+    public void winnerFound() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public Checker getTopChecker(Location location) {
         List<Checker> f = board.get(location);
         return f.get(f.size() - 1);
