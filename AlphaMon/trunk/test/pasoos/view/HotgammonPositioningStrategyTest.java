@@ -21,25 +21,55 @@ public class HotgammonPositioningStrategyTest {
 
     @Test
     public void should_position_6_checkers_on_a_straight_row() {
-        Point p = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 0);
         Rectangle r = new Rectangle(500, 217, 40 - CHECKER_WIDTH, 200);
-        assertTrue(r.contains(p));
-        Point p1 = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 1);
-        assertEquals(p.getX(), p1.getX(), 0.01);
-        assertTrue((p.getY() - p1.getY()) >= CHECKER_HEIGHT);
-        Point p5 = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 5);
-        assertEquals(p.getX(), p5.getX(), 0.01);
-        assertTrue((p.getY() - p5.getY()) >= (CHECKER_HEIGHT * 5));
+
+        // Check Checker position 1
+        Point checker1Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 0); // Calculate Checker 1 position
+        assertTrue(r.contains(checker1Position));
+
+        // Check Checker position 2
+        Point checker2Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 1); // Calculate Checker 2 position
+        assertEquals(checker1Position.getX(), checker2Position.getX(), 0.01);
+        assertTrue((checker1Position.getY() - checker2Position.getY()) >= CHECKER_HEIGHT);
+
+        // Check Checker position 6
+        Point checker6Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 5); // Calculate Checker 6 position
+        assertEquals(checker1Position.getX(), checker6Position.getX(), 0.01);
+        assertTrue((checker1Position.getY() - checker6Position.getY()) >= (CHECKER_HEIGHT * 5));
     }
 
     @Test
     public void should_position_7th_checker_between_checker_1_and_2() {
-        Point p = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 0);
-        Point p1 = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 1);
-        assertTrue((p.getY() - p1.getY()) >= CHECKER_HEIGHT);
-        Point p7 = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 6);
-        assertTrue(p7.getY() > p1.getY());
-        assertTrue(p7.getY() < p.getY());
+        Point checker1Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 0); // Calculate Checker 1 position
+        Point checker2Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 1); // Calculate Checker 2 position
+        assertTrue((checker1Position.getY() - checker2Position.getY()) >= CHECKER_HEIGHT);
+
+        // Check Checker position 7
+        Point checker7Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 6); // Calculate Checker 7 position
+        assertTrue(checker7Position.getY() > checker2Position.getY());
+        assertTrue(checker7Position.getY() < checker1Position.getY());
+    }
+
+    @Test
+    public void should_position_11th_checker_between_checker_5_and_6() {
+        Point checker5Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 4); // Calculate Checker 5 position
+        Point checker6Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 5); // Calculate Checker 6 position
+        assertTrue((checker5Position.getY() - checker6Position.getY()) >= CHECKER_HEIGHT);
+
+        // Check Checker position 11
+        Point checker11Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 10); // Calculate Checker 1 position
+        assertTrue(checker11Position.getY() > checker6Position.getY());
+        assertTrue(checker11Position.getY() < checker5Position.getY());
+    }
+
+    @Test
+    public void should_position_12th_checker_as_checker_2_() {
+        Point checker2Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 1); // Calculate Checker 2 position
+        Point checker12Position = ps.calculateFigureCoordinatesIndexedForLocation(Location.R1, 11); // Calculate Checker 12 position
+
+        // Check Checker position 2
+        assertEquals(checker2Position.getX(), checker12Position.getX(), 0.01);
+        assertEquals(checker2Position.getY(), checker12Position.getY(), 0.01);
     }
 
     @Test
