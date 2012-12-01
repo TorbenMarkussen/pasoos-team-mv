@@ -2,7 +2,7 @@ package pasoos.view;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.rules.HotGammonFactory;
-import pasoos.hotgammon.rules.factory.AlphaMonFactory;
+import pasoos.hotgammon.rules.factory.SemiMonFactory;
 
 public class GameSettingsImpl implements GameSettings {
     public GameSettingsImpl(String[] args) {
@@ -10,8 +10,8 @@ public class GameSettingsImpl implements GameSettings {
 
     @Override
     public Class<? extends HotGammonFactory> getGameFactoryType() {
-        //return SemiMonFactory.class;
-        return AlphaMonFactory.class;
+        return SemiMonFactory.class;
+        //return AlphaMonFactory.class;
     }
 
     @Override
