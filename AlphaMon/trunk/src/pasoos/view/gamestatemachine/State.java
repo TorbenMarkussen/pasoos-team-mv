@@ -1,4 +1,4 @@
-package pasoos.view;
+package pasoos.view.gamestatemachine;
 
 import pasoos.hotgammon.Location;
 
@@ -6,8 +6,6 @@ public interface State {
     void blackPlayerActive();
 
     void redPlayerActive();
-
-    void winnerFound();
 
     boolean moveRequest(Location from, Location to);
 
@@ -18,6 +16,8 @@ public interface State {
     void diceRolled(int[] values);
 
     void turnEnded();
+
+    void winnerFound();
 
     void onEntry();
 

@@ -1,6 +1,7 @@
 package pasoos.view;
 
 import minidraw.framework.DrawingEditor;
+import pasoos.hotgammon.Location;
 
 public class StatusMonitor implements StatusObserver {
     private DrawingEditor editor = null;
@@ -12,7 +13,6 @@ public class StatusMonitor implements StatusObserver {
     @Override
     public void updateStatus(String s) {
         status = s;
-        //System.out.println(s);
         if (editor != null)
             editor.showStatus(s);
     }
@@ -20,6 +20,21 @@ public class StatusMonitor implements StatusObserver {
     public void setEditor(DrawingEditor editor) {
         this.editor = editor;
         editor.showStatus(status);
-        //System.out.println(":" + status);
+    }
+
+    @Override
+    public void checkerMove(Location from, Location to) {
+    }
+
+    @Override
+    public void diceRolled(int[] values) {
+    }
+
+    @Override
+    public void turnEnded() {
+    }
+
+    @Override
+    public void winnerFound() {
     }
 }

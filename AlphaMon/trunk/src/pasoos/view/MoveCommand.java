@@ -1,9 +1,9 @@
 package pasoos.view;
 
 import minidraw.boardgame.Command;
-import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.physics.Convert;
+import pasoos.view.gamestatemachine.State;
 
 public class MoveCommand implements Command {
     private int fromX;

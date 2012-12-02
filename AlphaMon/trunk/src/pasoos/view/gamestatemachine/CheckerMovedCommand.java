@@ -1,20 +1,23 @@
-package pasoos.view;
+package pasoos.view.gamestatemachine;
 
 import pasoos.hotgammon.Location;
 
 public class CheckerMovedCommand implements EventCommand {
-    private final State state;
     private final Location from;
     private Location to;
 
-    public CheckerMovedCommand(State state, Location from, Location to) {
-        this.state = state;
+    public CheckerMovedCommand(Location from, Location to) {
         this.from = from;
         this.to = to;
     }
 
     @Override
-    public void execute() {
+    public void execute(State state) {
         state.checkerMoved(from, to);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" + from + ", " + to + ")";
     }
 }

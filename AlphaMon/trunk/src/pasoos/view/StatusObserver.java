@@ -1,6 +1,8 @@
 package pasoos.view;
 
-public interface StatusObserver {
+import pasoos.hotgammon.GameObserver;
+
+public interface StatusObserver extends GameObserver {
 
     void updateStatus(String s);
 }

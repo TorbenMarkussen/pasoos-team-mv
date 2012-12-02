@@ -1,7 +1,6 @@
-package pasoos.view;
+package pasoos.view.gamestatemachine;
 
 import minidraw.boardgame.BoardPiece;
-import minidraw.boardgame.Command;
 
 public interface GammonPlayer extends State {
 

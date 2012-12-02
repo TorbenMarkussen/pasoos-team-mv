@@ -5,6 +5,7 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
+import pasoos.view.gamestatemachine.State;
 
 public class GameEventDecorator implements GameObserver, Game {
     private Game game;

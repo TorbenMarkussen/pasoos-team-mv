@@ -1,6 +1,8 @@
 package pasoos.view;
 
 import pasoos.hotgammon.Location;
+import pasoos.view.gamestatemachine.State;
+import pasoos.view.gamestatemachine.StateId;
 
 public abstract class NullState implements State {
     @Override

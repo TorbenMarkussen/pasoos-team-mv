@@ -1,10 +1,10 @@
-package pasoos.view;
+package pasoos.view.gamestatemachine;
 
 import minidraw.boardgame.BoardPiece;
 import minidraw.framework.*;
-import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Location;
 import pasoos.physics.Convert;
+import pasoos.view.NullState;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,19 +16,19 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     private String name;
     private boolean allowRoll;
     private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
-    private AnimationEngineImpl aEngine;
-    private boolean animationActive = false;
-    private List<EventCommand> cmdQueue = new ArrayList<EventCommand>();
+    private boolean allowMove;
 
     public ManualPlayerState(StateId stateId, StateContext context, String name) {
         this.stateId = stateId;
         this.context = context;
         this.name = name;
-        aEngine = new AnimationEngineImpl(new AnimationTimerImpl());
     }
 
     @Override
     public boolean moveRequest(Location from, Location to) {
+        if (!allowMove)
+            return false;
+
         boolean moveSucces = context.getGame().move(from, to);
         refreshStatusText();
         return moveSucces;
@@ -38,7 +38,7 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         int movesLeft = context.getGame().getNumberOfMovesLeft();
 
         if (movesLeft == 0)
-            writeStatus("Illegal " + name + " is in turn");
+            writeStatus(name + " has no more moves");
         if (movesLeft == 1)
             writeStatus(name + " has 1 move left");
         else if (movesLeft > 1)
@@ -51,20 +51,18 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
 
     @Override
     public void rollDiceRequest() {
-        if ((context.getGame().getNumberOfMovesLeft() == 0) && allowRoll)
-            context.getGame().nextTurn();
+        if ((context.getGame().getNumberOfMovesLeft() == 0) && allowRoll) {
+            allowRoll = false;
+            context.rollDice();
+        }
     }
 
     @Override
     public void onEntry() {
         allowRoll = true;
+        allowMove = false;
         System.out.println("entry:" + name);
-        writeStatus(name + " in turn - roll dice");
-    }
-
-    @Override
-    public void winnerFound() {
-        writeStatus(name + " wins game");
+        writeStatus(name + " in turn");
     }
 
     @Override
@@ -75,7 +73,9 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     @Override
     public void diceRolled(int[] values) {
         allowRoll = false;
+        allowMove = true;
         refreshStatusText();
+        context.notifyDiceRolled(values);
     }
 
     @Override
@@ -85,29 +85,11 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
 
     @Override
     public void blackPlayerActive() {
-        if (animationActive) {
-            cmdQueue.add(new EventCommand() {
-                @Override
-                public void execute() {
-                    blackPlayerActive();
-                }
-            });
-            return;
-        }
         context.setState(StateId.BlackPlayer);
     }
 
     @Override
     public void redPlayerActive() {
-        if (animationActive) {
-            cmdQueue.add(new EventCommand() {
-                @Override
-                public void execute() {
-                    redPlayerActive();
-                }
-            });
-            return;
-        }
         context.setState(StateId.RedPlayer);
     }
 
@@ -118,35 +100,17 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
 
     @Override
     public void checkerMoved(final Location from, final Location to) {
-        if (animationActive) {
-            cmdQueue.add(new CheckerMovedCommand(this, from, to));
-            return;
-        }
-
         if (to == Location.R_BAR || to == Location.B_BAR) {
-            animationActive = true;
             BoardPiece bp = context.getBoardDrawing().getPiece(from);
-            Animation a = new MoveAnimation(bp, Convert.locationAndCount2xy(to, 0), TimeInterval.fromNow().duration(900),
-                    new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220)));
-            a.addAnimationChangeListener(new AnimationChangeListener() {
-                @Override
-                public void onAnimationCompleted(AnimationChangeEvent ace) {
-                    animationActive = false;
-                    notifyPieceMovedEvent(from, to);
-                }
-            });
-            aEngine.startAnimation(a);
+            Point destination = Convert.locationAndCount2xy(to, 0);
+            TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
+            EasingFunctionStrategy ef = new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220));
+            Animation a = new MoveAnimation(bp, destination, timeInterval, ef);
+            context.startAnimation(a, from, to);
         } else {
-            notifyPieceMovedEvent(from, to);
+            context.notifyPieceMovedEvent(from, to);
         }
 
     }
-
-    private void notifyPieceMovedEvent(Location from, Location to) {
-        context.getBoardDrawing().pieceMovedEvent(from, to);
-        if (cmdQueue.size() > 0)
-            cmdQueue.remove(0).execute();
-    }
-
 
 }

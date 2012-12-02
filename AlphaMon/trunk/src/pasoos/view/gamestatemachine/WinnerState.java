@@ -1,6 +1,7 @@
-package pasoos.view;
+package pasoos.view.gamestatemachine;
 
 import pasoos.hotgammon.Location;
+import pasoos.view.NullState;
 
 public class WinnerState extends NullState {
     private StateId stateId;
@@ -13,6 +14,7 @@ public class WinnerState extends NullState {
 
     @Override
     public void onEntry() {
+        context.updateStatus(this, "Winner found");
     }
 
     @Override

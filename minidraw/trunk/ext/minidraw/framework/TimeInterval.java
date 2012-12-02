@@ -47,4 +47,8 @@ public class TimeInterval {
         tl.setStart(now() + delay);
         return tl;
     }
+
+    public double deltaTime() {
+        return now() - start;
+    }
 }
