@@ -1,7 +1,8 @@
 package pasoos.view.gamestatemachine;
 
-import minidraw.boardgame.BoardDrawing;
+import minidraw.boardgame.BoardPiece;
 import minidraw.framework.Animation;
+import minidraw.framework.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 
@@ -12,8 +13,6 @@ public interface StateContext {
 
     void updateStatus(GammonState state, String message);
 
-    BoardDrawing<Location> getBoardDrawing();
-
     void startAnimation(Animation a, Location from, Location to);
 
     void rollDice();
@@ -23,4 +22,10 @@ public interface StateContext {
     void notifyDiceRolled(int[] values);
 
     void setGame(Game game);
+
+    String getWinnerName();
+
+    SoundResource getSoundMachine();
+
+    BoardPiece getPieceFromBoard(Location location);
 }

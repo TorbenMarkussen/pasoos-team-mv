@@ -30,11 +30,11 @@ public class GameEventDecorator implements GameObserver, Game {
             state.redPlayerActive();
 
         state.diceRolled(game.diceThrown());
+        evaluateTurnEnded();
     }
 
     @Override
     public void nextTurn() {
-        sounds.playDiceRollerSound();
         game.nextTurn();
         state.diceRolled(game.diceThrown());
         evaluateTurnEnded();
@@ -122,7 +122,6 @@ public class GameEventDecorator implements GameObserver, Game {
 
     @Override
     public void winnerFound() {
-        sounds.playVictorySound();
         state.winnerFound();
     }
 }

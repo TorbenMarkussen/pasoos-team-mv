@@ -38,4 +38,19 @@ public class SemiMonFactory implements HotGammonFactory {
     public Board createBoard() {
         return new BoardImpl(new BackGammonBoardInitializer());
     }
+    /*
+        new BoardInitializerStrategy() {
+            @Override
+            public void initialize(InitializableBoard board) {
+                board.clear();
+                board.set(Location.R1, Color.RED, 1);
+                board.set(Location.R2, Color.RED, 1);
+                board.set(Location.R3, Color.RED, 1);
+                board.set(Location.R4, Color.RED, 1);
+                board.set(Location.R5, Color.RED, 1);
+                board.set(Location.R6, Color.RED, 1);
+                board.set(Location.B_BAR, Color.BLACK, 2);
+            }
+        }
+     */
 }
