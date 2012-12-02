@@ -7,7 +7,8 @@ import pasoos.hotgammon.Location;
 
 import java.awt.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HotgammonPositioningStrategyTest {
     private static final int CHECKER_WIDTH = 27;
@@ -51,17 +52,16 @@ public class HotgammonPositioningStrategyTest {
         assertTrue(checker7Position.getY() < checker1Position.getY());
     }
 
-    @Ignore
     @Test
     public void should_position_11th_checker_between_checker_5_and_6() {
         Point checker5Position = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(Location.B2, 4); // Calculate Checker 5 position
         Point checker6Position = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(Location.B2, 5); // Calculate Checker 6 position
-        assertTrue((checker5Position.getY() - checker6Position.getY()) >= CHECKER_HEIGHT);
+        assertTrue((checker6Position.getY() - checker5Position.getY()) >= CHECKER_HEIGHT);
 
         // Check Checker position 11
-        Point checker11Position = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(Location.B2, 10); // Calculate Checker 1 position
-        assertTrue(checker11Position.getY() > checker6Position.getY());
-        assertTrue(checker11Position.getY() < checker5Position.getY());
+        Point checker11Position = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(Location.B2, 10); // Calculate Checker 11 position
+        assertTrue(checker11Position.getY() < checker6Position.getY());
+        assertTrue(checker11Position.getY() > checker5Position.getY());
     }
 
     @Test
