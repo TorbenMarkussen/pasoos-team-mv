@@ -1,12 +1,11 @@
 package pasoos.view;
 
 import minidraw.boardgame.BoardPiece;
-import minidraw.boardgame.Command;
 import minidraw.boardgame.PropAppearanceStrategy;
 import minidraw.framework.*;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
-import pasoos.view.gamestatemachine.State;
+import pasoos.view.gamestatemachine.GammonStateMachine;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -14,17 +13,21 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class GammonDice implements Command, PropAppearanceStrategy {
+public class GammonDice implements PropAppearanceStrategy {
 
     private Game game;
-    private State state;
+    private GammonStateMachine gammonStateMachine;
     private BoardPiece die1;
     private BoardPiece die2;
     private AnimationEngine animationEngine;
 
-    public GammonDice(Game game, State state) {
+    public GammonDice(Game game, GammonStateMachine state) {
         this.game = game;
-        this.state = state;
+        this.gammonStateMachine = state;
+    }
+
+    public void rollRequest() {
+        gammonStateMachine.rollDiceRequest();
     }
 
     public void setDie1(BoardPiece piece) {
@@ -33,20 +36,6 @@ public class GammonDice implements Command, PropAppearanceStrategy {
 
     public void setDie2(BoardPiece piece) {
         die2 = piece;
-    }
-
-    @Override
-    public void setFromCoordinates(int fromX, int fromY) {
-    }
-
-    @Override
-    public void setToCoordinates(int toX, int toY) {
-    }
-
-    @Override
-    public boolean execute() {
-        state.rollDiceRequest();
-        return true;
     }
 
     private File url2dir(URL _url) {
@@ -114,4 +103,5 @@ public class GammonDice implements Command, PropAppearanceStrategy {
         }
         return "die0";
     }
+
 }

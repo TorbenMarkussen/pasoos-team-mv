@@ -1,10 +1,10 @@
 package pasoos.view;
 
 import pasoos.hotgammon.Location;
-import pasoos.view.gamestatemachine.State;
+import pasoos.view.gamestatemachine.GammonState;
 import pasoos.view.gamestatemachine.StateId;
 
-public abstract class NullState implements State {
+public abstract class NullState implements GammonState {
     @Override
     public void blackPlayerActive() {
     }

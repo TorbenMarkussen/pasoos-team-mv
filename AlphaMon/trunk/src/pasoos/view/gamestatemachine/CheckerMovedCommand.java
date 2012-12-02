@@ -12,7 +12,7 @@ public class CheckerMovedCommand implements EventCommand {
     }
 
     @Override
-    public void execute(State state) {
+    public void execute(GammonStateMachine state) {
         state.checkerMoved(from, to);
     }
 

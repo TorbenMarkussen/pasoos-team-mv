@@ -9,7 +9,7 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
-import pasoos.view.gamestatemachine.State;
+import pasoos.view.gamestatemachine.GammonStateMachine;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -21,7 +21,7 @@ public class GameEventDecoratorTest {
     @Test
     public void should_invoke_blackplayeractive_at_newgame() {
         Game game = mock(Game.class);
-        State state = mock(State.class);
+        GammonStateMachine state = mock(GammonStateMachine.class);
 
         when(game.getPlayerInTurn()).thenReturn(Color.BLACK);
         when(game.getNumberOfMovesLeft()).thenReturn(2);
@@ -42,7 +42,7 @@ public class GameEventDecoratorTest {
     @Test
     public void should_invoke_dicerolled_and_blackplayer_events_after_nextTurn() {
         Game game = mock(Game.class);
-        State state = mock(State.class);
+        GammonStateMachine state = mock(GammonStateMachine.class);
 
         when(game.getNumberOfMovesLeft()).thenReturn(2);
         when(game.diceThrown()).thenReturn(new int[]{4, 2});
@@ -58,7 +58,7 @@ public class GameEventDecoratorTest {
     @Test
     public void should_notify_move_checked() {
         Game game = mock(Game.class);
-        State state = mock(State.class);
+        GammonStateMachine state = mock(GammonStateMachine.class);
         final ArgumentCaptor<GameObserver> gameobs = ArgumentCaptor.forClass(GameObserver.class);
 
         when(game.getPlayerInTurn()).thenReturn(Color.BLACK);

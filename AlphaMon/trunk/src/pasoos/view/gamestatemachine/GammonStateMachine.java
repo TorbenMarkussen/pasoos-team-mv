@@ -2,7 +2,7 @@ package pasoos.view.gamestatemachine;
 
 import pasoos.hotgammon.Location;
 
-public interface State {
+public interface GammonStateMachine {
     void blackPlayerActive();
 
     void redPlayerActive();
@@ -19,9 +19,4 @@ public interface State {
 
     void winnerFound();
 
-    void onEntry();
-
-    void onExit();
-
-    StateId getStateId();
 }
