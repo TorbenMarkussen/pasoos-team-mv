@@ -38,7 +38,7 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         int movesLeft = context.getGame().getNumberOfMovesLeft();
 
         if (movesLeft == 0)
-            writeStatus(name + " has no more moves");
+            writeStatus("Illegal " + name + " is in turn");
         if (movesLeft == 1)
             writeStatus(name + " has 1 move left");
         else if (movesLeft > 1)
@@ -62,7 +62,7 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         allowRoll = true;
         allowMove = false;
         System.out.println("entry:" + name);
-        writeStatus(name + " in turn");
+        writeStatus(name + " in turn - roll dice");
     }
 
     @Override
@@ -101,7 +101,7 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     @Override
     public void checkerMoved(final Location from, final Location to) {
         if (to == Location.R_BAR || to == Location.B_BAR) {
-            BoardPiece bp = context.getBoardDrawing().getPiece(from);
+            BoardPiece bp = context.getPieceFromBoard(from);
             Point destination = Convert.locationAndCount2xy(to, 0);
             TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
             EasingFunctionStrategy ef = new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220));
@@ -110,7 +110,11 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         } else {
             context.notifyPieceMovedEvent(from, to);
         }
+    }
 
+    @Override
+    public void winnerFound() {
+        context.setState(StateId.Winner);
     }
 
 }

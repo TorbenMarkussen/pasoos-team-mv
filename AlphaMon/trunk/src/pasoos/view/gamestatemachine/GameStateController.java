@@ -1,10 +1,8 @@
 package pasoos.view.gamestatemachine;
 
 import minidraw.boardgame.BoardDrawing;
-import minidraw.framework.Animation;
-import minidraw.framework.AnimationChangeEvent;
-import minidraw.framework.AnimationChangeListener;
-import minidraw.framework.AnimationEngine;
+import minidraw.boardgame.BoardPiece;
+import minidraw.framework.*;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.view.*;
@@ -44,6 +42,21 @@ public class GameStateController implements GammonStateMachine, StateContext {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    @Override
+    public String getWinnerName() {
+        return "";
+    }
+
+    @Override
+    public SoundResource getSoundMachine() {
+        return new SoundResource();
+    }
+
+    @Override
+    public BoardPiece getPieceFromBoard(Location location) {
+        return boardDrawing.getPiece(location);
     }
 
     public void setGammonDice(GammonDice gammonDice) {
@@ -140,11 +153,6 @@ public class GameStateController implements GammonStateMachine, StateContext {
     }
 
     @Override
-    public BoardDrawing<Location> getBoardDrawing() {
-        return boardDrawing;
-    }
-
-    @Override
     public void startAnimation(Animation a, final Location from, final Location to) {
         locked = true;
         a.addAnimationChangeListener(new AnimationChangeListener() {
@@ -158,7 +166,7 @@ public class GameStateController implements GammonStateMachine, StateContext {
 
     private void animationEnded(Location from, Location to) {
         locked = false;
-        notifyPieceMovedEvent(from, to);
+
         processGameEvents();
     }
 

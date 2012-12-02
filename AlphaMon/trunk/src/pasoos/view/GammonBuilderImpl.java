@@ -74,6 +74,8 @@ public class GammonBuilderImpl implements GammonBuilder {
     private GammonPlayer createPlayer(StateId stateId, PlayerType playerType, String name) {
         if (playerType == PlayerType.ManualPlayer)
             return new ManualPlayerState(stateId, gameStateController, name);
+        else if (playerType == PlayerType.AIPlayer)
+            return new AIPlayerState(stateId, gameStateController, name, new GerryPlayer(game));
 
         return null;
     }
@@ -99,7 +101,6 @@ public class GammonBuilderImpl implements GammonBuilder {
     }
 
     public void build() {
-
 
         boardDrawing = new BoardDrawing<Location>(
                 pieceFactory.build(),

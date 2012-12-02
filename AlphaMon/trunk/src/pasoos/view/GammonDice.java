@@ -7,12 +7,6 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.view.gamestatemachine.GammonStateMachine;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
-
 public class GammonDice implements PropAppearanceStrategy {
 
     private Game game;
@@ -20,10 +14,12 @@ public class GammonDice implements PropAppearanceStrategy {
     private BoardPiece die1;
     private BoardPiece die2;
     private AnimationEngine animationEngine;
+    private SoundResource sounds;
 
     public GammonDice(Game game, GammonStateMachine state) {
         this.game = game;
         this.gammonStateMachine = state;
+        sounds = new SoundResource();
     }
 
     public void rollRequest() {
@@ -38,37 +34,8 @@ public class GammonDice implements PropAppearanceStrategy {
         die2 = piece;
     }
 
-    private File url2dir(URL _url) {
-        File dir;
-        try {
-            dir = new File(_url.toURI());
-        } catch (URISyntaxException e) {
-            dir = new File(_url.getPath());
-        }
-        return dir;
-    }
-
-
-    public void play(String filename) {
-        final String RESOURCE_PATH = "/resource/";
-        java.net.URL _url = getClass().getResource(RESOURCE_PATH);
-        if (_url == null) {
-            throw new RuntimeException("ImageManager: URL/folder '" + RESOURCE_PATH + "' does not exist.");
-        }
-
-        File dir = url2dir(_url);
-
-        try {
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(new File(dir + "/" + filename)));
-            clip.start();
-        } catch (Exception exc) {
-            exc.printStackTrace(System.out);
-        }
-    }
-
     public void roll() {
-        play("Shake And Roll Dice-Sound.wav");
+        sounds.playDiceRollerSound();
         TimeInterval timeline = TimeInterval.fromNow().duration(1000);
 
         Animation a1 = new MoveAnimation(die1, die1.displayBox().getLocation(), timeline, new Shaker());
