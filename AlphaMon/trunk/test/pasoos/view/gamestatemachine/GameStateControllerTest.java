@@ -1,18 +1,19 @@
-package pasoos.view;
+package pasoos.view.gamestatemachine;
 
+import minidraw.framework.Animation;
+import minidraw.framework.AnimationChangeEvent;
+import minidraw.framework.AnimationChangeListener;
+import minidraw.framework.AnimationEngine;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 
 import static org.mockito.Mockito.*;
-import static pasoos.hotgammon.Color.BLACK;
-import static pasoos.hotgammon.Color.RED;
 import static pasoos.hotgammon.Location.*;
 
 public class GameStateControllerTest {
@@ -20,24 +21,26 @@ public class GameStateControllerTest {
     private GammonPlayer redplayer;
     private GammonPlayer blackplayer;
     private GameStateController gameStateController;
+    private AnimationEngine aengine;
 
     @Before
     public void setUp() throws Exception {
         game = mock(Game.class);
         redplayer = mock(GammonPlayer.class);
         blackplayer = mock(GammonPlayer.class);
+        aengine = mock(AnimationEngine.class);
 
         gameStateController = new GameStateController();
-        gameStateController.
-                setGame(game).
-                setBlackPlayer(blackplayer).
-                setRedPlayer(redplayer);
+        gameStateController.setGame(game);
+        gameStateController.setBlackPlayer(blackplayer);
+        gameStateController.setRedPlayer(redplayer);
+        gameStateController.setAnimationEngine(aengine);
 
-        configurePlayerMock(redplayer);
-        configurePlayerMock(blackplayer);
+        configurePlayerMock(redplayer, StateId.RedPlayer);
+        configurePlayerMock(blackplayer, StateId.BlackPlayer);
     }
 
-    private void configurePlayerMock(GammonPlayer player) {
+    private void configurePlayerMock(GammonPlayer player, StateId sid) {
         doAnswer(new Answer() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {
@@ -62,23 +65,7 @@ public class GameStateControllerTest {
             }
         }).when(player).winnerFound();
 
-
-    }
-
-    @Test
-    public void should_call_nextTurn_on_rollDiceRequest() {
-        gameStateController.rollDiceRequest();
-        verify(game).nextTurn();
-    }
-
-    @Test
-    public void should_not_call_nextTurn_on_rollDiceRequest_if_turnNotEnded() {
-        gameStateController.rollDiceRequest();
-        gameStateController.diceRolled(new int[]{4, 2});
-        gameStateController.blackPlayerActive();
-        gameStateController.rollDiceRequest();
-
-        verify(game, times(1)).nextTurn();
+        when(player.getStateId()).thenReturn(sid);
     }
 
     @Test
@@ -135,4 +122,17 @@ public class GameStateControllerTest {
 
     }
 
+    @Test
+    public void should_lock_checker_move_event_if_animation_active() {
+        Animation a = mock(Animation.class);
+        ArgumentCaptor<AnimationChangeListener> aclCaptor = ArgumentCaptor.forClass(AnimationChangeListener.class);
+        gameStateController.blackPlayerActive();
+        gameStateController.diceRolled(new int[]{4, 2});
+        gameStateController.startAnimation(a, B1, B2);
+        verify(a).addAnimationChangeListener(aclCaptor.capture());
+
+        gameStateController.checkerMoved(B1, B2);
+        aclCaptor.getValue().onAnimationCompleted(new AnimationChangeEvent(a));
+
+    }
 }

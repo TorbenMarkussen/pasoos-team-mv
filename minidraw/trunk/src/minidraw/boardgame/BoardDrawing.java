@@ -209,26 +209,13 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         adjustPieces(to);
     }
 
-    @Override
-    public void adjustPieces(LOCATION location) {
+    private void adjustPieces(LOCATION location) {
         List<BoardPiece> listLocation = figureMap.get(location);
-        int posIndex;// and adjust all pieces...
+        int posIndex;
         posIndex = 0;
         for (BoardPiece ft : listLocation) {
             adjustFigurePosition(ft, location, posIndex++);
         }
-    }
-
-    @Override
-    public void pieceLogicalMoveEvent(LOCATION from, LOCATION to) {
-        List<BoardPiece> list = figureMap.get(from);
-        int index = list.size() - 1;
-        BoardPiece f = list.get(index);
-        list.remove(f);
-
-        // next do the exact same with the to position
-        List<BoardPiece> listTo = figureMap.get(to);
-        listTo.add(f);
     }
 
 

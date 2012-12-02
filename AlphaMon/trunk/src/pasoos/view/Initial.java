@@ -1,11 +1,12 @@
 package pasoos.view;
 
 import pasoos.hotgammon.Location;
+import pasoos.view.gamestatemachine.StateContext;
+import pasoos.view.gamestatemachine.StateId;
 
 public class Initial extends NullState {
     private StateId stateId;
     private StateContext context;
-    private int[] diceValues;
 
     public Initial(StateId stateId, StateContext context) {
         this.stateId = stateId;
@@ -13,24 +14,18 @@ public class Initial extends NullState {
     }
 
     @Override
-    public void rollDiceRequest() {
-        context.getGame().nextTurn();
+    public void blackPlayerActive() {
+        context.setState(StateId.BlackPlayer);
     }
 
     @Override
-    public void blackPlayerActive() {
-        context.setState(StateId.BlackPlayer);
-        context.getState().diceRolled(diceValues);
+    public void redPlayerActive() {
+        context.setState(StateId.RedPlayer);
     }
 
     @Override
     public boolean moveRequest(Location from, Location to) {
         return false;
-    }
-
-    @Override
-    public void diceRolled(int[] values) {
-        diceValues = values;
     }
 
     @Override

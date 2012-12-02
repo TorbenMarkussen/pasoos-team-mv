@@ -9,12 +9,12 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
+import pasoos.view.gamestatemachine.State;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 import static pasoos.hotgammon.Location.B1;
 import static pasoos.hotgammon.Location.B2;
-import static pasoos.hotgammon.Location.B3;
 
 public class GameEventDecoratorTest {
 

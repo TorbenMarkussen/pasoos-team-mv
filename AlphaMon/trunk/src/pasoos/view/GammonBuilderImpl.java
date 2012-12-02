@@ -3,13 +3,22 @@ package pasoos.view;
 import minidraw.boardgame.BoardDrawing;
 import minidraw.boardgame.BoardFigure;
 import minidraw.boardgame.BoardPiece;
+import minidraw.framework.AnimationEngine;
+import minidraw.framework.AnimationEngineImpl;
 import minidraw.framework.Factory;
+import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameFactory;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
+import pasoos.view.gamestatemachine.GameStateController;
+import pasoos.view.gamestatemachine.GammonPlayer;
+import pasoos.view.gamestatemachine.ManualPlayerState;
+import pasoos.view.gamestatemachine.StateId;
+
+import static pasoos.hotgammon.Color.RED;
 
 public class GammonBuilderImpl implements GammonBuilder {
     private Game game;
@@ -20,6 +29,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private GameStateController gameStateController;
     private HotgammonPieceFactory pieceFactory;
     private BoardDrawing<Location> boardDrawing;
+    private AnimationEngine animationEngine = new AnimationEngineImpl(new AnimationTimerImpl());
 
     public GammonBuilderImpl() {
         gameStateController = new GameStateController();
@@ -39,36 +49,24 @@ public class GammonBuilderImpl implements GammonBuilder {
         }
         game = new GameEventDecorator(g, gameStateController);
         dice = new GammonDice(game, gameStateController);
-
-        gameStateController.setGame(game);
-        gameStateController.addStatusObserver(statusMonitor);
     }
 
     @Override
     public void setPlayer(Color color, PlayerType playerType, String name) {
-        if (color == Color.RED) {
+        if (color == RED) {
             redPlayer = createPlayer(StateId.RedPlayer, playerType, name);
-            gameStateController.setRedPlayer(redPlayer);
         } else {
             blackPlayer = createPlayer(StateId.BlackPlayer, playerType, name);
-            gameStateController.setBlackPlayer(blackPlayer);
         }
-
-        if (redPlayer != null && blackPlayer != null)
-            game.newGame();
     }
 
     @Override
     public void addPiece(Location loc, Color color) {
-        BoardPiece piece = null;
+        GammonPlayer player = color == RED ? redPlayer : blackPlayer;
+        String figurename = color == RED ? "redchecker" : "blackchecker";
 
-        if (color == Color.RED) {
-            piece = new BoardFigure("redchecker", true, new MoveCommand(gameStateController));
-            redPlayer.addPiece(piece);
-        } else {
-            piece = new BoardFigure("blackchecker", true, new MoveCommand(gameStateController));
-            blackPlayer.addPiece(piece);
-        }
+        BoardPiece piece = new BoardFigure(figurename, true, new MoveCommand(gameStateController));
+        player.addPiece(piece);
 
         pieceFactory.addPiece(loc, color, piece);
     }
@@ -84,47 +82,43 @@ public class GammonBuilderImpl implements GammonBuilder {
         return game;
     }
 
-    public GammonPlayer getBlackPlayer() {
-        return blackPlayer;
-    }
-
-    public GammonPlayer getRedPlayer() {
-        return redPlayer;
-    }
-
-    public GameStateController getGameStateController() {
-        return gameStateController;
-    }
-
-    public GammonDice getDice() {
-        return dice;
-    }
-
     public StatusMonitor getStatusMonitor() {
         return statusMonitor;
     }
 
     @Override
     public void addDie(String name) {
-        HotgammonPropAppearanceStrategy propAppearanceStrategy = new HotgammonPropAppearanceStrategy(getGame());
-        String imgName = propAppearanceStrategy.calculateImageNameForPropWithKey(name);
 
-        BoardPiece p = new BoardFigure(imgName, false, dice);
+        BoardPiece p = new BoardFigure("die0", false, dice);
         if (name.equals("die1")) {
-            dice.addDie1(p);
+            dice.setDie1(p);
         } else if (name.equals("die2")) {
-            dice.addDie2(p);
+            dice.setDie2(p);
         }
         pieceFactory.addDie(name, p);
     }
 
     public void build() {
+
+
         boardDrawing = new BoardDrawing<Location>(
                 pieceFactory.build(),
                 new HotgammonPositioningStrategy(),
-                new HotgammonPropAppearanceStrategy(getGame()));
+                dice);
 
+        dice.setAnimationEngine(animationEngine);
+
+        gameStateController.setRedPlayer(redPlayer);
+        gameStateController.setBlackPlayer(blackPlayer);
+        gameStateController.setGame(game);
+        gameStateController.setGammonDice(dice);
+        gameStateController.setAnimationEngine(animationEngine);
         gameStateController.setBoardDrawing(boardDrawing);
+
+        gameStateController.addStatusObserver(statusMonitor);
+        gameStateController.addStatusObserver(new BoardGameObserverAdapter(boardDrawing));
+
+        game.newGame();
     }
 
     public Factory createViewFactory() {
