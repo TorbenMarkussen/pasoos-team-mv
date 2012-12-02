@@ -2,7 +2,7 @@ package pasoos.view.gamestatemachine;
 
 public class RollDiceRequestCommand implements EventCommand {
     @Override
-    public void execute(State state) {
+    public void execute(GammonStateMachine state) {
         state.rollDiceRequest();
     }
 

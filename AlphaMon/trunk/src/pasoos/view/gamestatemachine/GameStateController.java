@@ -14,10 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameStateController implements State, StateContext {
+public class GameStateController implements GammonStateMachine, StateContext {
     private Game game;
-    Map<StateId, State> states = new HashMap<StateId, State>();
-    private State currentState;
+    Map<StateId, GammonState> states = new HashMap<StateId, GammonState>();
+    private GammonState currentState;
     List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private List<EventCommand> cmdQueue = new ArrayList<EventCommand>();
 
@@ -66,19 +66,6 @@ public class GameStateController implements State, StateContext {
     @Override
     public void turnEnded() {
         enqueueGameEvent(new TurnEndedCommand());
-    }
-
-    @Override
-    public void onEntry() {
-    }
-
-    @Override
-    public void onExit() {
-    }
-
-    @Override
-    public StateId getStateId() {
-        return null;
     }
 
     @Override
@@ -133,23 +120,18 @@ public class GameStateController implements State, StateContext {
 
     @Override
     public void setState(StateId stateId) {
-        State previousState = currentState;
+        GammonState previousState = currentState;
         currentState = states.get(stateId);
 
         previousState.onExit();
         currentState.onEntry();
     }
 
-    @Override
-    public State getState() {
-        return this;
-    }
-
     public void addStatusObserver(StatusObserver statusObserver) {
         statusObservers.add(statusObserver);
     }
 
-    public void updateStatus(State state, String s) {
+    public void updateStatus(GammonState state, String s) {
         if (state.getStateId() == currentState.getStateId()) {
             for (StatusObserver so : statusObservers) {
                 so.updateStatus(s);

@@ -10,9 +10,7 @@ public interface StateContext {
 
     void setState(StateId stateId);
 
-    State getState();
-
-    void updateStatus(State state, String message);
+    void updateStatus(GammonState state, String message);
 
     BoardDrawing<Location> getBoardDrawing();
 

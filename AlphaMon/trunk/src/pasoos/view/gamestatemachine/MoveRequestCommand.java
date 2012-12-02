@@ -13,7 +13,7 @@ public class MoveRequestCommand implements EventCommand {
     }
 
     @Override
-    public void execute(State state) {
+    public void execute(GammonStateMachine state) {
         result = state.moveRequest(from, to);
     }
 

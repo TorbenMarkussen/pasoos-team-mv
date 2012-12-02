@@ -5,14 +5,14 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
-import pasoos.view.gamestatemachine.State;
+import pasoos.view.gamestatemachine.GammonStateMachine;
 
 public class GameEventDecorator implements GameObserver, Game {
     private Game game;
-    private State state;
+    private GammonStateMachine state;
     private SoundResource sounds;
 
-    public GameEventDecorator(Game game, State state) {
+    public GameEventDecorator(Game game, GammonStateMachine state) {
         this.game = game;
         this.game.addObserver(this);
         this.state = state;

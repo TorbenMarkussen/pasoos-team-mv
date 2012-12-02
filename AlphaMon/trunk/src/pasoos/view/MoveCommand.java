@@ -3,16 +3,16 @@ package pasoos.view;
 import minidraw.boardgame.Command;
 import pasoos.hotgammon.Location;
 import pasoos.physics.Convert;
-import pasoos.view.gamestatemachine.State;
+import pasoos.view.gamestatemachine.GammonStateMachine;
 
 public class MoveCommand implements Command {
     private int fromX;
     private int fromY;
     private int toX;
     private int toY;
-    private State state;
+    private GammonStateMachine state;
 
-    public MoveCommand(State state) {
+    public MoveCommand(GammonStateMachine state) {
         this.state = state;
     }
 

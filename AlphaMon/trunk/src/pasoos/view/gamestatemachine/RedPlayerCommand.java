@@ -2,7 +2,7 @@ package pasoos.view.gamestatemachine;
 
 public class RedPlayerCommand implements EventCommand {
     @Override
-    public void execute(State state) {
+    public void execute(GammonStateMachine state) {
         state.redPlayerActive();
     }
 
