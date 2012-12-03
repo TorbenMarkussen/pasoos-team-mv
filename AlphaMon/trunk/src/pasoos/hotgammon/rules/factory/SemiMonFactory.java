@@ -32,8 +32,8 @@ public class SemiMonFactory implements HotGammonFactory {
     public Board createBoard() {
         return new BoardImpl(new BackGammonBoardInitializer());
     }
-    /*
-    public Board createBoard() {
+
+    /*public Board createBoard() {
         return new BoardImpl(
         new BoardInitializerStrategy() {
             @Override
@@ -48,5 +48,5 @@ public class SemiMonFactory implements HotGammonFactory {
                 board.set(Location.B_BAR, Color.BLACK, 2);
             }
         });
-    }*/
+    } */
 }
