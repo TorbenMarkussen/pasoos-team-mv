@@ -142,6 +142,11 @@ public class AIPlayerTurnState extends GameControllerStateImpl implements GameAd
     }
 
     @Override
+    public void OnAnimationStarted(AnimationChangeEvent ace) {
+
+    }
+
+    @Override
     public void onAnimationCompleted(AnimationChangeEvent ace) {
         movedChecker(animatingMove);
     }

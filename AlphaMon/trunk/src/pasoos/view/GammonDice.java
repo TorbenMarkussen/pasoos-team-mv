@@ -41,6 +41,10 @@ public class GammonDice implements PropAppearanceStrategy {
         Animation a2 = new MoveAnimation(die2, die2.displayBox().getLocation(), timeline, new Shaker());
         a1.addAnimationChangeListener(new AnimationChangeListener() {
             @Override
+            public void OnAnimationStarted(AnimationChangeEvent ace) {
+            }
+
+            @Override
             public void onAnimationCompleted(AnimationChangeEvent ace) {
                 game.nextTurn();
             }

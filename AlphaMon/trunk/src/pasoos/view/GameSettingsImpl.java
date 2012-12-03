@@ -21,6 +21,8 @@ public class GameSettingsImpl implements GameSettings {
         //return PlayerType.ManualPlayer;
 
         return PlayerType.ManualPlayer;
+
+        //  return PlayerType.ManualPlayer;
     }
 
     @Override

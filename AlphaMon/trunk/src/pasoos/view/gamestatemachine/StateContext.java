@@ -1,12 +1,12 @@
 package pasoos.view.gamestatemachine;
 
+import minidraw.boardgame.AnimatedBoardDrawing;
 import minidraw.boardgame.BoardPiece;
 import minidraw.framework.Animation;
 import minidraw.framework.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.minidraw_controller.GammonMove;
-import pasoos.view.GammonBoard;
 
 public interface StateContext {
     Game getGame();
@@ -37,5 +37,5 @@ public interface StateContext {
 
     void endMove(BoardPiece piece, Location location);
 
-    GammonBoard getBoard();
+    AnimatedBoardDrawing getBoard();
 }

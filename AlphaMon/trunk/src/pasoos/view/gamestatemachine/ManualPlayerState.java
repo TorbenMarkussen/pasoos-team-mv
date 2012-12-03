@@ -116,6 +116,11 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
             Animation a = new MoveAnimation(bp, destination, timeInterval, ef);
             a.addAnimationChangeListener(new AnimationChangeListener() {
                 @Override
+                public void OnAnimationStarted(AnimationChangeEvent ace) {
+
+                }
+
+                @Override
                 public void onAnimationCompleted(AnimationChangeEvent ace) {
                     context.getSoundMachine().playCheckerMoveSound();
                 }
