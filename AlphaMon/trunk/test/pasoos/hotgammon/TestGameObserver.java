@@ -2,7 +2,6 @@ package pasoos.hotgammon;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InOrder;
 import pasoos.hotgammon.gameengine.Board;
 import pasoos.hotgammon.gameengine.BoardImpl;
 import pasoos.hotgammon.gameengine.InitializableBoard;
@@ -102,6 +101,7 @@ public class TestGameObserver implements BoardInitializerStrategy {
         verify(observer, times(3)).checkerMove(any(Location.class), any(Location.class));
     }
 
+    /*
     @Test
     public void should_notify_turn_ended() {
         game.nextTurn();
@@ -125,6 +125,6 @@ public class TestGameObserver implements BoardInitializerStrategy {
         inOrder.verify(observer).checkerMove(B11, B10);
         inOrder.verify(observer, times(1)).turnEnded();
     }
-
+    */
 
 }
