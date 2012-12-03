@@ -3,6 +3,7 @@ package pasoos.view.gamestatemachine;
 import minidraw.boardgame.BoardPiece;
 import minidraw.framework.*;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.minidraw_controller.GammonMove;
 import pasoos.physics.Convert;
 import pasoos.view.NullState;
 
@@ -99,14 +100,14 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     }
 
     @Override
-    public void checkerMoved(final Location from, final Location to) {
+    public void checkerMoved(Location from, Location to) {
         if (to == Location.R_BAR || to == Location.B_BAR) {
-            BoardPiece bp = context.getPieceFromBoard(from);
+            final BoardPiece bp = context.getPieceFromBoard(from);
             Point destination = Convert.locationAndCount2xy(to, 0);
             TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
             EasingFunctionStrategy ef = new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220));
             Animation a = new MoveAnimation(bp, destination, timeInterval, ef);
-            context.startAnimation(a, from, to);
+            context.startAnimation(a, bp, new GammonMove(from, to));
         } else {
             context.notifyPieceMovedEvent(from, to);
         }

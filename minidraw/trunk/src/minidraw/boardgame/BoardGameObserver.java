@@ -40,4 +40,6 @@ public interface BoardGameObserver<LOCATION> {
      *                         be identical to that assigned in the FigureFactory's
      */
     public void propChangeEvent(String keyOfChangedProp);
+
+    void pieceLogicalMove(LOCATION from, LOCATION to);
 }

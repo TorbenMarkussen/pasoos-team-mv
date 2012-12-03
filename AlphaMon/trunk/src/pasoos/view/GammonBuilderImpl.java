@@ -1,6 +1,5 @@
 package pasoos.view;
 
-import minidraw.boardgame.BoardDrawing;
 import minidraw.boardgame.BoardFigure;
 import minidraw.boardgame.BoardPiece;
 import minidraw.framework.AnimationEngine;
@@ -28,7 +27,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
     private HotgammonPieceFactory pieceFactory;
-    private BoardDrawing<Location> boardDrawing;
+    private GammonBoard boardDrawing;
     private AnimationEngine animationEngine = new AnimationEngineImpl(new AnimationTimerImpl());
 
     public GammonBuilderImpl() {
@@ -102,10 +101,11 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     public void build() {
 
-        boardDrawing = new BoardDrawing<Location>(
+        boardDrawing = new GammonBoard(
                 pieceFactory.build(),
                 new HotgammonPositioningStrategy(),
-                dice);
+                dice,
+                animationEngine);
 
         dice.setAnimationEngine(animationEngine);
 

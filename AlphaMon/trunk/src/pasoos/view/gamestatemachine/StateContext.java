@@ -5,6 +5,8 @@ import minidraw.framework.Animation;
 import minidraw.framework.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.minidraw_controller.GammonMove;
+import pasoos.view.GammonBoard;
 
 public interface StateContext {
     Game getGame();
@@ -13,7 +15,7 @@ public interface StateContext {
 
     void updateStatus(GammonState state, String message);
 
-    void startAnimation(Animation a, Location from, Location to);
+    void startAnimation(Animation a, BoardPiece piece, GammonMove move);
 
     void rollDice();
 
@@ -28,4 +30,12 @@ public interface StateContext {
     SoundResource getSoundMachine();
 
     BoardPiece getPieceFromBoard(Location location);
+
+    void notifyLogicalMove(Location from, Location to);
+
+    void startMove(BoardPiece piece, Location location);
+
+    void endMove(BoardPiece piece, Location location);
+
+    GammonBoard getBoard();
 }

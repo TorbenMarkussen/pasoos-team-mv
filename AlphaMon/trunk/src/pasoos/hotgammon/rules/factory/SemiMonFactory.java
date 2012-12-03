@@ -12,12 +12,6 @@ import pasoos.hotgammon.rules.diceroller.RandomDiceRoller;
 import pasoos.hotgammon.rules.validator.BackgammonMoveValidatorStrategy;
 import pasoos.hotgammon.rules.winner.BackgammonWinnerStrategy;
 
-/**
- * Created with IntelliJ IDEA.
- * User: sp
- * Date: 17-09-12
- * Time: 20:15
- */
 public class SemiMonFactory implements HotGammonFactory {
     @Override
     public MoveValidatorStrategy createMoveValidatorStrategy(GameState gameState, Board board) {
@@ -39,6 +33,8 @@ public class SemiMonFactory implements HotGammonFactory {
         return new BoardImpl(new BackGammonBoardInitializer());
     }
     /*
+    public Board createBoard() {
+        return new BoardImpl(
         new BoardInitializerStrategy() {
             @Override
             public void initialize(InitializableBoard board) {
@@ -51,6 +47,6 @@ public class SemiMonFactory implements HotGammonFactory {
                 board.set(Location.R6, Color.RED, 1);
                 board.set(Location.B_BAR, Color.BLACK, 2);
             }
-        }
-     */
+        });
+    }*/
 }

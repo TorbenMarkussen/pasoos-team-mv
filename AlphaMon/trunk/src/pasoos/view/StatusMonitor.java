@@ -17,6 +17,11 @@ public class StatusMonitor implements StatusObserver {
             editor.showStatus(s);
     }
 
+    @Override
+    public void checkerLogicalMove(Location from, Location to) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public void setEditor(DrawingEditor editor) {
         this.editor = editor;
         editor.showStatus(status);

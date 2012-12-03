@@ -81,7 +81,7 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
      * images positioned on it.
      */
     protected Map<LOCATION, List<BoardPiece>> figureMap = null;
-
+    protected List<BoardPiece> movingPieces;
     /**
      * Map collection, mapping graphical (x,y) positions to
      * the props of the game.
@@ -109,6 +109,7 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
                         PositioningStrategy<LOCATION> adjuster,
                         PropAppearanceStrategy propChanger) {
         super();
+        movingPieces = new ArrayList<BoardPiece>();
         this.factory = factory;
         this.adjuster = adjuster;
         this.propChanger = propChanger;
@@ -185,9 +186,9 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         // nice on the board.
         int index = list.size() - 1;
         // get last figure
-        BoardPiece f = list.get(index);
+        BoardPiece piece = list.get(index);
         // ... and remove it.
-        list.remove(f);
+        list.remove(piece);
 
         // next adjust the position of ALL pieces on
         // this location. handles that the user has
@@ -205,7 +206,7 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
             figureMap.put(to, listTo);
         }
         // and add the moved figure to it.
-        listTo.add(f);
+        listTo.add(piece);
         adjustPieces(to);
     }
 
@@ -257,5 +258,36 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         return list.get(list.size() - 1);
     }
 
+    public BoardPiece findPiece(int x, int y) {
+        Figure f = findFigure(x, y);
+        if (f instanceof BoardPiece) {
+            return (BoardPiece) f;
+        }
+        return null;
+    }
 
+    @Override
+    public void pieceLogicalMove(LOCATION from, LOCATION to) {
+        List<BoardPiece> list = figureMap.get(from);
+        int index = list.size() - 1;
+        BoardPiece piece = list.get(index);
+        list.remove(piece);
+        List<BoardPiece> listTo = figureMap.get(to);
+        listTo.add(piece);
+    }
+
+    public void startMove(BoardPiece piece, LOCATION location) {
+        movingPieces.add(piece);
+        List<BoardPiece> l = figureMap.get(location);
+        if (l.contains(piece)) {
+            l.remove(piece);
+            adjustPieces(location);
+        }
+    }
+
+    public void endMove(BoardPiece piece, LOCATION location) {
+        movingPieces.remove(piece);
+        figureMap.get(location).add(piece);
+        adjustPieces(location);
+    }
 }

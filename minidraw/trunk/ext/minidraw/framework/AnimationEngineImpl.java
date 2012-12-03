@@ -15,9 +15,11 @@ public class AnimationEngineImpl implements Runnable, AnimationEngine {
 
     @Override
     public synchronized void startAnimation(Animation a) {
+        System.out.println("adding animation" + starting.size());
         starting.add(a);
         if (starting.size() == 1)
-            atimer.start();
+            System.out.println("start timer");
+        atimer.start();
     }
 
     @Override
@@ -28,6 +30,7 @@ public class AnimationEngineImpl implements Runnable, AnimationEngine {
         processRunning();
 
         if (running.size() == 0 && starting.size() == 0) {
+            System.out.println("stop timer");
             atimer.stop();
         }
 

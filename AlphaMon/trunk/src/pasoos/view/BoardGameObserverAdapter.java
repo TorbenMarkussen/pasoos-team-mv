@@ -26,4 +26,9 @@ public class BoardGameObserverAdapter implements StatusObserver {
     @Override
     public void updateStatus(String s) {
     }
+
+    @Override
+    public void checkerLogicalMove(Location from, Location to) {
+        boardGameObserver.pieceLogicalMove(from, to);
+    }
 }
