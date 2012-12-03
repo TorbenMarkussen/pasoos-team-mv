@@ -8,6 +8,12 @@ import java.net.URL;
 
 
 public class SoundResource {
+    private boolean activeSound;
+
+    public SoundResource(boolean activeSound) {
+        this.activeSound = activeSound;
+    }
+
     public void playDiceRollerSound() {
         play("Shake And Roll Dice-Sound.wav");
     }
@@ -36,6 +42,9 @@ public class SoundResource {
     }
 
     private void play(String filename) {
+        if (!activeSound) {
+            return;
+        }
         final String RESOURCE_PATH = "/resource/";
         java.net.URL _url = getClass().getResource(RESOURCE_PATH);
         if (_url == null) {
