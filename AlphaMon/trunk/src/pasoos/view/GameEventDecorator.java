@@ -41,12 +41,16 @@ public class GameEventDecorator implements GameObserver, Game {
     }
 
     private void evaluateTurnEnded() {
-        if (game.getNumberOfMovesLeft() == 0) {
-            state.turnEnded();
-            if (game.getPlayerInTurn() == Color.BLACK)
-                state.redPlayerActive();
-            else
-                state.blackPlayerActive();
+        if (game.winner() != Color.NONE) {
+            state.winnerFound();
+        } else {
+            if (game.getNumberOfMovesLeft() == 0) {
+                state.turnEnded();
+                if (game.getPlayerInTurn() == Color.BLACK)
+                    state.redPlayerActive();
+                else
+                    state.blackPlayerActive();
+            }
         }
     }
 
@@ -114,14 +118,5 @@ public class GameEventDecorator implements GameObserver, Game {
 
     @Override
     public void diceRolled(int[] values) {
-    }
-
-    @Override
-    public void turnEnded() {
-    }
-
-    @Override
-    public void winnerFound() {
-        state.winnerFound();
     }
 }

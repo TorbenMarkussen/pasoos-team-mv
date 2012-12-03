@@ -34,8 +34,4 @@ public interface GameObserver {
      * @param values the values of the two dice
      */
     void diceRolled(int[] values);
-
-    void turnEnded();
-
-    void winnerFound();
 }

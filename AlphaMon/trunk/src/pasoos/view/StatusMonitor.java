@@ -29,12 +29,4 @@ public class StatusMonitor implements StatusObserver {
     @Override
     public void diceRolled(int[] values) {
     }
-
-    @Override
-    public void turnEnded() {
-    }
-
-    @Override
-    public void winnerFound() {
-    }
 }
