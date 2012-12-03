@@ -104,7 +104,7 @@ public class AIPlayerState extends NullState implements GammonPlayer {
                     @Override
                     public void onAnimationCompleted(AnimationChangeEvent ace) {
                         context.getGame().move(move.getFrom(), move.getTo());
-
+                        context.getSoundMachine().playCheckerMoveSound();
                     }
                 }, new AnimationChangeListener() {
                     @Override
@@ -136,6 +136,7 @@ public class AIPlayerState extends NullState implements GammonPlayer {
             @Override
             public void onAnimationCompleted(AnimationChangeEvent ace) {
                 context.getGame().move(move.getFrom(), move.getTo());
+                context.getSoundMachine().playCheckerMoveSound();
             }
         });
 

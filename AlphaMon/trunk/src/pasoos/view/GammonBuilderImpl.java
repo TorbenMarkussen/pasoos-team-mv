@@ -5,6 +5,7 @@ import minidraw.boardgame.BoardPiece;
 import minidraw.framework.AnimationEngine;
 import minidraw.framework.AnimationEngineImpl;
 import minidraw.framework.Factory;
+import minidraw.framework.SoundResource;
 import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
@@ -29,6 +30,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private HotgammonPieceFactory pieceFactory;
     private GammonBoard boardDrawing;
     private AnimationEngine animationEngine = new AnimationEngineImpl(new AnimationTimerImpl());
+    private SoundResource soundEngine = new SoundResource(true);
 
     public GammonBuilderImpl() {
         gameStateController = new GameStateController();
@@ -108,6 +110,7 @@ public class GammonBuilderImpl implements GammonBuilder {
                 animationEngine);
 
         dice.setAnimationEngine(animationEngine);
+        dice.setSoundEngine(soundEngine);
 
         gameStateController.setRedPlayer(redPlayer);
         gameStateController.setBlackPlayer(blackPlayer);
@@ -119,6 +122,7 @@ public class GammonBuilderImpl implements GammonBuilder {
         gameStateController.addStatusObserver(statusMonitor);
         gameStateController.addStatusObserver(new BoardGameObserverAdapter(boardDrawing));
 
+        gameStateController.setSoundEngine(soundEngine);
         game.newGame();
     }
 

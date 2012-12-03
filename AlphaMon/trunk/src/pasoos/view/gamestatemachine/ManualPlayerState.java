@@ -31,6 +31,13 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
             return false;
 
         boolean moveSucces = context.getGame().move(from, to);
+
+        if (moveSucces) {
+            context.getSoundMachine().playCheckerMoveSound();
+        } else {
+            context.getSoundMachine().playErrorSound();
+        }
+
         refreshStatusText();
         return moveSucces;
     }
@@ -107,6 +114,12 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
             TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
             EasingFunctionStrategy ef = new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220));
             Animation a = new MoveAnimation(bp, destination, timeInterval, ef);
+            a.addAnimationChangeListener(new AnimationChangeListener() {
+                @Override
+                public void onAnimationCompleted(AnimationChangeEvent ace) {
+                    context.getSoundMachine().playCheckerMoveSound();
+                }
+            });
             context.startAnimation(a, bp, new GammonMove(from, to));
         } else {
             context.notifyPieceMovedEvent(from, to);

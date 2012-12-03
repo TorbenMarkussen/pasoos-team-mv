@@ -1,6 +1,5 @@
 package pasoos.view;
 
-import minidraw.framework.SoundResource;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
@@ -10,13 +9,11 @@ import pasoos.view.gamestatemachine.GammonStateMachine;
 public class GameEventDecorator implements GameObserver, Game {
     private Game game;
     private GammonStateMachine state;
-    private SoundResource sounds;
 
     public GameEventDecorator(Game game, GammonStateMachine state) {
         this.game = game;
         this.game.addObserver(this);
         this.state = state;
-        sounds = new SoundResource();
     }
 
     @Override
@@ -57,11 +54,6 @@ public class GameEventDecorator implements GameObserver, Game {
     @Override
     public boolean move(Location from, Location to) {
         boolean moveResult = game.move(from, to);
-        if (moveResult)
-            sounds.playCheckerMoveSound();
-        else
-            sounds.playErrorSound();
-
         evaluateTurnEnded();
         return moveResult;
     }

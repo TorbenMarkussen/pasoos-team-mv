@@ -14,12 +14,11 @@ public class GammonDice implements PropAppearanceStrategy {
     private BoardPiece die1;
     private BoardPiece die2;
     private AnimationEngine animationEngine;
-    private SoundResource sounds;
+    private SoundResource soundResource;
 
     public GammonDice(Game game, GammonStateMachine state) {
         this.game = game;
         this.gammonStateMachine = state;
-        sounds = new SoundResource();
     }
 
     public void rollRequest() {
@@ -35,7 +34,7 @@ public class GammonDice implements PropAppearanceStrategy {
     }
 
     public void roll() {
-        sounds.playDiceRollerSound();
+        soundResource.playDiceRollerSound();
         TimeInterval timeline = TimeInterval.fromNow().duration(1000);
 
         Animation a1 = new MoveAnimation(die1, die1.displayBox().getLocation(), timeline, new Shaker());
@@ -71,4 +70,7 @@ public class GammonDice implements PropAppearanceStrategy {
         return "die0";
     }
 
+    public void setSoundEngine(SoundResource soundEngine) {
+        soundResource = soundEngine;
+    }
 }

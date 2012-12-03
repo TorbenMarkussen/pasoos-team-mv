@@ -24,6 +24,7 @@ public class GameStateController implements GammonStateMachine, StateContext {
 
     private GammonBoard boardDrawing;
     private AnimationEngine aEngine;
+    private SoundResource soundResource;
     private boolean locked;
     private GammonDice gammonDice;
 
@@ -54,7 +55,7 @@ public class GameStateController implements GammonStateMachine, StateContext {
 
     @Override
     public SoundResource getSoundMachine() {
-        return new SoundResource();
+        return soundResource;
     }
 
     @Override
@@ -230,4 +231,7 @@ public class GameStateController implements GammonStateMachine, StateContext {
         command.execute(currentState);
     }
 
+    public void setSoundEngine(SoundResource soundEngine) {
+        soundResource = soundEngine;
+    }
 }
