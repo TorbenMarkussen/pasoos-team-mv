@@ -18,4 +18,9 @@ public class GammonMove {
     public Location getTo() {
         return to;
     }
+
+    @Override
+    public String toString() {
+        return from + " -> " + to;
+    }
 }

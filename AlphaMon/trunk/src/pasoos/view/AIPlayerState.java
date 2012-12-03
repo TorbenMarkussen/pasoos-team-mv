@@ -75,11 +75,60 @@ public class AIPlayerState extends NullState implements GammonPlayer {
         context.notifyDiceRolled(values);
     }
 
+    @Override
+    public void checkerMoved(final Location from, final Location to) {
+
+        if (to == Location.R_BAR || to == Location.B_BAR) {
+            context.getBoard().moveAnimated(from, to, null, null);
+            //startAnimatedBarMove(from, to);
+        } else {
+            //context.notifyPieceMovedEvent(from, to);
+            //processGerryMoves();
+        }
+
+    }
+
+    private void processGerryMoves() {
+        if (moves.size() > 0) {
+            GammonMove move = moves.remove(0);
+            startAnimatedMove(move);
+        }
+    }
+
     private void startAnimatedMove(final GammonMove move) {
+        System.out.println("starting move " + move);
+        context.getBoard().moveAnimated(
+                move.getFrom(),
+                move.getTo(),
+                new AnimationChangeListener() {
+                    @Override
+                    public void onAnimationCompleted(AnimationChangeEvent ace) {
+                        context.getGame().move(move.getFrom(), move.getTo());
+
+                    }
+                }, new AnimationChangeListener() {
+                    @Override
+                    public void onAnimationCompleted(AnimationChangeEvent ace) {
+                        processGerryMoves();
+                    }
+                }
+        );
+    }
+
+    private void startAnimatedBarMove(Location from, Location to) {
+        final BoardPiece bp = context.getPieceFromBoard(from);
+        Point destination = Convert.locationAndCount2xy(to, 0);
+        TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
+        EasingFunctionStrategy ef = new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220));
+        Animation a = new MoveAnimation(bp, destination, timeInterval, ef);
+        context.startAnimation(a, bp, new GammonMove(from, to));
+    }
+
+    private void _startAnimatedMove(final GammonMove move) {
         BoardPiece piece = context.getPieceFromBoard(move.getFrom());
         Point destination = Convert.locationAndCount2xy(move.getTo(), context.getGame().getCount(move.getTo()));
 
-        TimeInterval timeline = TimeInterval.fromNow().duration(2000);
+        TimeInterval timeline = TimeInterval.fromNow().duration(1000);
         EasingFunctionStrategy ef = new LinearMove();
 
         Animation a = new MoveAnimation(piece, destination, timeline, ef);
@@ -90,20 +139,6 @@ public class AIPlayerState extends NullState implements GammonPlayer {
             }
         });
 
-        context.startAnimation(a, move.getFrom(), move.getTo());
-    }
-
-    @Override
-    public void checkerMoved(Location from, Location to) {
-
-        processGerryMoves();
-        context.notifyPieceMovedEvent(from, to);
-    }
-
-    private void processGerryMoves() {
-        if (moves.size() > 0) {
-            GammonMove move = moves.remove(0);
-            startAnimatedMove(move);
-        }
+        context.startAnimation(a, piece, move);
     }
 }

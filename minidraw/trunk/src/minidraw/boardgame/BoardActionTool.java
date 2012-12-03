@@ -61,14 +61,15 @@ public class BoardActionTool extends AbstractTool {
         fStartX = x;
         fStartY = y;
         // find the figure that was directly under the (x,y) clicked...
-        Figure f = editor.drawing().findFigure(e.getX(), e.getY());
-        if (f instanceof BoardPiece) {
-            clickedFigure = (BoardPiece) f;
+        BoardDrawing bd = (BoardDrawing) editor.drawing();
+        BoardPiece piece = bd.findPiece(e.getX(), e.getY());
+        if (piece != null) {
+            clickedFigure = piece;
             fLastX = x;
             fLastY = y;
             if (clickedFigure.isMobile()) {
                 editor.drawing().lock();
-                draggedFigure = f;
+                draggedFigure = piece;
             }
         }
     }
