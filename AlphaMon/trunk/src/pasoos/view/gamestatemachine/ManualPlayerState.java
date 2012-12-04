@@ -1,13 +1,10 @@
 package pasoos.view.gamestatemachine;
 
 import minidraw.boardgame.BoardPiece;
-import minidraw.framework.*;
+import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.minidraw_controller.GammonMove;
-import pasoos.physics.Convert;
 import pasoos.view.NullState;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,16 +89,6 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     }
 
     @Override
-    public void blackPlayerActive() {
-        context.setState(StateId.BlackPlayer);
-    }
-
-    @Override
-    public void redPlayerActive() {
-        context.setState(StateId.RedPlayer);
-    }
-
-    @Override
     public void addPiece(BoardPiece piece) {
         pieces.add(piece);
     }
@@ -109,31 +96,10 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     @Override
     public void checkerMoved(Location from, Location to) {
         if (to == Location.R_BAR || to == Location.B_BAR) {
-            final BoardPiece bp = context.getPieceFromBoard(from);
-            Point destination = Convert.locationAndCount2xy(to, 0);
-            TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
-            EasingFunctionStrategy ef = new BezierMovement(new Point(bp.displayBox().x, 220), new Point(300, 220));
-            Animation a = new MoveAnimation(bp, destination, timeInterval, ef);
-            a.addAnimationChangeListener(new AnimationChangeListener() {
-                @Override
-                public void OnAnimationStarted(AnimationChangeEvent ace) {
-
-                }
-
-                @Override
-                public void onAnimationCompleted(AnimationChangeEvent ace) {
-                    context.getSoundMachine().playCheckerMoveSound();
-                }
-            });
-            context.startAnimation(a, bp, new GammonMove(from, to));
+            context.getBoard().moveAnimated(from, to, new NullAnimationCallback<Location>());
         } else {
             context.notifyPieceMovedEvent(from, to);
         }
-    }
-
-    @Override
-    public void winnerFound() {
-        context.setState(StateId.Winner);
     }
 
 }

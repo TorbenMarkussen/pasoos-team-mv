@@ -35,7 +35,6 @@ public class GameStateControllerTest {
         gameStateController.setGame(game);
         gameStateController.setBlackPlayer(blackplayer);
         gameStateController.setRedPlayer(redplayer);
-        gameStateController.setAnimationEngine(aengine);
 
         configurePlayerMock(redplayer, StateId.RedPlayer);
         configurePlayerMock(blackplayer, StateId.BlackPlayer);

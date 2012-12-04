@@ -131,11 +131,6 @@ public class AnimatedLogo implements Tool, AnimationChangeListener {
     }
 
     @Override
-    public void OnAnimationStarted(AnimationChangeEvent ace) {
-
-    }
-
-    @Override
     public void onAnimationCompleted(AnimationChangeEvent ace) {
         Figure f = ace.getSource().getFigure();
         if (allowAnimationRestart)
