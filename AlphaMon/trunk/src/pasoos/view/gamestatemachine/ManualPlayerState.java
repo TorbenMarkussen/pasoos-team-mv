@@ -96,7 +96,15 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
     @Override
     public void checkerMoved(Location from, Location to) {
         if (to == Location.R_BAR || to == Location.B_BAR) {
-            context.getBoard().moveAnimated(from, to, new NullAnimationCallback<Location>());
+            context.getBoard().moveAnimated(
+                    from,
+                    to,
+                    new NullAnimationCallback<Location>() {
+                        @Override
+                        public void beforeEnd(Location from, Location to) {
+                            context.getSoundMachine().playCheckerMoveSound();
+                        }
+                    });
         } else {
             context.notifyPieceMovedEvent(from, to);
         }

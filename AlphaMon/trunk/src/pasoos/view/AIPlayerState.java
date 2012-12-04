@@ -66,7 +66,15 @@ public class AIPlayerState extends NullState implements GammonPlayer {
     public void checkerMoved(final Location from, final Location to) {
 
         if (to == Location.R_BAR || to == Location.B_BAR) {
-            context.getBoard().moveAnimated(from, to, new NullAnimationCallback<Location>());
+            context.getBoard().moveAnimated(
+                    from,
+                    to,
+                    new NullAnimationCallback<Location>() {
+                        @Override
+                        public void beforeEnd(Location from, Location to) {
+                            context.getSoundMachine().playCheckerMoveSound();
+                        }
+                    });
         }
     }
 
@@ -86,6 +94,7 @@ public class AIPlayerState extends NullState implements GammonPlayer {
                     @Override
                     public void beforeEnd(Location from, Location to) {
                         context.getGame().move(from, move.getTo());
+                        context.getSoundMachine().playCheckerMoveSound();
                     }
 
                     @Override
