@@ -13,8 +13,6 @@ public class BoardGameObserverAdapter implements StatusObserver {
     @Override
     public void checkerMove(Location from, Location to) {
         boardGameObserver.pieceMovedEvent(from, to);
-        boardGameObserver.propChangeEvent("die1");
-        boardGameObserver.propChangeEvent("die2");
     }
 
     @Override
