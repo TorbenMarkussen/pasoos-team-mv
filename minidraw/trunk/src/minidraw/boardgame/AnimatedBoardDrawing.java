@@ -18,22 +18,24 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         this.aengine = aengine;
     }
 
-    public void moveAnimated(final LOCATION from, final LOCATION to, final AnimationCallbacks cb) {
+    public void moveAnimated(final LOCATION from, final LOCATION to, final AnimationCallbacks<LOCATION> cb) {
         // Setup animation
         final BoardPiece piece = getPiece(from);
         Point destination = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
         Animation a = createAnimation(piece, destination);
+        final AnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullAnimationCallback<LOCATION>() : cb;
+
         // Make move
-        cb.beforeStart(from, to);
+        cbLocal.beforeStart(from, to);
         startMove(piece, from);
-        cb.afterStart(from, to);
+        cbLocal.afterStart(from, to);
         a.addAnimationChangeListener(new AnimationChangeListener() {
 
             @Override
             public void onAnimationCompleted(AnimationChangeEvent ace) {
-                cb.beforeEnd(from, to);
+                cbLocal.beforeEnd(from, to);
                 endMove(piece, to);
-                cb.afterEnd(from, to);
+                cbLocal.afterEnd(from, to);
             }
         });
         aengine.startAnimation(a);
@@ -60,12 +62,4 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         figureMap.get(location).add(piece);
         adjustPieces(location);
     }
-
-
-    /* ToDo
-    . Make Animation setup
-    - Find To Index
-
-
-     */
 }

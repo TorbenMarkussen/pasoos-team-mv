@@ -41,5 +41,4 @@ public interface BoardGameObserver<LOCATION> {
      */
     public void propChangeEvent(String keyOfChangedProp);
 
-    void pieceLogicalMove(LOCATION from, LOCATION to);
 }
