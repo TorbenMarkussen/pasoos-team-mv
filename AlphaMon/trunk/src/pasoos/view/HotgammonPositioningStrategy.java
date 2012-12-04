@@ -13,9 +13,9 @@ public class HotgammonPositioningStrategy implements PositioningStrategy<Locatio
     @Override
     public Point calculateFigureCoordinatesIndexedForLocation(Location location, int index) {
         Point result;
-        if (index > SECOND_LAYER_LIMIT) {                                                                   // Layer 3
+        if (isThirdLayer(index)) {
             result = Convert.locationAndCount2xy(location, index - SECOND_LAYER_LIMIT);
-        } else if (index > FIRST_LAYER_LIMIT) {                                                             // Layer 2
+        } else if (isSecondLayer(index)) {
             // Find the positions the result should be between
             Point positionBelow1 = Convert.locationAndCount2xy(location, index - FIRST_LAYER_LIMIT);        // Find one position
             Point positionBelow2 = Convert.locationAndCount2xy(location, index - FIRST_LAYER_LIMIT - 1);    // Find the other position
@@ -25,6 +25,14 @@ public class HotgammonPositioningStrategy implements PositioningStrategy<Locatio
             result = Convert.locationAndCount2xy(location, index);                                          // Layer 1
         }
         return result;
+    }
+
+    private boolean isSecondLayer(int index) {
+        return index > FIRST_LAYER_LIMIT;
+    }
+
+    private boolean isThirdLayer(int index) {
+        return index > SECOND_LAYER_LIMIT;
     }
 
     @Override
