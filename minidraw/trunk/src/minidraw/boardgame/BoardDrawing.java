@@ -270,14 +270,4 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         return null;
     }
 
-    @Override
-    public void pieceLogicalMove(LOCATION from, LOCATION to) {
-        List<BoardPiece> list = figureMap.get(from);
-        int index = list.size() - 1;
-        BoardPiece piece = list.get(index);
-        list.remove(piece);
-        List<BoardPiece> listTo = figureMap.get(to);
-        listTo.add(piece);
-    }
-
 }

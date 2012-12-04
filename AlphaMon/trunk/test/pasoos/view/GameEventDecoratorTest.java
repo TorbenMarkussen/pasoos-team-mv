@@ -79,7 +79,7 @@ public class GameEventDecoratorTest {
 
         InOrder inOrder = inOrder(state);
         inOrder.verify(state).checkerMoved(B1, B2);
-        //inOrder.verify(state).turnEnded();
+        inOrder.verify(state).turnEnded();
         inOrder.verify(state).redPlayerActive();
 
 
