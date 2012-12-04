@@ -1,11 +1,9 @@
 package pasoos.view.gamestatemachine;
 
 import minidraw.boardgame.AnimatedBoardDrawing;
-import minidraw.boardgame.BoardPiece;
-import minidraw.framework.*;
+import minidraw.framework.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.minidraw_controller.GammonMove;
 import pasoos.view.GammonDice;
 import pasoos.view.Initial;
 import pasoos.view.StatusObserver;
@@ -20,12 +18,9 @@ public class GameStateController implements GammonStateMachine, StateContext {
     Map<StateId, GammonState> states = new HashMap<StateId, GammonState>();
     private GammonState currentState;
     List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
-    private List<EventCommand> cmdQueue = new ArrayList<EventCommand>();
 
     private AnimatedBoardDrawing boardDrawing;
-    private AnimationEngine aEngine;
     private SoundResource soundResource;
-    private boolean locked;
     private GammonDice gammonDice;
 
     public GameStateController() {
@@ -50,34 +45,12 @@ public class GameStateController implements GammonStateMachine, StateContext {
 
     @Override
     public String getWinnerName() {
-        return "";
+        return game.winner().toString();
     }
 
     @Override
     public SoundResource getSoundMachine() {
         return soundResource;
-    }
-
-    @Override
-    public BoardPiece getPieceFromBoard(Location location) {
-        return boardDrawing.getPiece(location);
-    }
-
-    @Override
-    public void notifyLogicalMove(Location from, Location to) {
-        for (StatusObserver so : statusObservers) {
-            so.checkerLogicalMove(from, to);
-        }
-    }
-
-    @Override
-    public void startMove(BoardPiece piece, Location location) {
-        boardDrawing.startMove(piece, location);
-    }
-
-    @Override
-    public void endMove(BoardPiece piece, Location location) {
-        boardDrawing.endMove(piece, location);
     }
 
     @Override
@@ -93,63 +66,44 @@ public class GameStateController implements GammonStateMachine, StateContext {
         this.boardDrawing = boardDrawing;
     }
 
-    public void setAnimationEngine(AnimationEngine animationEngine) {
-        aEngine = animationEngine;
-    }
-
     @Override
     public void diceRolled(int[] values) {
-        enqueueGameEvent(new DiceRolledEvent(values));
+        currentState.diceRolled(values);
     }
 
     @Override
     public void turnEnded() {
-        enqueueGameEvent(new TurnEndedCommand());
+        currentState.turnEnded();
     }
 
     @Override
     public boolean moveRequest(Location from, Location to) {
-        processGameEvents();
-        if (locked)
-            return false;
-
-        MoveRequestCommand cmd = new MoveRequestCommand(from, to);
-        executeCommand(cmd);
-        return cmd.getResult();
+        return currentState.moveRequest(from, to);
     }
 
     @Override
     public void rollDiceRequest() {
-        processGameEvents();
-        if (locked)
-            return;
-
-        executeCommand(new RollDiceRequestCommand());
+        currentState.rollDiceRequest();
     }
 
     @Override
     public void blackPlayerActive() {
-        enqueueGameEvent(new BlackPlayerCommand());
-    }
-
-    private void enqueueGameEvent(EventCommand eventCommand) {
-        cmdQueue.add(eventCommand);
-        processGameEvents();
+        setState(StateId.BlackPlayer);
     }
 
     @Override
     public void redPlayerActive() {
-        enqueueGameEvent(new RedPlayerCommand());
+        setState(StateId.RedPlayer);
     }
 
     @Override
     public void winnerFound() {
-        enqueueGameEvent(new WinnerFoundCommand());
+        setState(StateId.Winner);
     }
 
     @Override
     public void checkerMoved(Location from, Location to) {
-        enqueueGameEvent(new CheckerMovedCommand(from, to));
+        currentState.checkerMoved(from, to);
     }
 
     @Override
@@ -179,31 +133,6 @@ public class GameStateController implements GammonStateMachine, StateContext {
     }
 
     @Override
-    public void startAnimation(Animation a, final BoardPiece piece, final GammonMove move) {
-        locked = false;
-        startMove(piece, move.getFrom());
-        a.addAnimationChangeListener(new AnimationChangeListener() {
-            @Override
-            public void OnAnimationStarted(AnimationChangeEvent ace) {
-
-            }
-
-            @Override
-            public void onAnimationCompleted(AnimationChangeEvent ace) {
-                animationEnded(piece, move);
-            }
-        });
-        aEngine.startAnimation(a);
-    }
-
-    private void animationEnded(BoardPiece piece, GammonMove move) {
-        locked = false;
-
-        processGameEvents();
-        endMove(piece, move.getTo());
-    }
-
-    @Override
     public void rollDice() {
         gammonDice.roll();
     }
@@ -221,19 +150,6 @@ public class GameStateController implements GammonStateMachine, StateContext {
         for (StatusObserver so : statusObservers) {
             so.diceRolled(values);
         }
-    }
-
-    private void processGameEvents() {
-        if (!locked) {
-            while (cmdQueue.size() > 0) {
-                executeCommand(cmdQueue.remove(0));
-            }
-        }
-    }
-
-    private void executeCommand(EventCommand command) {
-        System.out.println(currentState.getStateId() + " : " + command);
-        command.execute(currentState);
     }
 
     public void setSoundEngine(SoundResource soundEngine) {

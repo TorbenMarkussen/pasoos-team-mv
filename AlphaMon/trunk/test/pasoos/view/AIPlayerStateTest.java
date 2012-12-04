@@ -67,8 +67,6 @@ public class AIPlayerStateTest {
 
         when(game.getCount(B1)).thenReturn(1);
         when(aiPlayer.getMoves()).thenReturn(moves);
-        when(context.getPieceFromBoard(B1)).thenReturn(b1Piece);
-        when(context.getPieceFromBoard(B3)).thenReturn(b3Piece);
 
         playerState.diceRolled(new int[]{4, 2});
         verify(aiPlayer).play();

@@ -104,7 +104,7 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     public void build() {
 
-        boardDrawing = new AnimatedBoardDrawing(
+        boardDrawing = new AnimatedBoardDrawing<Location>(
                 pieceFactory.build(),
                 new HotgammonPositioningStrategy(),
                 dice,
@@ -117,7 +117,6 @@ public class GammonBuilderImpl implements GammonBuilder {
         gameStateController.setBlackPlayer(blackPlayer);
         gameStateController.setGame(game);
         gameStateController.setGammonDice(dice);
-        gameStateController.setAnimationEngine(animationEngine);
         gameStateController.setBoardDrawing(boardDrawing);
 
         gameStateController.addStatusObserver(statusMonitor);

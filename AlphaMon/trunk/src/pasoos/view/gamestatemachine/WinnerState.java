@@ -15,6 +15,7 @@ public class WinnerState extends NullState {
     @Override
     public void onEntry() {
         context.getSoundMachine().playVictorySound();
+        context.updateStatus(this, "Winner is " + context.getWinnerName());
     }
 
     @Override
