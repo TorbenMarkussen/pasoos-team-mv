@@ -74,7 +74,7 @@ import java.util.Map.Entry;
  * commercial use, see http://www.baerbak.com/
  */
 public class BoardDrawing<LOCATION> extends StandardDrawing
-        implements BoardGameObserver<LOCATION> {
+        implements IBoardDrawing<LOCATION>, BoardGameObserver<LOCATION> {
 
     /**
      * "Map of list" collection, mapping each location to the set of
@@ -210,7 +210,7 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         adjustPieces(to);
     }
 
-    private void adjustPieces(LOCATION location) {
+    protected void adjustPieces(LOCATION location) {
         List<BoardPiece> listLocation = figureMap.get(location);
         int posIndex;
         posIndex = 0;
@@ -218,7 +218,6 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
             adjustFigurePosition(ft, location, posIndex++);
         }
     }
-
 
     public void propChangeEvent(String key) {
         Figure prop = propMap.get(key);
@@ -258,6 +257,11 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         return list.get(list.size() - 1);
     }
 
+    public int getCount(LOCATION location) {
+        List<BoardPiece> list = figureMap.get(location);
+        return list.size();
+    }
+
     public BoardPiece findPiece(int x, int y) {
         Figure f = findFigure(x, y);
         if (f instanceof BoardPiece) {
@@ -276,18 +280,4 @@ public class BoardDrawing<LOCATION> extends StandardDrawing
         listTo.add(piece);
     }
 
-    public void startMove(BoardPiece piece, LOCATION location) {
-        movingPieces.add(piece);
-        List<BoardPiece> l = figureMap.get(location);
-        if (l.contains(piece)) {
-            l.remove(piece);
-            adjustPieces(location);
-        }
-    }
-
-    public void endMove(BoardPiece piece, LOCATION location) {
-        movingPieces.remove(piece);
-        figureMap.get(location).add(piece);
-        adjustPieces(location);
-    }
 }
