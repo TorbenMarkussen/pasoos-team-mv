@@ -4,13 +4,11 @@ import pasoos.hotgammon.Location;
 import pasoos.view.gamestatemachine.StateContext;
 import pasoos.view.gamestatemachine.StateId;
 
-public class Initial extends NullState {
-    private StateId stateId;
+public class Initial extends BaseState {
     private StateContext context;
 
-    public Initial(StateId stateId, StateContext context) {
-        this.stateId = stateId;
-        this.context = context;
+    public Initial(StateId stateId) {
+        super(stateId);
     }
 
     @Override
@@ -28,8 +26,4 @@ public class Initial extends NullState {
         return false;
     }
 
-    @Override
-    public StateId getStateId() {
-        return stateId;
-    }
 }

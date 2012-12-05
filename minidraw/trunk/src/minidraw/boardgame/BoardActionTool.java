@@ -69,6 +69,7 @@ public class BoardActionTool extends AbstractTool {
             fLastY = y;
             if (clickedFigure.isMobile()) {
                 editor.drawing().lock();
+                piece.setZorder(10);
                 draggedFigure = piece;
             }
         }

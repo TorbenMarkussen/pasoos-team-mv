@@ -78,6 +78,13 @@ public abstract class CompositeFigure
         }
     }
 
+    protected void moveTop(Figure f) {
+        int index = fFigures.indexOf(f);
+        if (index >= 0) {
+            fFigures.add(fFigures.remove(index));
+        }
+    }
+
     protected void basicMoveBy(int dx, int dy) {
         for (Figure f : fFigures) {
             f.moveBy(dx, dy);
@@ -101,12 +108,13 @@ public abstract class CompositeFigure
 
     @Override
     public void figureZorderChanged(FigureChangeEvent e) {
-        Collections.sort(fFigures, new Comparator<Figure>() {
+        moveTop(e.getFigure());
+        /*Collections.sort(fFigures, new Comparator<Figure>() {
             @Override
             public int compare(Figure f1, Figure f2) {
                 return f1.getZorder() - f2.getZorder();
             }
-        });
+        });*/
     }
 }
 

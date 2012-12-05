@@ -3,22 +3,19 @@ package pasoos.view.gamestatemachine;
 import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
-import pasoos.view.NullState;
+import pasoos.view.BaseState;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManualPlayerState extends NullState implements GammonPlayer {
-    private StateId stateId;
-    private StateContext context;
+public class ManualPlayerState extends BaseState implements GammonPlayer {
     private String name;
     private boolean allowRoll;
     private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
     private boolean allowMove;
 
-    public ManualPlayerState(StateId stateId, StateContext context, String name) {
-        this.stateId = stateId;
-        this.context = context;
+    public ManualPlayerState(StateId stateId, String name) {
+        super(stateId);
         this.name = name;
     }
 
@@ -68,11 +65,6 @@ public class ManualPlayerState extends NullState implements GammonPlayer {
         allowMove = false;
         System.out.println("entry:" + name);
         writeStatus(name + " in turn - roll dice");
-    }
-
-    @Override
-    public StateId getStateId() {
-        return stateId;
     }
 
     @Override

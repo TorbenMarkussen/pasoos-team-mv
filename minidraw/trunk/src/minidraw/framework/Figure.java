@@ -83,4 +83,6 @@ public interface Figure {
      * figure z order. higher number is closer to top.
      */
     int getZorder();
+
+    void setZorder(int zorder);
 }

@@ -7,11 +7,11 @@ import minidraw.standard.MiniDrawApplication;
 public class Hotgammon {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
-        GameSettings gs = new GameSettingsImpl(args);
+        GameSettings gameSettings = new GameSettingsImpl(args);
 
         GammonBuilderImpl gammonBuilder = new GammonBuilderImpl();
 
-        GammonBuildDirector director = new GammonBuildDirector(gs, gammonBuilder);
+        GammonBuildDirector director = new GammonBuildDirector(gameSettings, gammonBuilder);
         director.construct();
         gammonBuilder.build();
 

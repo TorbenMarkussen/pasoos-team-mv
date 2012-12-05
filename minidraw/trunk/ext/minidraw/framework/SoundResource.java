@@ -8,10 +8,10 @@ import java.net.URL;
 
 
 public class SoundResource {
-    private boolean activeSound;
+    private boolean soundsEnabled;
 
-    public SoundResource(boolean activeSound) {
-        this.activeSound = activeSound;
+    public SoundResource(boolean soundsEnabled) {
+        this.soundsEnabled = soundsEnabled;
     }
 
     public void playDiceRollerSound() {
@@ -42,9 +42,10 @@ public class SoundResource {
     }
 
     private void play(String filename) {
-        if (!activeSound) {
+        if (!soundsEnabled) {
             return;
         }
+
         final String RESOURCE_PATH = "/resource/";
         java.net.URL _url = getClass().getResource(RESOURCE_PATH);
         if (_url == null) {
