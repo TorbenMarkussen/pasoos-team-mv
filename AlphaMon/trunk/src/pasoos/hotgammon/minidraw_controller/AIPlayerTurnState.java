@@ -5,10 +5,10 @@ import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gerry.GameAdapter;
-import pasoos.hotgammon.gerry.Gerry;
+import pasoos.hotgammon.ai.gerry.GameAdapter;
+import pasoos.hotgammon.ai.gerry.Gerry;
 import pasoos.hotgammon.minidraw_view.Checker;
-import pasoos.physics.Convert;
+import pasoos.hotgammon.boardphysics.Convert;
 
 import java.awt.*;
 import java.util.ArrayList;

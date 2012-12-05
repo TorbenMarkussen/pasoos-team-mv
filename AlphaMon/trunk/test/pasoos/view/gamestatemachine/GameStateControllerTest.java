@@ -11,6 +11,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.gamestatemachine.GameStateController;
+import pasoos.hotgammon.gamestatemachine.GammonPlayer;
+import pasoos.hotgammon.gamestatemachine.StateId;
 
 import static org.mockito.Mockito.*;
 import static pasoos.hotgammon.Location.*;

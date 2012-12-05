@@ -3,6 +3,7 @@ package pasoos.view;
 import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.ui.HotgammonPositioningStrategy;
 
 import java.awt.*;
 

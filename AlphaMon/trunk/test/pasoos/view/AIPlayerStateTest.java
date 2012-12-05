@@ -5,9 +5,11 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import pasoos.hotgammon.Game;
+import pasoos.hotgammon.ai.AIPlayer;
 import pasoos.hotgammon.minidraw_controller.GammonMove;
-import pasoos.view.gamestatemachine.StateContext;
-import pasoos.view.gamestatemachine.StateId;
+import pasoos.hotgammon.gamestatemachine.AIPlayerState;
+import pasoos.hotgammon.gamestatemachine.StateContext;
+import pasoos.hotgammon.gamestatemachine.StateId;
 
 import java.awt.*;
 import java.util.ArrayList;
