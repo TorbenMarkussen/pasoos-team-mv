@@ -4,7 +4,7 @@ import minidraw.standard.SelectionTool;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.minidraw_view.Checker;
-import pasoos.physics.Convert;
+import pasoos.hotgammon.boardphysics.Convert;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;

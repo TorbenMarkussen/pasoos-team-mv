@@ -7,7 +7,7 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
-import pasoos.physics.Convert;
+import pasoos.hotgammon.boardphysics.Convert;
 
 import java.awt.*;
 import java.util.ArrayList;

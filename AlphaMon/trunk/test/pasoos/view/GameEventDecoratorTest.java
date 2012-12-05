@@ -9,7 +9,8 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
-import pasoos.view.gamestatemachine.GammonStateMachine;
+import pasoos.hotgammon.gamestatemachine.GameEventDecorator;
+import pasoos.hotgammon.gamestatemachine.GammonStateMachine;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
