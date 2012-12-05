@@ -3,7 +3,7 @@ package pasoos.hotgammon.ai.gerry;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
-import pasoos.hotgammon.minidraw_controller.GammonMove;
+import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 
 import java.util.ArrayList;
 import java.util.HashMap;

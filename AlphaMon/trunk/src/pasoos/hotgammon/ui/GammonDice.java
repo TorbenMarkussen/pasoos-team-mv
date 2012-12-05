@@ -5,6 +5,7 @@ import minidraw.boardgame.PropAppearanceStrategy;
 import minidraw.framework.*;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
+import pasoos.hotgammon.easings.Shaker;
 import pasoos.hotgammon.gamestatemachine.GammonStateMachine;
 import pasoos.hotgammon.sounds.SoundResource;
 

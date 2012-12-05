@@ -4,7 +4,7 @@ import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
-import pasoos.hotgammon.minidraw_controller.GammonMove;
+import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 
 import java.util.List;
 

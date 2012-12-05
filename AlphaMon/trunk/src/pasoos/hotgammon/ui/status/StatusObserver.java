@@ -1,4 +1,4 @@
-package pasoos.hotgammon.ui;
+package pasoos.hotgammon.ui.status;
 
 import pasoos.hotgammon.GameObserver;
 
