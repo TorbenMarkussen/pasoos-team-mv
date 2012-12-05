@@ -18,9 +18,14 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         this.aengine = aengine;
     }
 
+    public void moveAnimated(final LOCATION from, final LOCATION to) {
+        moveAnimated(from, to, new NullAnimationCallback<LOCATION>());
+    }
+
     public void moveAnimated(final LOCATION from, final LOCATION to, final AnimationCallbacks<LOCATION> cb) {
         // Setup animation
         final BoardPiece piece = getPiece(from);
+        piece.setZorder(10);
         Point destination = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
         Animation a = createAnimation(piece, destination);
         final AnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullAnimationCallback<LOCATION>() : cb;

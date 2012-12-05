@@ -30,7 +30,8 @@ public class AIPlayerStateTest {
         game = mock(Game.class);
 
         when(context.getGame()).thenReturn(game);
-        playerState = new AIPlayerState(StateId.BlackPlayer, context, "gerry", aiPlayer);
+        playerState = new AIPlayerState(StateId.BlackPlayer, "gerry", aiPlayer);
+        playerState.setContext(context);
     }
 
     @Test

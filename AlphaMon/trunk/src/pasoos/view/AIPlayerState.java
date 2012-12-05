@@ -5,22 +5,18 @@ import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.minidraw_controller.GammonMove;
 import pasoos.view.gamestatemachine.GammonPlayer;
-import pasoos.view.gamestatemachine.StateContext;
 import pasoos.view.gamestatemachine.StateId;
 
 import java.util.List;
 
-public class AIPlayerState extends NullState implements GammonPlayer {
-    private final StateId stateId;
-    private final StateContext context;
+public class AIPlayerState extends BaseState implements GammonPlayer {
     private final String name;
     private AIPlayer aiPlayer;
     private List<GammonMove> moves;
     private boolean allowRoll;
 
-    public AIPlayerState(StateId stateId, StateContext context, String name, AIPlayer aiPlayer) {
-        this.stateId = stateId;
-        this.context = context;
+    public AIPlayerState(StateId stateId, String name, AIPlayer aiPlayer) {
+        super(stateId);
         this.name = name;
         this.aiPlayer = aiPlayer;
         allowRoll = false;
@@ -47,11 +43,6 @@ public class AIPlayerState extends NullState implements GammonPlayer {
     @Override
     public boolean moveRequest(Location from, Location to) {
         return false;
-    }
-
-    @Override
-    public StateId getStateId() {
-        return stateId;
     }
 
     @Override

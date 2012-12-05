@@ -1,15 +1,12 @@
 package pasoos.view.gamestatemachine;
 
 import pasoos.hotgammon.Location;
-import pasoos.view.NullState;
+import pasoos.view.BaseState;
 
-public class WinnerState extends NullState {
-    private StateId stateId;
-    private StateContext context;
+public class WinnerState extends BaseState {
 
-    public WinnerState(StateId stateId, StateContext context) {
-        this.stateId = stateId;
-        this.context = context;
+    public WinnerState(StateId stateId) {
+        super(stateId);
     }
 
     @Override
@@ -23,8 +20,4 @@ public class WinnerState extends NullState {
         return false;
     }
 
-    @Override
-    public StateId getStateId() {
-        return stateId;
-    }
 }

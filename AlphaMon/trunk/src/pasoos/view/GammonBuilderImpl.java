@@ -14,10 +14,7 @@ import pasoos.hotgammon.GameFactory;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
-import pasoos.view.gamestatemachine.GameStateController;
-import pasoos.view.gamestatemachine.GammonPlayer;
-import pasoos.view.gamestatemachine.ManualPlayerState;
-import pasoos.view.gamestatemachine.StateId;
+import pasoos.view.gamestatemachine.*;
 
 import static pasoos.hotgammon.Color.RED;
 
@@ -29,7 +26,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
     private HotgammonPieceFactory pieceFactory;
-    private AnimatedBoardDrawing boardDrawing;
+    private AnimatedBoardDrawing<Location> boardDrawing;
     private AnimationEngine animationEngine = new AnimationEngineImpl(new AnimationTimerImpl());
     private SoundResource soundEngine = new SoundResource(true);
 
@@ -75,9 +72,9 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     private GammonPlayer createPlayer(StateId stateId, PlayerType playerType, String name) {
         if (playerType == PlayerType.ManualPlayer)
-            return new ManualPlayerState(stateId, gameStateController, name);
+            return new ManualPlayerState(stateId, name);
         else if (playerType == PlayerType.AIPlayer)
-            return new AIPlayerState(stateId, gameStateController, name, new GerryPlayer(game));
+            return new AIPlayerState(stateId, name, new GerryPlayer(game));
 
         return null;
     }
@@ -112,17 +109,11 @@ public class GammonBuilderImpl implements GammonBuilder {
 
         dice.setAnimationEngine(animationEngine);
         dice.setSoundEngine(soundEngine);
+        StateContext context = new StateContextImpl.Builder(redPlayer, blackPlayer, game, boardDrawing, dice).build();
+        context.addStatusObserver(statusMonitor);
+        context.addStatusObserver(new BoardGameObserverAdapter(boardDrawing));
+        gameStateController.setContext(context);
 
-        gameStateController.setRedPlayer(redPlayer);
-        gameStateController.setBlackPlayer(blackPlayer);
-        gameStateController.setGame(game);
-        gameStateController.setGammonDice(dice);
-        gameStateController.setBoardDrawing(boardDrawing);
-
-        gameStateController.addStatusObserver(statusMonitor);
-        gameStateController.addStatusObserver(new BoardGameObserverAdapter(boardDrawing));
-
-        gameStateController.setSoundEngine(soundEngine);
         game.newGame();
     }
 

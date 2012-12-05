@@ -2,9 +2,28 @@ package pasoos.view;
 
 import pasoos.hotgammon.Location;
 import pasoos.view.gamestatemachine.GammonState;
+import pasoos.view.gamestatemachine.StateContext;
 import pasoos.view.gamestatemachine.StateId;
 
-public abstract class NullState implements GammonState {
+public abstract class BaseState implements GammonState {
+
+    private StateId stateId;
+    protected StateContext context;
+
+    protected BaseState(StateId stateId) {
+        this.stateId = stateId;
+    }
+
+    @Override
+    public StateId getStateId() {
+        return stateId;
+    }
+
+    @Override
+    public void setContext(StateContext context) {
+        this.context = context;
+    }
+
     @Override
     public void blackPlayerActive() {
     }
@@ -45,6 +64,4 @@ public abstract class NullState implements GammonState {
 
     }
 
-    @Override
-    public abstract StateId getStateId();
 }

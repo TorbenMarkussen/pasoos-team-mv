@@ -4,6 +4,7 @@ import minidraw.boardgame.AnimatedBoardDrawing;
 import minidraw.framework.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.view.StatusObserver;
 
 public interface StateContext {
     Game getGame();
@@ -18,11 +19,13 @@ public interface StateContext {
 
     void notifyDiceRolled(int[] values);
 
-    void setGame(Game game);
-
     String getWinnerName();
 
     SoundResource getSoundMachine();
 
-    AnimatedBoardDrawing getBoard();
+    AnimatedBoardDrawing<Location> getBoard();
+
+    void addStatusObserver(StatusObserver statusObserver);
+
+    GammonState getCurrentState();
 }

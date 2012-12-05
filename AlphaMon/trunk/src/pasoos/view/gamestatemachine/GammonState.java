@@ -6,4 +6,6 @@ public interface GammonState extends GammonStateMachine {
     void onExit();
 
     StateId getStateId();
+
+    void setContext(StateContext context);
 }
