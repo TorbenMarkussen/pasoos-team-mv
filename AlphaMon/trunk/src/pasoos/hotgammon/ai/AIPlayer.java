@@ -1,6 +1,6 @@
 package pasoos.hotgammon.ai;
 
-import pasoos.hotgammon.minidraw_controller.GammonMove;
+import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 
 import java.util.List;
 

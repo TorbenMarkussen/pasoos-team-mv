@@ -5,7 +5,7 @@ import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ui.GammonDice;
-import pasoos.hotgammon.ui.StatusObserver;
+import pasoos.hotgammon.ui.status.StatusObserver;
 
 import java.util.ArrayList;
 import java.util.HashMap;

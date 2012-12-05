@@ -2,6 +2,7 @@ package pasoos.hotgammon.ui;
 
 import minidraw.boardgame.BoardGameObserver;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.ui.status.StatusObserver;
 
 public class BoardGameObserverAdapter implements StatusObserver {
     private BoardGameObserver<Location> boardGameObserver;

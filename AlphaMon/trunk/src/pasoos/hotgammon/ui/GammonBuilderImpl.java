@@ -17,6 +17,7 @@ import pasoos.hotgammon.gamestatemachine.*;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
 import pasoos.hotgammon.settings.PlayerType;
+import pasoos.hotgammon.ui.status.StatusMonitor;
 
 import static pasoos.hotgammon.Color.RED;
 

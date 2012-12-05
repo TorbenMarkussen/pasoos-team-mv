@@ -6,7 +6,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.ai.AIPlayer;
-import pasoos.hotgammon.minidraw_controller.GammonMove;
+import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 import pasoos.hotgammon.gamestatemachine.AIPlayerState;
 import pasoos.hotgammon.gamestatemachine.StateContext;
 import pasoos.hotgammon.gamestatemachine.StateId;

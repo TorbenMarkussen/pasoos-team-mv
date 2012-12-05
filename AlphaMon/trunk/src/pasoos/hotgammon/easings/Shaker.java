@@ -1,4 +1,4 @@
-package pasoos.hotgammon.ui;
+package pasoos.hotgammon.easings;
 
 import minidraw.framework.EasingFunctionStrategy;
 
