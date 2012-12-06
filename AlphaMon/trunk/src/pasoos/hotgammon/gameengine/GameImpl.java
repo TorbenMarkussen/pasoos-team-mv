@@ -90,12 +90,7 @@ public class GameImpl implements Game, GameState {
             }
         }
 
-        // Remove all remaining dice values as no possible moves were found
-        int noOfDiesLeft = diceValuesLeft.size();
-        for (int i = 0; i < noOfDiesLeft; i++) {
-            int d = diceValuesLeft.get(0);
-            removeDice(d);
-        }
+        diceValuesLeft.clear();
     }
 
     private void notifyDiceRolled() {
@@ -174,8 +169,10 @@ public class GameImpl implements Game, GameState {
 
         for (int i = 0; i < diceValuesLeft.size() && diceUsed == 0; i++) {
             int d = diceValuesLeft.get(i);
-            if (moveValidator.isValidMove(from, to, d))
+            if (moveValidator.isValidMove(from, to, d)) {
+                System.out.println("Found valid move from " + from + " > " + to + " using die " + d);
                 diceUsed = d;
+            }
         }
         return diceUsed;
     }

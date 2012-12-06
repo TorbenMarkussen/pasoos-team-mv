@@ -49,7 +49,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
     private Animation createAnimation(BoardPiece piece, Point destination) {
 
         BezierMovement bm = new BezierMovement(new Point(piece.displayBox().getLocation().x, 220), new Point(destination.x, 220));
-        Animation animation = new MoveAnimation(piece, destination, TimeInterval.fromNow().duration(1000), bm);
+        Animation animation = new MoveAnimation(piece, destination, TimeInterval.fromNow().duration(500), bm);
         return animation;
     }
 

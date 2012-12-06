@@ -25,6 +25,9 @@ public class BackgammonMoveValidatorStrategy implements MoveValidatorStrategy {
         if (isInValidDirection(fromLocation, toLocation))
             return false;
 
+        if (toLocation == Location.B_BAR || toLocation == Location.R_BAR)
+            return false;
+
         if (toLocation != Location.getBearOff(fromColor)) {
             if (dice != moveDistance)
                 return false;
