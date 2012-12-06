@@ -20,7 +20,7 @@ public class GameSettingsImpl implements GameSettings {
             return PlayerType.AIPlayer;
         //return PlayerType.ManualPlayer;
 
-        return PlayerType.ManualPlayer;
+        return PlayerType.DummyPlayer;
     }
 
     @Override

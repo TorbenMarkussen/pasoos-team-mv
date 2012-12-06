@@ -12,7 +12,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     private final String name;
     private AIPlayer aiPlayer;
     private List<GammonMove> moves;
-    private boolean allowRoll;
+    private static boolean allowRoll;
 
     public AIPlayerState(StateId stateId, String name, AIPlayer aiPlayer) {
         super(stateId);
@@ -46,10 +46,23 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
     @Override
     public void diceRolled(int[] values) {
-        aiPlayer.play();
-        moves = aiPlayer.getMoves();
-        processGerryMoves();
-        context.notifyDiceRolled(values);
+        try {
+
+
+            aiPlayer.play();
+            moves = aiPlayer.getMoves();
+
+            System.out.print("moving:");
+            for (GammonMove m : moves) {
+                System.out.print(m + ", ");
+            }
+            System.out.println();
+
+            processGerryMoves();
+            context.notifyDiceRolled(values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

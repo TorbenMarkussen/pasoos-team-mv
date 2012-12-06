@@ -45,6 +45,7 @@ public class GammonDice implements PropAppearanceStrategy {
 
             @Override
             public void onAnimationCompleted(AnimationChangeEvent ace) {
+                System.out.println("<nextturn>");
                 game.nextTurn();
             }
         });

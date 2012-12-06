@@ -6,6 +6,7 @@ import minidraw.boardgame.BoardPiece;
 import minidraw.framework.AnimationEngine;
 import minidraw.framework.AnimationEngineImpl;
 import minidraw.framework.Factory;
+import pasoos.hotgammon.ai.t6.Dummy;
 import pasoos.hotgammon.sounds.SoundResource;
 import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
@@ -78,6 +79,8 @@ public class GammonBuilderImpl implements GammonBuilder {
             return new ManualPlayerState(stateId, name);
         else if (playerType == PlayerType.AIPlayer)
             return new AIPlayerState(stateId, name, new GerryPlayer(game));
+        else if (playerType == PlayerType.DummyPlayer)
+            return new AIPlayerState(stateId, name, new Dummy(game, Color.RED));
 
         return null;
     }
