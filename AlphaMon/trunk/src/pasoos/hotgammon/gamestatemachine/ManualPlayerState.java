@@ -85,8 +85,15 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public void checkerMoved(Location from, Location to) {
         if (to == Location.R_BAR || to == Location.B_BAR) {
+            System.out.println(name + " strikes " + from + " -> " + to);
+            writeStatus(name + " strikes " + from + " -> " + to);
             context.getBoard().moveAnimated(
                     from,
                     to,
