@@ -32,15 +32,28 @@ public class GameSettingsImpl implements GameSettings {
 
     @Override
     public PlayerType getPlayerType(Color color) {
-        if (color == Color.BLACK)
-            return PlayerType.AIPlayer;
+        Properties systemProperties = System.getProperties();
+        String type;
 
-        //return PlayerType.DummyPlayer;
-        return PlayerType.ManualPlayer;
+        if (color == Color.BLACK) {
+            type = systemProperties.getProperty("black_type", PlayerType.AIPlayer.toString());
+        } else {
+            type = systemProperties.getProperty("red_type", PlayerType.ManualPlayer.toString());
+        }
+        return PlayerType.valueOf(type);
     }
 
     @Override
     public String getName(Color color) {
-        return color.toString();
+        Properties systemProperties = System.getProperties();
+
+        String name;
+        if (color == Color.BLACK) {
+            name = systemProperties.getProperty("black_name", color.toString());
+        } else {
+            name = systemProperties.getProperty("red_name", color.toString());
+        }
+
+        return name;
     }
 }

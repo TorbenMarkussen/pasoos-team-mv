@@ -49,6 +49,10 @@
                 <path refid="classpath"/>
                 <pathelement location="${build.home}/classes"/>
             </classpath>
+            <sysproperty key="black_type" value="AIPlayer"/>
+            <sysproperty key="red_type" value="DummyPlayer"/>
+            <sysproperty key="black_name" value="Gerry"/>
+            <sysproperty key="red_name" value="T6"/>
         </java>
     </target>
 
