@@ -18,9 +18,9 @@ public class GameSettingsImpl implements GameSettings {
     public PlayerType getPlayerType(Color color) {
         if (color == Color.BLACK)
             return PlayerType.AIPlayer;
-        //return PlayerType.ManualPlayer;
 
-        return PlayerType.DummyPlayer;
+        //return PlayerType.DummyPlayer;
+        return PlayerType.ManualPlayer;
     }
 
     @Override

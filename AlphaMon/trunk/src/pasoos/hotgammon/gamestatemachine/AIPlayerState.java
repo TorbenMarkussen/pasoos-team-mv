@@ -40,6 +40,11 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public boolean moveRequest(Location from, Location to) {
         return false;
     }
@@ -47,8 +52,6 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     @Override
     public void diceRolled(int[] values) {
         try {
-
-
             aiPlayer.play();
             moves = aiPlayer.getMoves();
 
@@ -67,8 +70,9 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
     @Override
     public void checkerMoved(final Location from, final Location to) {
-
         if (to == Location.R_BAR || to == Location.B_BAR) {
+            System.out.println(name + " strikes " + from + " -> " + to);
+            writeStatus(name + " strikes " + from + " -> " + to);
             context.getBoard().moveAnimated(
                     from,
                     to,
@@ -90,6 +94,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
     private void startAnimatedMove(final GammonMove move) {
         System.out.println("starting move " + move);
+        writeStatus(name + " moves " + move);
         context.getBoard().moveAnimated(
                 move.getFrom(),
                 move.getTo(),

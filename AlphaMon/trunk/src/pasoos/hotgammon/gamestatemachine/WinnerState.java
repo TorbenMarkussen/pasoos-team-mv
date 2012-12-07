@@ -11,7 +11,7 @@ public class WinnerState extends BaseState {
     @Override
     public void onEntry() {
         context.getSoundMachine().playVictorySound();
-        context.updateStatus(this, "Winner is " + context.getWinnerName());
+        context.updateStatus(this, "Winner is player " + context.getWinnerName());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package pasoos.hotgammon.gamestatemachine;
 
 import minidraw.boardgame.AnimatedBoardDrawing;
+import pasoos.hotgammon.Color;
 import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
@@ -20,6 +21,7 @@ public class StateContextImpl implements StateContext {
     private GammonDice dice;
     private List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private SoundResource soundMachine;
+    private final Builder builder;
 
     private StateContextImpl(Builder builder) {
         game = builder.getGame();
@@ -38,8 +40,8 @@ public class StateContextImpl implements StateContext {
 
         currentState = states.get(StateId.Initial);
         currentState.onEntry();
+        this.builder = builder;
     }
-
 
     @Override
     public Game getGame() {
@@ -86,7 +88,10 @@ public class StateContextImpl implements StateContext {
 
     @Override
     public String getWinnerName() {
-        return "i won";
+        if (getGame().winner() == Color.BLACK)
+            return builder.getBlackplayer().getName();
+
+        return builder.getRedplayer().getName();
     }
 
     @Override

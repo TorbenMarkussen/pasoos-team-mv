@@ -6,4 +6,5 @@ public interface GammonPlayer extends GammonState {
 
     void addPiece(BoardPiece piece);
 
+    String getName();
 }
