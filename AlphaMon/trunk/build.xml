@@ -1,5 +1,4 @@
 <project name="HotGammon" default="test" basedir=".">
-
     <property name="build.home" value="${basedir}/build"/>
     <property name="src.home" value="${basedir}/src"/>
     <property name="test.home" value="${basedir}/test"/>
@@ -7,6 +6,7 @@
     <property name="minidraw-jar" value="${basedir}/lib/minidraw.jar"/>
     <property name="mockito-jar" value="${basedir}/lib/mockito-1.9.0/mockito-all-1.9.0.jar"/>
     <property name="doc.home" value="${basedir}/doc"/>
+    <property name="resource" value="resource"/>
 
     <path id="classpath">
         <pathelement location="${junit-jar}"/>
@@ -26,13 +26,48 @@
         <delete dir="${doc.home}"/>
     </target>
 
-    <target name="compile" depends="prepare">
+    <target name="compile" depends="prepare, copy_resource">
         <javac srcdir="${src.home}" destdir="${build.home}/classes" includeantruntime="false">
             <classpath>
                 <path refid="classpath"/>
             </classpath>
-
         </javac>
+    </target>
+
+    <target name="copy_resource" depends="prepare">
+        <copy todir="${build.home}/classes/resource">
+            <fileset dir="${resource}">
+                <include name="*.gif"/>
+                <include name="*.wav"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="run">
+        <java fork="yes" classname="pasoos.hotgammon.Hotgammon" spawn="yes">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${build.home}/classes"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run_5">
+        <antcall target="run"/>
+        <antcall target="run"/>
+        <antcall target="run"/>
+        <antcall target="run"/>
+        <antcall target="run"/>
+    </target>
+
+    <target name="run_10">
+        <antcall target="run_5"/>
+        <antcall target="run_5"/>
+    </target>
+
+    <target name="run_20">
+        <antcall target="run_10"/>
+        <antcall target="run_10"/>
     </target>
 
     <target name="compile_test" depends="compile">
