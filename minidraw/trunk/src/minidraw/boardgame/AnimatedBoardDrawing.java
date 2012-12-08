@@ -21,25 +21,38 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
     public void moveAnimated(final LOCATION from, final LOCATION to, final AnimationCallbacks<LOCATION> cb) {
         // Setup animation
         final BoardPiece piece = getPiece(from);
-        piece.setZorder(10);
-        Point destination = animationFactory.getPositioningStrategy().calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
-        Animation a = createAnimation(piece, destination);
-        final AnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullAnimationCallback<LOCATION>() : cb;
+        if (piece != null) {
+            piece.setZorder(10);
+            Point destination = animationFactory.getPositioningStrategy().calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
+            Animation a = createAnimation(piece, destination);
 
-        // Make move
-        cbLocal.beforeStart(from, to);
-        startMove(piece, from);
-        cbLocal.afterStart(from, to);
-        a.addAnimationChangeListener(new AnimationChangeListener() {
 
-            @Override
-            public void onAnimationCompleted(AnimationChangeEvent ace) {
-                cbLocal.beforeEnd(from, to);
-                endMove(piece, to);
-                cbLocal.afterEnd(from, to);
+            final AnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullAnimationCallback<LOCATION>() : cb;
+
+            // Make move
+            cbLocal.beforeStart(from, to);
+            startMove(piece, from);
+            cbLocal.afterStart(from, to);
+            a.addAnimationChangeListener(new AnimationChangeListener() {
+
+                @Override
+                public void onAnimationCompleted(AnimationChangeEvent ace) {
+                    cbLocal.beforeEnd(from, to);
+                    endMove(piece, to);
+                    cbLocal.afterEnd(from, to);
+                }
+            });
+            animationFactory.getAnimationEngine().startAnimation(a);
+        } else {
+            if (cb != null) {
+                System.out.println("<animation failed to get piece, fireing all change events>");
+                cb.beforeStart(from, to);
+                cb.afterStart(from, to);
+                cb.beforeEnd(from, to);
+                cb.afterEnd(from, to);
             }
-        });
-        animationFactory.getAnimationEngine().startAnimation(a);
+        }
+
     }
 
     private Animation createAnimation(BoardPiece piece, Point to) {
