@@ -1,6 +1,6 @@
 package pasoos.hotgammon.ui;
 
-import minidraw.boardgame.IBoardDrawing;
+import minidraw.boardgame.BoardGameDrawing;
 import minidraw.framework.Drawing;
 import minidraw.framework.DrawingEditor;
 import minidraw.framework.DrawingView;
@@ -11,7 +11,7 @@ import pasoos.hotgammon.Location;
 import javax.swing.*;
 
 public class ViewFactoryBuilderImpl implements ViewFactoryBuilder, Factory {
-    private IBoardDrawing<Location> boardDrawing;
+    private BoardGameDrawing<Location> boardDrawing;
 
     @Override
     public DrawingView createDrawingView(DrawingEditor editor) {
@@ -31,7 +31,7 @@ public class ViewFactoryBuilderImpl implements ViewFactoryBuilder, Factory {
     }
 
     @Override
-    public void setBoardDrawing(IBoardDrawing<Location> boardDrawing) {
+    public void setBoardDrawing(BoardGameDrawing<Location> boardDrawing) {
         this.boardDrawing = boardDrawing;
     }
 

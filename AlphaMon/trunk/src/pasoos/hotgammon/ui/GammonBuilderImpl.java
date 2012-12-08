@@ -1,8 +1,6 @@
 package pasoos.hotgammon.ui;
 
-import minidraw.boardgame.AnimatedBoardDrawing;
-import minidraw.boardgame.BoardFigure;
-import minidraw.boardgame.BoardPiece;
+import minidraw.boardgame.*;
 import minidraw.framework.AnimationEngine;
 import minidraw.framework.AnimationEngineImpl;
 import minidraw.framework.Factory;
@@ -107,11 +105,8 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     public void build() {
 
-        boardDrawing = new AnimatedBoardDrawing<Location>(
-                pieceFactory.build(),
-                new HotgammonPositioningStrategy(),
-                dice,
-                animationEngine);
+        AnimatedBoardDrawingFactory animationFactory = new HotgammonAnimatedBoardDrawingFactory(pieceFactory.build(), dice, animationEngine);
+        boardDrawing = new AnimatedBoardDrawing<Location>(animationFactory);
 
         dice.setAnimationEngine(animationEngine);
         dice.setSoundEngine(soundEngine);

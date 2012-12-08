@@ -38,6 +38,7 @@ public class GameSettingsImpl implements GameSettings {
         if (color == Color.BLACK) {
             type = systemProperties.getProperty("black_type", PlayerType.AIPlayer.toString());
         } else {
+//            type = systemProperties.getProperty("red_type", PlayerType.DummyPlayer.toString());
             type = systemProperties.getProperty("red_type", PlayerType.ManualPlayer.toString());
         }
         return PlayerType.valueOf(type);

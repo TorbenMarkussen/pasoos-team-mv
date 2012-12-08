@@ -6,16 +6,12 @@ import java.awt.*;
 import java.util.List;
 
 public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
-    private PositioningStrategy<LOCATION> positioningStrategy;
-    private AnimationEngine aengine;
 
-    public AnimatedBoardDrawing(FigureFactory<LOCATION> figureFactory,
-                                PositioningStrategy<LOCATION> positioningStrategy,
-                                PropAppearanceStrategy appearanceStrategy,
-                                AnimationEngine aengine) {
-        super(figureFactory, positioningStrategy, appearanceStrategy);
-        this.positioningStrategy = positioningStrategy;
-        this.aengine = aengine;
+    private AnimatedBoardDrawingFactory<LOCATION> animationFactory;
+
+    public AnimatedBoardDrawing(AnimatedBoardDrawingFactory animatedBoardDrawingFactory) {
+        super(animatedBoardDrawingFactory.getFigureFactory(), animatedBoardDrawingFactory.getPositioningStrategy(), animatedBoardDrawingFactory.getAppearanceStrategy());
+        animationFactory = animatedBoardDrawingFactory;
     }
 
     public void moveAnimated(final LOCATION from, final LOCATION to) {
@@ -26,7 +22,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         // Setup animation
         final BoardPiece piece = getPiece(from);
         piece.setZorder(10);
-        Point destination = positioningStrategy.calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
+        Point destination = animationFactory.getPositioningStrategy().calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
         Animation a = createAnimation(piece, destination);
         final AnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullAnimationCallback<LOCATION>() : cb;
 
@@ -43,13 +39,15 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
                 cbLocal.afterEnd(from, to);
             }
         });
-        aengine.startAnimation(a);
+        animationFactory.getAnimationEngine().startAnimation(a);
     }
 
-    private Animation createAnimation(BoardPiece piece, Point destination) {
+    private Animation createAnimation(BoardPiece piece, Point to) {
 
-        BezierMovement bm = new BezierMovement(new Point(piece.displayBox().getLocation().x, 220), new Point(destination.x, 220));
-        Animation animation = new MoveAnimation(piece, destination, TimeInterval.fromNow().duration(1500), bm);
+        Point from = piece.displayBox().getLocation();
+        animationFactory.updateTimeInterval(from, to);
+        animationFactory.updateEasingFunction(from, to);
+        Animation animation = new MoveAnimation(piece, to, animationFactory.getTimeInterval(), animationFactory.getEasingFunction());
         return animation;
     }
 
