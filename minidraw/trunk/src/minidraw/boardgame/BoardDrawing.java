@@ -74,7 +74,7 @@ import java.util.Map.Entry;
  * commercial use, see http://www.baerbak.com/
  */
 public class BoardDrawing<LOCATION> extends StandardDrawing
-        implements IBoardDrawing<LOCATION>, BoardGameObserver<LOCATION> {
+        implements BoardGameDrawing<LOCATION>, BoardGameObserver<LOCATION> {
 
     /**
      * "Map of list" collection, mapping each location to the set of
