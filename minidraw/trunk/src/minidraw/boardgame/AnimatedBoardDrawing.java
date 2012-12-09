@@ -58,10 +58,9 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
     private Animation createAnimation(BoardPiece piece, Point to) {
 
         Point from = piece.displayBox().getLocation();
-        animationFactory.updateTimeInterval(from, to);
-        animationFactory.updateEasingFunction(from, to);
-        Animation animation = new MoveAnimation(piece, to, animationFactory.getTimeInterval(), animationFactory.getEasingFunction());
-        return animation;
+        AnimationConfiguration cfg = new AnimationCfg();
+        animationFactory.configureAnimation(from, to, cfg);
+        return new MoveAnimation(piece, to, cfg.getTimeInterval(), cfg.getEasingFunction());
     }
 
     public void startMove(BoardPiece piece, LOCATION location) {
@@ -77,5 +76,30 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         movingPieces.remove(piece);
         figureMap.get(location).add(piece);
         adjustPieces(location);
+    }
+
+    private class AnimationCfg implements AnimationConfiguration {
+        private TimeInterval timeIntervali;
+        private EasingFunctionStrategy easingFunction;
+
+        @Override
+        public void setTimeline(TimeInterval timeIntervali) {
+            this.timeIntervali = timeIntervali;
+        }
+
+        @Override
+        public void setEasingFuntion(EasingFunctionStrategy easingFunction) {
+            this.easingFunction = easingFunction;
+        }
+
+        @Override
+        public TimeInterval getTimeInterval() {
+            return timeIntervali;
+        }
+
+        @Override
+        public EasingFunctionStrategy getEasingFunction() {
+            return easingFunction;
+        }
     }
 }
