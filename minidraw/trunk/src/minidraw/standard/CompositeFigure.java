@@ -108,7 +108,7 @@ public abstract class CompositeFigure
 
     @Override
     public void figureZorderChanged(FigureChangeEvent e) {
-        moveTop(e.getFigure());
+        // moveTop(e.getFigure());
         /*Collections.sort(fFigures, new Comparator<Figure>() {
             @Override
             public int compare(Figure f1, Figure f2) {
