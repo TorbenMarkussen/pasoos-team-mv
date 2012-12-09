@@ -8,4 +8,6 @@ public interface GammonState extends GammonStateMachine {
     StateId getStateId();
 
     void setContext(StateContext context);
+
+    void gameRacked();
 }

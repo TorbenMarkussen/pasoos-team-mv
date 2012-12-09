@@ -26,7 +26,7 @@
         <delete dir="${doc.home}"/>
     </target>
 
-    <target name="compile" depends="prepare, copy_resource">
+    <target name="compile" depends="prepare, copy_resource, depends">
         <javac srcdir="${src.home}" destdir="${build.home}/classes" includeantruntime="false">
             <classpath>
                 <path refid="classpath"/>
@@ -92,8 +92,9 @@
             </classpath>
             <batchtest>
                 <fileset dir="${test.home}">
-                    <include name="**/*Test.java"/>
-                    <include name="**/Test*.java"/>
+                    <include name="**/AllTests.java"/>
+                    <!-- <include name="**/*Test.java"/>
+                    <include name="**/Test*.java"/>  -->
                 </fileset>
             </batchtest>
         </junit>

@@ -29,6 +29,7 @@ public class GameEventDecorator implements GameObserver, Game {
         evaluateTurnEnded();
     }
 
+
     @Override
     public void nextTurn() {
         game.nextTurn();
@@ -110,4 +111,5 @@ public class GameEventDecorator implements GameObserver, Game {
     @Override
     public void diceRolled(int[] values) {
     }
+
 }

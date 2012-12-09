@@ -58,6 +58,12 @@ public class GameStateController implements GammonStateMachine {
     }
 
     @Override
+    public void rackGame() {
+        System.out.println("rackGame");
+        context.getCurrentState().rackGame();
+    }
+
+    @Override
     public void checkerMoved(Location from, Location to) {
         System.out.println("checkerMoved");
         context.getCurrentState().checkerMoved(from, to);

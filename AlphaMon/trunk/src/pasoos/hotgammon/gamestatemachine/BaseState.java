@@ -22,6 +22,11 @@ public abstract class BaseState implements GammonState {
     }
 
     @Override
+    public void gameRacked() {
+
+    }
+
+    @Override
     public void blackPlayerActive() {
     }
 
@@ -60,5 +65,11 @@ public abstract class BaseState implements GammonState {
     public void onExit() {
 
     }
+
+    @Override
+    public void rackGame() {
+
+    }
+
 
 }

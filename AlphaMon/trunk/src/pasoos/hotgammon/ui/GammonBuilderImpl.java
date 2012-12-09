@@ -93,7 +93,6 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void addDie(String name) {
-
         BoardPiece p = new BoardFigure("die0", false, new RollDiceAdapterCommand(dice));
         if (name.equals("die1")) {
             dice.setDie1(p);
@@ -114,8 +113,6 @@ public class GammonBuilderImpl implements GammonBuilder {
         context.addStatusObserver(statusMonitor);
         context.addStatusObserver(new BoardGameObserverAdapter(boardDrawing));
         gameStateController.setContext(context);
-
-        game.newGame();
     }
 
     public Factory createViewFactory() {

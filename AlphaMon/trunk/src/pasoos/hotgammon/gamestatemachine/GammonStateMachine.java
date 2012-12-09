@@ -19,4 +19,7 @@ public interface GammonStateMachine {
     void turnEnded();
 
     void winnerFound();
+
+    void rackGame();
+
 }
