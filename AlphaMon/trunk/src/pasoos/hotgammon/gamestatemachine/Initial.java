@@ -51,7 +51,6 @@ public class Initial extends BaseState {
     }
 
     private void animateRack() {
-
         Game game = context.getGame();
         for (Location loc : Location.values()) {
             int count = game.getCount(loc);
@@ -73,8 +72,12 @@ public class Initial extends BaseState {
                 move.getTo(),
                 new NullAnimationCallback<Location>() {
                     @Override
-                    public void afterEnd(Location from, Location to) {
+                    public void afterStart(Location from, Location to) {
                         processRackMoves();
+                    }
+
+                    @Override
+                    public void afterEnd(Location from, Location to) {
                         startGameAfterRack();
                     }
                 });
