@@ -65,11 +65,4 @@ public abstract class BaseState implements GammonState {
     public void rackGame() {
 
     }
-
-    @Override
-    public void gameRacked() {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-
 }

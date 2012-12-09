@@ -29,7 +29,10 @@ public class GammonBuildDirector {
             int count = game.getCount(loc);
 
             for (int i = 0; i < count; i++) {
-                gammonBuilder.addPiece(loc, color);
+                if (color == Color.BLACK)
+                    gammonBuilder.addPiece(Location.B_BEAR_OFF, color);
+                else
+                    gammonBuilder.addPiece(Location.R_BEAR_OFF, color);
             }
         }
         gammonBuilder.addDie("die1");
