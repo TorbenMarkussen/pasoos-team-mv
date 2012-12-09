@@ -22,11 +22,6 @@ public abstract class BaseState implements GammonState {
     }
 
     @Override
-    public void gameRacked() {
-
-    }
-
-    @Override
     public void blackPlayerActive() {
     }
 
@@ -69,6 +64,11 @@ public abstract class BaseState implements GammonState {
     @Override
     public void rackGame() {
 
+    }
+
+    @Override
+    public void gameRacked() {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
 

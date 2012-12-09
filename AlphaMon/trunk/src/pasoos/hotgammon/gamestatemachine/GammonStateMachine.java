@@ -22,4 +22,6 @@ public interface GammonStateMachine {
 
     void rackGame();
 
+    void gameRacked();
+
 }
