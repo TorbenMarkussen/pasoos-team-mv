@@ -79,9 +79,7 @@ public interface Figure {
      */
     void removeFigureChangeListener(FigureChangeListener l);
 
-    /**
-     * figure z order. higher number is closer to top.
-     */
+
     int getZorder();
 
     void setZorder(int zorder);

@@ -1,9 +1,9 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.AnimatedBoardDrawing;
-import pasoos.hotgammon.sounds.SoundResource;
+import minidraw.boardgame.AnimationCallbacks;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.ui.status.StatusObserver;
 
 public interface StateContext {
@@ -23,9 +23,11 @@ public interface StateContext {
 
     SoundResource getSoundMachine();
 
-    AnimatedBoardDrawing<Location> getBoard();
+    void moveAnimated(Location from, Location to, AnimationCallbacks<Location> cb);
 
     void addStatusObserver(StatusObserver statusObserver);
 
     GammonState getCurrentState();
+
+    void playerTurnEnded(GammonPlayer player);
 }

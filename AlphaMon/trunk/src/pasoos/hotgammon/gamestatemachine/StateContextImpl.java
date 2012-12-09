@@ -1,6 +1,7 @@
 package pasoos.hotgammon.gamestatemachine;
 
 import minidraw.boardgame.AnimatedBoardDrawing;
+import minidraw.boardgame.AnimationCallbacks;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.Game;
@@ -101,8 +102,8 @@ public class StateContextImpl implements StateContext {
     }
 
     @Override
-    public AnimatedBoardDrawing<Location> getBoard() {
-        return boardDrawing;
+    public void moveAnimated(Location from, Location to, AnimationCallbacks<Location> cb) {
+        boardDrawing.moveAnimated(from, to, cb);
     }
 
     @Override
@@ -113,6 +114,15 @@ public class StateContextImpl implements StateContext {
     @Override
     public GammonState getCurrentState() {
         return currentState;
+    }
+
+    @Override
+    public void playerTurnEnded(GammonPlayer player) {
+        if (player.getStateId() == StateId.BlackPlayer) {
+            setState(StateId.RedPlayer);
+        } else {
+            setState(StateId.BlackPlayer);
+        }
     }
 
     public static class Builder {

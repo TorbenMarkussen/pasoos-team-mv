@@ -42,13 +42,13 @@ public class GameStateController implements GammonStateMachine {
     @Override
     public void blackPlayerActive() {
         System.out.println("blackPlayerActive");
-        context.setState(StateId.BlackPlayer);
+        context.getCurrentState().blackPlayerActive();
     }
 
     @Override
     public void redPlayerActive() {
         System.out.println("redPlayerActive");
-        context.setState(StateId.RedPlayer);
+        context.getCurrentState().redPlayerActive();
     }
 
     @Override
