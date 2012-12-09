@@ -123,4 +123,7 @@ public class GammonBuilderImpl implements GammonBuilder {
         return builder.build();
     }
 
+    public GammonStateMachine getController() {
+        return gameStateController;
+    }
 }
