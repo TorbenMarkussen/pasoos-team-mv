@@ -26,7 +26,6 @@ public class Hotgammon {
         gammonBuilder.getStatusMonitor().setEditor(editor);
 
         gammonBuilder.getController().rackGame();
-        //gammonBuilder.getGame().newGame();
     }
 
 }
