@@ -21,7 +21,7 @@ public class StateContextImpl implements StateContext {
     private GammonDice dice;
     private List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private SoundResource soundMachine;
-    private final Builder builder;
+    private Map<Color, String> playerNames = new HashMap<Color, String>();
 
     private StateContextImpl(Builder builder) {
         game = builder.getGame();
@@ -40,7 +40,9 @@ public class StateContextImpl implements StateContext {
 
         currentState = states.get(StateId.Initial);
         currentState.onEntry();
-        this.builder = builder;
+
+        playerNames.put(Color.BLACK, builder.getBlackplayer().getName());
+        playerNames.put(Color.RED, builder.getRedplayer().getName());
     }
 
     @Override
@@ -88,10 +90,9 @@ public class StateContextImpl implements StateContext {
 
     @Override
     public String getWinnerName() {
-        if (getGame().winner() == Color.BLACK)
-            return builder.getBlackplayer().getName();
-
-        return builder.getRedplayer().getName();
+        if (!playerNames.containsKey(getGame().winner()))
+            return "";
+        return playerNames.get(getGame().winner());
     }
 
     @Override
