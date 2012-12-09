@@ -1,8 +1,6 @@
 package minidraw.boardgame;
 
 import minidraw.framework.AnimationEngine;
-import minidraw.framework.EasingFunctionStrategy;
-import minidraw.framework.TimeInterval;
 
 import java.awt.*;
 
@@ -16,11 +14,5 @@ public interface AnimatedBoardDrawingFactory<LOCATION> {
 
     AnimationEngine getAnimationEngine();
 
-    TimeInterval getTimeInterval();
-
-    EasingFunctionStrategy getEasingFunction();
-
-    void updateEasingFunction(Point from, Point to);
-
-    void updateTimeInterval(Point from, Point to);
+    void configureAnimation(Point from, Point to, AnimationConfiguration cfg);
 }
