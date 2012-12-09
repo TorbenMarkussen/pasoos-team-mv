@@ -1,6 +1,7 @@
 package pasoos.hotgammon.gamestatemachine;
 
 import minidraw.boardgame.NullAnimationCallback;
+import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
@@ -50,11 +51,17 @@ public class Initial extends BaseState {
     }
 
     private void animateRack() {
+
         Game game = context.getGame();
         for (Location loc : Location.values()) {
             int count = game.getCount(loc);
+            Color color = game.getColor(loc);
+
             for (int i = 0; i < count; i++) {
-                moves.add(new GammonMove(loc, loc));
+                if (color == Color.BLACK)
+                    moves.add(new GammonMove(Location.B_BEAR_OFF, loc));
+                else
+                    moves.add(new GammonMove(Location.R_BEAR_OFF, loc));
             }
         }
         processRackMoves();
@@ -66,12 +73,8 @@ public class Initial extends BaseState {
                 move.getTo(),
                 new NullAnimationCallback<Location>() {
                     @Override
-                    public void afterStart(Location from, Location to) {
-                        processRackMoves();
-                    }
-
-                    @Override
                     public void afterEnd(Location from, Location to) {
+                        processRackMoves();
                         startGameAfterRack();
                     }
                 });

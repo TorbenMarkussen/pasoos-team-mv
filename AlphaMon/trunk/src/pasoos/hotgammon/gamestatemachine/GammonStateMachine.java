@@ -21,7 +21,4 @@ public interface GammonStateMachine {
     void winnerFound();
 
     void rackGame();
-
-    void gameRacked();
-
 }
