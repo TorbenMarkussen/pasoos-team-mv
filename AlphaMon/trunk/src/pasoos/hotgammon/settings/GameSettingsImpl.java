@@ -16,7 +16,7 @@ public class GameSettingsImpl implements GameSettings {
     public Class<? extends HotGammonFactory> getGameFactoryType() {
         Properties systemProperties = System.getProperties();
 
-        Class defaultClass = SemiMonFactory.class;
+        Class<? extends HotGammonFactory> defaultClass = SemiMonFactory.class;
 
         String clazzname = systemProperties.getProperty("gammon.type", defaultClass.getSimpleName());
 
@@ -38,8 +38,7 @@ public class GameSettingsImpl implements GameSettings {
         if (color == Color.BLACK) {
             type = systemProperties.getProperty("black_type", PlayerType.AIPlayer.toString());
         } else {
-//            type = systemProperties.getProperty("red_type", PlayerType.DummyPlayer.toString());
-            type = systemProperties.getProperty("red_type", PlayerType.ManualPlayer.toString());
+            type = systemProperties.getProperty("red_type", PlayerType.DummyPlayer.toString());
         }
         return PlayerType.valueOf(type);
     }
