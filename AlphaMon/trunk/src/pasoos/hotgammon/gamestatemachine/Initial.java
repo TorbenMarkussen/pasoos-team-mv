@@ -19,6 +19,18 @@ public class Initial extends BaseState {
     }
 
     @Override
+    public void blackPlayerActive() {
+        System.out.println("blackPlayerActive");
+        context.setState(StateId.BlackPlayer);
+    }
+
+    @Override
+    public void redPlayerActive() {
+        System.out.println("redPlayerActive");
+        context.setState(StateId.RedPlayer);
+    }
+
+    @Override
     public boolean moveRequest(Location from, Location to) {
         return false;
     }
@@ -49,7 +61,7 @@ public class Initial extends BaseState {
     }
 
     private void startAnimation(final GammonMove move) {
-        context.getBoard().moveAnimated(
+        context.moveAnimated(
                 move.getFrom(),
                 move.getTo(),
                 new NullAnimationCallback<Location>() {

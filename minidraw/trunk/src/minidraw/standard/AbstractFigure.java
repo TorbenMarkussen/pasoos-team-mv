@@ -96,10 +96,8 @@ public abstract class AbstractFigure implements Figure {
     }
 
     public void setZorder(int zorder) {
-        if (this.zorder != zorder) {
-            this.zorder = zorder;
-            notifyZorderChanged();
-        }
+        this.zorder = zorder;
+        notifyZorderChanged();
     }
 
     private void notifyZorderChanged() {

@@ -12,10 +12,22 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
     private boolean allowRoll;
     private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
     private boolean allowMove;
+    private int activeAnimationCount = 0;
+    private boolean turnEnded = false;
 
     public ManualPlayerState(StateId stateId, String name) {
         super(stateId);
         this.name = name;
+    }
+
+    @Override
+    public void onEntry() {
+        turnEnded = false;
+        activeAnimationCount = 0;
+        allowRoll = true;
+        allowMove = false;
+        System.out.println("entry:" + name);
+        writeStatus(name + " in turn - roll dice");
     }
 
     @Override
@@ -39,7 +51,7 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
         int movesLeft = context.getGame().getNumberOfMovesLeft();
 
         if (movesLeft == 0)
-            writeStatus("Illegal " + name + " is in turn");
+            writeStatus(name + " has no more moves");
         if (movesLeft == 1)
             writeStatus(name + " has 1 move left");
         else if (movesLeft > 1)
@@ -59,14 +71,6 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
     }
 
     @Override
-    public void onEntry() {
-        allowRoll = true;
-        allowMove = false;
-        System.out.println("entry:" + name);
-        writeStatus(name + " in turn - roll dice");
-    }
-
-    @Override
     public void diceRolled(int[] values) {
         allowRoll = false;
         allowMove = true;
@@ -77,6 +81,10 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
     @Override
     public void turnEnded() {
         allowRoll = false;
+        turnEnded = true;
+        if (activeAnimationCount == 0) {
+            context.playerTurnEnded(this);
+        }
     }
 
     @Override
@@ -94,18 +102,31 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
         if (to == Location.R_BAR || to == Location.B_BAR) {
             System.out.println(name + " strikes " + from + " -> " + to);
             writeStatus(name + " strikes " + from + " -> " + to);
-            context.getBoard().moveAnimated(
+            increaseActiveAnimationCount();
+            context.moveAnimated(
                     from,
                     to,
                     new NullAnimationCallback<Location>() {
                         @Override
-                        public void beforeEnd(Location from, Location to) {
+                        public void afterEnd(Location from, Location to) {
                             context.getSoundMachine().playCheckerMoveSound();
+                            decreaseActiveAnimationCount();
                         }
                     });
         } else {
             context.notifyPieceMovedEvent(from, to);
         }
+    }
+
+    private void decreaseActiveAnimationCount() {
+        activeAnimationCount--;
+        if (turnEnded && activeAnimationCount == 0) {
+            context.playerTurnEnded(this);
+        }
+    }
+
+    private void increaseActiveAnimationCount() {
+        activeAnimationCount++;
     }
 
 }
