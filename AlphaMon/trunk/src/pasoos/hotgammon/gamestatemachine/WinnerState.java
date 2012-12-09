@@ -18,5 +18,4 @@ public class WinnerState extends BaseState {
     public boolean moveRequest(Location from, Location to) {
         return false;
     }
-
 }

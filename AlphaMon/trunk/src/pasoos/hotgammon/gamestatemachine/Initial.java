@@ -3,7 +3,6 @@ package pasoos.hotgammon.gamestatemachine;
 import pasoos.hotgammon.Location;
 
 public class Initial extends BaseState {
-    private StateContext context;
 
     public Initial(StateId stateId) {
         super(stateId);
