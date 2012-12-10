@@ -7,15 +7,13 @@ import java.util.List;
 
 public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
 
-    private AnimatedBoardDrawingFactory<LOCATION> animationFactory;
+    private AnimationEngine animationEngine;
+    private MoveAnimationConfiguratorStrategy animationConfigurator;
 
-    public AnimatedBoardDrawing(AnimatedBoardDrawingFactory animatedBoardDrawingFactory) {
-        super(animatedBoardDrawingFactory.getFigureFactory(), animatedBoardDrawingFactory.getPositioningStrategy(), animatedBoardDrawingFactory.getAppearanceStrategy());
-        animationFactory = animatedBoardDrawingFactory;
-    }
-
-    public void moveAnimated(final LOCATION from, final LOCATION to) {
-        moveAnimated(from, to, new NullAnimationCallback<LOCATION>());
+    public AnimatedBoardDrawing(AnimatedBoardDrawingFactory factory) {
+        super(factory.getFigureFactory(), factory.getPositioningStrategy(), factory.getAppearanceStrategy());
+        animationEngine = factory.getAnimationEngine();
+        animationConfigurator = factory.createAnimationConfigurator();
     }
 
     public void moveAnimated(final LOCATION from, final LOCATION to, final AnimationCallbacks<LOCATION> cb) {
@@ -23,7 +21,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         final BoardPiece piece = getPiece(from);
         if (piece != null) {
             piece.setZorder(10);
-            Point destination = animationFactory.getPositioningStrategy().calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
+            Point destination = adjuster.calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
             Animation a = createAnimation(piece, destination);
 
 
@@ -42,7 +40,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
                     cbLocal.afterEnd(from, to);
                 }
             });
-            animationFactory.getAnimationEngine().startAnimation(a);
+            animationEngine.startAnimation(a);
         } else {
             if (cb != null) {
                 System.out.println("<animation failed to get piece, fireing all change events>");
@@ -59,7 +57,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
 
         Point from = piece.displayBox().getLocation();
         AnimationConfiguration cfg = new AnimationCfg();
-        animationFactory.configureAnimation(from, to, cfg);
+        animationConfigurator.configureAnimation(from, to, cfg);
         return new MoveAnimation(piece, to, cfg.getTimeInterval(), cfg.getEasingFunction());
     }
 
