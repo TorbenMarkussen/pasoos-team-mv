@@ -18,21 +18,23 @@ public class GameEventDecorator implements GameObserver, Game {
     @Override
     public void newGame() {
         game.newGame();
-        game.nextTurn();
-
-        if (game.getPlayerInTurn() == Color.BLACK)
-            state.blackPlayerActive();
-        else
-            state.redPlayerActive();
-
-        state.diceRolled(game.diceThrown());
-        evaluateTurnEnded();
     }
 
 
     @Override
     public void nextTurn() {
+
+        Color preNextTurnPlayer = game.getPlayerInTurn();
+
         game.nextTurn();
+
+        if (preNextTurnPlayer == Color.NONE) {
+            if (game.getPlayerInTurn() == Color.BLACK)
+                state.blackPlayerActive();
+            else
+                state.redPlayerActive();
+        }
+
         state.diceRolled(game.diceThrown());
         evaluateTurnEnded();
     }

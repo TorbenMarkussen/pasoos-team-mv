@@ -1,6 +1,5 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
@@ -8,6 +7,10 @@ import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 
 import java.util.List;
 
+
+/**
+ * Responsible for
+ */
 public class AIPlayerState extends BaseState implements GammonPlayer {
     private final String name;
     private AIPlayer aiPlayer;
@@ -16,6 +19,11 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     private int activeAnimationCount;
     private boolean turnEnded;
 
+    /**
+     * @param stateId
+     * @param name
+     * @param aiPlayer
+     */
     public AIPlayerState(StateId stateId, String name, AIPlayer aiPlayer) {
         super(stateId);
         this.name = name;
@@ -38,10 +46,6 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
     private void writeStatus(String s) {
         context.updateStatus(this, s);
-    }
-
-    @Override
-    public void addPiece(BoardPiece piece) {
     }
 
     @Override
