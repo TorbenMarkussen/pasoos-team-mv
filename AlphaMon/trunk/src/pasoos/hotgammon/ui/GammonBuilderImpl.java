@@ -63,11 +63,9 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void addPiece(Location loc, Color color) {
-        GammonPlayer player = color == RED ? redPlayer : blackPlayer;
         String figurename = color == RED ? "redchecker" : "blackchecker";
 
         BoardPiece piece = new BoardFigure(figurename, true, new MoveCommand(gameStateController));
-        player.addPiece(piece);
 
         pieceFactory.addPiece(loc, color, piece);
     }

@@ -87,6 +87,7 @@ public class Initial extends BaseState {
         processedMoves.remove(0);
         if (processedMoves.size() == 0) {
             context.getGame().newGame();
+            context.rollDice();
         }
     }
 

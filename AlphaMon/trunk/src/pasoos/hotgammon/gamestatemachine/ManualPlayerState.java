@@ -1,16 +1,11 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ManualPlayerState extends BaseState implements GammonPlayer {
     private String name;
     private boolean allowRoll;
-    private List<BoardPiece> pieces = new ArrayList<BoardPiece>();
     private boolean allowMove;
     private int activeAnimationCount = 0;
     private boolean turnEnded = false;
@@ -85,11 +80,6 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
         if (activeAnimationCount == 0) {
             context.playerTurnEnded(this);
         }
-    }
-
-    @Override
-    public void addPiece(BoardPiece piece) {
-        pieces.add(piece);
     }
 
     @Override

@@ -13,6 +13,7 @@ import pasoos.hotgammon.gamestatemachine.GameEventDecorator;
 import pasoos.hotgammon.gamestatemachine.GammonStateMachine;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 import static pasoos.hotgammon.Location.B1;
 import static pasoos.hotgammon.Location.B2;
 
@@ -32,18 +33,16 @@ public class GameEventDecoratorTest {
         ged.newGame();
 
         verify(game).newGame();
-        verify(game).nextTurn();
-
-        verify(state).blackPlayerActive();
-        verify(state).diceRolled(new int[]{4, 2});
 
     }
 
     @Test
     public void should_invoke_dicerolled_and_blackplayer_events_after_nextTurn() {
+        final Color playerInTurn = Color.NONE;
         Game game = mock(Game.class);
         GammonStateMachine state = mock(GammonStateMachine.class);
 
+        when(game.getPlayerInTurn()).thenReturn(Color.NONE).thenReturn(Color.BLACK);
         when(game.getNumberOfMovesLeft()).thenReturn(2);
         when(game.diceThrown()).thenReturn(new int[]{4, 2});
         GameEventDecorator ged = new GameEventDecorator(game, state);
@@ -51,8 +50,9 @@ public class GameEventDecoratorTest {
         ged.nextTurn();
 
         verify(game).nextTurn();
-
-        verify(state).diceRolled(new int[]{4, 2});
+        InOrder inorder = inOrder(state);
+        inorder.verify(state).blackPlayerActive();
+        inorder.verify(state).diceRolled(new int[]{4, 2});
     }
 
     @Test
