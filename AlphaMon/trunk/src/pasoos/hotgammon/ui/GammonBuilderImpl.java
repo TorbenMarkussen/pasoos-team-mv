@@ -91,7 +91,7 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void addDie(String name) {
-        BoardPiece p = new BoardFigure("die0", false, new RollDiceAdapterCommand(dice));
+        BoardPiece p = new BoardFigure("idie", false, new RollDiceAdapterCommand(dice));
         if (name.equals("die1")) {
             dice.setDie1(p);
         } else if (name.equals("die2")) {
