@@ -15,13 +15,11 @@ public class Initial extends BaseState {
 
     @Override
     public void blackPlayerActive() {
-        System.out.println("blackPlayerActive");
         context.setState(StateId.BlackPlayer);
     }
 
     @Override
     public void redPlayerActive() {
-        System.out.println("redPlayerActive");
         context.setState(StateId.RedPlayer);
     }
 
@@ -67,7 +65,7 @@ public class Initial extends BaseState {
         animationCount--;
         if (animationCount == 0) {
             context.getGame().newGame();
-            context.rollDice();
+            blackPlayerActive();
         }
     }
 
