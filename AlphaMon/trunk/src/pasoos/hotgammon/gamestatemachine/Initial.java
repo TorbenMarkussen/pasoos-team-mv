@@ -29,12 +29,12 @@ public class Initial extends BaseState {
     }
 
     @Override
-    public void rackGame() {
-        System.out.println("StartGameRackAnimation");
-        animateRack();
+    public void initiateGame() {
+        System.out.println("StartSetupCheckersAnimation");
+        animateCheckerLineUp();
     }
 
-    private void animateRack() {
+    private void animateCheckerLineUp() {
         Game game = context.getGame();
 
         for (Location loc : Location.values()) {

@@ -62,7 +62,7 @@ public abstract class BaseState implements GammonState {
     }
 
     @Override
-    public void rackGame() {
+    public void initiateGame() {
 
     }
 }

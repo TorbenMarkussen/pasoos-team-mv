@@ -58,9 +58,9 @@ public class GameStateController implements GammonStateMachine {
     }
 
     @Override
-    public void rackGame() {
-        System.out.println("rackGame");
-        context.getCurrentState().rackGame();
+    public void initiateGame() {
+        System.out.println("initiateGame");
+        context.getCurrentState().initiateGame();
     }
 
     @Override
