@@ -15,20 +15,14 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     private final String name;
     private AIPlayer aiPlayer;
     private List<GammonMove> moves;
-    private static boolean allowRoll;
     private int activeAnimationCount;
     private boolean turnEnded;
+    private PlayerState aiplayerState;
 
-    /**
-     * @param stateId
-     * @param name
-     * @param aiPlayer
-     */
     public AIPlayerState(StateId stateId, String name, AIPlayer aiPlayer) {
         super(stateId);
         this.name = name;
         this.aiPlayer = aiPlayer;
-        allowRoll = false;
         activeAnimationCount = 0;
     }
 
@@ -38,10 +32,8 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         activeAnimationCount = 0;
         System.out.println("entry:" + name);
         writeStatus(name + " in turn");
-        if (allowRoll) {
-            context.rollDice();
-        }
-        allowRoll = true;
+        aiplayerState = PlayerState.Rolling;
+        context.rollDice();
     }
 
     private void writeStatus(String s) {
@@ -56,7 +48,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     @Override
     public void turnEnded() {
         turnEnded = true;
-        if (activeAnimationCount == 0) {
+        if (aiplayerState == PlayerState.Done) {
             context.playerTurnEnded(this);
         }
     }
@@ -68,16 +60,12 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
     @Override
     public void diceRolled(int[] values) {
-        try {
+        aiplayerState = PlayerState.Moving;
 
-            aiPlayer.play();
-            moves = aiPlayer.getMoves();
-            processGerryMoves();
-            context.notifyDiceRolled(values);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        aiPlayer.play();
+        moves = aiPlayer.getMoves();
+        processGerryMoves();
+        context.notifyDiceRolled(values);
     }
 
     @Override
@@ -105,8 +93,10 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
     private void decreaseActiveAnimationCount() {
         activeAnimationCount--;
-        if (turnEnded && activeAnimationCount == 0) {
-            context.playerTurnEnded(this);
+        if (activeAnimationCount == 0) {
+            aiplayerState = PlayerState.Done;
+            if (turnEnded)
+                context.playerTurnEnded(this);
         }
     }
 
@@ -125,7 +115,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         }
     }
 
-    private void startAnimatedMove(final GammonMove move) {
+    private void startAnimatedMove(GammonMove move) {
         System.out.println("starting move " + move);
         writeStatus(name + " moves " + move);
         increaseActiveAnimationCount();
@@ -135,7 +125,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
                 new NullAnimationCallback<Location>() {
                     @Override
                     public void beforeEnd(Location from, Location to) {
-                        context.getGame().move(from, move.getTo());
+                        context.getGame().move(from, to);
                         context.getSoundMachine().playCheckerMoveSound();
                     }
 
@@ -148,4 +138,8 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         );
     }
 
+    enum PlayerState {
+        Moving, Done, Rolling
+
+    }
 }

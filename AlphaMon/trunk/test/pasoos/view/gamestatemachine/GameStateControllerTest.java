@@ -1,137 +1,64 @@
 package pasoos.view.gamestatemachine;
 
-import minidraw.framework.Animation;
-import minidraw.framework.AnimationChangeEvent;
-import minidraw.framework.AnimationChangeListener;
-import minidraw.framework.AnimationEngine;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import pasoos.hotgammon.Game;
-import pasoos.hotgammon.Location;
 import pasoos.hotgammon.gamestatemachine.GameStateController;
-import pasoos.hotgammon.gamestatemachine.GammonPlayer;
+import pasoos.hotgammon.gamestatemachine.GammonState;
+import pasoos.hotgammon.gamestatemachine.StateContext;
 import pasoos.hotgammon.gamestatemachine.StateId;
 
 import static org.mockito.Mockito.*;
-import static pasoos.hotgammon.Location.*;
+import static pasoos.hotgammon.Location.B1;
+import static pasoos.hotgammon.Location.B2;
 
 public class GameStateControllerTest {
     private Game game;
-    private GammonPlayer redplayer;
-    private GammonPlayer blackplayer;
     private GameStateController gameStateController;
-    private AnimationEngine aengine;
+    private StateContext context;
+    private GammonState gammonState;
 
     @Before
     public void setUp() throws Exception {
+        context = mock(StateContext.class);
         game = mock(Game.class);
-        redplayer = mock(GammonPlayer.class);
-        blackplayer = mock(GammonPlayer.class);
-        aengine = mock(AnimationEngine.class);
+        gammonState = mock(GammonState.class);
+
+        configureDefaultContextBehaviour();
 
         gameStateController = new GameStateController();
+        gameStateController.setContext(context);
 
     }
 
-    private void configurePlayerMock(GammonPlayer player, StateId sid) {
-//        doAnswer(new Answer() {
-//            @Override
-//            public Object answer(InvocationOnMock invocation) throws Throwable {
-//                gameStateController.setState(StateId.BlackPlayer);
-//                return null;
-//            }
-//        }).when(player).blackPlayerActive();
-//
-//        doAnswer(new Answer() {
-//            @Override
-//            public Object answer(InvocationOnMock invocation) throws Throwable {
-//                gameStateController.setState(StateId.RedPlayer);
-//                return null;
-//            }
-//        }).when(player).redPlayerActive();
-//
-//        doAnswer(new Answer() {
-//            @Override
-//            public Object answer(InvocationOnMock invocation) throws Throwable {
-//                gameStateController.setState(StateId.Winner);
-//                return null;
-//            }
-//        }).when(player).winnerFound();
-//
-//        when(player.getStateId()).thenReturn(sid);
+    private void configureDefaultContextBehaviour() {
+        when(context.getGame()).thenReturn(game);
+        when(context.getCurrentState()).thenReturn(gammonState);
     }
 
-    @Ignore
     @Test
-    public void should_ignore_moveRequest_until_diceRolled() {
-        gameStateController.moveRequest(B1, B2);
-        verify(game, times(0)).move(any(Location.class), any(Location.class));
-    }
-
-    @Ignore
-    @Test
-    public void default_play_scenario() {
+    public void should_forward_events_to_current_state() {
+        gameStateController.rackGame();
         gameStateController.blackPlayerActive();
-        gameStateController.diceRolled(new int[]{4, 2});
-
-        gameStateController.moveRequest(B1, B2);
-        gameStateController.checkerMoved(B1, B2);
-
-        gameStateController.moveRequest(B4, B5);
-        gameStateController.checkerMoved(B4, B5);
-
-        gameStateController.turnEnded();
-
         gameStateController.redPlayerActive();
-
-        gameStateController.rollDiceRequest();
-        gameStateController.diceRolled(new int[]{4, 2});
-
-        gameStateController.moveRequest(R6, R7);
-        gameStateController.checkerMoved(R6, R7);
-
-        gameStateController.moveRequest(R8, R9);
-        gameStateController.checkerMoved(R8, R9);
-
-        InOrder inOrder = inOrder(blackplayer, redplayer);
-        inOrder.verify(blackplayer, times(1)).onEntry();
-        inOrder.verify(blackplayer, times(1)).diceRolled(new int[]{4, 2});
-        inOrder.verify(blackplayer, times(1)).moveRequest(B1, B2);
-        inOrder.verify(blackplayer, times(1)).checkerMoved(B1, B2);
-        inOrder.verify(blackplayer, times(1)).moveRequest(B4, B5);
-        inOrder.verify(blackplayer, times(1)).checkerMoved(B4, B5);
-
-        inOrder.verify(blackplayer, times(1)).turnEnded();
-
-        inOrder.verify(blackplayer, times(1)).onExit();
-        inOrder.verify(redplayer, times(1)).onEntry();
-
-        inOrder.verify(redplayer, times(1)).rollDiceRequest();
-        inOrder.verify(redplayer, times(1)).diceRolled(new int[]{4, 2});
-
-        inOrder.verify(redplayer, times(1)).moveRequest(R6, R7);
-        inOrder.verify(redplayer, times(1)).checkerMoved(R6, R7);
-
-        inOrder.verify(redplayer, times(1)).moveRequest(R8, R9);
-        inOrder.verify(redplayer, times(1)).checkerMoved(R8, R9);
-
-    }
-
-    @Ignore
-    @Test
-    public void should_lock_checker_move_event_if_animation_active() {
-        Animation a = mock(Animation.class);
-        ArgumentCaptor<AnimationChangeListener> aclCaptor = ArgumentCaptor.forClass(AnimationChangeListener.class);
-        gameStateController.blackPlayerActive();
-        gameStateController.diceRolled(new int[]{4, 2});
-        //gameStateController.startAnimation(a, B1, B2);
-        verify(a).addAnimationChangeListener(aclCaptor.capture());
-
         gameStateController.checkerMoved(B1, B2);
-        aclCaptor.getValue().onAnimationCompleted(new AnimationChangeEvent(a));
+        gameStateController.moveRequest(B1, B2);
+        gameStateController.rollDiceRequest();
+        gameStateController.turnEnded();
+        gameStateController.winnerFound();
 
+        InOrder inOrder = inOrder(gammonState, context);
+        inOrder.verify(gammonState).rackGame();
+        inOrder.verify(gammonState).blackPlayerActive();
+        inOrder.verify(gammonState).redPlayerActive();
+        inOrder.verify(gammonState).checkerMoved(B1, B2);
+        inOrder.verify(gammonState).moveRequest(B1, B2);
+        inOrder.verify(gammonState).rollDiceRequest();
+        inOrder.verify(gammonState).turnEnded();
+
+        inOrder.verify(context).setState(StateId.Winner);
     }
+
+
 }

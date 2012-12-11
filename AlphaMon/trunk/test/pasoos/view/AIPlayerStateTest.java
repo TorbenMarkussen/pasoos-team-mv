@@ -1,15 +1,20 @@
 package pasoos.view;
 
+import minidraw.boardgame.AnimationCallbacks;
 import minidraw.boardgame.BoardPiece;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.InOrder;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import pasoos.hotgammon.Game;
+import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
-import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 import pasoos.hotgammon.gamestatemachine.AIPlayerState;
 import pasoos.hotgammon.gamestatemachine.StateContext;
 import pasoos.hotgammon.gamestatemachine.StateId;
+import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
+import pasoos.hotgammon.sounds.SoundResource;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,27 +29,49 @@ public class AIPlayerStateTest {
     private AIPlayerState playerState;
     private AIPlayer aiPlayer;
     private Game game;
+    private SoundResource soundMock;
+    private BoardPiece b1Piece;
+    private BoardPiece b3Piece;
 
     @Before
     public void setup() {
         context = mock(StateContext.class);
         aiPlayer = mock(AIPlayer.class);
         game = mock(Game.class);
-
-        when(context.getGame()).thenReturn(game);
+        soundMock = mock(SoundResource.class);
+        configureDefaultContextBehaviour();
         playerState = new AIPlayerState(StateId.BlackPlayer, "gerry", aiPlayer);
         playerState.setContext(context);
+
+        b1Piece = mock(BoardPiece.class);
+        when(b1Piece.displayBox()).thenReturn(new Rectangle(0, 0, 42, 42));
+
+        b3Piece = mock(BoardPiece.class);
+        when(b3Piece.displayBox()).thenReturn(new Rectangle(0, 0, 42, 42));
+    }
+
+    private void configureDefaultContextBehaviour() {
+        when(context.getSoundMachine()).thenReturn(soundMock);
+        when(context.getGame()).thenReturn(game);
+
+        doAnswer(new Answer<Object>() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                Location from = (Location) invocation.getArguments()[0];
+                Location to = (Location) invocation.getArguments()[1];
+
+                AnimationCallbacks cb = (AnimationCallbacks) invocation.getArguments()[2];
+                cb.beforeStart(from, to);
+                cb.afterStart(from, to);
+                cb.beforeEnd(from, to);
+                cb.afterEnd(from, to);
+                return null;
+            }
+        }).when(context).moveAnimated(any(Location.class), any(Location.class), any(AnimationCallbacks.class));
     }
 
     @Test
-    public void should_not_roll_dice_on_first_entry() {
-        playerState.onEntry();
-        verify(context, times(0)).rollDice();
-    }
-
-    @Test
-    public void should_roll_dice_on_2nd_entry() {
-        playerState.onEntry();
+    public void should_roll_dice_on_entry() {
         playerState.onEntry();
         verify(context).rollDice();
     }
@@ -55,36 +82,59 @@ public class AIPlayerStateTest {
         verify(aiPlayer).play();
     }
 
-    @Ignore
     @Test
     public void should_invoke_animation_for_ai_moves() {
         List<GammonMove> moves = new ArrayList<GammonMove>();
         moves.add(new GammonMove(B1, B2));
         moves.add(new GammonMove(B3, B4));
 
-        BoardPiece b1Piece = mock(BoardPiece.class);
-        when(b1Piece.displayBox()).thenReturn(new Rectangle(0, 0, 42, 42));
+        when(game.getCount(B1)).thenReturn(1);
+        when(aiPlayer.getMoves()).thenReturn(moves);
 
-        BoardPiece b3Piece = mock(BoardPiece.class);
-        when(b3Piece.displayBox()).thenReturn(new Rectangle(0, 0, 42, 42));
+        playerState.diceRolled(new int[]{4, 2});
+        InOrder inOrder = inOrder(aiPlayer, game, context);
+        inOrder.verify(aiPlayer).play();
+
+        inOrder.verify(context).moveAnimated(eq(Location.B1), eq(Location.B2), any(AnimationCallbacks.class));
+        inOrder.verify(game).move(B1, B2);
+
+        playerState.checkerMoved(B1, B2);
+
+        inOrder.verify(context).moveAnimated(eq(Location.B3), eq(Location.B4), any(AnimationCallbacks.class));
+        inOrder.verify(game).move(B3, B4);
+
+        playerState.checkerMoved(B3, B4);
+
+        playerState.turnEnded();
+
+        inOrder.verify(context).playerTurnEnded(playerState);
+
+    }
+
+    @Test
+    public void should_not_invoke_playerTurnEnded_until_animation_ended() {
+        List<GammonMove> moves = new ArrayList<GammonMove>();
+        moves.add(new GammonMove(B1, B2));
+        moves.add(new GammonMove(B3, B4));
 
         when(game.getCount(B1)).thenReturn(1);
         when(aiPlayer.getMoves()).thenReturn(moves);
 
         playerState.diceRolled(new int[]{4, 2});
-        verify(aiPlayer).play();
+        InOrder inOrder = inOrder(aiPlayer, context);
+        inOrder.verify(aiPlayer).play();
 
-        //verify(context).startAnimation(any(Animation.class), eq(Location.B1), eq(Location.B2));
+        inOrder.verify(context).moveAnimated(eq(Location.B1), eq(Location.B2), any(AnimationCallbacks.class));
 
         playerState.checkerMoved(B1, B2);
+        playerState.turnEnded();
 
-        //verify(context).startAnimation(any(Animation.class), eq(Location.B3), eq(Location.B4));
+        inOrder.verify(context).moveAnimated(eq(Location.B3), eq(Location.B4), any(AnimationCallbacks.class));
 
         playerState.checkerMoved(B3, B4);
 
+        inOrder.verify(context).playerTurnEnded(playerState);
     }
 
-    @Test
-    public void should_something_something() {
-    }
+
 }
