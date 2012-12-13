@@ -63,7 +63,6 @@ public class Convert {
                 location == Location.B10 ||
                 location == Location.B11 ||
                 location == Location.B12 ||
-                location == Location.B12 ||
                 location == Location.B_BEAR_OFF ||
                 location == Location.R_BAR;
     }

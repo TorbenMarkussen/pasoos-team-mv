@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gamestatemachine.GammonPlayer;
-import pasoos.hotgammon.ui.GammonDice;
 import pasoos.hotgammon.ui.HotgammonPieceFactory;
 
 import java.util.List;
@@ -33,9 +31,6 @@ public class HotgammonPieceFactoryTest {
     @Test
     public void should_return_empty_map_for_empty_game_board() {
         Game g = mock(Game.class);
-        GammonPlayer redPlayer = mock(GammonPlayer.class);
-        GammonPlayer blackPlayer = mock(GammonPlayer.class);
-        GammonDice dice = mock(GammonDice.class);
         HotgammonPieceFactory pf = new HotgammonPieceFactory();
         when(g.getCount(any(Location.class))).thenReturn(0);
         when(g.getColor(any(Location.class))).thenReturn(NONE);

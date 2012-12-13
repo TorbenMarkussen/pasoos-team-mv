@@ -16,19 +16,6 @@ public class BezierMovement implements EasingFunctionStrategy {
         return getBezier(t, beginPoint, waypoint1, waypoint2, endPoint);
     }
 
-    private Point calculate(double t, Point begin, Point wp1, Point wp2, Point end) {
-        double x, y;
-        //uses Berstein polynomials
-        x = (begin.x + t * (-begin.x * 3 + t * (3 * begin.x - begin.x * t))) + t * (3 * wp1.x + t * (-6 * wp1.x +
-                wp1.x * 3 * t)) + t * t * (wp2.x * 3 - wp2.x * 3 * t) +
-                end.x * t * t * t;
-        y = (begin.y + t * (-begin.y * 3 + t * (3 * begin.y -
-                begin.y * t))) + t * (3 * wp1.y + t * (-6 * wp1.y +
-                wp1.y * 3 * t)) + t * t * (wp2.y * 3 - wp2.y * 3 * t) +
-                end.y * t * t * t;
-        return new Point((int) x, (int) y);
-    }
-
     private double B1(double t) {
         return t * t * t;
     }
