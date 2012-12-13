@@ -1,11 +1,12 @@
 package pasoos.hotgammon.gamestatemachine;
 
+import minidraw.boardgame.AnimatedBoard;
 import minidraw.boardgame.AnimatedBoardDrawing;
 import minidraw.boardgame.AnimationCallbacks;
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.ui.GammonDice;
 import pasoos.hotgammon.ui.status.StatusObserver;
 
@@ -18,7 +19,7 @@ public class StateContextImpl implements StateContext {
     Map<StateId, GammonState> states = new HashMap<StateId, GammonState>();
     private GammonState currentState;
     private Game game;
-    private AnimatedBoardDrawing<Location> boardDrawing;
+    private AnimatedBoard<Location> boardDrawing;
     private GammonDice dice;
     private List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private SoundResource soundMachine;
@@ -131,11 +132,11 @@ public class StateContextImpl implements StateContext {
         GammonPlayer redplayer;
         GammonPlayer blackplayer;
         Game game;
-        AnimatedBoardDrawing<Location> boardDrawing;
+        AnimatedBoard<Location> boardDrawing;
         GammonDice gammonDice;
         private SoundResource sounds;
 
-        public Builder(GammonPlayer redplayer, GammonPlayer blackplayer, Game game, AnimatedBoardDrawing<Location> boardDrawing, GammonDice gammonDice) {
+        public Builder(GammonPlayer redplayer, GammonPlayer blackplayer, Game game, AnimatedBoard<Location> boardDrawing, GammonDice gammonDice) {
             initial = new Initial(StateId.Initial);
             winner = new WinnerState(StateId.Winner);
             sounds = new SoundResource(true);
@@ -167,7 +168,7 @@ public class StateContextImpl implements StateContext {
             return game;
         }
 
-        public AnimatedBoardDrawing<Location> getBoardDrawing() {
+        public AnimatedBoard<Location> getBoardDrawing() {
             return boardDrawing;
         }
 
