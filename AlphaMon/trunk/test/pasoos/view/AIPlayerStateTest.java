@@ -10,10 +10,10 @@ import org.mockito.stubbing.Answer;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
+import pasoos.hotgammon.ai.GammonMove;
 import pasoos.hotgammon.gamestatemachine.AIPlayerState;
 import pasoos.hotgammon.gamestatemachine.StateContext;
 import pasoos.hotgammon.gamestatemachine.StateId;
-import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 import pasoos.hotgammon.sounds.SoundResource;
 
 import java.awt.*;

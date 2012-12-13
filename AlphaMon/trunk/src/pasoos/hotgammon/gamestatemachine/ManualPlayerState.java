@@ -5,10 +5,9 @@ import pasoos.hotgammon.Location;
 
 public class ManualPlayerState extends BaseState implements GammonPlayer {
     private String name;
-    private boolean allowRoll;
-    private boolean allowMove;
     private int activeAnimationCount = 0;
     private boolean turnEnded = false;
+    private ManualState manualPlayerState;
 
     public ManualPlayerState(StateId stateId, String name) {
         super(stateId);
@@ -17,17 +16,16 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
 
     @Override
     public void onEntry() {
+        manualPlayerState = ManualState.AllowRoll;
         turnEnded = false;
         activeAnimationCount = 0;
-        allowRoll = true;
-        allowMove = false;
         System.out.println("entry:" + name);
         writeStatus(name + " in turn - roll dice");
     }
 
     @Override
     public boolean moveRequest(Location from, Location to) {
-        if (!allowMove)
+        if (manualPlayerState != ManualState.Moving)
             return false;
 
         boolean moveSucces = context.getGame().move(from, to);
@@ -59,23 +57,21 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
 
     @Override
     public void rollDiceRequest() {
-        if ((context.getGame().getNumberOfMovesLeft() == 0) && allowRoll) {
-            allowRoll = false;
+        if (manualPlayerState == ManualState.AllowRoll) {
+            manualPlayerState = ManualState.Rolling;
             context.rollDice();
         }
     }
 
     @Override
     public void diceRolled(int[] values) {
-        allowRoll = false;
-        allowMove = true;
+        manualPlayerState = ManualState.Moving;
         refreshStatusText();
         context.notifyDiceRolled(values);
     }
 
     @Override
     public void turnEnded() {
-        allowRoll = false;
         turnEnded = true;
         if (activeAnimationCount == 0) {
             context.playerTurnEnded(this);
@@ -99,13 +95,17 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
                     new NullAnimationCallback<Location>() {
                         @Override
                         public void afterEnd(Location from, Location to) {
-                            context.getSoundMachine().playCheckerMoveSound();
-                            decreaseActiveAnimationCount();
+                            animationEnded();
                         }
                     });
         } else {
             context.notifyPieceMovedEvent(from, to);
         }
+    }
+
+    private void animationEnded() {
+        context.getSoundMachine().playCheckerMoveSound();
+        decreaseActiveAnimationCount();
     }
 
     private void decreaseActiveAnimationCount() {
@@ -117,6 +117,11 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
 
     private void increaseActiveAnimationCount() {
         activeAnimationCount++;
+    }
+
+    enum ManualState {
+        Rolling, Moving, AllowRoll
+
     }
 
 }
