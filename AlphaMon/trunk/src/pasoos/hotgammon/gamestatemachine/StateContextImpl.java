@@ -2,7 +2,7 @@ package pasoos.hotgammon.gamestatemachine;
 
 import minidraw.boardgame.AnimatedBoard;
 import minidraw.boardgame.AnimatedBoardDrawing;
-import minidraw.boardgame.AnimationCallbacks;
+import minidraw.boardgame.MoveAnimationCallbacks;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
@@ -103,7 +103,7 @@ public class StateContextImpl implements StateContext {
     }
 
     @Override
-    public void moveAnimated(Location from, Location to, AnimationCallbacks<Location> cb) {
+    public void moveAnimated(Location from, Location to, MoveAnimationCallbacks<Location> cb) {
         boardDrawing.moveAnimated(from, to, cb);
     }
 

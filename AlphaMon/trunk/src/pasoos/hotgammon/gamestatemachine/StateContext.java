@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.AnimationCallbacks;
+import minidraw.boardgame.MoveAnimationCallbacks;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.sounds.SoundResource;
@@ -23,7 +23,7 @@ public interface StateContext {
 
     SoundResource getSoundMachine();
 
-    void moveAnimated(Location from, Location to, AnimationCallbacks<Location> cb);
+    void moveAnimated(Location from, Location to, MoveAnimationCallbacks<Location> cb);
 
     void addStatusObserver(StatusObserver statusObserver);
 

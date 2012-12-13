@@ -1,4 +1,7 @@
-package minidraw.framework;
+package minidraw.animation.engine;
+
+import minidraw.animation.AnimationTimer;
+import minidraw.animation.Animation;
 
 import java.util.ArrayList;
 import java.util.List;

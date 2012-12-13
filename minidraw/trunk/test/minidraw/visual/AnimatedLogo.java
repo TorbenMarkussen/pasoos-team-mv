@@ -1,5 +1,10 @@
 package minidraw.visual;
 
+import minidraw.animation.*;
+import minidraw.animation.easings.BezierMovement;
+import minidraw.animation.easings.LinearMove;
+import minidraw.animation.engine.AnimationEngine;
+import minidraw.animation.engine.AnimationEngineImpl;
 import minidraw.framework.*;
 import minidraw.standard.*;
 

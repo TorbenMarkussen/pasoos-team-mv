@@ -1,6 +1,6 @@
 package minidraw.standard;
 
-import minidraw.framework.AnimationTimer;
+import minidraw.animation.AnimationTimer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

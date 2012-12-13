@@ -1,4 +1,6 @@
-package minidraw.framework;
+package minidraw.animation;
+
+import minidraw.framework.Figure;
 
 public interface Animation {
 

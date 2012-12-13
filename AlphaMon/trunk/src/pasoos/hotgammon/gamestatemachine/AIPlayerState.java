@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.NullAnimationCallback;
+import minidraw.boardgame.NullMoveAnimationCallback;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
 import pasoos.hotgammon.ai.GammonMove;
@@ -85,9 +85,9 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         context.moveAnimated(
                 from,
                 to,
-                new NullAnimationCallback<Location>() {
+                new NullMoveAnimationCallback<Location>() {
                     @Override
-                    public void afterEnd(Location from, Location to) {
+                    public void afterMoveEnd(Location from, Location to) {
                         context.getSoundMachine().playCheckerMoveSound();
                         decreaseActiveAnimationCount();
                     }
@@ -125,15 +125,15 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         context.moveAnimated(
                 move.getFrom(),
                 move.getTo(),
-                new NullAnimationCallback<Location>() {
+                new NullMoveAnimationCallback<Location>() {
                     @Override
-                    public void beforeEnd(Location from, Location to) {
+                    public void beforeMoveEnd(Location from, Location to) {
                         context.getGame().move(from, to);
                         context.getSoundMachine().playCheckerMoveSound();
                     }
 
                     @Override
-                    public void afterEnd(Location from, Location to) {
+                    public void afterMoveEnd(Location from, Location to) {
                         processGerryMoves();
                         decreaseActiveAnimationCount();
                     }

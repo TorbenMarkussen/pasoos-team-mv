@@ -1,4 +1,4 @@
-package minidraw.framework;
+package minidraw.animation;
 
 public interface AnimationTimer {
     void setTimeoutReceiver(Runnable r);

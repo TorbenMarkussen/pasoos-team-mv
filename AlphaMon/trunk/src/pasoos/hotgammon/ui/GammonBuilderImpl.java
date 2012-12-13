@@ -1,8 +1,8 @@
 package pasoos.hotgammon.ui;
 
 import minidraw.boardgame.*;
-import minidraw.framework.AnimationEngine;
-import minidraw.framework.AnimationEngineImpl;
+import minidraw.animation.engine.AnimationEngine;
+import minidraw.animation.engine.AnimationEngineImpl;
 import minidraw.framework.Factory;
 import pasoos.hotgammon.ai.t6.Dummy;
 import pasoos.hotgammon.sounds.SoundResource;

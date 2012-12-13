@@ -1,6 +1,11 @@
 package minidraw.framework;
 
 import junit.framework.Assert;
+import minidraw.animation.AnimationChangeEvent;
+import minidraw.animation.AnimationChangeListener;
+import minidraw.animation.MoveAnimation;
+import minidraw.animation.TimeInterval;
+import minidraw.animation.easings.EasingFunctionStrategy;
 import org.junit.Before;
 import org.junit.Test;
 
