@@ -5,7 +5,7 @@ import minidraw.framework.*;
 import java.awt.*;
 import java.util.List;
 
-public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
+public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> implements AnimatedBoard<LOCATION> {
 
     private AnimationEngine animationEngine;
     private MoveAnimationConfiguratorStrategy animationConfigurator;
@@ -60,7 +60,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         return new MoveAnimation(piece, to, cfg.getTimeInterval(), cfg.getEasingFunction());
     }
 
-    public void startMove(BoardPiece piece, LOCATION location) {
+    private void startMove(BoardPiece piece, LOCATION location) {
         movingPieces.add(piece);
         List<BoardPiece> l = figureMap.get(location);
         if (l.contains(piece)) {
@@ -69,13 +69,13 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         }
     }
 
-    public void endMove(BoardPiece piece, LOCATION location) {
+    private void endMove(BoardPiece piece, LOCATION location) {
         movingPieces.remove(piece);
         figureMap.get(location).add(piece);
         adjustPieces(location);
     }
 
-    private class AnimationCfg implements AnimationConfiguration {
+    private static class AnimationCfg implements AnimationConfiguration {
         private TimeInterval timeIntervali;
         private EasingFunctionStrategy easingFunction;
 

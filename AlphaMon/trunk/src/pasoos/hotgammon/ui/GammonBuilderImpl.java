@@ -28,7 +28,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
     private HotgammonPieceFactory pieceFactory;
-    private AnimatedBoardDrawing<Location> boardDrawing;
+    private AnimatedBoard<Location> boardDrawing;
     private AnimationEngine animationEngine = new AnimationEngineImpl(new AnimationTimerImpl());
     private SoundResource soundEngine = new SoundResource(true);
 
