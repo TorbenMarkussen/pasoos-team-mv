@@ -2,6 +2,7 @@ package minidraw.framework;
 
 import minidraw.animation.Animation;
 import minidraw.animation.AnimationTimer;
+import minidraw.animation.engine.AnimationEngine;
 import minidraw.animation.engine.AnimationEngineImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,14 +15,14 @@ import static org.mockito.Mockito.*;
 public class AnimationEngineImplTest {
     private AnimationTimer mockedAnimationTimer;
     private ArgumentCaptor<Runnable> timerRunnableArgument;
-    private AnimationEngineImpl animationEngine;
+    private AnimationEngine animationEngine;
 
     @Before
     public void setUp() throws Exception {
         mockedAnimationTimer = mock(AnimationTimer.class);
         timerRunnableArgument = ArgumentCaptor.forClass(Runnable.class);
 
-        animationEngine = new AnimationEngineImpl(mockedAnimationTimer);
+        animationEngine = new AnimationEngineImpl.Builder().setAnimationTimer(mockedAnimationTimer).build();
         verify(mockedAnimationTimer).setTimeoutReceiver(timerRunnableArgument.capture());
     }
 
