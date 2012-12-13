@@ -1,4 +1,4 @@
-package pasoos.view;
+package pasoos.hotgammon.ui;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -3,7 +3,6 @@ package pasoos.hotgammon;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import pasoos.hotgammon.rules.AllRulesTests;
-import pasoos.view.AllViewTests;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -17,8 +16,8 @@ import pasoos.view.AllViewTests;
         TestLocation.class,
         TestLogAlphaMon.class,
         TestZetaMon.class,
-        AllRulesTests.class,
-        AllViewTests.class})
+        AllRulesTests.class
+})
 public class AllTests {
 
 }

@@ -1,4 +1,4 @@
-package pasoos.view;
+package pasoos.hotgammon.gamestatemachine;
 
 import minidraw.animatedboard.MoveAnimationCallbacks;
 import minidraw.boardgame.BoardPiece;
@@ -11,9 +11,6 @@ import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
 import pasoos.hotgammon.ai.GammonMove;
-import pasoos.hotgammon.gamestatemachine.AIPlayerState;
-import pasoos.hotgammon.gamestatemachine.StateContext;
-import pasoos.hotgammon.gamestatemachine.StateId;
 import pasoos.hotgammon.sounds.SoundResource;
 
 import java.awt.*;

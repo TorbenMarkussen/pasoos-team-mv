@@ -1,7 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
 import minidraw.animatedboard.AnimatedBoard;
-import minidraw.animatedboard.AnimatedBoardDrawing;
 import minidraw.animatedboard.MoveAnimationCallbacks;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
@@ -196,7 +195,7 @@ public class StateContextImpl implements StateContext {
             this.game = game;
         }
 
-        public void setBoardDrawing(AnimatedBoardDrawing<Location> boardDrawing) {
+        public void setBoardDrawing(AnimatedBoard<Location> boardDrawing) {
             this.boardDrawing = boardDrawing;
         }
 
