@@ -4,16 +4,31 @@ import pasoos.hotgammon.Location;
 
 import java.util.Arrays;
 
-public class GameStateController implements GammonStateMachine {
+public class GameStateController implements GammonState {
 
     private StateContext context;
 
     public GameStateController() {
     }
 
+    @Override
     public void setContext(StateContext context) {
         this.context = context;
     }
+
+    @Override
+    public void onEntry() {
+    }
+
+    @Override
+    public void onExit() {
+    }
+
+    @Override
+    public StateId getStateId() {
+        return StateId.Main;
+    }
+
 
     @Override
     public void diceRolled(int[] values) {

@@ -3,22 +3,22 @@ package pasoos.hotgammon.ui;
 import minidraw.animatedboard.AnimatedBoard;
 import minidraw.animatedboard.AnimatedBoardDrawing;
 import minidraw.animatedboard.AnimatedBoardDrawingFactory;
-import minidraw.boardgame.*;
 import minidraw.animation.engine.AnimationEngine;
 import minidraw.animation.engine.AnimationEngineImpl;
+import minidraw.boardgame.BoardFigure;
+import minidraw.boardgame.BoardPiece;
 import minidraw.framework.Factory;
-import pasoos.hotgammon.ai.t6.Dummy;
-import pasoos.hotgammon.sounds.SoundResource;
-import minidraw.standard.AnimationTimerImpl;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameFactory;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.gerry.GerryPlayer;
+import pasoos.hotgammon.ai.t6.Dummy;
 import pasoos.hotgammon.gamestatemachine.*;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
 import pasoos.hotgammon.settings.PlayerType;
+import pasoos.hotgammon.sounds.SoundResource;
 import pasoos.hotgammon.ui.status.StatusMonitor;
 
 import static pasoos.hotgammon.Color.RED;
@@ -32,7 +32,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private GameStateController gameStateController;
     private HotgammonPieceFactory pieceFactory;
     private AnimatedBoard<Location> boardDrawing;
-    private AnimationEngine animationEngine = new AnimationEngineImpl(new AnimationTimerImpl());
+    private AnimationEngine animationEngine = new AnimationEngineImpl.Builder().build();
     private SoundResource soundEngine = new SoundResource(true);
 
     public GammonBuilderImpl() {
@@ -52,7 +52,7 @@ public class GammonBuilderImpl implements GammonBuilder {
             g = GameFactory.createGame(new SemiMonFactory());
         }
         game = new GameEventDecorator(g, gameStateController);
-        dice = new GammonDice(game, gameStateController);
+        dice = new GammonDice(game, gameStateController, animationEngine, soundEngine);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     public void addPiece(Location loc, Color color) {
         String figurename = color == RED ? "redchecker" : "blackchecker";
 
-        BoardPiece piece = new BoardFigure(figurename, true, new MoveCommand(gameStateController));
+        BoardPiece piece = createChecker(figurename, gameStateController);
 
         pieceFactory.addPiece(loc, color, piece);
     }
@@ -94,7 +94,7 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void addDie(String name) {
-        BoardPiece p = new BoardFigure("idie", false, new RollDiceAdapterCommand(dice));
+        BoardPiece p = createDie(dice);
         if (name.equals("die1")) {
             dice.setDie1(p);
         } else if (name.equals("die2")) {
@@ -105,15 +105,20 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     public void build() {
 
-        AnimatedBoardDrawingFactory animationFactory = new HotgammonAnimatedBoardDrawingFactory(pieceFactory.build(), dice, animationEngine);
+        AnimatedBoardDrawingFactory animationFactory =
+                new HotgammonAnimatedBoardDrawingFactory(pieceFactory.build(), dice, animationEngine);
+
         boardDrawing = new AnimatedBoardDrawing<Location>(animationFactory);
 
-        dice.setAnimationEngine(animationEngine);
-        dice.setSoundEngine(soundEngine);
-        StateContext context = new StateContextImpl.Builder(redPlayer, blackPlayer, game, boardDrawing, dice).build();
+        StateContext context = new StateContextImpl.Builder(
+                redPlayer,
+                blackPlayer,
+                game,
+                boardDrawing,
+                dice,
+                gameStateController).build();
         context.addStatusObserver(statusMonitor);
         context.addStatusObserver(new BoardGameObserverAdapter(boardDrawing));
-        gameStateController.setContext(context);
     }
 
     public Factory createViewFactory() {
@@ -126,5 +131,13 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     public GammonStateMachine getController() {
         return gameStateController;
+    }
+
+    protected BoardPiece createChecker(String figurename, GammonStateMachine gsc) {
+        return new BoardFigure(figurename, true, new MoveCommand(gsc));
+    }
+
+    protected BoardPiece createDie(GammonDice dice) {
+        return new BoardFigure("idie", false, new RollDiceAdapterCommand(dice));
     }
 }

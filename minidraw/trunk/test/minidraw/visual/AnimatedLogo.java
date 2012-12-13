@@ -30,7 +30,7 @@ public class AnimatedLogo implements Tool, AnimationChangeListener {
         background = ImageManager.getSingleton().getImage("au-logo");
         backGroundDimension = new Dimension(background.getWidth(null), background.getHeight(null));
         center = new Point(backGroundDimension.width / 2, backGroundDimension.height / 2);
-        ae = new AnimationEngineImpl(new AnimationTimerImpl());
+        ae = new AnimationEngineImpl.Builder().build();
         for (Figure[] figureRow : figures)
             for (Figure f : figureRow)
                 editor.drawing().add(f);

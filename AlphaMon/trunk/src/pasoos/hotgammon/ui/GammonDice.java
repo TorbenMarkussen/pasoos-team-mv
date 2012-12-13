@@ -23,10 +23,12 @@ public class GammonDice implements PropAppearanceStrategy {
     private boolean rolling = false;
     private Random rollingDieNumberGenerator;
 
-    public GammonDice(Game game, GammonStateMachine state) {
+    public GammonDice(Game game, GammonStateMachine state, AnimationEngine animationEngine, SoundResource soundResource) {
         this.game = game;
         this.gammonStateMachine = state;
         rollingDieNumberGenerator = new Random();
+        this.animationEngine = animationEngine;
+        this.soundResource = soundResource;
     }
 
     public void rollRequest() {
@@ -108,10 +110,6 @@ public class GammonDice implements PropAppearanceStrategy {
         };
     }
 
-    public void setAnimationEngine(AnimationEngine animationEngine) {
-        this.animationEngine = animationEngine;
-    }
-
     @Override
     public String calculateImageNameForPropWithKey(String keyOfProp) {
         String diePrefix;
@@ -149,10 +147,6 @@ public class GammonDice implements PropAppearanceStrategy {
     private String getRandomValue() {
         Integer value = rollingDieNumberGenerator.nextInt(6) + 1;
         return value.toString();
-    }
-
-    public void setSoundEngine(SoundResource soundEngine) {
-        soundResource = soundEngine;
     }
 
     public void setRolling(boolean rolling) {

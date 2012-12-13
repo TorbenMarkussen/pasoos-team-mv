@@ -2,6 +2,7 @@ package minidraw.animation.engine;
 
 import minidraw.animation.AnimationTimer;
 import minidraw.animation.Animation;
+import minidraw.standard.AnimationTimerImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,8 @@ public class AnimationEngineImpl implements Runnable, AnimationEngine {
     private List<Animation> starting = new ArrayList<Animation>();
     private List<Animation> running = new ArrayList<Animation>();
 
-    public AnimationEngineImpl(AnimationTimer atimer) {
-        this.atimer = atimer;
+    private AnimationEngineImpl(Builder builder) {
+        this.atimer = builder.getAnimationTimer();
         atimer.setTimeoutReceiver(this);
     }
 
@@ -98,5 +99,27 @@ public class AnimationEngineImpl implements Runnable, AnimationEngine {
             a.abort();
         }
         running.clear();
+    }
+
+    public static class Builder {
+
+        private AnimationTimer animationTimer;
+
+        public Builder() {
+            animationTimer = new AnimationTimerImpl();
+        }
+
+        public AnimationTimer getAnimationTimer() {
+            return animationTimer;
+        }
+
+        public Builder setAnimationTimer(AnimationTimer animationTimer) {
+            this.animationTimer = animationTimer;
+            return this;
+        }
+
+        public AnimationEngine build() {
+            return new AnimationEngineImpl(this);
+        }
     }
 }

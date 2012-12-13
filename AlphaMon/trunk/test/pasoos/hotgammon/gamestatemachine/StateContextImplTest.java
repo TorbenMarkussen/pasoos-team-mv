@@ -38,6 +38,8 @@ public class StateContextImplTest {
     GammonPlayer blackPlayer;
     @Mock
     GammonPlayer redPlayer;
+    @Mock
+    GammonState mainState;
 
     @Before
     public void setUp() throws Exception {
@@ -48,7 +50,7 @@ public class StateContextImplTest {
         when(initialState.getStateId()).thenReturn(StateId.Initial);
         when(winnerState.getStateId()).thenReturn(StateId.Winner);
 
-        StateContextImpl.Builder builder = new StateContextImpl.Builder(redPlayer, blackPlayer, game, animatedBoard, dice);
+        StateContextImpl.Builder builder = new StateContextImpl.Builder(redPlayer, blackPlayer, game, animatedBoard, dice, mainState);
         builder.setInitial(initialState);
         builder.setWinner(winnerState);
         builder.setSounds(sounds);
@@ -66,6 +68,7 @@ public class StateContextImplTest {
 
     @Test
     public void states_should_be_initialized_with_context_after_construction() {
+        verify(mainState).setContext(context);
         verify(initialState).setContext(context);
         verify(winnerState).setContext(context);
         verify(redPlayer).setContext(context);

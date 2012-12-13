@@ -23,12 +23,15 @@ public class StateContextImpl implements StateContext {
     private List<StatusObserver> statusObservers = new ArrayList<StatusObserver>();
     private SoundResource soundMachine;
     private Map<Color, String> playerNames = new HashMap<Color, String>();
+    private GammonState mainState;
 
     private StateContextImpl(Builder builder) {
         game = builder.getGame();
         boardDrawing = builder.getBoardDrawing();
         dice = builder.getGammonDice();
         soundMachine = builder.getSounds();
+        mainState = builder.getMainState();
+        mainState.setContext(this);
 
         states.put(StateId.Initial, builder.getInitial());
         states.put(StateId.Winner, builder.getWinner());
@@ -134,8 +137,15 @@ public class StateContextImpl implements StateContext {
         AnimatedBoard<Location> boardDrawing;
         GammonDice gammonDice;
         private SoundResource sounds;
+        private GammonState mainState;
 
-        public Builder(GammonPlayer redplayer, GammonPlayer blackplayer, Game game, AnimatedBoard<Location> boardDrawing, GammonDice gammonDice) {
+        public Builder(GammonPlayer redplayer,
+                       GammonPlayer blackplayer,
+                       Game game,
+                       AnimatedBoard<Location> boardDrawing,
+                       GammonDice gammonDice,
+                       GammonState mainState) {
+            this.mainState = mainState;
             initial = new Initial(StateId.Initial);
             winner = new WinnerState(StateId.Winner);
             sounds = new SoundResource(true);
@@ -213,6 +223,10 @@ public class StateContextImpl implements StateContext {
 
         public void setSounds(SoundResource sounds) {
             this.sounds = sounds;
+        }
+
+        public GammonState getMainState() {
+            return mainState;
         }
     }
 }
