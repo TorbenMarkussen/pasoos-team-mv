@@ -1,4 +1,4 @@
-package pasoos.view;
+package pasoos.hotgammon.ui;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,8 +11,6 @@ import pasoos.hotgammon.Location;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
 import pasoos.hotgammon.settings.GameSettings;
 import pasoos.hotgammon.settings.PlayerType;
-import pasoos.hotgammon.ui.GammonBuildDirector;
-import pasoos.hotgammon.ui.GammonBuilder;
 
 import static org.mockito.Mockito.*;
 

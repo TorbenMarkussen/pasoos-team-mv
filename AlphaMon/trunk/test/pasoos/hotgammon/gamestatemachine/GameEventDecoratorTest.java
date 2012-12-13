@@ -1,4 +1,4 @@
-package pasoos.view;
+package pasoos.hotgammon.gamestatemachine;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -9,11 +9,8 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.GameObserver;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.gamestatemachine.GameEventDecorator;
-import pasoos.hotgammon.gamestatemachine.GammonStateMachine;
 
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
 import static pasoos.hotgammon.Location.B1;
 import static pasoos.hotgammon.Location.B2;
 
