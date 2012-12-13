@@ -3,7 +3,7 @@ package pasoos.hotgammon.gamestatemachine;
 import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
-import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
+import pasoos.hotgammon.ai.GammonMove;
 
 import java.util.List;
 
@@ -61,11 +61,14 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
     @Override
     public void diceRolled(int[] values) {
         aiplayerState = PlayerState.Moving;
+        context.notifyDiceRolled(values);
 
         aiPlayer.play();
         moves = aiPlayer.getMoves();
-        processGerryMoves();
-        context.notifyDiceRolled(values);
+        if (moves.size() > 0)
+            processGerryMoves();
+        else
+            aiplayerState = PlayerState.Done;
     }
 
     @Override

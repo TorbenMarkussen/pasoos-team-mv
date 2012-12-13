@@ -4,7 +4,6 @@ import minidraw.boardgame.NullAnimationCallback;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
-import pasoos.hotgammon.obsolete.minidraw_controller.GammonMove;
 
 public class Initial extends BaseState {
     private int animationCount;
@@ -43,16 +42,16 @@ public class Initial extends BaseState {
 
             for (int i = 0; i < count; i++) {
                 Location from = color == Color.BLACK ? Location.B_BEAR_OFF : Location.R_BEAR_OFF;
-                startAnimation(new GammonMove(from, loc));
+                startAnimation(from, loc);
             }
         }
     }
 
-    private void startAnimation(final GammonMove move) {
+    private void startAnimation(Location from, Location to) {
         animationCount++;
         context.moveAnimated(
-                move.getFrom(),
-                move.getTo(),
+                from,
+                to,
                 new NullAnimationCallback<Location>() {
                     @Override
                     public void afterEnd(Location from, Location to) {
@@ -65,7 +64,7 @@ public class Initial extends BaseState {
         animationCount--;
         if (animationCount == 0) {
             context.getGame().newGame();
-            blackPlayerActive();
+            context.getCurrentState().blackPlayerActive();
         }
     }
 

@@ -1,4 +1,4 @@
-package pasoos.hotgammon.obsolete.minidraw_controller;
+package pasoos.hotgammon.ai;
 
 import pasoos.hotgammon.Location;
 
@@ -7,6 +7,7 @@ public class GammonMove {
     private final Location to;
 
     public GammonMove(Location from, Location to) {
+
         this.from = from;
         this.to = to;
     }
@@ -17,10 +18,5 @@ public class GammonMove {
 
     public Location getTo() {
         return to;
-    }
-
-    @Override
-    public String toString() {
-        return from + " -> " + to;
     }
 }

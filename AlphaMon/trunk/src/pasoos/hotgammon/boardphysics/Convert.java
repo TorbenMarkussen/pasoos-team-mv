@@ -4,26 +4,8 @@ import pasoos.hotgammon.Location;
 
 import java.awt.*;
 
-/**
- * Mappings between graphical coordinate (x,y) and locations;
- * and vice versa.
- * <p/>
- * This source code is from the book
- * "Flexible, Reliable Software:
- * Using Patterns and Agile Development"
- * published 2010 by CRC Press.
- * Author:
- * Henrik B Christensen
- * Computer Science Department
- * Aarhus University
- * <p/>
- * This source code is provided WITHOUT ANY WARRANTY either
- * expressed or implied. You may study, use, modify, and
- * distribute it for non-commercial purposes. For any
- * commercial use, see http://www.baerbak.com/
- */
 public class Convert {
-    private static final Dimension checkerDimension = new Dimension(27, 27);
+    private static final Dimension checkerDimension = CheckerPhysics.getDimension();
 
     /**
      * Given coordinate (x,y) on the graphical backgammon board
@@ -53,11 +35,6 @@ public class Convert {
         int newy;
 
         int checkerHeight = checkerDimension.height;
-
-        if (isBearOff(location)) {
-            // stack in the y-directio if on the bear off locations
-            checkerHeight /= 2;
-        }
 
         if (isOnBlackSide(location)) {
             newy = checkerHeight * count + box.y;
