@@ -1,7 +1,7 @@
 package pasoos.hotgammon.ui;
 
-import minidraw.boardgame.AnimationConfiguration;
-import minidraw.boardgame.MoveAnimationConfiguratorStrategy;
+import minidraw.animatedboard.AnimationConfiguration;
+import minidraw.animatedboard.MoveAnimationConfiguratorStrategy;
 import minidraw.animation.easings.BezierMovement;
 import minidraw.animation.easings.EasingFunctionStrategy;
 import minidraw.animation.TimeInterval;

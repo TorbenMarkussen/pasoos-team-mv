@@ -1,6 +1,9 @@
-package minidraw.boardgame;
+package minidraw.animatedboard;
 
 import minidraw.animation.engine.AnimationEngine;
+import minidraw.boardgame.FigureFactory;
+import minidraw.boardgame.PositioningStrategy;
+import minidraw.boardgame.PropAppearanceStrategy;
 
 public interface AnimatedBoardDrawingFactory<LOCATION> {
 

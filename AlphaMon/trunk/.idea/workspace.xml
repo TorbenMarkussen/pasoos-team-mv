@@ -5,46 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/easings" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/engine" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\Animation.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/Animation.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\AnimationChangeListener.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/AnimationChangeListener.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\AnimationEngine.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/engine/AnimationEngine.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\AnimationEngineImpl.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/engine/AnimationEngineImpl.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\AnimationTimer.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/AnimationTimer.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\BezierMovement.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/easings/BezierMovement.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\LinearMove.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/easings/LinearMove.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\MoveAnimation.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/MoveAnimation.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\framework\TimeInterval.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/TimeInterval.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\AnimatedBoard.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimatedBoard.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\AnimatedBoardDrawing.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimatedBoardDrawing.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\AnimatedBoardDrawingFactory.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimatedBoardDrawingFactory.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\AnimationCallbacks.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/MoveAnimationCallbacks.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\AnimationConfiguration.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimationConfiguration.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\MoveAnimationConfiguratorStrategy.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/MoveAnimationConfiguratorStrategy.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\NullAnimationCallback.java" afterPath="$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/NullMoveAnimationCallback.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\framework\AnimationChangeEvent.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/AnimationChangeEvent.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\framework\BaseAnimation.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/BaseAnimation.java" />
-      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\framework\EasingFunctionStrategy.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/easings/EasingFunctionStrategy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ea-doc/HotGammon.eap" afterPath="$PROJECT_DIR$/ea-doc/HotGammon.eap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\boardgame\AnimatedBoard.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimatedBoard.java" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\boardgame\AnimatedBoardDrawing.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimatedBoardDrawing.java" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\boardgame\AnimatedBoardDrawingFactory.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimatedBoardDrawingFactory.java" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\boardgame\AnimationConfiguration.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimationConfiguration.java" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\boardgame\MoveAnimationCallbacks.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/MoveAnimationCallbacks.java" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\ext\minidraw\boardgame\MoveAnimationConfiguratorStrategy.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/MoveAnimationConfiguratorStrategy.java" />
+      <change type="MOVED" beforePath="C:\ws\PASOOS\MiniDraw\src\minidraw\boardgame\NullMoveAnimationCallback.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/NullMoveAnimationCallback.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/easings/Shaker.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/easings/Shaker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/AIPlayerState.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/AIPlayerState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/Initial.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/Initial.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/ManualPlayerState.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/ManualPlayerState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/StateContext.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/StateContext.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/StateContextImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/StateContextImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/GammonBuilderImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/GammonBuilderImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/GammonDice.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/GammonDice.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/HotgammonAnimatedBoardDrawingFactory.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/HotgammonAnimatedBoardDrawingFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/MoveAnimationConfiguratorStrategyImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/ui/MoveAnimationConfiguratorStrategyImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/pasoos/view/AIPlayerStateTest.java" afterPath="$PROJECT_DIR$/test/pasoos/view/AIPlayerStateTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/standard/AnimationTimerImpl.java" afterPath="$PROJECT_DIR$/../MiniDraw/ext/minidraw/standard/AnimationTimerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MiniDraw/test/minidraw/visual/AnimatedLogo.java" afterPath="$PROJECT_DIR$/../MiniDraw/test/minidraw/visual/AnimatedLogo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MiniDraw/testext/minidraw/framework/AnimationEngineImplTest.java" afterPath="$PROJECT_DIR$/../MiniDraw/testext/minidraw/framework/AnimationEngineImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MiniDraw/testext/minidraw/framework/MoveAnimationTest.java" afterPath="$PROJECT_DIR$/../MiniDraw/testext/minidraw/framework/MoveAnimationTest.java" />
     </list>
     <ignored path="AlphaMon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -193,24 +171,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AnimatedBoard.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimatedBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="59" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoardDrawing.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardDrawing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="28" selection-start="2962" selection-end="2962" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="BoardGameDrawing.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardGameDrawing.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -267,19 +227,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MoveAnimationCallbacks.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/MoveAnimationCallbacks.java">
+      <file leaf-file-name="MoveAnimationCallbacks.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/MoveAnimationCallbacks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="14" selection-start="257" selection-end="257" vertical-scroll-proportion="0.27079645">
+            <state line="9" column="14" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Drawing.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/framework/Drawing.java">
+      <file leaf-file-name="AnimationConfiguration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimationConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="17" selection-start="1226" selection-end="1226" vertical-scroll-proportion="0.0">
+            <state line="5" column="17" selection-start="149" selection-end="149" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NullMoveAnimationCallback.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/NullMoveAnimationCallback.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="0.06017699">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoveAnimationConfiguratorStrategy.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/MoveAnimationConfiguratorStrategy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="17" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -302,8 +280,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/ai/gerry/GerryPlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/ai/t6/Dummy.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/ai/t6/DummyPlayerTest.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/ai/t6/DummyRedPlayerTest.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/ai/t6/DummyBlackPlayerTest.java" />
@@ -318,6 +294,8 @@
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/easings/EasingFunctionStrategy.java" />
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimationCallbacks.java" />
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/MoveAnimationCallbacks.java" />
+        <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimationConfiguration.java" />
+        <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/NullMoveAnimationCallback.java" />
       </list>
     </option>
   </component>
@@ -580,117 +558,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MiniDraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ext" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="minidraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boardgame" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MiniDraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ext" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="minidraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="animation" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MiniDraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ext" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="minidraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="animation" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MiniDraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ext" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="minidraw" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="animation" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="easings" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="HotGammon" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AlphaMon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HotGammon" />
-              <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ea-doc" />
               <option name="myItemType" value="com.cenqua.clover.idea.projectview.PsiDirectoryNodeWrapper" />
             </PATH_ELEMENT>
           </PATH>
@@ -1318,7 +1186,11 @@
       <created>1355402303112</created>
       <updated>1355402303113</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="refactored package structure in minidraw&#10;changed naming">
+      <created>1355405258120</created>
+      <updated>1355405258120</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1343,7 +1215,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32478634" sideWeight="0.49812534" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299411" sideWeight="0.7188841" order="3" side_tool="false" content_ui="tabs" />
@@ -1361,7 +1233,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25921968" sideWeight="0.23717949" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292357" sideWeight="0.732906" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997862" sideWeight="0.6025641" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23196152" sideWeight="0.6559829" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23196152" sideWeight="0.6559829" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3514957" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3440171" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Test Runs" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1473,32 +1345,7 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/ai/AIPlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1684#1703#0" expanded="true" />
-            <element signature="e#2736#2755#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../MiniDraw/src/minidraw/boardgame/BoardActionTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="8" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gamestatemachine/StateContextImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="25" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimatedBoardDrawing.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimatedBoardDrawing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="53" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
           <folding />
@@ -1526,7 +1373,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/AnimatedBoard.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimatedBoard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="59" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
           <folding />
@@ -1584,9 +1431,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/boardgame/MoveAnimationCallbacks.java">
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/MoveAnimationCallbacks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="14" selection-start="257" selection-end="257" vertical-scroll-proportion="0.27079645">
+        <state line="9" column="14" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/MoveAnimationConfiguratorStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="17" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/AnimationConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="149" selection-end="149" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MiniDraw/ext/minidraw/animatedboard/NullMoveAnimationCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="46" selection-end="46" vertical-scroll-proportion="0.06017699">
           <folding />
         </state>
       </provider>

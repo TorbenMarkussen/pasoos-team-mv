@@ -1,5 +1,8 @@
 package pasoos.hotgammon.ui;
 
+import minidraw.animatedboard.AnimatedBoard;
+import minidraw.animatedboard.AnimatedBoardDrawing;
+import minidraw.animatedboard.AnimatedBoardDrawingFactory;
 import minidraw.boardgame.*;
 import minidraw.animation.engine.AnimationEngine;
 import minidraw.animation.engine.AnimationEngineImpl;

@@ -1,8 +1,10 @@
-package minidraw.boardgame;
+package minidraw.animatedboard;
 
 import minidraw.animation.*;
 import minidraw.animation.easings.EasingFunctionStrategy;
 import minidraw.animation.engine.AnimationEngine;
+import minidraw.boardgame.BoardDrawing;
+import minidraw.boardgame.BoardPiece;
 
 import java.awt.*;
 import java.util.List;

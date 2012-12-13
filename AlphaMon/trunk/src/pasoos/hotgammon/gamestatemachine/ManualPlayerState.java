@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.NullMoveAnimationCallback;
+import minidraw.animatedboard.NullMoveAnimationCallback;
 import pasoos.hotgammon.Location;
 
 public class ManualPlayerState extends BaseState implements GammonPlayer {
