@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.NullMoveAnimationCallback;
+import minidraw.animatedboard.NullMoveAnimationCallback;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.AIPlayer;
 import pasoos.hotgammon.ai.GammonMove;

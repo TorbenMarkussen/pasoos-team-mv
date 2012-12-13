@@ -1,4 +1,4 @@
-package minidraw.boardgame;
+package minidraw.animatedboard;
 
 import minidraw.animation.easings.EasingFunctionStrategy;
 import minidraw.animation.TimeInterval;

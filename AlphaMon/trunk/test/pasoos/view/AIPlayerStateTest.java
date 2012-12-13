@@ -1,6 +1,6 @@
 package pasoos.view;
 
-import minidraw.boardgame.MoveAnimationCallbacks;
+import minidraw.animatedboard.MoveAnimationCallbacks;
 import minidraw.boardgame.BoardPiece;
 import org.junit.Before;
 import org.junit.Test;

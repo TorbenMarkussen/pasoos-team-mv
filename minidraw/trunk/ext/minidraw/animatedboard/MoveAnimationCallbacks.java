@@ -1,4 +1,4 @@
-package minidraw.boardgame;
+package minidraw.animatedboard;
 
 public interface MoveAnimationCallbacks<LOCATION> {
     void beforeMoveStart(LOCATION from, LOCATION to);

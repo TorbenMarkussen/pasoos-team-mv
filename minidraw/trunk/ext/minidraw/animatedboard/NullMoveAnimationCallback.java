@@ -1,4 +1,4 @@
-package minidraw.boardgame;
+package minidraw.animatedboard;
 
 public class NullMoveAnimationCallback<LOCATION> implements MoveAnimationCallbacks<LOCATION> {
     @Override

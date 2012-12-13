@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.MoveAnimationCallbacks;
+import minidraw.animatedboard.MoveAnimationCallbacks;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.sounds.SoundResource;

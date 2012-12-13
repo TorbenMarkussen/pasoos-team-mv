@@ -1,8 +1,8 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.AnimatedBoard;
-import minidraw.boardgame.AnimatedBoardDrawing;
-import minidraw.boardgame.MoveAnimationCallbacks;
+import minidraw.animatedboard.AnimatedBoard;
+import minidraw.animatedboard.AnimatedBoardDrawing;
+import minidraw.animatedboard.MoveAnimationCallbacks;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
