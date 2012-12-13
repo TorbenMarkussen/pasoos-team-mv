@@ -1,7 +1,7 @@
 package pasoos.hotgammon.ui;
 
 import minidraw.boardgame.*;
-import minidraw.framework.AnimationEngine;
+import minidraw.animation.engine.AnimationEngine;
 import pasoos.hotgammon.Location;
 
 public class HotgammonAnimatedBoardDrawingFactory implements AnimatedBoardDrawingFactory<Location> {

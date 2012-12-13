@@ -1,4 +1,6 @@
-package minidraw.framework;
+package minidraw.animation;
+
+import minidraw.framework.Figure;
 
 import java.util.ArrayList;
 import java.util.List;

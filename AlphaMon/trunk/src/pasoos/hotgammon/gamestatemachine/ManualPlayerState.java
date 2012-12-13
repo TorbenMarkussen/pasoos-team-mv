@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.NullAnimationCallback;
+import minidraw.boardgame.NullMoveAnimationCallback;
 import pasoos.hotgammon.Location;
 
 public class ManualPlayerState extends BaseState implements GammonPlayer {
@@ -92,9 +92,9 @@ public class ManualPlayerState extends BaseState implements GammonPlayer {
             context.moveAnimated(
                     from,
                     to,
-                    new NullAnimationCallback<Location>() {
+                    new NullMoveAnimationCallback<Location>() {
                         @Override
-                        public void afterEnd(Location from, Location to) {
+                        public void afterMoveEnd(Location from, Location to) {
                             animationEnded();
                         }
                     });

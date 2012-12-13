@@ -1,4 +1,6 @@
-package minidraw.framework;
+package minidraw.animation.easings;
+
+import minidraw.animation.easings.EasingFunctionStrategy;
 
 import java.awt.*;
 

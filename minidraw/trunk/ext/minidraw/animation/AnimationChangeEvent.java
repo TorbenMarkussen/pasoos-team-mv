@@ -1,4 +1,6 @@
-package minidraw.framework;
+package minidraw.animation;
+
+import minidraw.animation.Animation;
 
 import java.util.EventObject;
 

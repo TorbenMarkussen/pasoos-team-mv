@@ -1,6 +1,6 @@
 package pasoos.view;
 
-import minidraw.boardgame.AnimationCallbacks;
+import minidraw.boardgame.MoveAnimationCallbacks;
 import minidraw.boardgame.BoardPiece;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,14 +60,14 @@ public class AIPlayerStateTest {
                 Location from = (Location) invocation.getArguments()[0];
                 Location to = (Location) invocation.getArguments()[1];
 
-                AnimationCallbacks cb = (AnimationCallbacks) invocation.getArguments()[2];
-                cb.beforeStart(from, to);
-                cb.afterStart(from, to);
-                cb.beforeEnd(from, to);
-                cb.afterEnd(from, to);
+                MoveAnimationCallbacks cb = (MoveAnimationCallbacks) invocation.getArguments()[2];
+                cb.beforeMoveStart(from, to);
+                cb.afterMoveStart(from, to);
+                cb.beforeMoveEnd(from, to);
+                cb.afterMoveEnd(from, to);
                 return null;
             }
-        }).when(context).moveAnimated(any(Location.class), any(Location.class), any(AnimationCallbacks.class));
+        }).when(context).moveAnimated(any(Location.class), any(Location.class), any(MoveAnimationCallbacks.class));
     }
 
     @Test
@@ -95,12 +95,12 @@ public class AIPlayerStateTest {
         InOrder inOrder = inOrder(aiPlayer, game, context);
         inOrder.verify(aiPlayer).play();
 
-        inOrder.verify(context).moveAnimated(eq(Location.B1), eq(Location.B2), any(AnimationCallbacks.class));
+        inOrder.verify(context).moveAnimated(eq(Location.B1), eq(Location.B2), any(MoveAnimationCallbacks.class));
         inOrder.verify(game).move(B1, B2);
 
         playerState.checkerMoved(B1, B2);
 
-        inOrder.verify(context).moveAnimated(eq(Location.B3), eq(Location.B4), any(AnimationCallbacks.class));
+        inOrder.verify(context).moveAnimated(eq(Location.B3), eq(Location.B4), any(MoveAnimationCallbacks.class));
         inOrder.verify(game).move(B3, B4);
 
         playerState.checkerMoved(B3, B4);
@@ -124,12 +124,12 @@ public class AIPlayerStateTest {
         InOrder inOrder = inOrder(aiPlayer, context);
         inOrder.verify(aiPlayer).play();
 
-        inOrder.verify(context).moveAnimated(eq(Location.B1), eq(Location.B2), any(AnimationCallbacks.class));
+        inOrder.verify(context).moveAnimated(eq(Location.B1), eq(Location.B2), any(MoveAnimationCallbacks.class));
 
         playerState.checkerMoved(B1, B2);
         playerState.turnEnded();
 
-        inOrder.verify(context).moveAnimated(eq(Location.B3), eq(Location.B4), any(AnimationCallbacks.class));
+        inOrder.verify(context).moveAnimated(eq(Location.B3), eq(Location.B4), any(MoveAnimationCallbacks.class));
 
         playerState.checkerMoved(B3, B4);
 

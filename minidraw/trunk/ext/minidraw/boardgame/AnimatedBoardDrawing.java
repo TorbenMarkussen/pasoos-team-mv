@@ -1,6 +1,8 @@
 package minidraw.boardgame;
 
-import minidraw.framework.*;
+import minidraw.animation.*;
+import minidraw.animation.easings.EasingFunctionStrategy;
+import minidraw.animation.engine.AnimationEngine;
 
 import java.awt.*;
 import java.util.List;
@@ -16,7 +18,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> imple
         animationConfigurator = factory.createAnimationConfigurator();
     }
 
-    public void moveAnimated(final LOCATION from, final LOCATION to, final AnimationCallbacks<LOCATION> cb) {
+    public void moveAnimated(final LOCATION from, final LOCATION to, final MoveAnimationCallbacks<LOCATION> cb) {
         // Setup animation
         final BoardPiece piece = getPiece(from);
         if (piece != null) {
@@ -24,29 +26,29 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> imple
             Animation a = createAnimation(piece, destination);
 
 
-            final AnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullAnimationCallback<LOCATION>() : cb;
+            final MoveAnimationCallbacks<LOCATION> cbLocal = (cb == null) ? new NullMoveAnimationCallback<LOCATION>() : cb;
 
             // Make move
-            cbLocal.beforeStart(from, to);
+            cbLocal.beforeMoveStart(from, to);
             startMove(piece, from);
-            cbLocal.afterStart(from, to);
+            cbLocal.afterMoveStart(from, to);
             a.addAnimationChangeListener(new AnimationChangeListener() {
 
                 @Override
                 public void onAnimationCompleted(AnimationChangeEvent ace) {
-                    cbLocal.beforeEnd(from, to);
+                    cbLocal.beforeMoveEnd(from, to);
                     endMove(piece, to);
-                    cbLocal.afterEnd(from, to);
+                    cbLocal.afterMoveEnd(from, to);
                 }
             });
             animationEngine.startAnimation(a);
         } else {
             if (cb != null) {
                 System.out.println("<animation failed to get piece, fireing all change events>");
-                cb.beforeStart(from, to);
-                cb.afterStart(from, to);
-                cb.beforeEnd(from, to);
-                cb.afterEnd(from, to);
+                cb.beforeMoveStart(from, to);
+                cb.afterMoveStart(from, to);
+                cb.beforeMoveEnd(from, to);
+                cb.afterMoveEnd(from, to);
             }
         }
 

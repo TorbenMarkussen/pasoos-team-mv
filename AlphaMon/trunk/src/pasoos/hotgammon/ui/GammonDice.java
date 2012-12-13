@@ -1,8 +1,9 @@
 package pasoos.hotgammon.ui;
 
+import minidraw.animation.*;
+import minidraw.animation.engine.AnimationEngine;
 import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.PropAppearanceStrategy;
-import minidraw.framework.*;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.easings.Shaker;

@@ -1,5 +1,8 @@
 package minidraw.framework;
 
+import minidraw.animation.Animation;
+import minidraw.animation.AnimationTimer;
+import minidraw.animation.engine.AnimationEngineImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

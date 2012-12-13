@@ -1,6 +1,6 @@
 package pasoos.hotgammon.gamestatemachine;
 
-import minidraw.boardgame.NullAnimationCallback;
+import minidraw.boardgame.NullMoveAnimationCallback;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
@@ -52,9 +52,9 @@ public class Initial extends BaseState {
         context.moveAnimated(
                 from,
                 to,
-                new NullAnimationCallback<Location>() {
+                new NullMoveAnimationCallback<Location>() {
                     @Override
-                    public void afterEnd(Location from, Location to) {
+                    public void afterMoveEnd(Location from, Location to) {
                         animationEnded();
                     }
                 });

@@ -1,6 +1,6 @@
 package pasoos.hotgammon.easings;
 
-import minidraw.framework.EasingFunctionStrategy;
+import minidraw.animation.easings.EasingFunctionStrategy;
 
 import java.awt.*;
 import java.util.Random;

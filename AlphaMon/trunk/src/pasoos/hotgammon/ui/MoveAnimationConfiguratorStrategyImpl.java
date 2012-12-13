@@ -2,9 +2,9 @@ package pasoos.hotgammon.ui;
 
 import minidraw.boardgame.AnimationConfiguration;
 import minidraw.boardgame.MoveAnimationConfiguratorStrategy;
-import minidraw.framework.BezierMovement;
-import minidraw.framework.EasingFunctionStrategy;
-import minidraw.framework.TimeInterval;
+import minidraw.animation.easings.BezierMovement;
+import minidraw.animation.easings.EasingFunctionStrategy;
+import minidraw.animation.TimeInterval;
 
 import java.awt.*;
 
