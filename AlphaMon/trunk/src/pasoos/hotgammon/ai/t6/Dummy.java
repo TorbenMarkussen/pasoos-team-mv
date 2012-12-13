@@ -37,10 +37,7 @@ public class Dummy implements AIPlayer, BoardInitializerStrategy {
         board = new BoardImpl(this);
         moveValidator = new BackgammonMoveValidatorStrategy(board);
 
-        List<Integer> diceValuesLeft = new ArrayList<Integer>();
-        for (int d : game.diceValuesLeft()) {
-            diceValuesLeft.add(d);
-        }
+        List<Integer> diceValuesLeft = createDiceValuesLeft();
 
         while (diceValuesLeft.size() > 0) {
             List<Move> moveCandidates = findMoveCandidates(diceValuesLeft);
@@ -59,6 +56,23 @@ public class Dummy implements AIPlayer, BoardInitializerStrategy {
                 diceValuesLeft.clear();
             }
         }
+    }
+
+    private List<Integer> createDiceValuesLeft() {
+        List<Integer> dice = new ArrayList<Integer>();
+        int[] diceThrown = game.diceThrown();
+
+        if (diceThrown[0] != diceThrown[1]) {
+            dice.add(diceThrown[0]);
+            dice.add(diceThrown[1]);
+        } else {
+            dice.add(diceThrown[0]);
+            dice.add(diceThrown[0]);
+            dice.add(diceThrown[0]);
+            dice.add(diceThrown[0]);
+        }
+
+        return dice;
     }
 
     private List<Move> findMoveCandidates(List<Integer> dice) {
