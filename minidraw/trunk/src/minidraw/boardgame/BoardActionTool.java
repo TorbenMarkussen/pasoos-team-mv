@@ -48,6 +48,7 @@ public class BoardActionTool extends AbstractTool {
     private BoardPiece clickedFigure = null;
     private Figure draggedFigure = null;
 
+
     /**
      * Construct a tool with the given command
      */
@@ -69,7 +70,6 @@ public class BoardActionTool extends AbstractTool {
             fLastY = y;
             if (clickedFigure.isMobile()) {
                 editor.drawing().lock();
-                piece.setZorder(10);
                 draggedFigure = piece;
             }
         }

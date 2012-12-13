@@ -10,7 +10,7 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
     private AnimationEngine animationEngine;
     private MoveAnimationConfiguratorStrategy animationConfigurator;
 
-    public AnimatedBoardDrawing(AnimatedBoardDrawingFactory factory) {
+    public AnimatedBoardDrawing(AnimatedBoardDrawingFactory<LOCATION> factory) {
         super(factory.getFigureFactory(), factory.getPositioningStrategy(), factory.getAppearanceStrategy());
         animationEngine = factory.getAnimationEngine();
         animationConfigurator = factory.createAnimationConfigurator();
@@ -20,7 +20,6 @@ public class AnimatedBoardDrawing<LOCATION> extends BoardDrawing<LOCATION> {
         // Setup animation
         final BoardPiece piece = getPiece(from);
         if (piece != null) {
-            piece.setZorder(10);
             Point destination = adjuster.calculateFigureCoordinatesIndexedForLocation(to, getCount(to));
             Animation a = createAnimation(piece, destination);
 

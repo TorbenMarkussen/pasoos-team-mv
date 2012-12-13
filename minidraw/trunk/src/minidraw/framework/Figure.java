@@ -79,8 +79,4 @@ public interface Figure {
      */
     void removeFigureChangeListener(FigureChangeListener l);
 
-
-    int getZorder();
-
-    void setZorder(int zorder);
 }

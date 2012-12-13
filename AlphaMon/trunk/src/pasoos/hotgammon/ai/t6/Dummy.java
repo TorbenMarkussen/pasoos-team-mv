@@ -151,7 +151,7 @@ public class Dummy implements AIPlayer, BoardInitializerStrategy {
         locationOrder.put(Color.BLACK, blackOrder);
     }
 
-    private class Move {
+    private static class Move {
         Location from;
         Location to;
         int die;

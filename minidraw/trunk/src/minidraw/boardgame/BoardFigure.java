@@ -122,8 +122,4 @@ public class BoardFigure extends ImageFigure implements BoardPiece {
         return command.execute();
     }
 
-    @Override
-    public void setMobile(boolean mobile) {
-        isMobile = mobile;
-    }
 }

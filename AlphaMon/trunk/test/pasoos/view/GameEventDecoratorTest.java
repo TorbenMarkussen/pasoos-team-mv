@@ -38,7 +38,6 @@ public class GameEventDecoratorTest {
 
     @Test
     public void should_invoke_dicerolled_and_blackplayer_events_after_nextTurn() {
-        final Color playerInTurn = Color.NONE;
         Game game = mock(Game.class);
         GammonStateMachine state = mock(GammonStateMachine.class);
 

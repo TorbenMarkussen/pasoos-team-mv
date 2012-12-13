@@ -133,7 +133,6 @@ public class StateContextImpl implements StateContext {
         Game game;
         AnimatedBoardDrawing<Location> boardDrawing;
         GammonDice gammonDice;
-        private StateContextImpl context;
         private SoundResource sounds;
 
         public Builder(GammonPlayer redplayer, GammonPlayer blackplayer, Game game, AnimatedBoardDrawing<Location> boardDrawing, GammonDice gammonDice) {

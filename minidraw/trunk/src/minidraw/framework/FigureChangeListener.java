@@ -47,8 +47,4 @@ public interface FigureChangeListener extends EventListener {
      */
     public void figureRequestUpdate(FigureChangeEvent e);
 
-    /**
-     * Sent when a figures z order changes.
-     */
-    public void figureZorderChanged(FigureChangeEvent e);
 }

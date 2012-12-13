@@ -36,7 +36,6 @@ public abstract class AbstractFigure implements Figure {
      * the listeners of this figure
      */
     List<FigureChangeListener> listenerList;
-    private int zorder;
 
     /**
      * Base construction of a figure
@@ -89,23 +88,5 @@ public abstract class AbstractFigure implements Figure {
     public void removeFigureChangeListener(FigureChangeListener l) {
         listenerList.remove(l);
     }
-
-    @Override
-    public int getZorder() {
-        return zorder;
-    }
-
-    public void setZorder(int zorder) {
-        this.zorder = zorder;
-        notifyZorderChanged();
-    }
-
-    private void notifyZorderChanged() {
-        for (FigureChangeListener l : listenerList) {
-            FigureChangeEvent e = new FigureChangeEvent(this);
-            l.figureZorderChanged(e);
-        }
-    }
-
 
 }

@@ -9,5 +9,4 @@ public interface BoardPiece extends Figure {
 
     boolean performAction(int fromX, int fromY, int toX, int toY);
 
-    void setMobile(boolean mobile);
 }
