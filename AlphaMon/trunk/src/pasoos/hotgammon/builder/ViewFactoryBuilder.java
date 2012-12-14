@@ -1,4 +1,4 @@
-package pasoos.hotgammon.animatedgame.ui;
+package pasoos.hotgammon.builder;
 
 import minidraw.boardgame.BoardGameDrawing;
 import minidraw.framework.Factory;

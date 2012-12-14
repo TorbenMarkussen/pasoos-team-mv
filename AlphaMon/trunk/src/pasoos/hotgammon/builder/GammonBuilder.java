@@ -1,4 +1,4 @@
-package pasoos.hotgammon.animatedgame;
+package pasoos.hotgammon.builder;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;

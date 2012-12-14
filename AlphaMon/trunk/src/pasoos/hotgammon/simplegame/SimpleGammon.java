@@ -1,4 +1,4 @@
-package pasoos.hotgammon.animatedgame;
+package pasoos.hotgammon.simplegame;
 
 import minidraw.boardgame.BoardActionTool;
 import minidraw.framework.DrawingEditor;
@@ -7,12 +7,11 @@ import pasoos.hotgammon.builder.GammonBuildDirector;
 import pasoos.hotgammon.settings.GameSettings;
 import pasoos.hotgammon.settings.GameSettingsImpl;
 
-public class Hotgammon {
+public class SimpleGammon {
     public static void main(String[] args) {
-
         GameSettings gameSettings = new GameSettingsImpl(args);
 
-        GammonBuilderImpl gammonBuilder = new GammonBuilderImpl();
+        SimpleGammonBuilder gammonBuilder = new SimpleGammonBuilder();
 
         GammonBuildDirector director = new GammonBuildDirector(gameSettings, gammonBuilder);
         director.construct();
@@ -22,9 +21,6 @@ public class Hotgammon {
 
         editor.open();
         editor.setTool(new BoardActionTool(editor));
-        gammonBuilder.getStatusMonitor().setEditor(editor);
-
-        gammonBuilder.getController().initiateGame();
+        gammonBuilder.getGame().newGame();
     }
-
 }

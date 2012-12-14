@@ -8,6 +8,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.builder.GammonBuildDirector;
+import pasoos.hotgammon.builder.GammonBuilder;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
 import pasoos.hotgammon.settings.GameSettings;
 import pasoos.hotgammon.settings.PlayerType;

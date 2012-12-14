@@ -17,6 +17,9 @@ import pasoos.hotgammon.ai.t6.Dummy;
 import pasoos.hotgammon.animatedgame.gamestatemachine.*;
 import pasoos.hotgammon.animatedgame.ui.*;
 import pasoos.hotgammon.animatedgame.ui.status.StatusMonitor;
+import pasoos.hotgammon.builder.GammonBuilder;
+import pasoos.hotgammon.builder.minidrawfactories.HotgammonPieceFactory;
+import pasoos.hotgammon.builder.minidrawfactories.ViewFactoryBuilderImpl;
 import pasoos.hotgammon.rules.HotGammonFactory;
 import pasoos.hotgammon.rules.factory.SemiMonFactory;
 import pasoos.hotgammon.settings.PlayerType;
@@ -71,7 +74,7 @@ public class GammonBuilderImpl implements GammonBuilder {
 
         BoardPiece piece = createChecker(figurename, gameStateController);
 
-        pieceFactory.addPiece(loc, color, piece);
+        pieceFactory.addPiece(Location.getBearOff(color), color, piece);
     }
 
     private GammonPlayer createPlayer(StateId stateId, PlayerType playerType, String name) {

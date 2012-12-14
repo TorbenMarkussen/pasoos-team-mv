@@ -1,9 +1,10 @@
-package pasoos.hotgammon.animatedgame.ui;
+package pasoos.hotgammon.builder.minidrawfactories;
 
 import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.FigureFactory;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.builder.PieceFactoryBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
