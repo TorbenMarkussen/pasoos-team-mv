@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.builder.minidrawfactories.HotgammonPieceFactory;
 
 import java.util.List;
 import java.util.Map;

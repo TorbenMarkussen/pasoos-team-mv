@@ -1,4 +1,4 @@
-package pasoos.hotgammon.animatedgame;
+package pasoos.hotgammon.builder;
 
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
@@ -30,9 +30,9 @@ public class GammonBuildDirector {
 
             for (int i = 0; i < count; i++) {
                 if (color == Color.BLACK)
-                    gammonBuilder.addPiece(Location.B_BEAR_OFF, color);
+                    gammonBuilder.addPiece(loc, color);
                 else
-                    gammonBuilder.addPiece(Location.R_BEAR_OFF, color);
+                    gammonBuilder.addPiece(loc, color);
             }
         }
         gammonBuilder.addDie("die1");

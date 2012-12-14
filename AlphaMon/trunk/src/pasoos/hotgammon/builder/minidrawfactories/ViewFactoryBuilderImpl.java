@@ -1,4 +1,4 @@
-package pasoos.hotgammon.animatedgame.ui;
+package pasoos.hotgammon.builder.minidrawfactories;
 
 import minidraw.boardgame.BoardGameDrawing;
 import minidraw.framework.Drawing;
@@ -7,6 +7,7 @@ import minidraw.framework.DrawingView;
 import minidraw.framework.Factory;
 import minidraw.standard.StdViewWithBackground;
 import pasoos.hotgammon.Location;
+import pasoos.hotgammon.builder.ViewFactoryBuilder;
 
 import javax.swing.*;
 
