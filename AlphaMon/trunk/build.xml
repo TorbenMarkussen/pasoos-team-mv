@@ -44,7 +44,7 @@
     </target>
 
     <target name="run">
-        <java fork="yes" classname="pasoos.hotgammon.Hotgammon" spawn="yes">
+        <java fork="yes" classname="pasoos.hotgammon.animatedgame.Hotgammon" spawn="yes">
             <classpath>
                 <path refid="classpath"/>
                 <pathelement location="${build.home}/classes"/>
