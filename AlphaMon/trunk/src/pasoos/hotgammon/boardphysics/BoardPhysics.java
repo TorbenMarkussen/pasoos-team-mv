@@ -64,4 +64,8 @@ public class BoardPhysics {
     public static Rectangle getRectangle(Location location) {
         return logicalLocations.get(location);
     }
+
+    public static Rectangle board() {
+        return board;
+    }
 }
