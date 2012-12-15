@@ -38,6 +38,7 @@ public class GameImpl implements Game, GameState {
     private Color theWinner;
     private DiceRoller diceRoller;
     private List<GameObserver> observers;
+    private List<GameMove> moves = new ArrayList<GameMove>();
 
 
     public GameImpl(HotGammonFactory rulesFactory) {
@@ -133,7 +134,15 @@ public class GameImpl implements Game, GameState {
 
         handlePossibleMoves();
 
+        notifyMoves();
         return true;
+    }
+
+    private void notifyMoves() {
+        for (GameMove gm : moves) {
+            notifyMove(gm.getFrom(), gm.getTo());
+        }
+        moves.clear();
     }
 
     private void moveChecker(Location from, Location to) {
@@ -144,7 +153,11 @@ public class GameImpl implements Game, GameState {
 
         board.decrementLocation(from, playerInTurn);
         board.incrementLocation(to, playerInTurn);
-        notifyMove(from, to);
+        addMoveNotification(from, to);
+    }
+
+    private void addMoveNotification(Location from, Location to) {
+        moves.add(new GameMove(from, to));
     }
 
     private void moveOpponentCheckersToBar(Location location, Color playerColor) {
@@ -152,7 +165,7 @@ public class GameImpl implements Game, GameState {
         for (int i = 0; i < board.getCount(location); i++) {
             board.decrementLocation(location, playerColor);
             board.incrementBar(playerColor);
-            notifyMove(location, Location.getBar(playerColor));
+            addMoveNotification(location, Location.getBar(playerColor));
         }
     }
 
@@ -170,7 +183,6 @@ public class GameImpl implements Game, GameState {
         for (int i = 0; i < diceValuesLeft.size() && diceUsed == 0; i++) {
             int d = diceValuesLeft.get(i);
             if (moveValidator.isValidMove(from, to, d)) {
-                System.out.println("Found valid move from " + from + " > " + to + " using die " + d);
                 diceUsed = d;
             }
         }
@@ -235,5 +247,24 @@ public class GameImpl implements Game, GameState {
     @Override
     public boolean allCheckersOnBearOff(Color color) {
         return board.hasAllCheckersOnBearOff(color);
+    }
+
+
+    private class GameMove {
+        private final Location from;
+        private final Location to;
+
+        public GameMove(Location from, Location to) {
+            this.from = from;
+            this.to = to;
+        }
+
+        public Location getFrom() {
+            return from;
+        }
+
+        public Location getTo() {
+            return to;
+        }
     }
 }
