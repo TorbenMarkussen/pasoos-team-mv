@@ -64,7 +64,7 @@ public class GammonBuildDirectorTest {
         verify(gammonBuilder, times(1)).setGameType(SemiMonFactory.class);
         verify(gammonBuilder, times(1)).setPlayer(Color.RED, PlayerType.ManualPlayer, "red player");
         verify(gammonBuilder, times(1)).setPlayer(Color.BLACK, PlayerType.ManualPlayer, "black player");
-        verify(gammonBuilder, times(3)).addPiece(Location.R_BEAR_OFF, Color.RED);
+        verify(gammonBuilder, times(3)).addPiece(Location.B1, Color.RED);
         verify(gammonBuilder, times(1)).addDie("die1");
         verify(gammonBuilder, times(1)).addDie("die1");
     }
