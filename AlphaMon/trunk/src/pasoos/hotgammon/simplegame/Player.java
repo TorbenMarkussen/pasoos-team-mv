@@ -28,7 +28,12 @@ public class Player implements GameObserver {
     private void checkPlayerTurnAndRollDice() {
         if (game.getNumberOfMovesLeft() == 0) {
             if (game.getPlayerInTurn() == playerColor.getOpponentColor()) {
-                game.nextTurn();
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        game.nextTurn();
+                    }
+                });
             }
         }
     }
@@ -43,7 +48,8 @@ public class Player implements GameObserver {
                     game.move(move.getFrom(), move.getTo());
                 }
             }
+        } else {
+            checkPlayerTurnAndRollDice();
         }
-
     }
 }

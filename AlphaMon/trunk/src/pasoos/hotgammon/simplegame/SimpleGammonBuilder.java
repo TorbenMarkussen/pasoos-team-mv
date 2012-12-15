@@ -8,6 +8,7 @@ import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.gerry.GerryPlayer;
+import pasoos.hotgammon.ai.t6.Dummy;
 import pasoos.hotgammon.builder.GammonBuilder;
 import pasoos.hotgammon.builder.minidrawfactories.HotgammonPieceFactory;
 import pasoos.hotgammon.builder.minidrawfactories.ViewFactoryBuilderImpl;
@@ -41,6 +42,10 @@ public class SimpleGammonBuilder implements GammonBuilder {
     public void setPlayer(Color color, PlayerType playerType, String name) {
         if (playerType == PlayerType.AIPlayer) {
             Player aiplayer = new Player(game, new GerryPlayer(game), color);
+            game.addObserver(aiplayer);
+        }
+        if (playerType == PlayerType.DummyPlayer) {
+            Player aiplayer = new Player(game, new Dummy(game, color), color);
             game.addObserver(aiplayer);
         }
 
