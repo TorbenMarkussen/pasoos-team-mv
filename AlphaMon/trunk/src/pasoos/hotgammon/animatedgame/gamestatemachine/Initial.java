@@ -28,7 +28,7 @@ public class Initial extends BaseState {
     }
 
     @Override
-    public void initiateGame() {
+    public void rackGame() {
         System.out.println("StartSetupCheckersAnimation");
         animateCheckerLineUp();
     }
