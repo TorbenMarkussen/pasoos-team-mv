@@ -66,7 +66,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         aiPlayer.play();
         moves = aiPlayer.getMoves();
         if (moves.size() > 0)
-            processGerryMoves();
+            processAIPlayerMoves();
         else
             aiplayerState = PlayerState.Done;
     }
@@ -111,7 +111,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
         return to == Location.R_BAR || to == Location.B_BAR;
     }
 
-    private void processGerryMoves() {
+    private void processAIPlayerMoves() {
         if (moves.size() > 0) {
             GammonMove move = moves.remove(0);
             startAnimatedMove(move);
@@ -134,7 +134,7 @@ public class AIPlayerState extends BaseState implements GammonPlayer {
 
                     @Override
                     public void afterMoveEnd(Location from, Location to) {
-                        processGerryMoves();
+                        processAIPlayerMoves();
                         decreaseActiveAnimationCount();
                     }
                 }
