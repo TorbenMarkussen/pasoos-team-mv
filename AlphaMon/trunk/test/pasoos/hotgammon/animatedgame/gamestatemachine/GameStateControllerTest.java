@@ -35,7 +35,7 @@ public class GameStateControllerTest {
 
     @Test
     public void should_forward_events_to_current_state() {
-        gameStateController.initiateGame();
+        gameStateController.rackGame();
         gameStateController.blackPlayerActive();
         gameStateController.redPlayerActive();
         gameStateController.checkerMoved(B1, B2);
@@ -45,7 +45,7 @@ public class GameStateControllerTest {
         gameStateController.winnerFound();
 
         InOrder inOrder = inOrder(gammonState, context);
-        inOrder.verify(gammonState).initiateGame();
+        inOrder.verify(gammonState).rackGame();
         inOrder.verify(gammonState).blackPlayerActive();
         inOrder.verify(gammonState).redPlayerActive();
         inOrder.verify(gammonState).checkerMoved(B1, B2);
