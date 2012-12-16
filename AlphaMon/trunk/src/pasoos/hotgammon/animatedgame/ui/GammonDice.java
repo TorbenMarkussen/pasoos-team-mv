@@ -6,13 +6,13 @@ import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.PropAppearanceStrategy;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
-import pasoos.hotgammon.easings.Shaker;
 import pasoos.hotgammon.animatedgame.GammonStateMachine;
+import pasoos.hotgammon.easings.Shaker;
 import pasoos.hotgammon.sounds.SoundResource;
 
-import java.util.Random;
+import java.awt.*;
 
-public class GammonDice implements PropAppearanceStrategy {
+public class GammonDice implements PropAppearanceStrategy, AnimationChangeListener {
 
     private Game game;
     private GammonStateMachine gammonStateMachine;
@@ -20,13 +20,10 @@ public class GammonDice implements PropAppearanceStrategy {
     private BoardPiece die2;
     private AnimationEngine animationEngine;
     private SoundResource soundResource;
-    private boolean rolling = false;
-    private Random rollingDieNumberGenerator;
 
     public GammonDice(Game game, GammonStateMachine state, AnimationEngine animationEngine, SoundResource soundResource) {
         this.game = game;
         this.gammonStateMachine = state;
-        rollingDieNumberGenerator = new Random();
         this.animationEngine = animationEngine;
         this.soundResource = soundResource;
     }
@@ -44,7 +41,6 @@ public class GammonDice implements PropAppearanceStrategy {
     }
 
     public void roll() {
-        rolling = true;
         soundResource.playDiceRollerSound();
         updateDieColor();
         animateDieRoll();
@@ -57,57 +53,34 @@ public class GammonDice implements PropAppearanceStrategy {
 
     private void animateDieRoll() {
         TimeInterval timeInterval = TimeInterval.fromNow().duration(1000);
-        Animation dieNumberAnimation1 = getDieNumberAnimation(die1, timeInterval);
-        Animation dieNumberAnimation2 = getDieNumberAnimation(die2, timeInterval);
+        Animation die1NumberAnimation = createDieNumberAnimation(die1, timeInterval);
+        Animation die2NumberAnimation = createDieNumberAnimation(die2, timeInterval);
 
-        Animation dieShakerAnimation1 = getDieShakerAnimation(die1, timeInterval, true);
-        Animation dieShakerAnimation2 = getDieShakerAnimation(die2, timeInterval, false);
+        Animation die1ShakerAnimation = createDieShakerAnimation(die1, timeInterval);
+        Animation die2ShakerAnimation = createDieShakerAnimation(die2, timeInterval);
 
-        animationEngine.startAnimation(dieNumberAnimation1);
-        animationEngine.startAnimation(dieNumberAnimation2);
-        animationEngine.startAnimation(dieShakerAnimation1);
-        animationEngine.startAnimation(dieShakerAnimation2);
+        die2ShakerAnimation.addAnimationChangeListener(this);
+
+        animationEngine.startAnimation(die1NumberAnimation);
+        animationEngine.startAnimation(die2NumberAnimation);
+        animationEngine.startAnimation(die1ShakerAnimation);
+        animationEngine.startAnimation(die2ShakerAnimation);
     }
 
-    private Animation getDieShakerAnimation(BoardPiece die, TimeInterval timeline, boolean callNextTurn) {
-
-        Animation animation = new MoveAnimation(die, die.displayBox().getLocation(), timeline, new Shaker());
-        if (callNextTurn)
-            addFinalChangeListener(animation, this);
+    private Animation createDieShakerAnimation(BoardPiece die, TimeInterval timeline) {
+        Point destination = die.displayBox().getLocation();
+        Animation animation = new MoveAnimation(die, destination, timeline, new Shaker());
         return animation;
     }
 
-    private void addFinalChangeListener(Animation a, final GammonDice gammonDice) {
-        a.addAnimationChangeListener(new AnimationChangeListener() {
-
-            @Override
-            public void onAnimationCompleted(AnimationChangeEvent ace) {
-                System.out.println("<nextturn>");
-                gammonDice.setRolling(false);
-                game.nextTurn();
-            }
-        });
+    private Animation createDieNumberAnimation(final BoardPiece die, TimeInterval timeInterval) {
+        return new DieNumberAnimation(die, timeInterval, getDiePrefixRolling());
     }
 
-    private Animation getDieNumberAnimation(final BoardPiece die, TimeInterval timeInterval) {
-        final double stepSize = 1.0 / 6.0;
-        return new BaseAnimation(die, timeInterval) {
-            public double nextImageRefresh;
-
-            @Override
-            public void begin() {
-                nextImageRefresh = stepSize;
-            }
-
-            @Override
-            public void step() {
-                double elapsedTime = timeInterval.elapsed();
-                if (elapsedTime > nextImageRefresh) {
-                    die.changeImage(calculateImageNameForPropWithKey(die.toString()));
-                    nextImageRefresh += stepSize;
-                }
-            }
-        };
+    @Override
+    public void onAnimationCompleted(AnimationChangeEvent ace) {
+        System.out.println("<nextturn>");
+        game.nextTurn();
     }
 
     @Override
@@ -116,9 +89,7 @@ public class GammonDice implements PropAppearanceStrategy {
 
         diePrefix = getDiePrefix();
 
-        if (rolling) {
-            return getDiePrefixRolling() + getRandomValue();
-        } else if (keyOfProp.equals("die1")) {
+        if (keyOfProp.equals("die1")) {
             return diePrefix + game.diceThrown()[0];
         } else if (keyOfProp.equals("die2")) {
             return diePrefix + game.diceThrown()[1];
@@ -144,12 +115,4 @@ public class GammonDice implements PropAppearanceStrategy {
         return diePrefix;
     }
 
-    private String getRandomValue() {
-        Integer value = rollingDieNumberGenerator.nextInt(6) + 1;
-        return value.toString();
-    }
-
-    public void setRolling(boolean rolling) {
-        this.rolling = rolling;
-    }
 }
