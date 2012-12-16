@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HotGammon.iml" filepath="$PROJECT_DIR$/HotGammon.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../MiniDraw/MiniDraw.iml" filepath="$PROJECT_DIR$/../MiniDraw/MiniDraw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../minidraw/MiniDraw.iml" filepath="$PROJECT_DIR$/../minidraw/MiniDraw.iml" />
       <module fileurl="file://$PROJECT_DIR$/../snakes-ladders/snakes-ladders.iml" filepath="$PROJECT_DIR$/../snakes-ladders/snakes-ladders.iml" />
     </modules>
   </component>

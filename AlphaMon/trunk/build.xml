@@ -56,6 +56,19 @@
         </java>
     </target>
 
+    <target name="run_simple">
+        <java fork="yes" classname="pasoos.hotgammon.simplegame.SimpleGammon" spawn="yes">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${build.home}/classes"/>
+            </classpath>
+            <sysproperty key="black_type" value="ManualPlayer"/>
+            <sysproperty key="red_type" value="ManualPlayer"/>
+            <sysproperty key="black_name" value="Black Player"/>
+            <sysproperty key="red_name" value="Red Player"/>
+        </java>
+    </target>
+
     <target name="run_5">
         <antcall target="run"/>
         <antcall target="run"/>
