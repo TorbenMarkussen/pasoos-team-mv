@@ -12,7 +12,11 @@ public class AnimationTimerImpl implements AnimationTimer, ActionListener {
     private Runnable receiver;
 
     public AnimationTimerImpl() {
-        timer = new Timer(10, this);
+        this(10);
+    }
+
+    public AnimationTimerImpl(int delay) {
+        timer = new Timer(delay, this);
     }
 
     @Override
