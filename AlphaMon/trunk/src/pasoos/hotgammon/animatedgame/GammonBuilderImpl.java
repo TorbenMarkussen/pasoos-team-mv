@@ -27,19 +27,22 @@ import pasoos.hotgammon.rules.factory.SemiMonFactory;
 import pasoos.hotgammon.settings.PlayerType;
 import pasoos.hotgammon.sounds.SoundResource;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static pasoos.hotgammon.Color.RED;
 
 public class GammonBuilderImpl implements GammonBuilder {
     private Game game;
     private GammonPlayer redPlayer = null;
     private GammonPlayer blackPlayer = null;
-    private GammonDice dice;
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
     private PieceFactoryBuilder pieceFactory;
     private AnimatedBoard<Location> boardDrawing;
     private AnimationEngine animationEngine = new AnimationEngineImpl.Builder().build();
     private SoundResource soundEngine = new SoundResource(true);
+    private Map<String, BoardPiece> diceMap = new HashMap<String, BoardPiece>();
 
     public GammonBuilderImpl() {
         gameStateController = new GameStateController();
@@ -58,7 +61,6 @@ public class GammonBuilderImpl implements GammonBuilder {
             g = GameFactory.createGame(new SemiMonFactory());
         }
         game = new GameEventDecorator(g, gameStateController);
-        dice = new GammonDice(game, gameStateController, animationEngine, soundEngine);
     }
 
     @Override
@@ -101,15 +103,13 @@ public class GammonBuilderImpl implements GammonBuilder {
     @Override
     public void addDie(String name) {
         BoardPiece p = createDie(gameStateController);
-        if (name.equals("die1")) {
-            dice.setDie1(p);
-        } else if (name.equals("die2")) {
-            dice.setDie2(p);
-        }
+        diceMap.put(name, p);
         pieceFactory.addDie(name, p);
     }
 
     public void build() {
+
+        GammonDice dice = new GammonDice(game, animationEngine, soundEngine, diceMap);
 
         AnimatedBoardDrawingFactory animationFactory =
                 new HotgammonAnimatedBoardDrawingFactory(pieceFactory.build(), dice, animationEngine);

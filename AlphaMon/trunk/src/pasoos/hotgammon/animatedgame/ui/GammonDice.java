@@ -6,38 +6,26 @@ import minidraw.boardgame.BoardPiece;
 import minidraw.boardgame.PropAppearanceStrategy;
 import pasoos.hotgammon.Color;
 import pasoos.hotgammon.Game;
-import pasoos.hotgammon.animatedgame.GammonStateMachine;
 import pasoos.hotgammon.easings.Shaker;
 import pasoos.hotgammon.sounds.SoundResource;
 
 import java.awt.*;
+import java.util.Map;
 
 public class GammonDice implements PropAppearanceStrategy, AnimationChangeListener {
 
     private Game game;
-    private GammonStateMachine gammonStateMachine;
     private BoardPiece die1;
     private BoardPiece die2;
     private AnimationEngine animationEngine;
     private SoundResource soundResource;
 
-    public GammonDice(Game game, GammonStateMachine state, AnimationEngine animationEngine, SoundResource soundResource) {
+    public GammonDice(Game game, AnimationEngine animationEngine, SoundResource soundResource, Map<String, BoardPiece> diceMap) {
         this.game = game;
-        this.gammonStateMachine = state;
         this.animationEngine = animationEngine;
         this.soundResource = soundResource;
-    }
-
-    public void rollRequest() {
-        gammonStateMachine.rollDiceRequest();
-    }
-
-    public void setDie1(BoardPiece piece) {
-        die1 = piece;
-    }
-
-    public void setDie2(BoardPiece piece) {
-        die2 = piece;
+        die1 = diceMap.get("die1");
+        die2 = diceMap.get("die2");
     }
 
     public void roll() {
