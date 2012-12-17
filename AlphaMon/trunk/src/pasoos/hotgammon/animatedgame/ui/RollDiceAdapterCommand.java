@@ -1,13 +1,14 @@
 package pasoos.hotgammon.animatedgame.ui;
 
 import minidraw.boardgame.Command;
+import pasoos.hotgammon.animatedgame.GammonStateMachine;
 
 public class RollDiceAdapterCommand implements Command {
 
-    private GammonDice dice;
+    private GammonStateMachine gsm;
 
-    public RollDiceAdapterCommand(GammonDice dice) {
-        this.dice = dice;
+    public RollDiceAdapterCommand(GammonStateMachine gsm) {
+        this.gsm = gsm;
     }
 
     @Override
@@ -20,7 +21,7 @@ public class RollDiceAdapterCommand implements Command {
 
     @Override
     public boolean execute() {
-        dice.rollRequest();
+        gsm.rollDiceRequest();
         return false;
     }
 }
