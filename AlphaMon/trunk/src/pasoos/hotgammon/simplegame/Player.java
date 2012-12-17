@@ -28,14 +28,18 @@ public class Player implements GameObserver {
     private void checkPlayerTurnAndRollDice() {
         if (game.getNumberOfMovesLeft() == 0) {
             if (game.getPlayerInTurn() == playerColor.getOpponentColor()) {
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        game.nextTurn();
-                    }
-                });
+                invokeNextTurn();
             }
         }
+    }
+
+    protected void invokeNextTurn() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                game.nextTurn();
+            }
+        });
     }
 
     @Override

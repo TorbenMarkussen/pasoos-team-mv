@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/simplegame" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/DieAppearanceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/findbugs-idea.xml" afterPath="$PROJECT_DIR$/.idea/findbugs-idea.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/PlayerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HotGammon.iml" afterPath="$PROJECT_DIR$/HotGammon.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/DieAppearance.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/DieAppearance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MiniDraw/MiniDraw.iml" afterPath="$PROJECT_DIR$/../MiniDraw/MiniDraw.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../snakes-ladders/snakes-ladders.iml" afterPath="$PROJECT_DIR$/../snakes-ladders/snakes-ladders.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/Player.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/Player.java" />
     </list>
     <ignored path="AlphaMon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -158,27 +153,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestAlphamon.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestAlphamon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestBetamonCustomBoard.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/TestBetamonCustomBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="35" selection-start="2359" selection-end="2359" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1885#2304#0" expanded="true" />
-                <element signature="e#2293#2294#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -209,19 +183,52 @@
       <file leaf-file-name="DieAppearance.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/DieAppearance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="8" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
+            <state line="20" column="8" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DieAppearanceTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DieAppearanceTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/DieAppearanceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="82" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.9097345">
+            <state line="19" column="0" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="0" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#995#1122#0" expanded="true" />
+                <element signature="e#1111#1112#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/PlayerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="54" selection-start="2140" selection-end="2140" vertical-scroll-proportion="0.6318584">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1636#1648#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleGammon.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/SimpleGammon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="39" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -261,8 +268,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/animatedgame/GammonBuildDirectorTest.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/Player.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/SimpleGammon.java" />
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/standard/AnimationTimerImpl.java" />
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/engine/AnimationEngineImpl.java" />
@@ -277,6 +282,8 @@
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/gameengine/GameImpl.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/DieAppearance.java" />
         <option value="$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/DieAppearanceTest.java" />
+        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/Player.java" />
+        <option value="$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/PlayerTest.java" />
       </list>
     </option>
   </component>
@@ -836,7 +843,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="296" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="590" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/test/pasoos/hotgammon" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/test/pasoos/hotgammon/simplegame" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
@@ -995,14 +1002,30 @@
       </UpdatedFiles>
     </UpdateInfo>
   </component>
-  <component name="RunManager" selected="JUnit.DieAppearanceTest">
-    <configuration default="false" name="DieAppearanceTest.empty_string_for_empty_name" type="JUnit" factoryName="JUnit" temporary="true">
+  <component name="RunManager" selected="JUnit.PlayerTest">
+    <configuration default="false" name="SimpleGammon" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.SimpleGammon" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="HotGammon" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PlayerTest.should_invoke_nextTurn" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="HotGammon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="pasoos.hotgammon.simplegame" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.DieAppearanceTest" />
-      <option name="METHOD_NAME" value="empty_string_for_empty_name" />
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.PlayerTest" />
+      <option name="METHOD_NAME" value="should_invoke_nextTurn" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1014,38 +1037,22 @@
       </option>
       <envs />
       <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="DieAppearanceTest.empty_string_for_null" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="HotGammon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="pasoos.hotgammon.simplegame" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.DieAppearanceTest" />
-      <option name="METHOD_NAME" value="empty_string_for_null" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="DieAppearanceTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="HotGammon" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pasoos.hotgammon.simplegame" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.DieAppearanceTest" />
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.PlayerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1062,13 +1069,13 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="DieAppearanceTest.should_return_bdie4_for_die1" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="PlayerTest.should_not_invoke_nextTurn_if_same_playercolor" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="HotGammon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="pasoos.hotgammon.simplegame" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.DieAppearanceTest" />
-      <option name="METHOD_NAME" value="should_return_bdie4_for_die1" />
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.PlayerTest" />
+      <option name="METHOD_NAME" value="should_not_invoke_nextTurn_if_same_playercolor" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1084,13 +1091,13 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="DieAppearanceTest.should_return_bdie2_for_die2" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="PlayerTest.should_commit_ai_player_move" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="HotGammon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="pasoos.hotgammon.simplegame" />
-      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.DieAppearanceTest" />
-      <option name="METHOD_NAME" value="should_return_bdie2_for_die2" />
+      <option name="MAIN_CLASS_NAME" value="pasoos.hotgammon.simplegame.PlayerTest" />
+      <option name="METHOD_NAME" value="should_commit_ai_player_move" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1253,11 +1260,11 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.All Tests" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DieAppearanceTest.empty_string_for_empty_name" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DieAppearanceTest.empty_string_for_null" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DieAppearanceTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DieAppearanceTest.should_return_bdie4_for_die1" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.DieAppearanceTest.should_return_bdie2_for_die2" />
+      <item index="1" class="java.lang.String" itemvalue="Application.SimpleGammon" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PlayerTest.should_invoke_nextTurn" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PlayerTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PlayerTest.should_not_invoke_nextTurn_if_same_playercolor" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.PlayerTest.should_commit_ai_player_move" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1602,7 +1609,11 @@
       <created>1355771134112</created>
       <updated>1355771134112</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="added test">
+      <created>1355773338133</created>
+      <updated>1355773338133</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1695,7 +1706,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1708,7 +1719,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="updated ant build script" />
     <MESSAGE value="AnimatedBoardDrawing now uses factory for initalization&#10;timerInterval and EasingFunction moved from AnimatedBoardDrawing to factory&#10;" />
     <MESSAGE value="Dice now change ruring roll, and uses correct colors&#10;" />
     <MESSAGE value="Updated the way dices is animated, and how the AnimationBoardFactory gets easing function and TimeInterval" />
@@ -1733,6 +1743,7 @@
     <MESSAGE value="simplified / beatified gammon dice" />
     <MESSAGE value="beautified" />
     <MESSAGE value="removed cyclic dependency" />
+    <MESSAGE value="added test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1758,20 +1769,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/builder/ViewFactoryBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="166" selection-end="166" vertical-scroll-proportion="0.112396695">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/settings/GameSettingsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="149" column="0" selection-start="5384" selection-end="5384" vertical-scroll-proportion="0.0">
@@ -1859,16 +1856,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/DieAppearance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
+        <state line="20" column="8" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/SimpleGammon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="39" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/DieAppearanceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="82" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.9097345">
+        <state line="19" column="0" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#995#1122#0" expanded="true" />
+            <element signature="e#1111#1112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/pasoos/hotgammon/simplegame/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="54" selection-start="2140" selection-end="2140" vertical-scroll-proportion="0.6318584">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1636#1648#0" expanded="true" />
           </folding>
         </state>
       </provider>
