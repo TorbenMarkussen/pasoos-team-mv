@@ -18,6 +18,8 @@ import pasoos.hotgammon.animatedgame.gamestatemachine.*;
 import pasoos.hotgammon.animatedgame.ui.*;
 import pasoos.hotgammon.animatedgame.ui.status.StatusMonitor;
 import pasoos.hotgammon.builder.GammonBuilder;
+import pasoos.hotgammon.builder.PieceFactoryBuilder;
+import pasoos.hotgammon.builder.ViewFactoryBuilder;
 import pasoos.hotgammon.builder.minidrawfactories.HotgammonPieceFactory;
 import pasoos.hotgammon.builder.minidrawfactories.ViewFactoryBuilderImpl;
 import pasoos.hotgammon.rules.HotGammonFactory;
@@ -34,7 +36,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     private GammonDice dice;
     private StatusMonitor statusMonitor;
     private GameStateController gameStateController;
-    private HotgammonPieceFactory pieceFactory;
+    private PieceFactoryBuilder pieceFactory;
     private AnimatedBoard<Location> boardDrawing;
     private AnimationEngine animationEngine = new AnimationEngineImpl.Builder().build();
     private SoundResource soundEngine = new SoundResource(true);
@@ -126,7 +128,7 @@ public class GammonBuilderImpl implements GammonBuilder {
     }
 
     public Factory createViewFactory() {
-        ViewFactoryBuilderImpl builder = new ViewFactoryBuilderImpl();
+        ViewFactoryBuilder builder = new ViewFactoryBuilderImpl();
 
         builder.setBoardDrawing(boardDrawing);
 
