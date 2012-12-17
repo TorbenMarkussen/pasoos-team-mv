@@ -10,6 +10,8 @@ import pasoos.hotgammon.Location;
 import pasoos.hotgammon.ai.gerry.GerryPlayer;
 import pasoos.hotgammon.ai.t6.Dummy;
 import pasoos.hotgammon.builder.GammonBuilder;
+import pasoos.hotgammon.builder.PieceFactoryBuilder;
+import pasoos.hotgammon.builder.ViewFactoryBuilder;
 import pasoos.hotgammon.builder.minidrawfactories.HotgammonPieceFactory;
 import pasoos.hotgammon.builder.minidrawfactories.ViewFactoryBuilderImpl;
 import pasoos.hotgammon.gameengine.GameImpl;
@@ -22,7 +24,7 @@ import static pasoos.hotgammon.Color.RED;
 public class SimpleGammonBuilder implements GammonBuilder {
 
     private Game game = null;
-    HotgammonPieceFactory pieceFactory = new HotgammonPieceFactory();
+    PieceFactoryBuilder pieceFactory = new HotgammonPieceFactory();
     private BoardDrawing<Location> boardDrawing;
 
     @Override
@@ -80,7 +82,7 @@ public class SimpleGammonBuilder implements GammonBuilder {
     }
 
     public Factory createViewFactory() {
-        ViewFactoryBuilderImpl builder = new ViewFactoryBuilderImpl();
+        ViewFactoryBuilder builder = new ViewFactoryBuilderImpl();
 
         builder.setBoardDrawing(boardDrawing);
 
