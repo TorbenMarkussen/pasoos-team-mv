@@ -13,8 +13,8 @@ public class Shaker implements EasingFunctionStrategy {
     }
 
     @Override
-    public Point calculate(double t, Point begin, Point end) {
-        if (t >= 1)
+    public Point calculate(double elapsedTime, Point begin, Point end) {
+        if (elapsedTime >= 1)
             return end;
         int dx = -5 + random.nextInt(10);
         int dy = -5 + random.nextInt(10);
