@@ -4,7 +4,7 @@
     <list default="true" readonly="true" id="e71bc15f-1d5f-431b-8f0e-89c2089bc006" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/RollDiceAdapterCommand.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/RollDiceAdapterCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java" afterPath="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java" />
     </list>
     <ignored path="AlphaMon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -153,21 +153,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GammonBuilderImpl.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GammonBuilderImpl.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="61" selection-start="4154" selection-end="4154" vertical-scroll-proportion="0.0">
+            <state line="112" column="64" selection-start="4174" selection-end="4174" vertical-scroll-proportion="0.30323678">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1944#1964#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameSettingsImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GameSettingsImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/settings/GameSettingsImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="71" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.88245314">
+            <state line="11" column="0" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -187,7 +188,7 @@
       <file leaf-file-name="GammonDice.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="42" selection-start="1088" selection-end="1103" vertical-scroll-proportion="0.0">
+            <state line="23" column="4" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -218,14 +219,14 @@
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/SimpleGammon.java" />
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/standard/AnimationTimerImpl.java" />
         <option value="$PROJECT_DIR$/../MiniDraw/ext/minidraw/animation/engine/AnimationEngineImpl.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/DieNumberAnimation.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/simplegame/SimpleGammonBuilder.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/builder/GammonBuildDirector.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/gamestatemachine/AIPlayerState.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/RollDiceAdapterCommand.java" />
-        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java" />
         <option value="$PROJECT_DIR$/src/pasoos/hotgammon/settings/GameSettingsImpl.java" />
+        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java" />
+        <option value="$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java" />
       </list>
     </option>
   </component>
@@ -1517,7 +1518,11 @@
       <created>1355759074502</created>
       <updated>1355759074502</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="removed cyclic dependency">
+      <created>1355766151106</created>
+      <updated>1355766151106</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1610,7 +1615,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="beautified" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed cyclic dependency" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1623,7 +1628,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="added new ai player (dummy)&#10;fixed bug in movevalidator" />
     <MESSAGE value="updated ant build script" />
     <MESSAGE value="AnimatedBoardDrawing now uses factory for initalization&#10;timerInterval and EasingFunction moved from AnimatedBoardDrawing to factory&#10;" />
     <MESSAGE value="Dice now change ruring roll, and uses correct colors&#10;" />
@@ -1648,6 +1652,7 @@
     <MESSAGE value="ea" />
     <MESSAGE value="simplified / beatified gammon dice" />
     <MESSAGE value="beautified" />
+    <MESSAGE value="removed cyclic dependency" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1757,13 +1762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="42" selection-start="1088" selection-end="1103" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/RollDiceAdapterCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="20" selection-start="572" selection-end="572" vertical-scroll-proportion="0.0">
@@ -1773,19 +1771,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/settings/GameSettingsImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="61" selection-start="4154" selection-end="4154" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="11" column="0" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/settings/GameSettingsImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/ui/GammonDice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="71" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.88245314">
+        <state line="23" column="4" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pasoos/hotgammon/animatedgame/GammonBuilderImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="64" selection-start="4174" selection-end="4174" vertical-scroll-proportion="0.30323678">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1944#1964#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
