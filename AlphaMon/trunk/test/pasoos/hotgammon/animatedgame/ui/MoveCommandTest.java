@@ -19,5 +19,4 @@ public class MoveCommandTest {
 
         verify(state, times(1)).moveRequest(Location.B1, Location.B2);
     }
-
 }
