@@ -15,6 +15,9 @@ public class DieAppearance implements PropAppearanceStrategy {
 
     @Override
     public String calculateImageNameForPropWithKey(String keyOfProp) {
+        if (keyOfProp == null)
+            return "";
+
         int[] dice = game.diceThrown();
         String dieNamePrefix = game.getPlayerInTurn() == Color.BLACK ? "bdie" : "rdie";
         if (keyOfProp.equals("die1")) {
