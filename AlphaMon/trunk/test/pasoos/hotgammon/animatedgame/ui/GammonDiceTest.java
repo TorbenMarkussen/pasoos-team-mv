@@ -20,7 +20,7 @@ import static pasoos.hotgammon.Color.RED;
 
 public class GammonDiceTest {
 
-    GammonDice gd;
+    GammonDice gammonDice;
     Game game;
     GammonStateMachine stateMachine;
     AnimationEngine engine;
@@ -39,7 +39,7 @@ public class GammonDiceTest {
         Map<String, BoardPiece> diceMap = new HashMap<String, BoardPiece>();
         diceMap.put("die1", die1);
         diceMap.put("die2", die2);
-        gd = new GammonDice(game, engine, sound, diceMap);
+        gammonDice = new GammonDice(game, engine, sound, diceMap);
     }
 
     @Ignore
@@ -56,7 +56,7 @@ public class GammonDiceTest {
         when(die1.displayBox()).thenReturn(new Rectangle(0, 0));
         when(die2.displayBox()).thenReturn(new Rectangle(0, 0));
 
-        gd.roll();
+        gammonDice.roll();
 
         verify(sound, times(1)).playDiceRollerSound();
         verify(engine, times(4)).startAnimation(any(Animation.class));
@@ -64,7 +64,7 @@ public class GammonDiceTest {
 
     @Test
     public void should_invoke_next_turn_on_animation_compleated() {
-        gd.onAnimationCompleted(null);
+        gammonDice.onAnimationCompleted(null);
         verify(game, times(1)).nextTurn();
     }
 }
