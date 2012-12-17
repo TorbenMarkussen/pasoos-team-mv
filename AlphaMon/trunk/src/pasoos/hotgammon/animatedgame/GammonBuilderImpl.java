@@ -100,7 +100,7 @@ public class GammonBuilderImpl implements GammonBuilder {
 
     @Override
     public void addDie(String name) {
-        BoardPiece p = createDie(dice);
+        BoardPiece p = createDie(gameStateController);
         if (name.equals("die1")) {
             dice.setDie1(p);
         } else if (name.equals("die2")) {
@@ -143,7 +143,7 @@ public class GammonBuilderImpl implements GammonBuilder {
         return new BoardFigure(figurename, true, new MoveCommand(gsc));
     }
 
-    protected BoardPiece createDie(GammonDice dice) {
-        return new BoardFigure("idie", false, new RollDiceAdapterCommand(dice));
+    protected BoardPiece createDie(GammonStateMachine gsc) {
+        return new BoardFigure("idie", false, new RollDiceAdapterCommand(gsc));
     }
 }
