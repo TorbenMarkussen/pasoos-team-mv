@@ -9,7 +9,7 @@ import java.util.Random;
 public class DieNumberAnimation extends BaseAnimation {
     private BoardPiece die;
     public double nextImageRefresh;
-    private double stepSize = 1 / 6;
+    private double stepSize = 1.0 / 6;
     private String figureNamePrefix;
     private Random rollingDieNumberGenerator;
 
