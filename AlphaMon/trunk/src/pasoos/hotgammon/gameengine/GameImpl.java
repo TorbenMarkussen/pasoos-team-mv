@@ -250,7 +250,7 @@ public class GameImpl implements Game, GameState {
     }
 
 
-    private class GameMove {
+    private static class GameMove {
         private final Location from;
         private final Location to;
 
