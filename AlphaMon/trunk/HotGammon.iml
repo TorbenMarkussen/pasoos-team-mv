@@ -9,7 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/resource" isTestSource="false" packagePrefix="resource" />
       <excludeFolder url="file://$MODULE_DIR$/.clover" />
     </content>
-    <orderEntry type="library" name="Clover IDEA Plugin" level="application" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
