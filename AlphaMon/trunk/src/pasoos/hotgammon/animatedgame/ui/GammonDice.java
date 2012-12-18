@@ -30,13 +30,7 @@ public class GammonDice implements PropAppearanceStrategy, AnimationChangeListen
 
     public void roll() {
         soundResource.playDiceRollerSound();
-        updateDieColor();
         animateDieRoll();
-    }
-
-    private void updateDieColor() {
-        die1.changeImage(calculateImageNameForPropWithKey(die1.toString()));
-        die2.changeImage(calculateImageNameForPropWithKey(die2.toString()));
     }
 
     private void animateDieRoll() {
@@ -76,13 +70,17 @@ public class GammonDice implements PropAppearanceStrategy, AnimationChangeListen
         String diePrefix;
 
         diePrefix = getDiePrefix();
+        int[] diceThrown = game.diceThrown();
 
-        if (keyOfProp.equals("die1")) {
-            return diePrefix + game.diceThrown()[0];
-        } else if (keyOfProp.equals("die2")) {
-            return diePrefix + game.diceThrown()[1];
+        if (diceThrown != null && diceThrown.length == 2) {
+            if (keyOfProp.equals("die1")) {
+                return diePrefix + game.diceThrown()[0];
+            } else if (keyOfProp.equals("die2")) {
+                return diePrefix + game.diceThrown()[1];
+            }
         }
-        return "die0";
+
+        return "idie";
     }
 
     private String getDiePrefixRolling() {

@@ -7,6 +7,8 @@
     <property name="mockito-jar" value="${basedir}/lib/mockito-1.9.0/mockito-all-1.9.0.jar"/>
     <property name="doc.home" value="${basedir}/doc"/>
     <property name="resource" value="resource"/>
+    <property name="deploy" value="${basedir}/deploy"/>
+    <property name="jarname" value="hotgammon.jar"/>
 
     <path id="classpath">
         <pathelement location="${junit-jar}"/>
@@ -124,6 +126,19 @@
     <target name="depends">
         <ant dir="${basedir}/../MiniDraw" target="jar" inheritAll="false"/>
         <copy todir="${basedir}/lib">
+            <fileset dir="${basedir}/../MiniDraw/deploy"/>
+        </copy>
+    </target>
+
+    <target name="mkdir_deploy">
+        <mkdir dir="${deploy}">
+        </mkdir>
+    </target>
+
+    <target name="jar"
+            depends="clean, mkdir_deploy, compile">
+        <jar jarfile="${deploy}/${jarname}" basedir="${build.home}/classes"/>
+        <copy todir="${deploy}">
             <fileset dir="${basedir}/../MiniDraw/deploy"/>
         </copy>
     </target>
