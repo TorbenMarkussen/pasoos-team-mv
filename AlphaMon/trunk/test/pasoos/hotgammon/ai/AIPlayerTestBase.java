@@ -19,7 +19,7 @@ import static pasoos.hotgammon.Color.RED;
 import static pasoos.hotgammon.Location.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public abstract class AIPlayerTest {
+public abstract class AIPlayerTestBase {
 
     @Mock
     protected Game game;

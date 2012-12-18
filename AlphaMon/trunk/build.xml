@@ -2,6 +2,7 @@
     <property name="build.home" value="${basedir}/build"/>
     <property name="src.home" value="${basedir}/src"/>
     <property name="test.home" value="${basedir}/test"/>
+    <property name="reports" value="${basedir}/reports"/>
     <property name="junit-jar" value="${basedir}/lib/junit-4.10.jar"/>
     <property name="minidraw-jar" value="${basedir}/lib/minidraw.jar"/>
     <property name="mockito-jar" value="${basedir}/lib/mockito-1.9.0/mockito-all-1.9.0.jar"/>
@@ -21,11 +22,13 @@
         <mkdir dir="${build.home}/classes"/>
         <mkdir dir="${build.home}/test_classes"/>
         <mkdir dir="${doc.home}"/>
+        <mkdir dir="${reports}"/>
     </target>
 
     <target name="clean">
         <delete dir="${build.home}"/>
         <delete dir="${doc.home}"/>
+        <delete dir="${reports}"/>
     </target>
 
     <target name="compile" depends="prepare, copy_resource, depends">
@@ -35,7 +38,6 @@
             </classpath>
         </javac>
     </target>
-
     <target name="copy_resource" depends="prepare">
         <copy todir="${build.home}/classes/resource">
             <fileset dir="${resource}">
@@ -44,7 +46,6 @@
             </fileset>
         </copy>
     </target>
-
     <target name="run">
         <java fork="yes" classname="pasoos.hotgammon.animatedgame.Hotgammon" spawn="yes">
             <classpath>
@@ -57,7 +58,6 @@
             <sysproperty key="red_name" value="T6"/>
         </java>
     </target>
-
     <target name="run_simple">
         <java fork="yes" classname="pasoos.hotgammon.simplegame.SimpleGammon" spawn="yes">
             <classpath>
@@ -70,7 +70,6 @@
             <sysproperty key="red_name" value="Red Player"/>
         </java>
     </target>
-
     <target name="run_5">
         <antcall target="run"/>
         <antcall target="run"/>
@@ -78,17 +77,14 @@
         <antcall target="run"/>
         <antcall target="run"/>
     </target>
-
     <target name="run_10">
         <antcall target="run_5"/>
         <antcall target="run_5"/>
     </target>
-
     <target name="run_20">
         <antcall target="run_10"/>
         <antcall target="run_10"/>
     </target>
-
     <target name="compile_test" depends="compile">
         <javac srcdir="${test.home}" destdir="${build.home}/test_classes" includeantruntime="false">
             <classpath>
@@ -105,14 +101,20 @@
                 <pathelement location="${build.home}/classes"/>
                 <pathelement location="${build.home}/test_classes"/>
             </classpath>
-            <batchtest>
+            <batchtest todir="${reports}">
                 <fileset dir="${test.home}">
-                    <include name="**/AllTests.java"/>
-                    <!-- <include name="**/*Test.java"/>
-                    <include name="**/Test*.java"/>  -->
+                    <include name="**/*Test.java"/>
+                    <include name="**/Test*.java"/>
                 </fileset>
             </batchtest>
+            <formatter type="xml"/>
         </junit>
+        <junitreport todir="${reports}">
+            <fileset dir="${reports}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report todir="${reports}"/>
+        </junitreport>
     </target>
 
     <target name="javadoc" depends="prepare">
@@ -131,12 +133,10 @@
     </target>
 
     <target name="mkdir_deploy">
-        <mkdir dir="${deploy}">
-        </mkdir>
+        <mkdir dir="${deploy}"></mkdir>
     </target>
 
-    <target name="jar"
-            depends="clean, mkdir_deploy, compile">
+    <target name="jar" depends="clean, mkdir_deploy, compile">
         <jar jarfile="${deploy}/${jarname}" basedir="${build.home}/classes"/>
         <copy todir="${deploy}">
             <fileset dir="${basedir}/../MiniDraw/deploy"/>

@@ -2,9 +2,9 @@ package pasoos.hotgammon.ai.t6;
 
 import org.junit.Before;
 import pasoos.hotgammon.Color;
-import pasoos.hotgammon.ai.AIPlayerTest;
+import pasoos.hotgammon.ai.AIPlayerTestBase;
 
-public class DummyBlackPlayerTest extends AIPlayerTest {
+public class DummyBlackPlayerTest extends AIPlayerTestBase {
     @Before
     public void setup() {
         aiPlayer = new Dummy(game, Color.BLACK);

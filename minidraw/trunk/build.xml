@@ -29,6 +29,7 @@
     <property name="resource" value="resource"/>
     <property name="mockito-jar" value="lib/mockito-all-1.9.0.jar"/>
     <property name="junit-jar" value="lib/junit-4.10.jar"/>
+    <property name="reports" value="reports"/>
 
     <property name="jarname" value="minidraw.jar"/>
 
@@ -56,8 +57,8 @@
     </path>
 
     <target name="prepare">
-        <mkdir dir="${build}">
-        </mkdir>
+        <mkdir dir="${build}"/>
+        <mkdir dir="${reports}"/>
     </target>
 
     <!-- Help -->
@@ -144,12 +145,10 @@
 
     <!-- CLEAN -->
     <target name="clean">
-        <delete dir="${build}">
-        </delete>
-        <delete dir="${doc}">
-        </delete>
-        <delete dir="${deploy}">
-        </delete>
+        <delete dir="${build}"/>
+        <delete dir="${doc}"/>
+        <delete dir="${deploy}"/>
+        <delete dir="${reports}"/>
     </target>
 
     <!-- JHotDraw testing of graphical functionality -->
@@ -273,13 +272,21 @@
             <classpath>
                 <path refid="_classpath"/>
             </classpath>
-            <batchtest>
+            <batchtest todir="${reports}">
                 <fileset dir="${test-ext}">
                     <include name="**/*Test.java"/>
                     <include name="**/Test*.java"/>
                 </fileset>
             </batchtest>
+            <formatter type="xml"/>
         </junit>
+        <junitreport todir="${reports}">
+            <fileset dir="${reports}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report todir="${reports}"/>
+        </junitreport>
+
     </target>
 
 
