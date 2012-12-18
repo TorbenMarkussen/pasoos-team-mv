@@ -2,6 +2,10 @@ package minidraw.animation.easings;
 
 import java.awt.*;
 
+/*
+Algorithm is inspired by http://13thparallel.com/archive/bezier-curves/
+ */
+
 public class BezierMovement implements EasingFunctionStrategy {
     private Point waypoint1;
     private Point waypoint2;
@@ -12,8 +16,8 @@ public class BezierMovement implements EasingFunctionStrategy {
     }
 
     @Override
-    public Point calculate(double t, Point beginPoint, Point endPoint) {
-        return getBezier(t, beginPoint, waypoint1, waypoint2, endPoint);
+    public Point calculate(double elapsedPercentage, Point beginPoint, Point endPoint) {
+        return getBezier(elapsedPercentage, beginPoint, waypoint1, waypoint2, endPoint);
     }
 
     private double B1(double t) {
