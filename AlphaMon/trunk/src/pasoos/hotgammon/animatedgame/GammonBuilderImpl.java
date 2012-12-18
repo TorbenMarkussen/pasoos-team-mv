@@ -66,9 +66,9 @@ public class GammonBuilderImpl implements GammonBuilder {
     @Override
     public void setPlayer(Color color, PlayerType playerType, String name) {
         if (color == RED) {
-            redPlayer = createPlayer(StateId.RedPlayer, playerType, name);
+            redPlayer = createPlayer(playerType, name, color);
         } else {
-            blackPlayer = createPlayer(StateId.BlackPlayer, playerType, name);
+            blackPlayer = createPlayer(playerType, name, color);
         }
     }
 
@@ -81,13 +81,15 @@ public class GammonBuilderImpl implements GammonBuilder {
         pieceFactory.addPiece(Location.getBearOff(color), color, piece);
     }
 
-    private GammonPlayer createPlayer(StateId stateId, PlayerType playerType, String name) {
+    private GammonPlayer createPlayer(PlayerType playerType, String name, Color color) {
+        StateId stateId = color == Color.BLACK ? StateId.BlackPlayer : StateId.RedPlayer;
+
         if (playerType == PlayerType.ManualPlayer)
             return new ManualPlayerState(stateId, name);
         else if (playerType == PlayerType.AIPlayer)
             return new AIPlayerState(stateId, name, new GerryPlayer(game));
         else if (playerType == PlayerType.DummyPlayer)
-            return new AIPlayerState(stateId, name, new Dummy(game, Color.RED));
+            return new AIPlayerState(stateId, name, new Dummy(game, color));
 
         return null;
     }
