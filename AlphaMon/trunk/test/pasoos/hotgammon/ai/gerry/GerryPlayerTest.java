@@ -1,9 +1,9 @@
 package pasoos.hotgammon.ai.gerry;
 
 import org.junit.Before;
-import pasoos.hotgammon.ai.AIPlayerTest;
+import pasoos.hotgammon.ai.AIPlayerTestBase;
 
-public class GerryPlayerTest extends AIPlayerTest {
+public class GerryPlayerTest extends AIPlayerTestBase {
 
     @Before
     public void setup() {
