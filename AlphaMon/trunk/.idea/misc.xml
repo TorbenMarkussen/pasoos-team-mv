@@ -53,19 +53,6 @@
             </SvnBranchConfiguration>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../snakes-ladders">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="branchUrls">
-                <list>
-                  <option value="https://pasoos-team-mv.googlecode.com/svn/snaked-ladders/branches" />
-                  <option value="https://pasoos-team-mv.googlecode.com/svn/snaked-ladders/tags" />
-                </list>
-              </option>
-              <option name="trunkUrl" value="https://pasoos-team-mv.googlecode.com/svn/snaked-ladders/trunk" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="mySupportsUserInfoFilter" value="true" />
