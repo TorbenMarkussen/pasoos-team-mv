@@ -23,6 +23,7 @@
         <mkdir dir="${build.home}/test_classes"/>
         <mkdir dir="${doc.home}"/>
         <mkdir dir="${reports}"/>
+        <mkdir dir="${reports}\junit"/>
     </target>
 
     <target name="clean">
@@ -101,7 +102,7 @@
                 <pathelement location="${build.home}/classes"/>
                 <pathelement location="${build.home}/test_classes"/>
             </classpath>
-            <batchtest todir="${reports}">
+            <batchtest todir="${reports}\junit">
                 <fileset dir="${test.home}">
                     <include name="**/*Test.java"/>
                     <include name="**/Test*.java"/>
@@ -109,11 +110,11 @@
             </batchtest>
             <formatter type="xml"/>
         </junit>
-        <junitreport todir="${reports}">
-            <fileset dir="${reports}">
+        <junitreport todir="${reports}\junit">
+            <fileset dir="${reports}\junit">
                 <include name="TEST-*.xml"/>
             </fileset>
-            <report todir="${reports}"/>
+            <report todir="${reports}\junit"/>
         </junitreport>
     </target>
 

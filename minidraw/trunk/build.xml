@@ -59,6 +59,7 @@
     <target name="prepare">
         <mkdir dir="${build}"/>
         <mkdir dir="${reports}"/>
+        <mkdir dir="${reports}\junit"/>
     </target>
 
     <!-- Help -->
@@ -267,12 +268,12 @@
         </javadoc>
     </target>
 
-    <target name="test_ext" depends="build_test">
+    <target name="test" depends="build_test">
         <junit printsummary="on" haltonfailure="yes">
             <classpath>
                 <path refid="_classpath"/>
             </classpath>
-            <batchtest todir="${reports}">
+            <batchtest todir="${reports}\junit">
                 <fileset dir="${test-ext}">
                     <include name="**/*Test.java"/>
                     <include name="**/Test*.java"/>
@@ -280,11 +281,11 @@
             </batchtest>
             <formatter type="xml"/>
         </junit>
-        <junitreport todir="${reports}">
-            <fileset dir="${reports}">
+        <junitreport todir="${reports}\junit">
+            <fileset dir="${reports}\junit">
                 <include name="TEST-*.xml"/>
             </fileset>
-            <report todir="${reports}"/>
+            <report todir="${reports}\junit"/>
         </junitreport>
 
     </target>
