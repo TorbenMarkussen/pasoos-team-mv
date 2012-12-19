@@ -4,7 +4,6 @@ import minidraw.animation.Animation;
 import minidraw.animation.engine.AnimationEngine;
 import minidraw.boardgame.BoardPiece;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import pasoos.hotgammon.Game;
 import pasoos.hotgammon.Location;
@@ -40,13 +39,6 @@ public class GammonDiceTest {
         diceMap.put("die1", die1);
         diceMap.put("die2", die2);
         gammonDice = new GammonDice(game, engine, sound, diceMap);
-    }
-
-    @Ignore
-    @Test
-    public void should_request_dice_rool() {
-//        gd.rollRequest();
-//        verify(stateMachine, times(1)).rollDiceRequest();
     }
 
     @Test
